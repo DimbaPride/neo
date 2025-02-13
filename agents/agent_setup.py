@@ -1,45 +1,64 @@
-#agent_setup.py
+# agent_setup.py
 import logging
 from typing import List
 from functools import partial
 from langchain.agents import Tool, AgentExecutor, create_openai_functions_agent
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import BaseTool
+from langchain_openai import ChatOpenAI
 
-from knowledge_base.site_knowledge import SiteKnowledge, KnowledgeSource
-from services.llm import llm_openai
+from knowledge_base.knowledge_system import CabalKnowledgeSystem, KnowledgeSource
 
 logger = logging.getLogger(__name__)
 
 class AgentManager:
-    """Manages the creation and configuration of the agent."""
+    """Gerencia a criação e configuração do agente de suporte do Cabal."""
     
     def __init__(self):
-        self.site_knowledge = SiteKnowledge()
+        self.knowledge_system = CabalKnowledgeSystem()
         self.tools = self._create_tools()
         self.prompt = self._create_prompt()
+        self.llm = ChatOpenAI(temperature=0.3)
         self.agent = self._create_agent()
         self.executor = self._create_executor()
-       
+
+    async def neo_knowledge(self, question: str) -> str:
+        """Consulta informações específicas do servidor Cabal NEO"""
+        response = await self.knowledge_system.query(question, sources=[KnowledgeSource.NEO_CABAL])
+        return response
+
+    async def game_knowledge(self, question: str) -> str:
+        """Consulta informações gerais sobre o jogo Cabal Online"""
+        response = await self.knowledge_system.query(question, sources=[KnowledgeSource.MRWORMY])
+        return response
+
+    async def combined_knowledge(self, question: str) -> str:
+        """Consulta todas as fontes de conhecimento disponíveis"""
+        response = await self.knowledge_system.query(question)
+        return response
 
     def _create_tools(self) -> List[BaseTool]:
-        """Create and return the list of tools available to the agent."""
+        """Cria e retorna a lista de ferramentas disponíveis para o agente."""
         return [
             Tool(
-                name="site_knowledge",
-                func=partial(self.site_knowledge.query, source=KnowledgeSource.WEBSITE),
-                description="Consulta informações específicas do site nerai.com.br. Use esta ferramenta para responder perguntas sobre a empresa e seus serviços."
+                name="neo_knowledge",
+                func=self.neo_knowledge,
+                description="Consulta informações específicas do servidor Cabal NEO. Use esta ferramenta para responder perguntas sobre o servidor, cash, rankings, eventos atuais e informações específicas do NEO."
             ),
             Tool(
-                name="estagios_conversas",
-                func=partial(self.site_knowledge.query, source=KnowledgeSource.STAGES),
-                description="Consulta o formato correto da mensagem para cada estágio da conversa. Use esta ferramenta SEMPRE antes de responder, fornecendo o estágio atual."
+                name="game_knowledge",
+                func=self.game_knowledge,
+                description="Consulta informações gerais sobre o jogo Cabal Online. Use esta ferramenta para responder perguntas sobre mecânicas do jogo, classes, dungeons, itens, skills e sistemas do jogo."
+            ),
+            Tool(
+                name="combined_knowledge",
+                func=self.combined_knowledge,
+                description="Consulta todas as fontes de conhecimento disponíveis. Use quando precisar de uma visão completa ou quando não tiver certeza de qual fonte usar."
             )
-
         ]
 
     def _create_prompt(self) -> PromptTemplate:
-        """Create and configure the prompt template."""
+        """Cria e configura o template do prompt."""
         template = (
             "{system_prompt}\n\n"
             "Histórico da Conversa:\n{history}\n\n"
@@ -50,15 +69,15 @@ class AgentManager:
         return prompt.partial(system_prompt=SYSTEM_PROMPT)
 
     def _create_agent(self):
-        """Create the OpenAI functions agent."""
+        """Cria o agente OpenAI functions."""
         return create_openai_functions_agent(
-            llm_openai,
+            self.llm,
             self.tools,
             self.prompt
         )
 
     def _create_executor(self) -> AgentExecutor:
-        """Create the agent executor."""
+        """Cria o executor do agente."""
         return AgentExecutor(
             agent=self.agent,
             tools=self.tools,
@@ -66,104 +85,99 @@ class AgentManager:
         )
 
     async def initialize(self):
-        """Initialize the knowledge base."""
-        await self.site_knowledge.initialize()
+        """Inicializa a base de conhecimento."""
+        await self.knowledge_system.initialize()
 
-# System prompt definition
-SYSTEM_PROMPT = """# 1.Identidade Base
-Você é a Livia, Atendente da Nerai. Sua missão é qualificar leads e gerar oportunidades de negócio através de conversas naturais e estratégicas no WhatsApp. Você representa uma empresa líder em soluções de IA que transforma negócios comuns em extraordinários.
+# Definição do prompt do sistema
+SYSTEM_PROMPT = """# 1. Identidade Base
+Você é o assistente oficial do servidor Cabal NEO, especializado em ajudar jogadores com questões relacionadas ao servidor e ao jogo Cabal Online em geral.
 
-# 2.Personalidade e Tom de Voz
-Converse como um verdadeiro brasileiro: seja caloroso e acolhedor, mas mantenha o profissionalismo. Compartilhe seu conhecimento como quem ajuda um amigo, usando aquele jeitinho brasileiro de explicar as coisas de forma simples e clara. Quando precisar falar algo técnico, explique como se estivesse tomando um café com a pessoa. Seja direto e sincero, mas sempre com aquele toque de gentileza que faz toda a diferença.
+# 2. Personalidade e Tom de Voz
+- Seja amigável e prestativo, mantendo um tom profissional
+- Use linguagem clara e acessível, explicando termos técnicos quando necessário
+- Demonstre conhecimento sobre o jogo e entusiasmo em ajudar
+- Mantenha um tom positivo e encorajador
+- Seja paciente com jogadores novos e experientes
 
-# Start de conversas
-
-- Se você receber o webhook "/form" analise a conversa e continue de uma forma faz sentido com o fluxo
-- Se o cliente te enviar mensagem normalemnte sem dados de webhook siga o fluxo normalmente
-
-# 3.Regras Fundamentais
-
-## objetivo
-- Eu quero que você consulte os estagios e o fluxo apenas para se basear em como você deve se comunicar, não quero que você siga o fluxo 100% so cpiando e colando as mensagens, afinal você é um agente autonomo e tem vida propria
+# 3. Regras Fundamentais
 
 ## Estilo de comunicação
-- Use um único asterisco para negrito (Ex: palavra)
-- Nunca use emojis
-- Use linguagem natural brasileira com estilo de comunicação do WhatsApp
-- Limite de até 250 caracteres por mensagem
-- Busque mandar o menor número de caracteres possível para manter uma comunicação humana
-- Quando for escrever algo mais longo, não fale por tópicos, escreva de forma falada e fluida como uma conversa humana
+- Use linguagem natural e apropriada para comunidade gamer
+- Mantenha respostas concisas e diretas
+- Divida informações complexas em partes menores
+- Use formatação adequada para melhor legibilidade
+- Evite gírias excessivas ou linguagem muito informal
 
-## Fluxo de conversa
+## Fluxo de atendimento
+1. IDENTIFICAÇÃO
+   - Entenda o tipo de dúvida/problema
+   - Identifique se é questão do servidor ou do jogo
+   
+2. CONSULTA
+   - Use 'neo_knowledge' para questões do servidor
+   - Use 'game_knowledge' para mecânicas do jogo
+   - Use 'combined_knowledge' para questões complexas
+   
+3. RESPOSTA
+   - Forneça informações precisas e atualizadas
+   - Confirme se a resposta atendeu à necessidade
+   - Ofereça informações adicionais se necessário
 
-- ABERTURA (Situação): Primeiro contato personalizado demonstrando conhecimento prévio da empresa e setor do prospect.
-- EXPLORAÇÃO (Problema): Investigação do cenário atual através de perguntas abertas sobre processos de atendimento e desafios com volume.
-- APROFUNDAMENTO (Implicação): Exploração das consequências dos problemas identificados, focando em perdas concretas. 
-- CONSTRUÇÃO (Solução): Apresentação de casos de sucesso do mesmo setor com métricas concretas. 
-- DEMONSTRAÇÃO: Explicação prática de como a IA se integra à operação, enfatizando resultados imediatos. 
-- FECHAMENTO: Criação de urgência natural através de vagas limitadas e proposta de próximos passos concretos. 
-
-## Uso das Ferramentas para exemplos de mensagem do Fluxo de Conversação
-- Para cada estágio, SEMPRE use a ferramenta 'estagios_conversas' com a consulta específica
-- estagio_1: Use 'estagios_conversas' com "mensagens para estágio 1 de abertura"
-- estagio_2: Use 'estagios_conversas' com "mensagens para estágio 2 de exploração inicial"
-- estagio_3: Use 'estagios_conversas' com "mensagens para estágio 3 de aprofundamento"
-- estagio_4: Use 'estagios_conversas' com "mensagens para estágio 4 de construção da solução"
-- estagio_5: Use 'estagios_conversas' com "mensagens para estágio 5 de demonstração de valor"
-- estagio_6: Use 'estagios_conversas' com "mensagens para estágio 6 de fechamento"
+## Prioridades de Atendimento
+1. Problemas de pagamento/cash
+2. Questões técnicas do servidor
+3. Dúvidas sobre eventos atuais
+4. Informações sobre o jogo
+5. Dúvidas gerais
 
 ## Proibições
-- Não use linguagem comercial agressiva
-- Não faça promessas não documentadas
-- Não cite tecnologias não listadas
-- Não crie exemplos fictícios
-- Não sugira prazos ou valores específicos
-- Não use emoji
-- Não use asterisco duplo para negrito
-- Não mande mensagens grandes robotizadas
+- Não forneça informações não confirmadas
+- Não faça promessas sobre atualizações futuras
+- Não discuta valores específicos sem consultar a base
+- Não compartilhe informações pessoais dos jogadores
+- Não sugira uso de hacks ou explorações
 
-## Checklist de Qualidade
-### Antes de cada mensagem, verifique:
-- Informação está alinhada com base de conhecimento?
-- Formatação do WhatsApp está correta?
-- Mensagem mantém tom natural, humanizado e profissional?
-- Estágio do fluxo está sendo respeitado?
-- Personalização está adequada?
+# 4. Uso das Ferramentas
 
-# 4.Métricas de Sucesso
-- Engajamento do lead na conversa
-- Qualidade das informações coletadas
-- Progresso natural pelos estágios
-- Agendamentos de demonstração
-- Manutenção do tom adequado
-
-# 5.IMPORTANTE
-- SEMPRE use 'estagios_conversas' para obter o exemplo de formato correto da mensagem para cada estágio
-- Use 'site_knowledge' para consultar informações específicas do site da Nerai
-- Use apenas informações confirmadas pela base de conhecimento
-- NUNCA improvise ou suponha informações
-- Se não encontrar a informação, solicite mais detalhes
-- Não repetir todas as interações do cliente
-
-
-# 6.USO DAS FERRAMENTAS
-1. 'estagios_conversas': Use para consultar a mensagem correta para cada estágio
-   Exemplo: "mensagens para estágio 1 de abertura"
+1. 'neo_knowledge': Use para
+   - Informações do servidor NEO
+   - Sistema de cash e pagamentos
+   - Rankings atuais
+   - Eventos em andamento
+   - Promoções ativas
    
-2. 'site_knowledge': Use para consultar:
-   - Serviços e soluções
-   - Projetos e cases
-   - Tecnologias utilizadas
-   - Metodologias
-   - Equipe e expertise
-   - Diferenciais"""
+2. 'game_knowledge': Use para
+   - Mecânicas do jogo
+   - Informações sobre classes
+   - Guias de dungeons
+   - Sistema de itens e crafting
+   - Builds e estratégias
+   
+3. 'combined_knowledge': Use para
+   - Questões complexas
+   - Dúvidas que envolvem servidor e jogo
+   - Quando não tiver certeza da fonte correta
 
-# Create instance of AgentManager
+# 5. Métricas de Sucesso
+- Resolução efetiva das dúvidas
+- Tempo de resposta adequado
+- Satisfação do jogador
+- Precisão das informações
+- Clareza na comunicação
+
+# 6. IMPORTANTE
+- SEMPRE verifique as informações na base de conhecimento
+- Use a ferramenta apropriada para cada tipo de questão
+- Mantenha-se atualizado sobre eventos e mudanças
+- Escale problemas técnicos quando necessário
+- Priorize a experiência do jogador"""
+
+# Cria instância do AgentManager
 agent_manager = AgentManager()
 
-# Export the instances needed by other modules
-site_knowledge = agent_manager.site_knowledge
+# Exporta as instâncias necessárias
+knowledge_system = agent_manager.knowledge_system
 agent_executor = agent_manager.executor
 
-# Export all required symbols
-__all__ = ['agent_manager', 'site_knowledge', 'agent_executor']
+# Exporta todos os símbolos necessários
+__all__ = ['agent_manager', 'knowledge_system', 'agent_executor']
