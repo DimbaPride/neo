@@ -1,183 +1,330 @@
-# agent_setup.py
 import logging
 from typing import List
 from functools import partial
+import asyncio
+
 from langchain.agents import Tool, AgentExecutor, create_openai_functions_agent
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import BaseTool
-from langchain_openai import ChatOpenAI
 
-from knowledge_base.knowledge_system import CabalKnowledgeSystem, KnowledgeSource
+from knowledge_base.neogames_knowledge import NeoGamesKnowledge, KnowledgeSource
+from knowledge_base.neogames_rankings import NeoGamesRankings, RankingType, CharacterClass
 
+from services.llm import llm_openai
+
+logging.getLogger("unstructured.trace").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
+SYSTEM_PROMPT = """# Quem você é
+Você é o assistente do NeoGames, um servidor BR de Cabal Online (https://www.neogames.online).
+Você é um player veterano e conhece tudo sobre o jogo e o servidor. 
+Você fala de forma casual e usa gírias comuns dos players.
+
+# Seu jeito de ser
+- Fale como um player mesmo, nada de formalidades
+- Use gírias do jogo (tipo: up, farm, mob, drop, etc)
+- Seja animado e empolgado
+- Mostre que manja do Cabal e do servidor
+- Ajude os players como se fosse um amigo
+
+# Como responder
+1. Vá direto ao ponto que o player quer saber
+2. Passe os links importantes se precisar
+3. Dê dicas extras se tiver
+4. Termine com algo tipo "qualquer coisa tamo aí" ou "se precisar é só chamar"
+
+# O que você sabe
+- Tudo sobre o servidor e o jogo
+- Notícias e updates mais recentes
+- Como baixar e instalar
+- FAQs e dúvidas comuns
+- Rankings (power, war, guild)
+- Todos os sistemas especiais
+
+# Como ajudar
+- Priorize ajudar com acesso, download e pagamentos
+- Pra problemas mais complexos, mande falar com o suporte
+- Sempre cheque as infos antes de responder
+
+# Suas ferramentas
+- *game_info* pra info geral
+- *news_info* pra notícias
+- *download_info* pra download
+- *faq_info* pra dúvidas comuns
+- *power_ranking* pra ranking de poder (geral)
+- *power_ranking_gu* pra ranking de Guerreiros
+- *power_ranking_du* pra ranking de Duelistas
+- *power_ranking_ma* pra ranking de Magos
+- *power_ranking_aa* pra ranking de Arqueiros Arcanos
+- *power_ranking_ga* pra ranking de Guardiões Arcanos
+- *power_ranking_ea* pra ranking de Espadachins Arcanos
+- *power_ranking_gl* pra ranking de Gladiadores
+- *power_ranking_at* pra ranking de Atiradores
+- *power_ranking_mn* pra ranking de Magos Negros
+- *war_ranking* pra ranking de guerra
+- *guild_ranking* pra ranking de guild
+- *memorial_ranking* pra ranking do memorial
+- *system_info* pra sistemas especiais
+- *vip_info* pra benefícios VIP
+- *recharge_info* pra recargas
+- *shop_info* pra loja do servidor
+
+Lembra: você é um player ajudando outro player. Mantenha o papo informal e descontraído!
+"""
+
 class AgentManager:
-    """Gerencia a criação e configuração do agente de suporte do Cabal."""
-    
     def __init__(self):
-        self.knowledge_system = CabalKnowledgeSystem()
+        self.neogames_knowledge = NeoGamesKnowledge()
+        self.neogames_rankings = NeoGamesRankings()
+        self.max_iterations = 8  # Limite de iterações por consulta
+        self.max_tool_repeats = 2  # Limite de repetições da mesma ferramenta
+
         self.tools = self._create_tools()
         self.prompt = self._create_prompt()
-        self.llm = ChatOpenAI(temperature=0.3)
         self.agent = self._create_agent()
         self.executor = self._create_executor()
-
-    async def neo_knowledge(self, question: str) -> str:
-        """Consulta informações específicas do servidor Cabal NEO"""
-        response = await self.knowledge_system.query(question, sources=[KnowledgeSource.NEO_CABAL])
-        return response
-
-    async def game_knowledge(self, question: str) -> str:
-        """Consulta informações gerais sobre o jogo Cabal Online"""
-        response = await self.knowledge_system.query(question, sources=[KnowledgeSource.MRWORMY])
-        return response
-
-    async def combined_knowledge(self, question: str) -> str:
-        """Consulta todas as fontes de conhecimento disponíveis"""
-        response = await self.knowledge_system.query(question)
-        return response
-
+        
     def _create_tools(self) -> List[BaseTool]:
-        """Cria e retorna a lista de ferramentas disponíveis para o agente."""
-        return [
+        def wrap_tool_query(func, tool_name):
+            """Wrapper para adicionar controle e tratamento de erros nas queries"""
+            def wrapped_query(*args, **kwargs):
+                try:
+                    # Verifica se a função é uma coroutine
+                    if asyncio.iscoroutinefunction(func):
+                        # Cria um evento loop se não existir
+                        loop = asyncio.get_event_loop()
+                        result = loop.run_until_complete(func(*args, **kwargs))
+                    else:
+                        result = func(*args, **kwargs)
+
+                    if not result or result.strip() == "":
+                        return f"Não encontrei informações para sua pergunta sobre {tool_name}. Tente ser mais específico ou pergunte de outra forma."
+                    return result
+                except Exception as e:
+                    logger.error(f"Erro na ferramenta {tool_name}: {e}")
+                    return f"Desculpe, tive um problema ao buscar as informações. Tente novamente."
+            return wrapped_query
+
+        # Ferramentas para conteúdo geral
+        general_tools = [
             Tool(
-                name="neo_knowledge",
-                func=self.neo_knowledge,
-                description="Consulta informações específicas do servidor Cabal NEO. Use esta ferramenta para responder perguntas sobre o servidor, cash, rankings, eventos atuais e informações específicas do NEO."
+                name="game_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.MAIN]),
+                    "game_info"
+                ),
+                description="Usa para info geral do servidor NeoGames e sobre o jogo."
             ),
             Tool(
-                name="game_knowledge",
-                func=self.game_knowledge,
-                description="Consulta informações gerais sobre o jogo Cabal Online. Use esta ferramenta para responder perguntas sobre mecânicas do jogo, classes, dungeons, itens, skills e sistemas do jogo."
+                name="news_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.NEWS]),
+                    "news_info"
+                ),
+                description="Usa pra ver as últimas notícias e atualizações do servidor."
             ),
             Tool(
-                name="combined_knowledge",
-                func=self.combined_knowledge,
-                description="Consulta todas as fontes de conhecimento disponíveis. Use quando precisar de uma visão completa ou quando não tiver certeza de qual fonte usar."
+                name="download_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.DOWNLOAD]),
+                    "download_info"
+                ),
+                description="Usa pra info de download e instalação do jogo."
+            ),
+            Tool(
+                name="faq_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.FAQ]),
+                    "faq_info"
+                ),
+                description="Usa pra ver as perguntas mais comuns e respostas."
+            ),
+            Tool(
+                name="vip_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.VIP]),
+                    "vip_info"
+                ),
+                description="Usa pra ver os benefícios VIP e pacotes premium."
+            ),
+            Tool(
+                name="recharge_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.RECHARGE]),
+                    "recharge_info"
+                ),
+                description="Usa pra ver como fazer recargas e formas de pagamento."
+            ),
+            Tool(
+                name="shop_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.SHOP]),
+                    "shop_info"
+                ),
+                description="Usa pra ver a loja e os itens disponíveis."
+            ),
+            Tool(
+                name="system_info",
+                func=wrap_tool_query(
+                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.SYSTEM]),
+                    "system_info"
+                ),
+                description="Usa pra ver os sistemas especiais do servidor."
             )
         ]
 
+        # Ferramentas para rankings
+        ranking_tools = [
+            Tool(
+                name="war_ranking",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RankingType.WAR]),
+                    "war_ranking"
+                ),
+                description="Usa pra ver o ranking de guerra do servidor."
+            ),
+            Tool(
+                name="guild_ranking",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RankingType.GUILD]),
+                    "guild_ranking"
+                ),
+                description="Usa pra ver o ranking das guilds."
+            ),
+            Tool(
+                name="memorial_ranking",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RankingType.MEMORIAL]),
+                    "memorial_ranking"
+                ),
+                description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
+               
+            )
+        ]
+
+        # Ferramenta para ranking de poder geral
+        power_ranking_tool = [
+            Tool(
+                name="power_ranking",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RankingType.POWER]),
+                    "power_ranking"
+                ),
+                description="Usa pra ver o ranking geral de poder dos players (sem filtro de classe)."
+            )
+        ]
+
+        # Ferramentas para rankings de poder por classe
+        class_ranking_tools = [
+            Tool(
+                name=f"power_ranking_{cc.abbr.lower()}",
+                func=wrap_tool_query(
+                    partial(
+                        self.neogames_rankings.query,
+                        ranking_types=[RankingType.POWER],
+                        class_abbr=cc.abbr.lower()
+                    ),
+                    f"power_ranking_{cc.abbr.lower()}"
+                ),
+                description=f"Usa pra ver o ranking de poder dos {cc.full} ({cc.abbr})."
+            )
+            for cc in CharacterClass
+        ]
+
+        # Combina todas as ferramentas
+        return general_tools + ranking_tools + power_ranking_tool + class_ranking_tools
+
     def _create_prompt(self) -> PromptTemplate:
-        """Cria e configura o template do prompt."""
-        template = (
-            "{system_prompt}\n\n"
+        template = SYSTEM_PROMPT + "\n\n" + (
             "Histórico da Conversa:\n{history}\n\n"
             "Solicitação Atual: {input}\n\n"
             "Histórico de Ações:\n{agent_scratchpad}\n"
         )
-        prompt = PromptTemplate.from_template(template)
-        return prompt.partial(system_prompt=SYSTEM_PROMPT)
+        return PromptTemplate.from_template(template)
 
     def _create_agent(self):
-        """Cria o agente OpenAI functions."""
         return create_openai_functions_agent(
-            self.llm,
+            llm_openai,
             self.tools,
             self.prompt
         )
 
     def _create_executor(self) -> AgentExecutor:
-        """Cria o executor do agente."""
         return AgentExecutor(
             agent=self.agent,
             tools=self.tools,
-            verbose=True
+            verbose=True,
+            max_iterations=self.max_iterations,
+            early_stopping_method="force"
         )
 
     async def initialize(self):
-        """Inicializa a base de conhecimento."""
-        await self.knowledge_system.initialize()
+        """Inicializa as duas bases de conhecimento."""
+        try:
+            await asyncio.gather(
+                self.neogames_knowledge.initialize(),
+                self.neogames_rankings.initialize()
+            )
+            logger.info("Bases de conhecimento inicializadas com sucesso")
+        except Exception as e:
+            logger.error(f"Erro na inicialização: {e}")
+            raise
 
-# Definição do prompt do sistema
-SYSTEM_PROMPT = """# 1. Identidade Base
-Você é o assistente oficial do servidor Cabal NEO, especializado em ajudar jogadores com questões relacionadas ao servidor e ao jogo Cabal Online em geral.
+    async def process_message(self, user_id: str, message: str, context: dict) -> str:
+        """
+        Processa uma mensagem do usuário e retorna uma resposta.
+        
+        Args:
+            user_id: ID do usuário que enviou a mensagem
+            message: Texto da mensagem
+            context: Dicionário com o contexto da conversa
+            
+        Returns:
+            str: Resposta para o usuário
+        """
+        logger.debug(f"Processando mensagem do usuário {user_id}: {message[:100]}...")
+        
+        # Inicializa ou atualiza controle de ferramentas no contexto
+        if 'tool_calls' not in context:
+            context['tool_calls'] = {}
+        
+        # Limpa chamadas antigas (mais de 5 minutos)
+        current_time = asyncio.get_event_loop().time()
+        context['tool_calls'] = {
+            k: v for k, v in context['tool_calls'].items()
+            if current_time - v['timestamp'] < 300
+        }
+        
+        inputs = {
+            "history": context.get("history", "") or "Nenhum histórico",
+            "input": message,
+            "agent_scratchpad": context.get("agent_scratchpad", "") or ""
+        }
+        
+        try:
+            response_dict = await asyncio.wait_for(
+                self.executor.ainvoke(inputs),
+                timeout=30
+            )
+            
+            response = response_dict.get("output", "")
+            if not response or response.strip() == "":
+                return "Desculpe, não consegui processar sua pergunta. Pode tentar perguntar de outro jeito?"
+                
+            return response
+            
+        except asyncio.TimeoutError:
+            logger.error(f"Timeout ao processar mensagem do usuário {user_id}")
+            return "Opa, demorou muito pra processar! Tenta perguntar de outro jeito ou divide em perguntas menores, blz?"
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar mensagem do usuário {user_id}: {e}")
+            return "Opa, deu um erro aqui! Tenta de novo daqui a pouco, blz?"
 
-# 2. Personalidade e Tom de Voz
-- Seja amigável e prestativo, mantendo um tom profissional
-- Use linguagem clara e acessível, explicando termos técnicos quando necessário
-- Demonstre conhecimento sobre o jogo e entusiasmo em ajudar
-- Mantenha um tom positivo e encorajador
-- Seja paciente com jogadores novos e experientes
-
-# 3. Regras Fundamentais
-
-## Estilo de comunicação
-- Use linguagem natural e apropriada para comunidade gamer
-- Mantenha respostas concisas e diretas
-- Divida informações complexas em partes menores
-- Use formatação adequada para melhor legibilidade
-- Evite gírias excessivas ou linguagem muito informal
-
-## Fluxo de atendimento
-1. IDENTIFICAÇÃO
-   - Entenda o tipo de dúvida/problema
-   - Identifique se é questão do servidor ou do jogo
-   
-2. CONSULTA
-   - Use 'neo_knowledge' para questões do servidor
-   - Use 'game_knowledge' para mecânicas do jogo
-   - Use 'combined_knowledge' para questões complexas
-   
-3. RESPOSTA
-   - Forneça informações precisas e atualizadas
-   - Confirme se a resposta atendeu à necessidade
-   - Ofereça informações adicionais se necessário
-
-## Prioridades de Atendimento
-1. Problemas de pagamento/cash
-2. Questões técnicas do servidor
-3. Dúvidas sobre eventos atuais
-4. Informações sobre o jogo
-5. Dúvidas gerais
-
-## Proibições
-- Não forneça informações não confirmadas
-- Não faça promessas sobre atualizações futuras
-- Não discuta valores específicos sem consultar a base
-- Não compartilhe informações pessoais dos jogadores
-- Não sugira uso de hacks ou explorações
-
-# 4. Uso das Ferramentas
-
-1. 'neo_knowledge': Use para
-   - Informações do servidor NEO
-   - Sistema de cash e pagamentos
-   - Rankings atuais
-   - Eventos em andamento
-   - Promoções ativas
-   
-2. 'game_knowledge': Use para
-   - Mecânicas do jogo
-   - Informações sobre classes
-   - Guias de dungeons
-   - Sistema de itens e crafting
-   - Builds e estratégias
-   
-3. 'combined_knowledge': Use para
-   - Questões complexas
-   - Dúvidas que envolvem servidor e jogo
-   - Quando não tiver certeza da fonte correta
-
-# 5. Métricas de Sucesso
-- Resolução efetiva das dúvidas
-- Tempo de resposta adequado
-- Satisfação do jogador
-- Precisão das informações
-- Clareza na comunicação
-
-# 6. IMPORTANTE
-- SEMPRE verifique as informações na base de conhecimento
-- Use a ferramenta apropriada para cada tipo de questão
-- Mantenha-se atualizado sobre eventos e mudanças
-- Escale problemas técnicos quando necessário
-- Priorize a experiência do jogador"""
-
-# Cria instância do AgentManager
+# Instância do Agent Manager
 agent_manager = AgentManager()
-
-# Exporta as instâncias necessárias
-knowledge_system = agent_manager.knowledge_system
+neogames_knowledge = agent_manager.neogames_knowledge
+neogames_rankings = agent_manager.neogames_rankings
 agent_executor = agent_manager.executor
 
-# Exporta todos os símbolos necessários
-__all__ = ['agent_manager', 'knowledge_system', 'agent_executor']
+__all__ = ['agent_manager', 'neogames_knowledge', 'neogames_rankings', 'agent_executor']

@@ -46,10 +46,8 @@ class SmartMessageProcessor:
         Regras:
         - Divida em partes que façam sentido semanticamente
         - Mantenha o contexto em cada parte
-        - Retorne apenas as partes separadas por |||
-        - Não adicione numeração ou marcadores
+        - Retorne apenas as partes separadas por |||        
         - Use um único asterisco para negrito (Ex: palavra)
-        - Não use emojis
         - Quebre mensagens longas em partes menores
         
         Texto: {text}

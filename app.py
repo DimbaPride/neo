@@ -1,4 +1,3 @@
-# app.py
 import logging
 import re
 import json
@@ -6,9 +5,12 @@ import os
 import time
 import ssl
 import asyncio
+import pytz
+from datetime import datetime
 from typing import Dict, List, Optional, Any
 from quart import Quart, request, jsonify
 
+# Importa o Agent Manager já atualizado (que contém a base de conhecimento)
 from agents.agent_setup import agent_manager
 from services.audio_processing import handle_audio_message
 from utils.message_buffer import handle_message_with_buffer, update_presence
@@ -21,14 +23,75 @@ logger = logging.getLogger(__name__)
 app = Quart(__name__)
 processed_message_ids = set()
 
+def get_brazil_time() -> str:
+    """Retorna a data e hora atual no fuso horário de Brasília."""
+    brazil_tz = pytz.timezone('America/Sao_Paulo')
+    return datetime.now(brazil_tz).strftime("%Y-%m-%d %H:%M:%S")
+
 @app.before_serving
 async def startup():
     """Inicializa o agente e a base de conhecimento antes de servir requisições."""
     try:
+        logger.info("Iniciando inicialização da base de conhecimento e do agente...")
+        # Inicializa a base de conhecimento e o agente via Agent Manager
         await agent_manager.initialize()
-        logger.info("Agente e base de conhecimento inicializados com sucesso!")
+        logger.info("Base de conhecimento e agente inicializados com sucesso!")
+        
+        # Configura a limpeza periódica do cache
+        async def clear_message_cache():
+            while True:
+                try:
+                    await asyncio.sleep(3600)  # Limpa a cada hora
+                    processed_message_ids.clear()
+                    logger.info("Cache de mensagens processadas limpo")
+                except Exception as e:
+                    logger.error(f"Erro ao limpar cache: {e}")
+                    await asyncio.sleep(60)  # Espera 1 minuto antes de tentar novamente
+        
+        app.add_background_task(clear_message_cache)
+        logger.info("Sistema completamente inicializado!")
     except Exception as e:
         logger.error(f"Erro na inicialização: {str(e)}", exc_info=True)
+        raise
+
+@app.after_serving
+async def shutdown():
+    """Desliga os serviços corretamente."""
+    try:
+        logger.info("Iniciando desligamento dos serviços...")
+        if hasattr(agent_manager.neogames_knowledge, 'shutdown'):
+            await agent_manager.neogames_knowledge.shutdown()
+        logger.info("Serviços desligados com sucesso!")
+    except Exception as e:
+        logger.error(f"Erro no desligamento: {str(e)}", exc_info=True)
+
+async def process_user_message(message: str, number: str):
+    """
+    Processa a mensagem do usuário com o contexto atual.
+    
+    Args:
+        message: Texto da mensagem.
+        number: Número do WhatsApp do usuário.
+    """
+    try:
+        # Monta o contexto para a mensagem
+        user_context = {
+            'current_datetime': get_brazil_time(),
+            'current_user': f"User_{number[-4:]}",
+        }
+        
+        # Processa a mensagem usando o agent_manager
+        response = await agent_manager.process_message(
+            user_id=number,
+            message=message,
+            context=user_context
+        )
+        
+        # Envia a resposta usando o processador de mensagens
+        await send_message_in_chunks(response, number)
+        
+    except Exception as e:
+        logger.error(f"Erro ao processar mensagem: {e}", exc_info=True)
         raise
 
 @app.route('/webhook', methods=['POST'])
@@ -43,7 +106,7 @@ async def webhook():
         event_type = data.get("event")
         message_data = data.get("data", {})
 
-        # Processa eventos de presença primeiro
+        # Processa eventos de presença
         if event_type == "presence.update":
             try:
                 presence_data = message_data.get("presences", {})
@@ -102,8 +165,7 @@ async def webhook():
                 or msg_content.get("extendedTextMessage", {}).get("text")
             )
             if message_text:
-                task = asyncio.create_task(handle_message_with_buffer(message_text, number))
-                # Define um timeout de 60 segundos
+                task = asyncio.create_task(process_user_message(message_text, number))
                 try:
                     await asyncio.wait_for(task, timeout=60.0)
                     processed_message_ids.add(message_id)
@@ -118,16 +180,14 @@ async def webhook():
         logger.error(f"Erro no webhook: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# Limpa o cache de mensagens periodicamente
-@app.before_serving
-async def setup_background_tasks():
-    async def clear_message_cache():
-        while True:
-            await asyncio.sleep(3600)  # Limpa a cada hora
-            processed_message_ids.clear()
-            logger.info("Cache de mensagens processadas limpo")
-    
-    app.add_background_task(clear_message_cache)
-
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    try:
+        ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+        app.run(
+            host='0.0.0.0',
+            port=5000,
+            debug=False,  # Desativa debug em produção
+            use_reloader=False  # Evita duplicação de processos
+        )
+    except Exception as e:
+        logger.error(f"Erro ao iniciar o servidor: {e}", exc_info=True)
