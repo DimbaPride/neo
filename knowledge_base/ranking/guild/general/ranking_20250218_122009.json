@@ -1,0 +1,766 @@
+{
+  "timestamp": "2025-02-18 12:20:09",
+  "total_entries": 95,
+  "rankings": [
+    {
+      "position": 1,
+      "name": "ForsakenS",
+      "power": 92392487,
+      "members": 140,
+      "war_points": 342138,
+      "war_kills": 264
+    },
+    {
+      "position": 2,
+      "name": "Out",
+      "power": 77086357,
+      "members": 119,
+      "war_points": 469968,
+      "war_kills": 686
+    },
+    {
+      "position": 3,
+      "name": "RealPlayers",
+      "power": 52700089,
+      "members": 114,
+      "war_points": 34856,
+      "war_kills": 12
+    },
+    {
+      "position": 4,
+      "name": "C4",
+      "power": 47473621,
+      "members": 171,
+      "war_points": 3122,
+      "war_kills": 0
+    },
+    {
+      "position": 5,
+      "name": "SteinsKillerS",
+      "power": 44488592,
+      "members": 91,
+      "war_points": 22155,
+      "war_kills": 12
+    },
+    {
+      "position": 6,
+      "name": "Cursed",
+      "power": 42185869,
+      "members": 111,
+      "war_points": 9681,
+      "war_kills": 0
+    },
+    {
+      "position": 7,
+      "name": "Toxic",
+      "power": 8449050,
+      "members": 23,
+      "war_points": 767,
+      "war_kills": 0
+    },
+    {
+      "position": 8,
+      "name": "Play",
+      "power": 8199888,
+      "members": 43,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 9,
+      "name": "Sleepless",
+      "power": 7479777,
+      "members": 41,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 10,
+      "name": "PlayBoy",
+      "power": 4527765,
+      "members": 20,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 11,
+      "name": "BigDamage",
+      "power": 4409514,
+      "members": 19,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 12,
+      "name": "semXorah",
+      "power": 3575532,
+      "members": 11,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 13,
+      "name": "DreamWorks",
+      "power": 2810344,
+      "members": 9,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 14,
+      "name": "TekkadaN",
+      "power": 2739186,
+      "members": 13,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 15,
+      "name": "CastleTM",
+      "power": 2471762,
+      "members": 12,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 16,
+      "name": "AntiSociaL",
+      "power": 2003510,
+      "members": 12,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 17,
+      "name": "Efesios6",
+      "power": 1693311,
+      "members": 8,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 18,
+      "name": "RusheSolo",
+      "power": 1672860,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 19,
+      "name": "VENIVIDIVICI",
+      "power": 1648583,
+      "members": 6,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 20,
+      "name": "1",
+      "power": 1389946,
+      "members": 6,
+      "war_points": 208,
+      "war_kills": 0
+    },
+    {
+      "position": 21,
+      "name": "Geforce",
+      "power": 1335917,
+      "members": 3,
+      "war_points": 3829,
+      "war_kills": 0
+    },
+    {
+      "position": 22,
+      "name": "MaisqAmigosFriends",
+      "power": 1323600,
+      "members": 4,
+      "war_points": 157,
+      "war_kills": 0
+    },
+    {
+      "position": 23,
+      "name": "NaoPertube",
+      "power": 1319950,
+      "members": 5,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 24,
+      "name": "XOXOTEIROS",
+      "power": 1238431,
+      "members": 5,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 25,
+      "name": "TROPAdeELITE",
+      "power": 944188,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 26,
+      "name": "XXT",
+      "power": 894113,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 27,
+      "name": "4i20",
+      "power": 866002,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 28,
+      "name": "KAOS",
+      "power": 843911,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 29,
+      "name": "FAFAFAFA",
+      "power": 703297,
+      "members": 5,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 30,
+      "name": "Fluxo",
+      "power": 682048,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 31,
+      "name": "Uchiha",
+      "power": 664184,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 32,
+      "name": "Imaculados",
+      "power": 635424,
+      "members": 1,
+      "war_points": 370,
+      "war_kills": 0
+    },
+    {
+      "position": 33,
+      "name": "MultiplasVariaveis",
+      "power": 572475,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 34,
+      "name": "AhjinGuild",
+      "power": 565425,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 35,
+      "name": "zNATION",
+      "power": 558604,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 36,
+      "name": "iLovecabal",
+      "power": 554357,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 37,
+      "name": "ABC",
+      "power": 542403,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 38,
+      "name": "ClubDosLenda",
+      "power": 502290,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 39,
+      "name": "Bastardos",
+      "power": 478231,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 40,
+      "name": "MamuteCorp",
+      "power": 471845,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 41,
+      "name": "PeeWee",
+      "power": 466739,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 42,
+      "name": "DEVGRU",
+      "power": 456781,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 43,
+      "name": "FK",
+      "power": 450363,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 44,
+      "name": "DIMENCION",
+      "power": 449594,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 45,
+      "name": "TheZueraNeverEnds",
+      "power": 439139,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 46,
+      "name": "Padaria",
+      "power": 434546,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 47,
+      "name": "GamaLins",
+      "power": 430119,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 48,
+      "name": "LegioN",
+      "power": 371194,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 49,
+      "name": "4",
+      "power": 360453,
+      "members": 4,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 50,
+      "name": "QuintaSerie",
+      "power": 358248,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 51,
+      "name": "CabalNeo2025",
+      "power": 358183,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 52,
+      "name": "007",
+      "power": 346971,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 53,
+      "name": "YKS",
+      "power": 340424,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 54,
+      "name": "SextaFeira13",
+      "power": 328831,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 55,
+      "name": "soloplayer",
+      "power": 311926,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 56,
+      "name": "Owphiyr",
+      "power": 304016,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 57,
+      "name": "Eita",
+      "power": 299605,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 58,
+      "name": "iOVOi",
+      "power": 297282,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 59,
+      "name": "KGB",
+      "power": 295079,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 60,
+      "name": "FullFarma",
+      "power": 292258,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 61,
+      "name": "GuardaVolumes",
+      "power": 288373,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 62,
+      "name": "PlayHard",
+      "power": 287567,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 63,
+      "name": "Almirantes",
+      "power": 279627,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 64,
+      "name": "Fire",
+      "power": 246671,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 65,
+      "name": "KillZone",
+      "power": 237717,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 66,
+      "name": "ReinoDoMaligno",
+      "power": 230855,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 67,
+      "name": "USER01",
+      "power": 214909,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 68,
+      "name": "Bau",
+      "power": 197984,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 69,
+      "name": "DIMENCION2",
+      "power": 193679,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 70,
+      "name": "sX",
+      "power": 191396,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 71,
+      "name": "In",
+      "power": 182873,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 72,
+      "name": "thefodaz",
+      "power": 177563,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 73,
+      "name": "Aijiin",
+      "power": 176985,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 74,
+      "name": "Renegas",
+      "power": 175885,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 75,
+      "name": "Glacinatas",
+      "power": 172967,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 76,
+      "name": "StormBringer",
+      "power": 172446,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 77,
+      "name": "MatusKara",
+      "power": 167039,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 78,
+      "name": "5",
+      "power": 166159,
+      "members": 3,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 79,
+      "name": "NovaEra",
+      "power": 159231,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 80,
+      "name": "VendoSonhos",
+      "power": 155857,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 81,
+      "name": "Adega",
+      "power": 153019,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 82,
+      "name": "ARAXA",
+      "power": 149703,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 83,
+      "name": "CabalOnline",
+      "power": 149295,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 84,
+      "name": "LostBoyZ",
+      "power": 149023,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 85,
+      "name": "MisteruN",
+      "power": 146095,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 86,
+      "name": "AshesOfEden",
+      "power": 145324,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 87,
+      "name": "ghostt",
+      "power": 141032,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 88,
+      "name": "ImperioDeCristo",
+      "power": 131503,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 89,
+      "name": "Akatsuki",
+      "power": 129962,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 90,
+      "name": "Loyalty",
+      "power": 116492,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 91,
+      "name": "FogoNoPaquinho",
+      "power": 104542,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 92,
+      "name": "Royalty",
+      "power": 75735,
+      "members": 2,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 93,
+      "name": "SteakHouse",
+      "power": 54206,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 94,
+      "name": "GodAndGuns",
+      "power": 48548,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    },
+    {
+      "position": 95,
+      "name": "2",
+      "power": 42838,
+      "members": 1,
+      "war_points": 0,
+      "war_kills": 0
+    }
+  ]
+}

@@ -254,22 +254,6 @@ class AgentManager:
             early_stopping_method="force"
         )
 
-    async def initialize(self):
-        """Inicializa as duas bases de conhecimento."""
-        try:
-            logger.info("Iniciando inicialização da base de conhecimento...")
-            await self.neogames_knowledge.initialize()
-            logger.info("Base de conhecimento inicializada com sucesso")
-            
-            logger.info("Iniciando inicialização da base de rankings...")
-            await self.neogames_rankings.initialize()
-            logger.info("Base de rankings inicializada com sucesso")
-            
-            logger.info("Todas as bases inicializadas com sucesso")
-        except Exception as e:
-            logger.error(f"Erro na inicialização: {e}")
-            raise
-
     async def process_message(self, user_id: str, message: str, context: dict) -> str:
         """
         Processa uma mensagem do usuário e retorna uma resposta.

@@ -316,12 +316,6 @@ class NeoGamesRankings:
     def parse_power_ranking(self, html_content: str) -> List[Dict]:
         """
         Analisa o HTML para extrair dados do ranking de power.
-        
-        Args:
-            html_content (str): Conteúdo HTML da página de ranking
-            
-        Returns:
-            List[Dict]: Lista de dicionários com os dados do ranking de power
         """
         logger.info("Analisando dados do ranking de power")
         
@@ -341,27 +335,21 @@ class NeoGamesRankings:
                         
                         # Tenta encontrar a imagem da classe
                         class_img = class_cell.find('img')
-                        if class_img:
-                            # Tenta identificar pelo srcset
-                            if 'srcset' in class_img.attrs:
-                                srcset = class_img['srcset']
-                                for class_id, info in CLASS_MAPPING.items():
-                                    icon_pattern = f"/ranking/icon-{info['icon']}.png"
-                                    if icon_pattern in srcset:
-                                        class_info = info
-                                        break
-                            
-                            # Se não achou pelo srcset, tenta pelo alt
-                            if not class_info and 'alt' in class_img.attrs:
-                                alt_text = class_img['alt']
-                                for class_id, info in CLASS_MAPPING.items():
-                                    if info['alt'] == alt_text:
-                                        class_info = info
-                                        break
+                        if class_img and 'srcset' in class_img.attrs:
+                            srcset = class_img['srcset']
+                            for class_id, info in CLASS_MAPPING.items():
+                                if f"icon-{info['icon']}" in srcset:
+                                    class_info = info
+                                    break
                         
-                        # Se não encontrou pela imagem, usa o método get_class_info
+                        # Se não encontrou a classe, usa valor padrão
                         if not class_info:
-                            class_info = self.get_class_info(class_cell.get_text(strip=True))
+                            class_info = {
+                                'name': 'Unknown',
+                                'name_pt': 'Desconhecida',
+                                'short': 'UNK'
+                            }
+                            logger.debug(f"Classe não identificada para posição {position}. HTML da célula: {class_cell}")
                         
                         # Identifica a nação
                         nation_cell = cells[7] if len(cells) >= 8 else None
@@ -373,8 +361,8 @@ class NeoGamesRankings:
                         power_entry = {
                             'position': position,
                             'class': {
-                                'name': class_info['name'],
-                                'name_pt': class_info['name_pt'],
+                                'en': class_info['name'],
+                                'pt': class_info['name_pt'],
                                 'short': class_info['short']
                             },
                             'name': cells[2].get_text(strip=True),
@@ -464,14 +452,29 @@ class NeoGamesRankings:
                     character_name = card.select_one('h2.font-bold').get_text(strip=True)
                     guild_name = card.select_one('p.text-muted-foreground').get_text(strip=True)
                     
+                    # Extrai e processa informação da classe
                     class_icon = card.select_one('img[alt^="Icon"]')
                     class_src = class_icon['srcset'].split(' ')[0] if class_icon else ''
-                    
                     class_info = self.get_class_info(class_src)
                     
-                    nation_icon = card.select_one('img[alt="Icon Nation"]')
-                    nation_src = nation_icon['srcset'].split(' ')[0] if nation_icon else ''
-                    nation_info = self.get_nation_info(nation_src)
+                    # Usando a mesma lógica do power.py para nação
+                    nation_img = card.select_one('img[srcset*="procyon.png"]')
+                    if nation_img:
+                        nation_info = {
+                            'name': NATION_MAPPING['icon-procyon']['name'],
+                            'name_pt': NATION_MAPPING['icon-procyon']['name_pt'],
+                            'icon_alt': NATION_MAPPING['icon-procyon']['icon_alt'],
+                            'icon_src': NATION_MAPPING['icon-procyon']['icon_src']
+                        }
+                    else:
+                        nation_img = card.select_one('img[srcset*="capella.png"]')
+                        if nation_img:
+                            nation_info = {
+                                'name': NATION_MAPPING['icon-capella']['name'],
+                                'name_pt': NATION_MAPPING['icon-capella']['name_pt'],
+                                'icon_alt': NATION_MAPPING['icon-capella']['icon_alt'],
+                                'icon_src': NATION_MAPPING['icon-capella']['icon_src']
+                            }
                     
                     memorial_entry = {
                         'position': position,
@@ -482,10 +485,7 @@ class NeoGamesRankings:
                             'short': class_info['short']
                         },
                         'guild_name': guild_name,
-                        'nation': {
-                            'en': nation_info['name'],
-                            'pt': nation_info['name_pt']
-                        }
+                        'nation': nation_info
                     }
                     memorial_data.append(memorial_entry)
                     
@@ -499,29 +499,20 @@ class NeoGamesRankings:
             logger.error(f"Erro ao analisar ranking memorial: {e}")
             raise
 
-    # ... (código anterior permanece igual)
-
     def save_ranking_data(self, data: List[Dict], ranking_type: str, class_id: Optional[int] = None):
         """
         Salva os dados do ranking em JSON e cria índices FAISS.
-        
-        Args:
-            data (List[Dict]): Lista de dados do ranking
-            ranking_type (str): Tipo do ranking ('power', 'guild', 'memorial')
-            class_id (Optional[int]): ID da classe para rankings de power
         """
         try:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             
             # Define o diretório de saída
             if ranking_type == 'power' and class_id:
-                class_info = None
-                for cid, info in CLASS_MAPPING.items():
-                    if cid == class_id:
-                        class_info = info
-                        break
-                if not class_info:
-                    raise ValueError(f"Classe ID {class_id} não encontrada")
+                class_info = CLASS_MAPPING.get(class_id, {
+                    'name': 'Unknown',
+                    'name_pt': 'Desconhecida',
+                    'short': 'UNK'
+                })
                 subfolder = class_info['short'].lower()
             else:
                 subfolder = "general"
@@ -542,12 +533,14 @@ class NeoGamesRankings:
             
             # Adiciona info da classe se necessário
             if class_id and ranking_type == 'power':
-                output_data['class_info'] = {
-                    'id': class_id,
-                    'name': class_info['name'],
-                    'name_pt': class_info['name_pt'],
-                    'short': class_info['short']
-                }
+                class_info = CLASS_MAPPING.get(class_id)
+                if class_info:
+                    output_data['class_info'] = {
+                        'id': class_id,
+                        'name': class_info['name'],
+                        'name_pt': class_info['name_pt'],
+                        'short': class_info['short']
+                    }
             
             # Salva JSON
             with open(json_path, 'w', encoding='utf-8') as f:
@@ -562,7 +555,7 @@ class NeoGamesRankings:
                     content = (
                         f"Rank: {entry['position']}\n"
                         f"Player: {entry['name']}\n"
-                        f"Classe: {entry['class']['name_pt']} ({entry['class']['short']})\n"
+                        f"Classe: {entry['class']['pt']} ({entry['class']['short']})\n"
                         f"Guild: {entry['guild']}\n"
                         f"Poder Total: {entry['total_power']:,}\n"
                         f"Poder de Ataque: {entry['attack_power']:,}\n"
@@ -578,7 +571,7 @@ class NeoGamesRankings:
                         f"Pontos de Guerra: {entry['war_points']:,}\n"
                         f"Abates na Guerra: {entry['war_kills']:,}"
                     )
-                elif ranking_type == 'memorial':
+                else:  # memorial
                     content = (
                         f"Rank: {entry['position']}\n"
                         f"Player: {entry['character_name']}\n"
@@ -606,10 +599,33 @@ class NeoGamesRankings:
             
             # Log de exemplo dos primeiros colocados
             if data:
-                class_name = CLASS_MAPPING[class_id]['name_pt'] if class_id else 'Geral'
+                if class_id:
+                    class_name = CLASS_MAPPING[class_id]['name_pt']
+                else:
+                    class_name = 'Geral'
+                    
                 logger.info(f"\nTop 3 {class_name}:")
-                self._log_top_entries(data[:3], ranking_type)
-                
+                for entry in data[:3]:
+                    if ranking_type == 'power':
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} "
+                            f"({entry['class']['pt']}) - "
+                            f"Guild: {entry['guild']} - "
+                            f"Power Total: {entry['total_power']:,}"
+                        )
+                    elif ranking_type == 'memorial':
+                        logger.info(
+                            f"#{entry['position']}: {entry['character_name']} "
+                            f"({entry['character_class']['name_pt']}) - "
+                            f"Guild: {entry['guild_name']}"
+                        )
+                    else:  # guild
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} - "
+                            f"Poder: {entry['power']:,} - "
+                            f"Membros: {entry['members']}"
+                        )
+                        
         except Exception as e:
             logger.error(f"Erro ao salvar ranking: {e}")
             raise
@@ -717,26 +733,20 @@ class NeoGamesRankings:
         return "Dados do ranking não disponíveis no momento. Por favor, tente novamente mais tarde."    
 
     async def process_ranking(self, ranking_type: str):
-        """
-        Processa um tipo específico de ranking de forma assíncrona.
-        
-        Args:
-            ranking_type (str): Tipo do ranking ('power', 'guild', 'memorial')
-        """
         try:
-            logger.info(f"Processando ranking: {ranking_type}")
-            
-            if ranking_type == 'power':
+            if ranking_type == RANKING_TYPE_POWER:
                 # Processa ranking geral primeiro
                 logger.info("Processando ranking geral de power")
                 html_content = await self.fetch_page_content(POWER_RANKING_URL)
                 if html_content:
                     power_data = self.parse_power_ranking(html_content)
                     if power_data:
-                        self.save_ranking_data(power_data, 'power')
+                        # Passando None como class_id para o ranking geral
+                        self.save_ranking_data(power_data, ranking_type, class_id=None)
                 
                 # Processa rankings por classe
-                for class_id, class_info in CLASS_MAPPING.items():
+                for class_id in CLASS_MAPPING.keys():
+                    class_info = CLASS_MAPPING[class_id]
                     logger.info(f"Processando ranking de power para {class_info['name_pt']} ({class_info['short']})")
                     
                     url = f"{POWER_RANKING_URL}?classId={class_id}"
@@ -745,19 +755,20 @@ class NeoGamesRankings:
                     if html_content:
                         power_data = self.parse_power_ranking(html_content)
                         if power_data:
-                            self.save_ranking_data(power_data, 'power', class_id)
+                            # Passando class_id explicitamente
+                            self.save_ranking_data(power_data, ranking_type, class_id=class_id)
                     
-                    # Pequena pausa entre requisições para evitar sobrecarga
                     await asyncio.sleep(1)
                     
-            elif ranking_type == 'guild':
+            elif ranking_type == RANKING_TYPE_GUILD:
                 html_content = await self.fetch_page_content(GUILD_RANKING_URL)
                 if html_content:
                     guild_data = self.parse_guild_ranking(html_content)
                     if guild_data:
-                        self.save_ranking_data(guild_data, 'guild')
+                        # Guild não tem class_id, então passa None
+                        self.save_ranking_data(guild_data, ranking_type, class_id=None)
                     
-            elif ranking_type == 'memorial':
+            elif ranking_type == RANKING_TYPE_MEMORIAL:
                 html_content = await self.fetch_page_content(
                     MEMORIAL_RANKING_URL,
                     wait_selector='div.grid.grid-cols-1'
@@ -765,7 +776,8 @@ class NeoGamesRankings:
                 if html_content:
                     memorial_data = self.parse_memorial_ranking(html_content)
                     if memorial_data:
-                        self.save_ranking_data(memorial_data, 'memorial')
+                        # Memorial não tem class_id, então passa None
+                        self.save_ranking_data(memorial_data, ranking_type, class_id=None)
             
         except Exception as e:
             logger.error(f"Erro ao processar ranking {ranking_type}: {e}")

@@ -1,14 +1,13 @@
 {
-  "timestamp": "2025-02-18 10:04:00",
+  "timestamp": "2025-02-18 12:19:44",
   "total_entries": 10,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "Ortopedista",
       "guild": "ForsakenS",
@@ -17,16 +16,15 @@
       "total_power": 1079003,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "1Monstrinho",
       "guild": "Out",
@@ -41,10 +39,9 @@
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "HelzaoXD38",
       "guild": "ForsakenS",
@@ -53,34 +50,32 @@
       "total_power": 1005686,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "dragon666",
       "guild": "ForsakenS",
-      "attack_power": 477955,
-      "defense_power": 389720,
-      "total_power": 867675,
+      "attack_power": 488837,
+      "defense_power": 390210,
+      "total_power": 879047,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 5,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "Carlos",
       "guild": "Out",
@@ -95,10 +90,9 @@
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "yMucillon",
       "guild": "Sem guilda",
@@ -113,10 +107,9 @@
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "Leozinx777",
       "guild": "ForsakenS",
@@ -125,22 +118,21 @@
       "total_power": 701919,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 8,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "XxNamIxX",
       "guild": "RealPlayers",
-      "attack_power": 394654,
+      "attack_power": 370347,
       "defense_power": 274016,
-      "total_power": 668670,
+      "total_power": 644363,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -149,28 +141,26 @@
     {
       "position": 9,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "VenOnXD",
       "guild": "ForsakenS",
-      "attack_power": 376129,
-      "defense_power": 265700,
-      "total_power": 641829,
+      "attack_power": 359543,
+      "defense_power": 268944,
+      "total_power": 628487,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 10,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "name": "EspadaXin",
       "guild": "C4",
@@ -179,15 +169,14 @@
       "total_power": 626818,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     }
   ],
   "class_info": {
     "id": 6,
-    "abbr": "EA",
-    "full_pt": "Espadachim Arcano",
-    "full_en": "Force Blader",
-    "icon": "fb"
+    "name": "Force Blader",
+    "name_pt": "Espadachim Arcano",
+    "short": "EA"
   }
 }

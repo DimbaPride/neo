@@ -1,14 +1,13 @@
 {
-  "timestamp": "2025-02-18 10:03:52",
+  "timestamp": "2025-02-18 12:19:38",
   "total_entries": 8,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "Complicate",
       "guild": "ForsakenS",
@@ -17,16 +16,15 @@
       "total_power": 1047672,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "AmostradinhoSK",
       "guild": "SteinsKillerS",
@@ -41,10 +39,9 @@
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "Chopper",
       "guild": "ForsakenS",
@@ -53,34 +50,15 @@
       "total_power": 833398,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "PoderosoPDB",
-      "guild": "Out",
-      "attack_power": 476240,
-      "defense_power": 337881,
-      "total_power": 814121,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 5,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "Empire",
       "guild": "RealPlayers",
@@ -89,16 +67,32 @@
       "total_power": 803709,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 5,
+      "class": {
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "name": "PoderosoPDB",
+      "guild": "Out",
+      "attack_power": 458471,
+      "defense_power": 319115,
+      "total_power": 777586,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "DaniMozao",
       "guild": "Out",
@@ -113,10 +107,9 @@
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "LionSin",
       "guild": "Out",
@@ -131,10 +124,9 @@
     {
       "position": 8,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
       "name": "zlDuratestoN",
       "guild": "Sem guilda",
@@ -143,15 +135,14 @@
       "total_power": 634302,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     }
   ],
   "class_info": {
     "id": 5,
-    "abbr": "GA",
-    "full_pt": "Guardião Arcano",
-    "full_en": "Force Shielder",
-    "icon": "fs"
+    "name": "Force Shielder",
+    "name_pt": "Guardião Arcano",
+    "short": "GA"
   }
 }

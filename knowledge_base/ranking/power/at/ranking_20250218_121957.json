@@ -1,0 +1,165 @@
+{
+  "timestamp": "2025-02-18 12:19:57",
+  "total_entries": 9,
+  "rankings": [
+    {
+      "position": 1,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "lLorD",
+      "guild": "Out",
+      "attack_power": 809207,
+      "defense_power": 464711,
+      "total_power": 1273918,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 2,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "JackJohnson",
+      "guild": "ForsakenS",
+      "attack_power": 688062,
+      "defense_power": 415758,
+      "total_power": 1103820,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 3,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Bambinho",
+      "guild": "ForsakenS",
+      "attack_power": 585624,
+      "defense_power": 383824,
+      "total_power": 969448,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 4,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Furyy",
+      "guild": "Out",
+      "attack_power": 554904,
+      "defense_power": 346989,
+      "total_power": 901893,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 5,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Flexinha",
+      "guild": "RealPlayers",
+      "attack_power": 499919,
+      "defense_power": 338552,
+      "total_power": 838471,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 6,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "LadyGabi",
+      "guild": "SteinsKillerS",
+      "attack_power": 494001,
+      "defense_power": 306255,
+      "total_power": 800256,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 7,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Sylvie",
+      "guild": "SteinsKillerS",
+      "attack_power": 470196,
+      "defense_power": 292610,
+      "total_power": 762806,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 8,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Amor",
+      "guild": "RealPlayers",
+      "attack_power": 416885,
+      "defense_power": 267459,
+      "total_power": 684344,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 9,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "SementeMalignus",
+      "guild": "Cursed",
+      "attack_power": 413693,
+      "defense_power": 258725,
+      "total_power": 672418,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    }
+  ],
+  "class_info": {
+    "id": 8,
+    "name": "Force Gunner",
+    "name_pt": "Atirador",
+    "short": "AT"
+  }
+}

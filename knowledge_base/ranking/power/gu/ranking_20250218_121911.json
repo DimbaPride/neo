@@ -1,32 +1,30 @@
 {
-  "timestamp": "2025-02-18 10:18:23",
+  "timestamp": "2025-02-18 12:19:11",
   "total_entries": 17,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "HasgaKU",
       "guild": "ForsakenS",
-      "attack_power": 702199,
+      "attack_power": 703972,
       "defense_power": 451279,
-      "total_power": 1153478,
+      "total_power": 1155251,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "Belzebu",
       "guild": "ForsakenS",
@@ -35,16 +33,15 @@
       "total_power": 985107,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "Paraiba",
       "guild": "ForsakenS",
@@ -53,16 +50,15 @@
       "total_power": 856682,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "Vivaz",
       "guild": "ForsakenS",
@@ -71,16 +67,15 @@
       "total_power": 825883,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 5,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "BaltasaR",
       "guild": "ForsakenS",
@@ -89,16 +84,15 @@
       "total_power": 814679,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "MAriaBonita",
       "guild": "Out",
@@ -113,10 +107,9 @@
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "AmyKun",
       "guild": "RealPlayers",
@@ -131,10 +124,9 @@
     {
       "position": 8,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "Bob999",
       "guild": "RusheSolo",
@@ -143,16 +135,15 @@
       "total_power": 737617,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 9,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "formigaoDOcaps",
       "guild": "ForsakenS",
@@ -161,34 +152,15 @@
       "total_power": 723157,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 10,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "Colossal",
-      "guild": "Out",
-      "attack_power": 426977,
-      "defense_power": 286185,
-      "total_power": 713162,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 11,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "MarquinllGU",
       "guild": "C4",
@@ -197,16 +169,15 @@
       "total_power": 709641,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 12,
+      "position": 11,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "MasterChief117",
       "guild": "Sem guilda",
@@ -215,34 +186,15 @@
       "total_power": 696164,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 13,
+      "position": 12,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "TiTioSlash",
-      "guild": "Cursed",
-      "attack_power": 389878,
-      "defense_power": 303685,
-      "total_power": 693563,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procion"
-      }
-    },
-    {
-      "position": 14,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "BiruXD",
       "guild": "Cursed",
@@ -255,12 +207,45 @@
       }
     },
     {
+      "position": 13,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "Colossal",
+      "guild": "Out",
+      "attack_power": 409208,
+      "defense_power": 266399,
+      "total_power": 675607,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 14,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "TiTioSlash",
+      "guild": "Cursed",
+      "attack_power": 381139,
+      "defense_power": 292594,
+      "total_power": 673733,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
       "position": 15,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "HomemDaSorte",
       "guild": "ForsakenS",
@@ -269,16 +254,15 @@
       "total_power": 654288,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 16,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "JonesBurgo",
       "guild": "Out",
@@ -287,16 +271,15 @@
       "total_power": 640156,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 17,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
       },
       "name": "SemSonoXD",
       "guild": "SteinsKillerS",
@@ -311,9 +294,8 @@
   ],
   "class_info": {
     "id": 1,
-    "abbr": "GU",
-    "full_pt": "Guerreiro",
-    "full_en": "Warrior",
-    "icon": "wa"
+    "name": "Warrior",
+    "name_pt": "Guerreiro",
+    "short": "GU"
   }
 }

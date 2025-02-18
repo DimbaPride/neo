@@ -1,32 +1,30 @@
 {
-  "timestamp": "2025-02-18 10:03:28",
+  "timestamp": "2025-02-18 12:19:17",
   "total_entries": 60,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "DreadHot",
       "guild": "ForsakenS",
       "attack_power": 760715,
-      "defense_power": 448430,
-      "total_power": 1209145,
+      "defense_power": 448580,
+      "total_power": 1209295,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Ro0b",
       "guild": "Out",
@@ -41,10 +39,9 @@
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "K4PET4",
       "guild": "ForsakenS",
@@ -53,16 +50,15 @@
       "total_power": 1144209,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Sortud0",
       "guild": "Out",
@@ -77,28 +73,26 @@
     {
       "position": 5,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "M03D1NH4S",
       "guild": "ForsakenS",
-      "attack_power": 697808,
-      "defense_power": 380714,
-      "total_power": 1078522,
+      "attack_power": 690471,
+      "defense_power": 381987,
+      "total_power": 1072458,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "AleRoX",
       "guild": "Out",
@@ -113,10 +107,9 @@
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "rasec",
       "guild": "ForsakenS",
@@ -125,22 +118,21 @@
       "total_power": 1055904,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 8,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "StressedOutt",
       "guild": "Out",
-      "attack_power": 646571,
-      "defense_power": 401489,
-      "total_power": 1048060,
+      "attack_power": 619832,
+      "defense_power": 401564,
+      "total_power": 1021396,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -149,10 +141,9 @@
     {
       "position": 9,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "BabySharkPDB",
       "guild": "Out",
@@ -167,10 +158,9 @@
     {
       "position": 10,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "vzeven2k",
       "guild": "Out",
@@ -185,28 +175,26 @@
     {
       "position": 11,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "ThanosXD",
       "guild": "ForsakenS",
-      "attack_power": 600606,
+      "attack_power": 601652,
       "defense_power": 367987,
-      "total_power": 968593,
+      "total_power": 969639,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 12,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "snkz",
       "guild": "Out",
@@ -221,28 +209,9 @@
     {
       "position": 13,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "DeusGarius",
-      "guild": "Out",
-      "attack_power": 596411,
-      "defense_power": 363868,
-      "total_power": 960279,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 14,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Takeshi",
       "guild": "RealPlayers",
@@ -251,16 +220,15 @@
       "total_power": 941023,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 15,
+      "position": 14,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Titania",
       "guild": "ForsakenS",
@@ -269,16 +237,15 @@
       "total_power": 937784,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 16,
+      "position": 15,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Enryu",
       "guild": "Out",
@@ -291,30 +258,45 @@
       }
     },
     {
+      "position": 16,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "DeusGarius",
+      "guild": "Out",
+      "attack_power": 571887,
+      "defense_power": 354945,
+      "total_power": 926832,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
       "position": 17,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Powder",
       "guild": "ForsakenS",
-      "attack_power": 543544,
+      "attack_power": 543949,
       "defense_power": 369482,
-      "total_power": 913026,
+      "total_power": 913431,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 18,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "lCavaUmaFalta",
       "guild": "SteinsKillerS",
@@ -329,28 +311,26 @@
     {
       "position": 19,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
-      "name": "KevinMamar",
-      "guild": "ForsakenS",
-      "attack_power": 545623,
-      "defense_power": 347074,
-      "total_power": 892697,
+      "name": "BabaYaga",
+      "guild": "Out",
+      "attack_power": 553811,
+      "defense_power": 346784,
+      "total_power": 900595,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procion"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
       "position": 20,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "xMoonSTrinhAAx",
       "guild": "RealPlayers",
@@ -365,16 +345,15 @@
     {
       "position": 21,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "GorjinxGU",
       "guild": "Out",
-      "attack_power": 526214,
-      "defense_power": 340156,
-      "total_power": 866370,
+      "attack_power": 530262,
+      "defense_power": 343051,
+      "total_power": 873313,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -383,28 +362,9 @@
     {
       "position": 22,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "BabaYaga",
-      "guild": "Out",
-      "attack_power": 525705,
-      "defense_power": 333570,
-      "total_power": 859275,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 23,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Sn0ok",
       "guild": "Out",
@@ -417,12 +377,11 @@
       }
     },
     {
-      "position": 24,
+      "position": 23,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Wanted",
       "guild": "ForsakenS",
@@ -431,16 +390,32 @@
       "total_power": 853399,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 24,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "KevinMamar",
+      "guild": "ForsakenS",
+      "attack_power": 507308,
+      "defense_power": 337901,
+      "total_power": 845209,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
       "position": 25,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "BladeMaster",
       "guild": "Out",
@@ -455,28 +430,9 @@
     {
       "position": 26,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "CapitaoSteaK",
-      "guild": "SteinsKillerS",
-      "attack_power": 515248,
-      "defense_power": 324361,
-      "total_power": 839609,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 27,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "MARECHAS",
       "guild": "ForsakenS",
@@ -485,16 +441,15 @@
       "total_power": 827490,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 28,
+      "position": 27,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Roony",
       "guild": "1",
@@ -503,16 +458,32 @@
       "total_power": 805097,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 28,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "CapitaoSteaK",
+      "guild": "SteinsKillerS",
+      "attack_power": 488768,
+      "defense_power": 315930,
+      "total_power": 804698,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
       "position": 29,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "NEOTALINDO",
       "guild": "Sem guilda",
@@ -521,16 +492,15 @@
       "total_power": 802798,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 30,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Alca",
       "guild": "Out",
@@ -545,10 +515,9 @@
     {
       "position": 31,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "SOLDADO",
       "guild": "ForsakenS",
@@ -557,16 +526,15 @@
       "total_power": 782718,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 32,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Observad0R",
       "guild": "SteinsKillerS",
@@ -581,10 +549,9 @@
     {
       "position": 33,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "BIGOLINHAA",
       "guild": "Out",
@@ -593,16 +560,15 @@
       "total_power": 776132,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 34,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "OMNITRIX",
       "guild": "ForsakenS",
@@ -611,16 +577,15 @@
       "total_power": 760803,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 35,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Rick",
       "guild": "ForsakenS",
@@ -629,22 +594,21 @@
       "total_power": 751009,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 36,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "PoliDU",
       "guild": "RealPlayers",
-      "attack_power": 441146,
+      "attack_power": 441283,
       "defense_power": 309044,
-      "total_power": 750190,
+      "total_power": 750327,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -653,10 +617,9 @@
     {
       "position": 37,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Axel",
       "guild": "ForsakenS",
@@ -665,16 +628,15 @@
       "total_power": 749146,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 38,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Highlander",
       "guild": "ForsakenS",
@@ -683,16 +645,15 @@
       "total_power": 741668,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 39,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Full",
       "guild": "ForsakenS",
@@ -701,16 +662,15 @@
       "total_power": 731454,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 40,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "SrKruegeer",
       "guild": "SteinsKillerS",
@@ -725,10 +685,9 @@
     {
       "position": 41,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "MasterFX",
       "guild": "Out",
@@ -743,10 +702,9 @@
     {
       "position": 42,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "SraFruitJuice",
       "guild": "Out",
@@ -761,10 +719,9 @@
     {
       "position": 43,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "WalkeeR",
       "guild": "RealPlayers",
@@ -779,10 +736,9 @@
     {
       "position": 44,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "YunaZ0r",
       "guild": "Sem guilda",
@@ -791,16 +747,15 @@
       "total_power": 680752,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 45,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "TheBigZe",
       "guild": "RealPlayers",
@@ -815,10 +770,9 @@
     {
       "position": 46,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Claw",
       "guild": "Cursed",
@@ -833,10 +787,9 @@
     {
       "position": 47,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Cumpadi",
       "guild": "ForsakenS",
@@ -845,16 +798,15 @@
       "total_power": 665574,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 48,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "CassiusXD",
       "guild": "Cursed",
@@ -869,10 +821,9 @@
     {
       "position": 49,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Donner",
       "guild": "RealPlayers",
@@ -887,10 +838,9 @@
     {
       "position": 50,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "ImPush",
       "guild": "Cursed",
@@ -905,10 +855,9 @@
     {
       "position": 51,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "MrFloid",
       "guild": "ForsakenS",
@@ -917,16 +866,15 @@
       "total_power": 656290,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 52,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "NinaWilliiams",
       "guild": "ForsakenS",
@@ -935,16 +883,15 @@
       "total_power": 652183,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 53,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Star",
       "guild": "Cursed",
@@ -953,16 +900,15 @@
       "total_power": 652072,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 54,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "KhansaDU",
       "guild": "ForsakenS",
@@ -971,16 +917,15 @@
       "total_power": 651633,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 55,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "HelzaoXdDU",
       "guild": "Sem guilda",
@@ -995,10 +940,26 @@
     {
       "position": 56,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "iS3R3IA",
+      "guild": "RealPlayers",
+      "attack_power": 359036,
+      "defense_power": 269896,
+      "total_power": 628932,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 57,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "BLACKMARIA",
       "guild": "RealPlayers",
@@ -1007,16 +968,15 @@
       "total_power": 626707,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
-      "position": 57,
+      "position": 58,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "XIIxyraxIIX",
       "guild": "SteinsKillerS",
@@ -1029,12 +989,11 @@
       }
     },
     {
-      "position": 58,
+      "position": 59,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Loser",
       "guild": "SteinsKillerS",
@@ -1047,30 +1006,11 @@
       }
     },
     {
-      "position": 59,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "iS3R3IA",
-      "guild": "RealPlayers",
-      "attack_power": 355443,
-      "defense_power": 268217,
-      "total_power": 623660,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procion"
-      }
-    },
-    {
       "position": 60,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
       "name": "Vovo",
       "guild": "Sem guilda",
@@ -1085,9 +1025,8 @@
   ],
   "class_info": {
     "id": 2,
-    "abbr": "DU",
-    "full_pt": "Duelista",
-    "full_en": "Blader",
-    "icon": "bl"
+    "name": "Blader",
+    "name_pt": "Duelista",
+    "short": "DU"
   }
 }

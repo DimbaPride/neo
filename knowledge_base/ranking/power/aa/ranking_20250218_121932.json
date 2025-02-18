@@ -1,14 +1,13 @@
 {
-  "timestamp": "2025-02-18 10:03:44",
+  "timestamp": "2025-02-18 12:19:32",
   "total_entries": 26,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "DarkFeity",
       "guild": "Out",
@@ -23,28 +22,26 @@
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Shimaru",
       "guild": "ForsakenS",
-      "attack_power": 783374,
-      "defense_power": 465361,
-      "total_power": 1248735,
+      "attack_power": 782834,
+      "defense_power": 466636,
+      "total_power": 1249470,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "PiK4",
       "guild": "Out",
@@ -59,16 +56,15 @@
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Sonegadora",
       "guild": "Out",
-      "attack_power": 633235,
+      "attack_power": 632647,
       "defense_power": 405084,
-      "total_power": 1038319,
+      "total_power": 1037731,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -77,28 +73,26 @@
     {
       "position": 5,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "xKalista",
       "guild": "ForsakenS",
-      "attack_power": 656579,
-      "defense_power": 372066,
-      "total_power": 1028645,
+      "attack_power": 656648,
+      "defense_power": 372101,
+      "total_power": 1028749,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Tanguete",
       "guild": "Out",
@@ -113,28 +107,9 @@
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
-      },
-      "name": "TaTuRaNa",
-      "guild": "ForsakenS",
-      "attack_power": 598322,
-      "defense_power": 369239,
-      "total_power": 967561,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procion"
-      }
-    },
-    {
-      "position": 8,
-      "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Inevit4vel",
       "guild": "ForsakenS",
@@ -143,16 +118,32 @@
       "total_power": 950746,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 8,
+      "class": {
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "name": "TaTuRaNa",
+      "guild": "ForsakenS",
+      "attack_power": 589902,
+      "defense_power": 358149,
+      "total_power": 948051,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
       "position": 9,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Chefinho01",
       "guild": "SteinsKillerS",
@@ -167,10 +158,9 @@
     {
       "position": 10,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "iLulex",
       "guild": "Out",
@@ -185,10 +175,9 @@
     {
       "position": 11,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "PaiAmor",
       "guild": "ForsakenS",
@@ -197,16 +186,15 @@
       "total_power": 867854,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 12,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "BeBezinha",
       "guild": "Out",
@@ -221,28 +209,26 @@
     {
       "position": 13,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "XxVENONxX",
       "guild": "RealPlayers",
       "attack_power": 499975,
-      "defense_power": 327767,
-      "total_power": 827742,
+      "defense_power": 327803,
+      "total_power": 827778,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 14,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "J1nx",
       "guild": "SteinsKillerS",
@@ -257,10 +243,9 @@
     {
       "position": 15,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "lRush",
       "guild": "Sem guilda",
@@ -275,10 +260,9 @@
     {
       "position": 16,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "ThriisTham",
       "guild": "SteinsKillerS",
@@ -293,10 +277,9 @@
     {
       "position": 17,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "TreKer",
       "guild": "Out",
@@ -311,10 +294,9 @@
     {
       "position": 18,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "CloseUP",
       "guild": "Out",
@@ -329,10 +311,9 @@
     {
       "position": 19,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Kyndar",
       "guild": "Out",
@@ -347,10 +328,9 @@
     {
       "position": 20,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Only",
       "guild": "RealPlayers",
@@ -359,16 +339,15 @@
       "total_power": 769087,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 21,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "thiloki",
       "guild": "C4",
@@ -377,16 +356,15 @@
       "total_power": 722464,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 22,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "LeaziXCIII",
       "guild": "SteinsKillerS",
@@ -401,10 +379,9 @@
     {
       "position": 23,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "DanFoster",
       "guild": "ForsakenS",
@@ -413,16 +390,15 @@
       "total_power": 689947,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 24,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Bloody",
       "guild": "RealPlayers",
@@ -431,16 +407,15 @@
       "total_power": 681671,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 25,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "Demonho",
       "guild": "Imaculados",
@@ -449,16 +424,15 @@
       "total_power": 635424,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 26,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "name": "KrooZ",
       "guild": "ForsakenS",
@@ -467,15 +441,14 @@
       "total_power": 623852,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     }
   ],
   "class_info": {
     "id": 4,
-    "abbr": "AA",
-    "full_pt": "Arqueiro Arcano",
-    "full_en": "Force Archer",
-    "icon": "fa"
+    "name": "Force Archer",
+    "name_pt": "Arqueiro Arcano",
+    "short": "AA"
   }
 }

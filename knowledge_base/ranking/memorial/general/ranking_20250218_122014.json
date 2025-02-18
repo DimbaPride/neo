@@ -1,0 +1,150 @@
+{
+  "timestamp": "2025-02-18 12:20:14",
+  "total_entries": 9,
+  "rankings": [
+    {
+      "position": 1,
+      "character_name": "MarquinllGU",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "C4",
+      "nation": {
+        "name": "Procyon",
+        "name_pt": "Procyon",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-procyon.png"
+      }
+    },
+    {
+      "position": 2,
+      "character_name": "StressedOutt",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "Out",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    },
+    {
+      "position": 3,
+      "character_name": "PollyxD",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "SteinsKillerS",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    },
+    {
+      "position": 4,
+      "character_name": "ThriisTham",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "SteinsKillerS",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    },
+    {
+      "position": 5,
+      "character_name": "Chopper",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "ForsakenS",
+      "nation": {
+        "name": "Procyon",
+        "name_pt": "Procyon",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-procyon.png"
+      }
+    },
+    {
+      "position": 6,
+      "character_name": "dragon666",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "ForsakenS",
+      "nation": {
+        "name": "Procyon",
+        "name_pt": "Procyon",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-procyon.png"
+      }
+    },
+    {
+      "position": 7,
+      "character_name": "BAYGON",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "Out",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    },
+    {
+      "position": 8,
+      "character_name": "lLorD",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "Out",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    },
+    {
+      "position": 9,
+      "character_name": "isMagic",
+      "character_class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild_name": "Out",
+      "nation": {
+        "name": "Capella",
+        "name_pt": "Capella",
+        "icon_alt": "Logo nation",
+        "icon_src": "icon-capella.png"
+      }
+    }
+  ]
+}

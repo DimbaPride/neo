@@ -1,14 +1,13 @@
 {
-  "timestamp": "2025-02-18 10:03:36",
+  "timestamp": "2025-02-18 12:19:24",
   "total_entries": 16,
   "rankings": [
     {
       "position": 1,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "iPeiXe",
       "guild": "Out",
@@ -23,10 +22,9 @@
     {
       "position": 2,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Gege",
       "guild": "ForsakenS",
@@ -35,16 +33,15 @@
       "total_power": 958588,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 3,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "toMate",
       "guild": "ForsakenS",
@@ -53,16 +50,15 @@
       "total_power": 956226,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 4,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "PadinhaXD",
       "guild": "ForsakenS",
@@ -71,34 +67,32 @@
       "total_power": 898474,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 5,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "DarkAzazel",
       "guild": "ForsakenS",
-      "attack_power": 559660,
+      "attack_power": 559746,
       "defense_power": 335515,
-      "total_power": 895175,
+      "total_power": 895261,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 6,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "BritneyBitch",
       "guild": "ForsakenS",
@@ -107,16 +101,15 @@
       "total_power": 880061,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 7,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "PANARO",
       "guild": "Out",
@@ -131,10 +124,9 @@
     {
       "position": 8,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Power",
       "guild": "Out",
@@ -149,10 +141,9 @@
     {
       "position": 9,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Arkantos",
       "guild": "RealPlayers",
@@ -167,10 +158,9 @@
     {
       "position": 10,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "LendaMA",
       "guild": "ForsakenS",
@@ -179,16 +169,15 @@
       "total_power": 759600,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 11,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Page",
       "guild": "Sem guilda",
@@ -197,16 +186,15 @@
       "total_power": 710992,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 12,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "PollyxD",
       "guild": "SteinsKillerS",
@@ -221,10 +209,9 @@
     {
       "position": 13,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Siriel",
       "guild": "ForsakenS",
@@ -233,16 +220,15 @@
       "total_power": 707154,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 14,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "iLisergia",
       "guild": "ForsakenS",
@@ -251,16 +237,15 @@
       "total_power": 636288,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 15,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "Yuno",
       "guild": "ForsakenS",
@@ -269,16 +254,15 @@
       "total_power": 633685,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     },
     {
       "position": 16,
       "class": {
-        "id": 1,
-        "abbr": "GU",
-        "full_pt": "Guerreiro",
-        "full_en": "Warrior"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
       "name": "M4G4C0",
       "guild": "ForsakenS",
@@ -287,15 +271,14 @@
       "total_power": 627415,
       "nation": {
         "en": "Procyon",
-        "pt": "Procion"
+        "pt": "Procyon"
       }
     }
   ],
   "class_info": {
     "id": 3,
-    "abbr": "MA",
-    "full_pt": "Mago",
-    "full_en": "Wizard",
-    "icon": "wz"
+    "name": "Wizard",
+    "name_pt": "Mago",
+    "short": "MA"
   }
 }

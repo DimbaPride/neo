@@ -1,0 +1,131 @@
+{
+  "timestamp": "2025-02-18 12:19:50",
+  "total_entries": 7,
+  "rankings": [
+    {
+      "position": 1,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "Zemiro",
+      "guild": "SteinsKillerS",
+      "attack_power": 553711,
+      "defense_power": 346527,
+      "total_power": 900238,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 2,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "FarmezinhaXD",
+      "guild": "SteinsKillerS",
+      "attack_power": 519950,
+      "defense_power": 330166,
+      "total_power": 850116,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 3,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "lShinobu",
+      "guild": "ForsakenS",
+      "attack_power": 462223,
+      "defense_power": 330205,
+      "total_power": 792428,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 4,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "DeMonSs",
+      "guild": "RealPlayers",
+      "attack_power": 422368,
+      "defense_power": 312722,
+      "total_power": 735090,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 5,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "BAYGON",
+      "guild": "Out",
+      "attack_power": 389245,
+      "defense_power": 294918,
+      "total_power": 684163,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 6,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "Graviton",
+      "guild": "ForsakenS",
+      "attack_power": 357539,
+      "defense_power": 279342,
+      "total_power": 636881,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 7,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "GUR1L4",
+      "guild": "ForsakenS",
+      "attack_power": 350414,
+      "defense_power": 267297,
+      "total_power": 617711,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    }
+  ],
+  "class_info": {
+    "id": 7,
+    "name": "Gladiator",
+    "name_pt": "Gladiador",
+    "short": "GL"
+  }
+}
