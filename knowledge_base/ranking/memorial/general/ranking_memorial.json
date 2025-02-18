@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 12:20:14",
+  "timestamp": "2025-02-18 12:53:36",
   "total_entries": 9,
   "rankings": [
     {
@@ -12,10 +12,8 @@
       },
       "guild_name": "C4",
       "nation": {
-        "name": "Procyon",
-        "name_pt": "Procyon",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-procyon.png"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -28,10 +26,8 @@
       },
       "guild_name": "Out",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -44,10 +40,8 @@
       },
       "guild_name": "SteinsKillerS",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -60,10 +54,8 @@
       },
       "guild_name": "SteinsKillerS",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -76,10 +68,8 @@
       },
       "guild_name": "ForsakenS",
       "nation": {
-        "name": "Procyon",
-        "name_pt": "Procyon",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-procyon.png"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -92,10 +82,8 @@
       },
       "guild_name": "ForsakenS",
       "nation": {
-        "name": "Procyon",
-        "name_pt": "Procyon",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-procyon.png"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -108,10 +96,8 @@
       },
       "guild_name": "Out",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -124,10 +110,8 @@
       },
       "guild_name": "Out",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -140,10 +124,8 @@
       },
       "guild_name": "Out",
       "nation": {
-        "name": "Capella",
-        "name_pt": "Capella",
-        "icon_alt": "Logo nation",
-        "icon_src": "icon-capella.png"
+        "en": "Capella",
+        "pt": "Capella"
       }
     }
   ]

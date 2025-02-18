@@ -1,35 +1,35 @@
 {
-  "timestamp": "2025-02-18 12:20:09",
+  "timestamp": "2025-02-18 12:53:31",
   "total_entries": 95,
   "rankings": [
     {
       "position": 1,
       "name": "ForsakenS",
-      "power": 92392487,
+      "power": 92407166,
       "members": 140,
-      "war_points": 342138,
-      "war_kills": 264
+      "war_points": 379547,
+      "war_kills": 289
     },
     {
       "position": 2,
       "name": "Out",
-      "power": 77086357,
+      "power": 76998706,
       "members": 119,
-      "war_points": 469968,
-      "war_kills": 686
+      "war_points": 503844,
+      "war_kills": 710
     },
     {
       "position": 3,
       "name": "RealPlayers",
-      "power": 52700089,
+      "power": 52687360,
       "members": 114,
-      "war_points": 34856,
-      "war_kills": 12
+      "war_points": 38082,
+      "war_kills": 13
     },
     {
       "position": 4,
       "name": "C4",
-      "power": 47473621,
+      "power": 47458937,
       "members": 171,
       "war_points": 3122,
       "war_kills": 0
@@ -37,15 +37,15 @@
     {
       "position": 5,
       "name": "SteinsKillerS",
-      "power": 44488592,
+      "power": 44446631,
       "members": 91,
-      "war_points": 22155,
+      "war_points": 22644,
       "war_kills": 12
     },
     {
       "position": 6,
       "name": "Cursed",
-      "power": 42185869,
+      "power": 42185980,
       "members": 111,
       "war_points": 9681,
       "war_kills": 0
@@ -117,7 +117,7 @@
     {
       "position": 15,
       "name": "CastleTM",
-      "power": 2471762,
+      "power": 2462995,
       "members": 12,
       "war_points": 0,
       "war_kills": 0
@@ -157,7 +157,7 @@
     {
       "position": 20,
       "name": "1",
-      "power": 1389946,
+      "power": 1395130,
       "members": 6,
       "war_points": 208,
       "war_kills": 0
@@ -165,9 +165,9 @@
     {
       "position": 21,
       "name": "Geforce",
-      "power": 1335917,
+      "power": 1336190,
       "members": 3,
-      "war_points": 3829,
+      "war_points": 4100,
       "war_kills": 0
     },
     {
@@ -325,7 +325,7 @@
     {
       "position": 41,
       "name": "PeeWee",
-      "power": 466739,
+      "power": 458136,
       "members": 1,
       "war_points": 0,
       "war_kills": 0

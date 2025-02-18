@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 12:19:11",
+  "timestamp": "2025-02-18 12:52:34",
   "total_entries": 17,
   "rankings": [
     {
@@ -77,23 +77,6 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "BaltasaR",
-      "guild": "ForsakenS",
-      "attack_power": 479331,
-      "defense_power": 335348,
-      "total_power": 814679,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 6,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
       "name": "MAriaBonita",
       "guild": "Out",
       "attack_power": 472835,
@@ -105,7 +88,7 @@
       }
     },
     {
-      "position": 7,
+      "position": 6,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -122,7 +105,7 @@
       }
     },
     {
-      "position": 8,
+      "position": 7,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -133,6 +116,23 @@
       "attack_power": 430054,
       "defense_power": 307563,
       "total_power": 737617,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 8,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "BaltasaR",
+      "guild": "ForsakenS",
+      "attack_power": 424730,
+      "defense_power": 312243,
+      "total_power": 736973,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -233,8 +233,8 @@
       "name": "TiTioSlash",
       "guild": "Cursed",
       "attack_power": 381139,
-      "defense_power": 292594,
-      "total_power": 673733,
+      "defense_power": 292705,
+      "total_power": 673844,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"

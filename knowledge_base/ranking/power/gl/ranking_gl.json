@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 12:19:50",
+  "timestamp": "2025-02-18 12:53:12",
   "total_entries": 7,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Zemiro",
       "guild": "SteinsKillerS",
-      "attack_power": 553711,
+      "attack_power": 544990,
       "defense_power": 346527,
-      "total_power": 900238,
+      "total_power": 891517,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -45,9 +45,9 @@
       },
       "name": "lShinobu",
       "guild": "ForsakenS",
-      "attack_power": 462223,
-      "defense_power": 330205,
-      "total_power": 792428,
+      "attack_power": 467046,
+      "defense_power": 341296,
+      "total_power": 808342,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"

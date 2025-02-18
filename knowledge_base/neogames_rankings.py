@@ -27,10 +27,14 @@ BASE_URL = "https://www.neogames.online/ranking"
 GUILD_RANKING_URL = f"{BASE_URL}/guild"
 MEMORIAL_RANKING_URL = f"{BASE_URL}/memorial"
 POWER_RANKING_URL = f"{BASE_URL}/power"
+WAR_RANKING_URL = f"{BASE_URL}/war"
+
 
 RANKING_TYPE_POWER = "power"
 RANKING_TYPE_GUILD = "guild"
 RANKING_TYPE_MEMORIAL = "memorial"
+RANKING_TYPE_WAR = "war"
+
 
 
 # Mapeamento atualizado de classes com nomes em português e inglês
@@ -149,7 +153,15 @@ class NeoGamesRankings:
             'total_power': 'Poder total',
             'nation': 'Nação'
         }
-        
+        self.war_headers = {
+        'position': '#',
+        'name': 'Nome',
+        'guild': 'Guild',
+        'kills': 'Abates',
+        'deaths': 'Mortes',
+        'kd_ratio': 'K/D',
+        'nation': 'Nação'
+    }        
         self._setup_directories()
 
     def _setup_directories(self):
@@ -432,12 +444,6 @@ class NeoGamesRankings:
     def parse_memorial_ranking(self, html_content: str) -> List[Dict]:
         """
         Analisa o HTML para extrair dados do ranking memorial.
-        
-        Args:
-            html_content (str): Conteúdo HTML da página de ranking
-            
-        Returns:
-            List[Dict]: Lista de dicionários com os dados do ranking memorial
         """
         logger.info("Analisando dados do ranking memorial")
         
@@ -459,22 +465,22 @@ class NeoGamesRankings:
                     
                     # Usando a mesma lógica do power.py para nação
                     nation_img = card.select_one('img[srcset*="procyon.png"]')
+                    nation_info = None
+                    
                     if nation_img:
-                        nation_info = {
-                            'name': NATION_MAPPING['icon-procyon']['name'],
-                            'name_pt': NATION_MAPPING['icon-procyon']['name_pt'],
-                            'icon_alt': NATION_MAPPING['icon-procyon']['icon_alt'],
-                            'icon_src': NATION_MAPPING['icon-procyon']['icon_src']
-                        }
+                        nation_info = NATION_MAPPING['icon-procyon']
                     else:
                         nation_img = card.select_one('img[srcset*="capella.png"]')
                         if nation_img:
-                            nation_info = {
-                                'name': NATION_MAPPING['icon-capella']['name'],
-                                'name_pt': NATION_MAPPING['icon-capella']['name_pt'],
-                                'icon_alt': NATION_MAPPING['icon-capella']['icon_alt'],
-                                'icon_src': NATION_MAPPING['icon-capella']['icon_src']
-                            }
+                            nation_info = NATION_MAPPING['icon-capella']
+                    
+                    if not nation_info:
+                        nation_info = {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida',
+                            'icon_alt': 'Unknown',
+                            'icon_src': 'unknown'
+                        }
                     
                     memorial_entry = {
                         'position': position,
@@ -485,7 +491,10 @@ class NeoGamesRankings:
                             'short': class_info['short']
                         },
                         'guild_name': guild_name,
-                        'nation': nation_info
+                        'nation': {
+                            'en': nation_info['name'],
+                            'pt': nation_info['name_pt']
+                        }
                     }
                     memorial_data.append(memorial_entry)
                     
@@ -499,9 +508,63 @@ class NeoGamesRankings:
             logger.error(f"Erro ao analisar ranking memorial: {e}")
             raise
 
+    def parse_war_ranking(self, html_content: str) -> List[Dict]:
+        """
+        Analisa o HTML para extrair dados do ranking de war.
+        """
+        logger.info("Analisando dados do ranking de war")
+        
+        soup = BeautifulSoup(html_content, 'html.parser')
+        war_data = []
+        
+        try:
+            rows = soup.find_all('tr')[1:]  # Pula o cabeçalho
+            
+            for position, row in enumerate(rows, 1):
+                try:
+                    cells = row.find_all(['td'])
+                    if len(cells) >= 6:
+                        # Identifica a nação
+                        nation_cell = cells[6] if len(cells) >= 7 else None
+                        nation_info = self.get_nation_info(nation_cell) if nation_cell else {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida'
+                        }
+                        
+                        # Calcula K/D ratio
+                        kills = self.parse_value(cells[3].get_text(strip=True))
+                        deaths = self.parse_value(cells[4].get_text(strip=True))
+                        kd_ratio = round(kills / deaths, 2) if deaths > 0 else kills
+                        
+                        war_entry = {
+                            'position': position,
+                            'name': cells[1].get_text(strip=True),
+                            'guild': cells[2].get_text(strip=True),
+                            'kills': kills,
+                            'deaths': deaths,
+                            'kd_ratio': kd_ratio,
+                            'nation': {
+                                'en': nation_info['name'],
+                                'pt': nation_info['name_pt']
+                            }
+                        }
+                        
+                        war_data.append(war_entry)
+                        
+                except Exception as e:
+                    logger.warning(f"Erro ao processar war rank {position}: {e}")
+                    continue
+            
+            return war_data
+            
+        except Exception as e:
+            logger.error(f"Erro ao analisar ranking de war: {e}")
+            raise        
+
     def save_ranking_data(self, data: List[Dict], ranking_type: str, class_id: Optional[int] = None):
         """
         Salva os dados do ranking em JSON e cria índices FAISS.
+        Mantém apenas um arquivo JSON atualizado para cada tipo de ranking.
         """
         try:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -520,8 +583,12 @@ class NeoGamesRankings:
             out_dir = os.path.join(self.base_dir, ranking_type, subfolder)
             os.makedirs(out_dir, exist_ok=True)
             
-            # Nome do arquivo JSON
-            json_filename = f"ranking_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            # Nome fixo do arquivo JSON baseado no tipo e classe (se aplicável)
+            if ranking_type == 'power' and class_id:
+                json_filename = f"ranking_{class_info['short'].lower()}.json"
+            else:
+                json_filename = f"ranking_{ranking_type}.json"
+                
             json_path = os.path.join(out_dir, json_filename)
             
             # Prepara dados para JSON
@@ -546,7 +613,7 @@ class NeoGamesRankings:
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(output_data, f, ensure_ascii=False, indent=2)
             
-            logger.info(f"Dados JSON salvos em: {json_path}")
+            logger.info(f"Dados JSON atualizados em: {json_path}")
             
             # Prepara documentos para FAISS
             docs = []
@@ -570,6 +637,16 @@ class NeoGamesRankings:
                         f"Membros: {entry['members']}\n"
                         f"Pontos de Guerra: {entry['war_points']:,}\n"
                         f"Abates na Guerra: {entry['war_kills']:,}"
+                    )
+                elif ranking_type == 'war':
+                    content = (
+                        f"Rank: {entry['position']}\n"
+                        f"Player: {entry['name']}\n"
+                        f"Guild: {entry['guild']}\n"
+                        f"Abates: {entry['kills']:,}\n"
+                        f"Mortes: {entry['deaths']:,}\n"
+                        f"K/D: {entry['kd_ratio']:.2f}\n"
+                        f"Nação: {entry['nation']['pt']}"
                     )
                 else:  # memorial
                     content = (
@@ -595,7 +672,7 @@ class NeoGamesRankings:
             if docs:
                 vectorstore = FAISS.from_documents(docs, self.embeddings)
                 vectorstore.save_local(out_dir)
-                logger.info(f"Índice FAISS salvo em: {out_dir}")
+                logger.info(f"Índice FAISS atualizado em: {out_dir}")
             
             # Log de exemplo dos primeiros colocados
             if data:
@@ -619,6 +696,13 @@ class NeoGamesRankings:
                             f"({entry['character_class']['name_pt']}) - "
                             f"Guild: {entry['guild_name']}"
                         )
+                    elif ranking_type == 'war':
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} - "
+                            f"Guild: {entry['guild']} - "
+                            f"K/D: {entry['kd_ratio']:.2f} "
+                            f"(Abates: {entry['kills']:,}, Mortes: {entry['deaths']:,})"
+                        )
                     else:  # guild
                         logger.info(
                             f"#{entry['position']}: {entry['name']} - "
@@ -629,7 +713,7 @@ class NeoGamesRankings:
         except Exception as e:
             logger.error(f"Erro ao salvar ranking: {e}")
             raise
-
+        
     def _log_top_entries(self, entries: List[Dict], ranking_type: str):
         """
         Função auxiliar para logar os primeiros colocados.
@@ -652,13 +736,20 @@ class NeoGamesRankings:
                     f"({entry['character_class']['name_pt']}) - "
                     f"Guild: {entry['guild_name']}"
                 )
+            elif ranking_type == 'war':
+                logger.info(
+                    f"#{entry['position']}: {entry['name']} - "
+                    f"Guild: {entry['guild']} - "
+                    f"K/D: {entry['kd_ratio']:.2f} "
+                    f"(Abates: {entry['kills']:,}, Mortes: {entry['deaths']:,})"
+                )
             else:  # guild
                 logger.info(
                     f"#{entry['position']}: {entry['name']} - "
                     f"Poder: {entry['power']:,} - "
                     f"Membros: {entry['members']}"
                 )
-
+                
     def query(
         self,
         question: str,
@@ -778,6 +869,15 @@ class NeoGamesRankings:
                     if memorial_data:
                         # Memorial não tem class_id, então passa None
                         self.save_ranking_data(memorial_data, ranking_type, class_id=None)
+
+            elif ranking_type == RANKING_TYPE_WAR:
+                logger.info("Processando ranking de war")
+                html_content = await self.fetch_page_content(WAR_RANKING_URL)
+                if html_content:
+                    war_data = self.parse_war_ranking(html_content)
+                    if war_data:
+                        # War não tem class_id, então passa None
+                        self.save_ranking_data(war_data, ranking_type, class_id=None)
             
         except Exception as e:
             logger.error(f"Erro ao processar ranking {ranking_type}: {e}")
@@ -795,7 +895,7 @@ class NeoGamesRankings:
             self._setup_directories()
             
             # Lista de rankings para processar
-            rankings = ['power', 'guild', 'memorial']
+            rankings = ['power', 'guild', 'memorial', 'war']
             
             # Processa cada tipo de ranking
             for ranking_type in rankings:
@@ -821,7 +921,7 @@ class NeoGamesRankings:
         """
         try:
             if ranking_types is None:
-                ranking_types = ['power', 'guild', 'memorial']
+                ranking_types = ['power', 'guild', 'memorial','war']
             
             logger.info(f"Iniciando atualização dos rankings: {', '.join(ranking_types)}")
             
