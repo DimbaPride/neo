@@ -1,0 +1,193 @@
+{
+  "timestamp": "2025-02-18 10:04:00",
+  "total_entries": 10,
+  "rankings": [
+    {
+      "position": 1,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "Ortopedista",
+      "guild": "ForsakenS",
+      "attack_power": 655973,
+      "defense_power": 423030,
+      "total_power": 1079003,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    },
+    {
+      "position": 2,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "1Monstrinho",
+      "guild": "Out",
+      "attack_power": 641779,
+      "defense_power": 400167,
+      "total_power": 1041946,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 3,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "HelzaoXD38",
+      "guild": "ForsakenS",
+      "attack_power": 612095,
+      "defense_power": 393591,
+      "total_power": 1005686,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    },
+    {
+      "position": 4,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "dragon666",
+      "guild": "ForsakenS",
+      "attack_power": 477955,
+      "defense_power": 389720,
+      "total_power": 867675,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    },
+    {
+      "position": 5,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "Carlos",
+      "guild": "Out",
+      "attack_power": 467774,
+      "defense_power": 342383,
+      "total_power": 810157,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 6,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "yMucillon",
+      "guild": "Sem guilda",
+      "attack_power": 447636,
+      "defense_power": 311204,
+      "total_power": 758840,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 7,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "Leozinx777",
+      "guild": "ForsakenS",
+      "attack_power": 396466,
+      "defense_power": 305453,
+      "total_power": 701919,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    },
+    {
+      "position": 8,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "XxNamIxX",
+      "guild": "RealPlayers",
+      "attack_power": 394654,
+      "defense_power": 274016,
+      "total_power": 668670,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 9,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "VenOnXD",
+      "guild": "ForsakenS",
+      "attack_power": 376129,
+      "defense_power": 265700,
+      "total_power": 641829,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    },
+    {
+      "position": 10,
+      "class": {
+        "id": 1,
+        "abbr": "GU",
+        "full_pt": "Guerreiro",
+        "full_en": "Warrior"
+      },
+      "name": "EspadaXin",
+      "guild": "C4",
+      "attack_power": 358773,
+      "defense_power": 268045,
+      "total_power": 626818,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procion"
+      }
+    }
+  ],
+  "class_info": {
+    "id": 6,
+    "abbr": "EA",
+    "full_pt": "Espadachim Arcano",
+    "full_en": "Force Blader",
+    "icon": "fb"
+  }
+}

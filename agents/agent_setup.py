@@ -226,7 +226,7 @@ class AgentManager:
                     ),
                     f"power_ranking_{cc.abbr.lower()}"
                 ),
-                description=f"Usa pra ver o ranking de poder dos {cc.full} ({cc.abbr})."
+                description=f"Usa pra ver o ranking de poder dos {cc.full_pt} ({cc.abbr})."  # <-- CORRIGIDO
             )
             for cc in CharacterClass
         ]
@@ -261,11 +261,15 @@ class AgentManager:
     async def initialize(self):
         """Inicializa as duas bases de conhecimento."""
         try:
-            await asyncio.gather(
-                self.neogames_knowledge.initialize(),
-                self.neogames_rankings.initialize()
-            )
-            logger.info("Bases de conhecimento inicializadas com sucesso")
+            logger.info("Iniciando inicialização da base de conhecimento...")
+            await self.neogames_knowledge.initialize()
+            logger.info("Base de conhecimento inicializada com sucesso")
+            
+            logger.info("Iniciando inicialização da base de rankings...")
+            await self.neogames_rankings.initialize()
+            logger.info("Base de rankings inicializada com sucesso")
+            
+            logger.info("Todas as bases inicializadas com sucesso")
         except Exception as e:
             logger.error(f"Erro na inicialização: {e}")
             raise

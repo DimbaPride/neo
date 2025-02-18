@@ -4,46 +4,72 @@ import logging
 from enum import Enum
 from typing import List, Dict, Optional
 from dataclasses import dataclass
+from datetime import datetime
+import json
+import time
 from pathlib import Path
+from bs4 import BeautifulSoup
+from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeout
 
-from langchain_docling import DoclingLoader
 from langchain_core.documents import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 
+# Configuração de logging
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# URLs base
+BASE_URL = "https://www.neogames.online/ranking"
+GUILD_RANKING_URL = f"{BASE_URL}/guild"
+MEMORIAL_RANKING_URL = f"{BASE_URL}/memorial"
+POWER_RANKING_URL = f"{BASE_URL}/power"
 
 class CharacterClass(Enum):
-    GUERREIRO = (1, "GU", "Guerreiro")
-    DUELISTA = (2, "DU", "Duelista")
-    MAGO = (3, "MA", "Mago")
-    ARQUEIRO_ARCANO = (4, "AA", "Arqueiro Arcano")
-    GUARDIAO_ARCANO = (5, "GA", "Guardião Arcano")
-    ESPADACHIM_ARCANO = (6, "EA", "Espadachim Arcano")
-    GLADIADOR = (7, "GL", "Gladiador")
-    ATIRADOR = (8, "AT", "Atirador")
-    MAGO_NEGRO = (9, "MN", "Mago Negro")
+    GUERREIRO = (1, "GU", "Guerreiro", "wa", "Icon WA", "Warrior")
+    DUELISTA = (2, "DU", "Duelista", "bl", "Icon BL", "Blader")
+    MAGO = (3, "MA", "Mago", "wz", "Icon WZ", "Wizard")
+    ARQUEIRO_ARCANO = (4, "AA", "Arqueiro Arcano", "fa", "Icon FA", "Force Archer")
+    GUARDIAO_ARCANO = (5, "GA", "Guardião Arcano", "fs", "Icon FS", "Force Shielder")
+    ESPADACHIM_ARCANO = (6, "EA", "Espadachim Arcano", "fb", "Icon FB", "Force Blader")
+    GLADIADOR = (7, "GL", "Gladiador", "gl", "Icon GL", "Gladiator")
+    ATIRADOR = (8, "AT", "Atirador", "fg", "Icon FG", "Force Gunner")
+    MAGO_NEGRO = (9, "MN", "Mago Negro", "dm", "Icon DM", "Dark Mage")
     
-    def __init__(self, id: int, abbr: str, full: str):
+    def __init__(self, id: int, abbr: str, full_pt: str, icon: str, alt: str, full_en: str):
         self.id = id
         self.abbr = abbr
-        self.full = full
+        self.full_pt = full_pt
+        self.full_en = full_en
+        self.icon = icon
+        self.alt = alt
         
     @classmethod
     def get_by_id(cls, id: int) -> Optional['CharacterClass']:
-        for c in cls:
-            if c.value[0] == id:
-                return c
+        """Retorna a classe pelo ID"""
+        for char_class in cls:
+            if char_class.id == id:
+                return char_class
         return None
 
     @classmethod
     def get_by_abbr(cls, abbr: str) -> Optional['CharacterClass']:
+        """Retorna a classe pela abreviação"""
         abbr = abbr.upper()
-        for c in cls:
-            if c.abbr == abbr:
-                return c
+        for char_class in cls:
+            if char_class.abbr == abbr:
+                return char_class
+        return None
+    
+    @classmethod
+    def get_by_icon(cls, icon_src: str) -> Optional['CharacterClass']:
+        """Retorna a classe pelo ícone"""
+        for char_class in cls:
+            if f"icon-{char_class.icon}" in icon_src:
+                return char_class
         return None
 
 class RankingType(Enum):
@@ -52,28 +78,55 @@ class RankingType(Enum):
     GUILD = "guild"
     MEMORIAL = "memorial"
 
-@dataclass
-class RankingEntry:
-    position: int
-    name: str
-    class_name: Optional[str] = None
-    power: Optional[int] = None
-    score: Optional[int] = None
-    guild: Optional[str] = None
-    timestamp: float = 0.0
+# Mapeamento de nações
+NATION_MAPPING = {
+    'icon-procyon': {
+        'name': 'Procyon',
+        'name_pt': 'Procion'
+    },
+    'icon-capella': {
+        'name': 'Capella',
+        'name_pt': 'Capella'
+    }
+}
 
 class NeoGamesRankings:
     def __init__(self, base_dir: str = "knowledge_base/ranking"):
         self.base_dir = base_dir
-        self.base_url = "https://www.neogames.online/ranking"
         self.embeddings = OpenAIEmbeddings()
-        self.update_interval = 300
-        self._monitor_task = None
-        self._cached_data = {}
-        
         self._create_directories()
+        
+        # Headers para cada tipo de ranking
+        self.power_headers = {
+            'position': '#',
+            'class': 'Classe',
+            'name': 'Nome',
+            'guild': 'Guilda',
+            'attack_power': 'Poder de Ataque',
+            'defense_power': 'Poder de Defesa',
+            'total_power': 'Poder total',
+            'nation': 'Nação'
+        }
+        
+        self.guild_headers = {
+            'position': '#',
+            'name': 'Nome',
+            'power': 'Poder',
+            'members': 'Membros',
+            'war_points': 'Pontos de Guerra',
+            'war_kills': 'Abates na Guerra'
+        }
+        
+        self.memorial_headers = {
+            'position': '#',
+            'character_name': 'Nome do Personagem',
+            'character_class': 'Classe',
+            'guild_name': 'Guild',
+            'nation': 'Nação'
+        }
 
     def _create_directories(self):
+        """Cria estrutura de diretórios para os rankings."""
         for ranking in RankingType:
             path = os.path.join(self.base_dir, ranking.value)
             os.makedirs(path, exist_ok=True)
@@ -83,257 +136,319 @@ class NeoGamesRankings:
                     os.makedirs(os.path.join(path, cc.abbr.lower()), exist_ok=True)
             logger.info(f"Diretório criado: {path}")
 
-    def get_power_ranking_urls(self) -> List[str]:
-        urls = [f"{self.base_url}/power"]
-        for cc in CharacterClass:
-            urls.append(f"{self.base_url}/power?classId={cc.id}")
-        return urls
-
-    async def load_documents(self, url: str) -> List[Document]:
-        """Carrega documentos e salva em JSON primeiro"""
-        try:
-            logger.info(f"Carregando dados de: {url}")
-            
-            # Carrega documentos com DoclingLoader
-            loader = DoclingLoader(file_path=url)
-            docs = await asyncio.to_thread(loader.load)
-            
-            if not isinstance(docs, list):
-                docs = [docs]
-                
-            # Lista para armazenar jogadores
-            players = []
-            
-            # Processa cada documento
-            for doc in docs:
-                lines = doc.page_content.split("\n")
-                for line in lines:
-                    if "LeaderBoard emblem1" in line or (", 2 =" in line and ", 3 =" in line):
-                        parts = line.split(".")
-                        player = {}
-                        
-                        for part in parts:
-                            if "=" not in part:
-                                continue
-                            
-                            key, value = part.split("=")
-                            key = key.strip()
-                            value = value.strip()
-                            
-                            if "2 =" in key and value != ".":  # Nome
-                                player["nome"] = value
-                            elif "3 =" in key and value != ".":  # Guilda
-                                player["guilda"] = value
-                            elif "6 =" in key and value != ".":  # Poder
-                                try:
-                                    poder = value.replace(",", "").replace(".", "")
-                                    if poder.isdigit():
-                                        player["poder"] = int(poder)
-                                except:
-                                    continue
-                        
-                        if "nome" in player and "poder" in player:
-                            players.append(player)
-            
-            # Ordena por poder
-            players.sort(key=lambda x: x.get("poder", 0), reverse=True)
-            
-            # Salva em JSON (para debug/backup)
-            json_path = url.split("/")[-1].replace("?", "_") + ".json"
-            json_path = os.path.join(self.base_dir, json_path)
-            with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(players, f, indent=2, ensure_ascii=False)
-                
-            # Converte para documentos
-            docs = []
-            for i, player in enumerate(players, 1):
-                text = (
-                    f"Rank: {i}\n"
-                    f"Player: {player['nome']}\n"
-                    f"Guilda: {player.get('guilda', 'Sem guilda')}\n"
-                    f"Poder: {player['poder']:,}"
+    async def fetch_page_content(self, url: str, wait_selector='table', timeout=30000) -> str:
+        """Busca o conteúdo de uma página usando Playwright"""
+        async with async_playwright() as p:
+            try:
+                browser = await p.chromium.launch(
+                    headless=True,
+                    args=['--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
                 )
-                docs.append(Document(page_content=text))
                 
-            logger.info(f"Carregados {len(docs)} jogadores de {url}")
-            logger.info(f"Dados salvos em {json_path}")
-            
-            # Mostra exemplos dos primeiros jogadores
-            for doc in docs[:3]:
-                logger.info(f"Exemplo:\n{doc.page_content}")
+                context = await browser.new_context(
+                    viewport={'width': 1920, 'height': 1080},
+                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36'
+                )
                 
-            return docs
-            
-        except Exception as e:
-            logger.error(f"Erro ao carregar {url}: {str(e)}")
-            return []
+                page = await context.new_page()
+                page.set_default_timeout(60000)
+                
+                response = await page.goto(url)
+                
+                if not response or response.status != 200:
+                    raise Exception(f"Falha ao carregar página: Status {response.status if response else 'N/A'}")
+                
+                await page.wait_for_selector(wait_selector, timeout=timeout)
+                await page.wait_for_timeout(3000)
+                
+                content = await page.content()
+                await browser.close()
+                return content
+                
+            except Exception as e:
+                logger.error(f"Erro ao buscar página {url}: {e}")
+                if 'browser' in locals():
+                    await browser.close()
+                raise
 
-
-
-    def _parse_ranking_data(self, content: str) -> List[Dict]:
-        """
-        Parseia o conteúdo do ranking para um formato estruturado
-        """
+    def parse_value(self, value_str: str) -> int:
+        """Converte valores string para formato numérico."""
         try:
-            players = []
-            current_player = {}
+            clean_value = ''.join(c for c in value_str if c.isdigit() or c in '.,')
+            clean_value = clean_value.replace('.', '').replace(',', '.')
+            return int(float(clean_value))
+        except:
+            return 0
+
+    def get_nation_info(self, cell_or_src) -> Dict:
+        """Identifica a nação baseado na célula da tabela ou src da imagem."""
+        try:
+            if hasattr(cell_or_src, 'find'):
+                img = cell_or_src.find('img')
+                if img and 'srcset' in img.attrs:
+                    srcset = img['srcset']
+                    if 'icon-procyon.png' in srcset:
+                        return NATION_MAPPING['icon-procyon']
+                    elif 'icon-capella.png' in srcset:
+                        return NATION_MAPPING['icon-capella']
+            elif isinstance(cell_or_src, str):
+                text_lower = cell_or_src.lower()
+                if 'procyon' in text_lower:
+                    return NATION_MAPPING['icon-procyon']
+                elif 'capella' in text_lower:
+                    return NATION_MAPPING['icon-capella']
+        except Exception as e:
+            logger.warning(f"Erro ao identificar nação: {e}")
+        
+        return {
+            'name': 'Unknown',
+            'name_pt': 'Desconhecida'
+        }
+
+    def parse_power_ranking(self, html_content: str) -> List[Dict]:
+        """Analisa o HTML para extrair dados do ranking de power."""
+        logger.info("Analisando dados do ranking de power")
+        
+        soup = BeautifulSoup(html_content, 'html.parser')
+        power_data = []
+        
+        try:
+            rows = soup.find_all('tr')[1:]  # Pula o cabeçalho
             
-            lines = content.split("\n")
-            for line in lines:
-                line = line.strip()
-                if not line or "Copyright" in line or "Rankings" in line:
+            for position, row in enumerate(rows, 1):
+                try:
+                    cells = row.find_all(['td'])
+                    if len(cells) >= 7:
+                        # Identifica a classe
+                        class_cell = cells[1]
+                        class_info = None
+                        
+                        class_img = class_cell.find('img')
+                        if class_img and 'srcset' in class_img.attrs:
+                            srcset = class_img['srcset']
+                            for char_class in CharacterClass:
+                                if f"/ranking/icon-{char_class.icon}.png" in srcset:
+                                    class_info = char_class
+                                    break
+                        
+                        if not class_info:
+                            class_info = CharacterClass.GUERREIRO
+                        
+                        # Identifica a nação
+                        nation_cell = cells[7] if len(cells) >= 8 else None
+                        nation_info = self.get_nation_info(nation_cell) if nation_cell else {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida'
+                        }
+                        
+                        power_entry = {
+                            'position': position,
+                            'class': {
+                                'id': class_info.id,
+                                'abbr': class_info.abbr,
+                                'full_pt': class_info.full_pt,
+                                'full_en': class_info.full_en
+                            },
+                            'name': cells[2].get_text(strip=True),
+                            'guild': cells[3].get_text(strip=True),
+                            'attack_power': self.parse_value(cells[4].get_text(strip=True)),
+                            'defense_power': self.parse_value(cells[5].get_text(strip=True)),
+                            'total_power': self.parse_value(cells[6].get_text(strip=True)),
+                            'nation': {
+                                'en': nation_info['name'],
+                                'pt': nation_info['name_pt']
+                            }
+                        }
+                        
+                        power_data.append(power_entry)
+                        
+                except Exception as e:
+                    logger.warning(f"Erro ao processar power {position}: {e}")
                     continue
-                    
-                # Procura por entradas do tipo "LeaderBoard emblem"
-                if "LeaderBoard emblem" in line:
-                    parts = line.split(",")
-                    for part in parts:
-                        if "=" in part:
-                            key_value = part.split("=")
-                            key = key_value[0].strip()
-                            value = key_value[1].strip()
-                            
-                            # Identifica o tipo de dado
-                            if key.endswith("2"):  # Nome
-                                if current_player:
-                                    players.append(current_player)
-                                current_player = {"nome": value}
-                            elif key.endswith("3"):  # Guilda
-                                current_player["guilda"] = value
-                            elif key.endswith("4"):  # Poder de Ataque
-                                current_player["ataque"] = int(value.replace(",", "").replace(".", ""))
-                            elif key.endswith("5"):  # Poder de Defesa
-                                current_player["defesa"] = int(value.replace(",", "").replace(".", ""))
-                            elif key.endswith("6"):  # Poder Total
-                                current_player["poder_total"] = int(value.replace(",", "").replace(".", ""))
             
-            if current_player:
-                players.append(current_player)
-                
-            return players
+            return power_data
+            
         except Exception as e:
-            logger.error(f"Erro ao parsear dados do ranking: {e}")
-            return []
+            logger.error(f"Erro ao analisar ranking de power: {e}")
+            raise
 
-    async def process_documents(self, docs: List[Document], out_dir: str):
-        """Processa documentos mantendo backup em JSON"""
-        if not docs:
-            return
-            
+    def save_ranking_data(self, data: List[Dict], ranking_type: str, class_id: Optional[int] = None):
+        """Salva os dados do ranking em JSON e cria índices FAISS."""
         try:
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            
+            # Define o diretório de saída
+            if ranking_type == 'power' and class_id:
+                class_info = CharacterClass.get_by_id(class_id)
+                if not class_info:
+                    raise ValueError(f"Classe ID {class_id} não encontrada")
+                subfolder = class_info.abbr.lower()
+            else:
+                subfolder = "general"
+                
+            out_dir = os.path.join(self.base_dir, ranking_type, subfolder)
             os.makedirs(out_dir, exist_ok=True)
             
-            # Salva em JSON (para backup/debug)
-            json_path = os.path.join(out_dir, "data.json")
-            json_data = [
-                {
-                    "text": doc.page_content,
-                    "metadata": doc.metadata
+            # Nome do arquivo JSON
+            json_filename = f"ranking_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            json_path = os.path.join(out_dir, json_filename)
+            
+            # Prepara dados para JSON
+            output_data = {
+                'timestamp': timestamp,
+                'total_entries': len(data),
+                'rankings': data
+            }
+            
+            # Adiciona info da classe se necessário
+            if class_id:
+                class_info = CharacterClass.get_by_id(class_id)
+                output_data['class_info'] = {
+                    'id': class_info.id,
+                    'abbr': class_info.abbr,
+                    'full_pt': class_info.full_pt,
+                    'full_en': class_info.full_en,
+                    'icon': class_info.icon
                 }
-                for doc in docs
-            ]
-            with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(json_data, f, indent=2, ensure_ascii=False)
             
-            # Salva no vectorstore
-            vectorstore = FAISS.from_documents(docs, self.embeddings)
-            vectorstore.save_local(out_dir)
+            # Salva JSON
+            with open(json_path, 'w', encoding='utf-8') as f:
+                json.dump(output_data, f, ensure_ascii=False, indent=2)
             
-            logger.info(f"Salvos {len(docs)} documentos em {out_dir}")
-            logger.info(f"Backup em JSON salvo em {json_path}")
+            logger.info(f"Dados JSON salvos em: {json_path}")
             
+            # Prepara documentos para FAISS
+            docs = []
+            for entry in data:
+                if ranking_type == 'power':
+                    content = (
+                        f"Rank: {entry['position']}\n"
+                        f"Player: {entry['name']}\n"
+                        f"Classe: {entry['class']['full_pt']} ({entry['class']['abbr']})\n"
+                        f"Guild: {entry['guild']}\n"
+                        f"Poder Total: {entry['total_power']:,}\n"
+                        f"Poder de Ataque: {entry['attack_power']:,}\n"
+                        f"Poder de Defesa: {entry['defense_power']:,}"
+                    )
+                elif ranking_type == 'guild':
+                    content = (
+                        f"Rank: {entry['position']}\n"
+                        f"Guild: {entry['name']}\n"
+                        f"Poder: {entry['power']:,}\n"
+                        f"Membros: {entry['members']}\n"
+                        f"Pontos de Guerra: {entry['war_points']:,}\n"
+                        f"Abates na Guerra: {entry['war_kills']:,}"
+                    )
+                elif ranking_type == 'memorial':
+                    content = (
+                        f"Rank: {entry['position']}\n"
+                        f"Player: {entry['character_name']}\n"
+                        f"Classe: {entry['character_class']['pt']} ({entry['character_class']['short']})\n"
+                        f"Guild: {entry['guild_name']}\n"
+                        f"Nação: {entry['nation']['pt']}"
+                    )
+                else:
+                    content = str(entry)
+                
+                doc = Document(
+                    page_content=content,
+                    metadata={
+                        'timestamp': timestamp,
+                        'ranking_type': ranking_type,
+                        'position': entry['position']
+                    }
+                )
+                docs.append(doc)
+            
+            # Cria e salva vectorstore
+            if docs:
+                vectorstore = FAISS.from_documents(docs, self.embeddings)
+                vectorstore.save_local(out_dir)
+                logger.info(f"Índice FAISS salvo em: {out_dir}")
+            
+            # Mostra exemplo dos primeiros colocados
+            # Mostra exemplo dos primeiros colocados
+            if data:
+                class_name = CharacterClass.get_by_id(class_id).full_pt if class_id else 'Geral'
+                logger.info(f"\nTop 3 {class_name}:")
+                for entry in data[:3]:
+                    if ranking_type == 'power':
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} "
+                            f"({entry['class']['full_pt']}) - "
+                            f"Guild: {entry['guild']} - "
+                            f"Power Total: {entry['total_power']:,}"
+                        )
+                    elif ranking_type == 'memorial':
+                        logger.info(
+                            f"#{entry['position']}: {entry['character_name']} "
+                            f"({entry['character_class']['pt']}) - "
+                            f"Guild: {entry['guild_name']}"
+                        )
+                    else:  # guild
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} - "
+                            f"Poder: {entry['power']:,} - "
+                            f"Membros: {entry['members']}"
+                        )
+                        
         except Exception as e:
-            logger.error(f"Erro ao processar documentos: {str(e)}")
+            logger.error(f"Erro ao salvar ranking: {e}")
             raise
 
     async def process_ranking(self, ranking: RankingType):
-        """Processa os rankings com melhor validação de conteúdo"""
-        if ranking == RankingType.POWER:
-            urls = self.get_power_ranking_urls()
-            docs_by_category: Dict[str, List[Document]] = {"general": []}
-            
-            # Inicializa listas para cada classe
-            for cc in CharacterClass:
-                docs_by_category[cc.abbr.lower()] = []
+        """Processa os rankings de forma assíncrona"""
+        try:
+            if ranking == RankingType.POWER:
+                # Processa ranking geral
+                html_content = await self.fetch_page_content(POWER_RANKING_URL)
+                power_data = self.parse_power_ranking(html_content)
                 
-            for url in urls:
-                try:
-                    logger.info(f"Carregando dados de: {url}")
-                    loader = DoclingLoader(file_path=url)
-                    docs = await asyncio.to_thread(loader.load)
+                if power_data:
+                    self.save_ranking_data(power_data, 'power')
+                
+                # Processa rankings por classe
+                for char_class in CharacterClass:
+                    url = f"{POWER_RANKING_URL}?classId={char_class.id}"
+                    logger.info(f"Processando ranking de {char_class.full_pt}")
                     
-                    if not isinstance(docs, list):
-                        docs = [docs]
+                    html_content = await self.fetch_page_content(url)
+                    power_data = self.parse_power_ranking(html_content)
                     
-                    # Loga o conteúdo para debug
-                    for doc in docs:
-                        logger.info(f"Conteúdo carregado: {doc.page_content[:200]}...")
+                    if power_data:
+                        self.save_ranking_data(power_data, 'power', char_class.id)
+                    await asyncio.sleep(1)
                     
-                    # Valida e filtra documentos
-                    valid_docs = []
-                    for doc in docs:
-                        content = doc.page_content.strip()
-                        if content and len(content) > 0 and not content == "Poder de Combate":
-                            valid_docs.append(doc)
+            elif ranking == RankingType.GUILD:
+                html_content = await self.fetch_page_content(GUILD_RANKING_URL)
+                guild_data = self.parse_guild_ranking(html_content)
+                if guild_data:
+                    self.save_ranking_data(guild_data, 'guild')
                     
-                    if "classId=" in url:
-                        try:
-                            class_id_str = url.split("classId=")[1].split("&")[0]
-                            class_id = int(class_id_str)
-                            cc = CharacterClass.get_by_id(class_id)
-                            if cc:
-                                category = cc.abbr.lower()
-                                docs_by_category[category].extend(valid_docs)
-                                logger.info(f"Adicionados {len(valid_docs)} documentos para {category}")
-                        except Exception as e:
-                            logger.error(f"Erro ao processar URL {url}: {e}")
-                    else:
-                        docs_by_category["general"].extend(valid_docs)
-                        logger.info(f"Adicionados {len(valid_docs)} documentos para general")
-                        
-                except Exception as e:
-                    logger.error(f"Erro ao carregar {url}: {e}")
-                    continue
+            elif ranking == RankingType.MEMORIAL:
+                html_content = await self.fetch_page_content(
+                    MEMORIAL_RANKING_URL,
+                    wait_selector='div.grid.grid-cols-1'
+                )
+                memorial_data = self.parse_memorial_ranking(html_content)
+                if memorial_data:
+                    self.save_ranking_data(memorial_data, 'memorial')
             
-            # Processa e salva cada categoria
-            for category, docs in docs_by_category.items():
-                if docs:
-                    out_dir = os.path.join(self.base_dir, RankingType.POWER.value, category)
-                    try:
-                        os.makedirs(out_dir, exist_ok=True)
-                        
-                        # Divide em chunks menores
-                        splitter = RecursiveCharacterTextSplitter(
-                            chunk_size=400,
-                            chunk_overlap=50,
-                            separators=["\n\n", "\n", " "]
-                        )
-                        
-                        chunks = splitter.split_documents(docs)
-                        if chunks:
-                            # Adiciona metadados aos chunks
-                            for chunk in chunks:
-                                chunk.metadata["source"] = category
-                                chunk.metadata["type"] = "power_ranking"
-                            
-                            # Salva o vectorstore
-                            vectorstore = FAISS.from_documents(chunks, self.embeddings)
-                            vectorstore.save_local(out_dir)
-                            logger.info(f"Vectorstore salvo em {out_dir} com {len(chunks)} chunks")
-                        else:
-                            logger.warning(f"Nenhum chunk válido gerado para {category}")
-                            
-                    except Exception as e:
-                        logger.error(f"Erro ao processar documentos para {category}: {e}")
-                else:
-                    logger.warning(f"Nenhum documento válido para categoria: {category}")
-        else:
-            # Processamento para outros tipos de ranking continua igual
-            url = f"{self.base_url}/{ranking.value}"
-            docs = await self.load_documents(url)
-            if docs:
-                out_dir = os.path.join(self.base_dir, ranking.value)
-                await self.process_documents(docs, out_dir)
+        except Exception as e:
+            logger.error(f"Erro ao processar ranking {ranking}: {e}")
+            raise
+
+    async def initialize(self):
+        """Inicializa e processa todos os rankings."""
+        try:
+            logger.info("Iniciando processamento de rankings...")
+            for ranking in RankingType:
+                logger.info(f"Processando ranking: {ranking.value}")
+                await self.process_ranking(ranking)
+            logger.info("Processamento de rankings concluído.")
+        except Exception as e:
+            logger.error(f"Erro na inicialização: {e}")
+            raise
 
     def query(
         self,
@@ -342,7 +457,7 @@ class NeoGamesRankings:
         k: int = 3,
         class_abbr: Optional[str] = None
     ) -> str:
-        """Consulta rankings de forma simples"""
+        """Consulta rankings usando FAISS"""
         if ranking_types is None:
             ranking_types = list(RankingType)
 
@@ -372,7 +487,7 @@ class NeoGamesRankings:
                 if docs:
                     header = f"[{ranking.value.upper()}"
                     if ranking == RankingType.POWER and class_abbr:
-                        header += f" - {subfolder}"
+                        header += f" - {class_abbr.upper()}"
                     header += "]"
                     
                     content = []
@@ -390,23 +505,3 @@ class NeoGamesRankings:
         if responses:
             return "\n\n".join(responses)
         return "Ranking temporariamente indisponível. Por favor, tente novamente mais tarde."
-
-    async def initialize(self):
-        """Inicializa e processa todos os rankings."""
-        try:
-            logger.info("Iniciando processamento de rankings...")
-            for ranking in RankingType:
-                logger.info(f"Processando ranking: {ranking.value}")
-                await self.process_ranking(ranking)
-            logger.info("Processamento de rankings concluído.")
-        except Exception as e:
-            logger.error(f"Erro na inicialização: {e}")
-            raise
-
-    def __del__(self):
-        """Limpa recursos ao destruir a instância."""
-        if self._monitor_task and not self._monitor_task.done():
-            self._monitor_task.cancel()
-
-# Exporta as classes principais
-__all__ = ["NeoGamesRankings", "RankingType", "CharacterClass", "RankingEntry"]
