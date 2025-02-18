@@ -8,7 +8,13 @@ from langchain.prompts import PromptTemplate
 from langchain_core.tools import BaseTool
 
 from knowledge_base.neogames_knowledge import NeoGamesKnowledge, KnowledgeSource
-from knowledge_base.neogames_rankings import NeoGamesRankings, RankingType, CharacterClass
+from knowledge_base.neogames_rankings import (
+    NeoGamesRankings,
+    CLASS_MAPPING,
+    RANKING_TYPE_POWER,
+    RANKING_TYPE_GUILD,
+    RANKING_TYPE_MEMORIAL
+)
 
 from services.llm import llm_openai
 
@@ -61,7 +67,6 @@ Você fala de forma casual e usa gírias comuns dos players.
 - *power_ranking_gl* pra ranking de Gladiadores
 - *power_ranking_at* pra ranking de Atiradores
 - *power_ranking_mn* pra ranking de Magos Negros
-- *war_ranking* pra ranking de guerra
 - *guild_ranking* pra ranking de guild
 - *memorial_ranking* pra ranking do memorial
 - *system_info* pra sistemas especiais
@@ -176,17 +181,9 @@ class AgentManager:
         # Ferramentas para rankings
         ranking_tools = [
             Tool(
-                name="war_ranking",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RankingType.WAR]),
-                    "war_ranking"
-                ),
-                description="Usa pra ver o ranking de guerra do servidor."
-            ),
-            Tool(
                 name="guild_ranking",
                 func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RankingType.GUILD]),
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_GUILD]),
                     "guild_ranking"
                 ),
                 description="Usa pra ver o ranking das guilds."
@@ -194,11 +191,10 @@ class AgentManager:
             Tool(
                 name="memorial_ranking",
                 func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RankingType.MEMORIAL]),
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_MEMORIAL]),
                     "memorial_ranking"
                 ),
                 description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
-               
             )
         ]
 
@@ -207,7 +203,7 @@ class AgentManager:
             Tool(
                 name="power_ranking",
                 func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RankingType.POWER]),
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_POWER]),
                     "power_ranking"
                 ),
                 description="Usa pra ver o ranking geral de poder dos players (sem filtro de classe)."
@@ -217,18 +213,18 @@ class AgentManager:
         # Ferramentas para rankings de poder por classe
         class_ranking_tools = [
             Tool(
-                name=f"power_ranking_{cc.abbr.lower()}",
+                name=f"power_ranking_{class_info['short'].lower()}",
                 func=wrap_tool_query(
                     partial(
                         self.neogames_rankings.query,
-                        ranking_types=[RankingType.POWER],
-                        class_abbr=cc.abbr.lower()
+                        ranking_types=[RANKING_TYPE_POWER],
+                        class_abbr=class_info['short'].lower()
                     ),
-                    f"power_ranking_{cc.abbr.lower()}"
+                    f"power_ranking_{class_info['short'].lower()}"
                 ),
-                description=f"Usa pra ver o ranking de poder dos {cc.full_pt} ({cc.abbr})."  # <-- CORRIGIDO
+                description=f"Usa pra ver o ranking de poder dos {class_info['name_pt']} ({class_info['short']})."
             )
-            for cc in CharacterClass
+            for class_id, class_info in CLASS_MAPPING.items()
         ]
 
         # Combina todas as ferramentas
