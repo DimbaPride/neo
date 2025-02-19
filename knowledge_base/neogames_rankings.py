@@ -555,7 +555,8 @@ class NeoGamesRankings:
         weekly_scores_data = []
         
         try:
-            tables = soup.find_all('table', class_='w-full')
+            # Busca todas as tabelas primeiro
+            tables = soup.find_all('table')
             logger.debug(f"Encontradas {len(tables)} tabelas")
             
             for table in tables:
@@ -567,7 +568,8 @@ class NeoGamesRankings:
                 header_cells = rows[0].find_all(['th'])
                 data_rows = rows[1:]  # Pula o cabeçalho
                 
-                if len(header_cells) == 4:  # Tabela de Guardiões/Portadores
+                # Tabela de Guardiões/Portadores
+                if len(header_cells) == 4:
                     for row in data_rows:
                         try:
                             cells = row.find_all(['td'])
@@ -594,17 +596,42 @@ class NeoGamesRankings:
                                 type_cell = cells[3]
                                 role_type = 'Portador' if 'text-brand' in type_cell.get('class', []) else 'Guardião'
                                 
-                                # Nova lógica de detecção de nação usando a mesma abordagem do memorial
-                                nation_img = table.find_previous('img', srcset=lambda x: 'procyon-main.png' in x if x else False)
+                                # CORREÇÃO DA DETECÇÃO DE NAÇÃO
                                 nation = None
-                                
+                                # 1. Tenta encontrar pelo ícone com srcset, considerando ambos os formatos de imagem
+                                nation_img = table.find_previous('img', srcset=lambda x: any(pattern in x.lower() if x else False 
+                                                                        for pattern in ['icon-procyon', 'procyon-main.png']))
                                 if nation_img:
                                     nation = NATION_MAPPING['icon-procyon']
                                 else:
-                                    nation_img = table.find_previous('img', srcset=lambda x: 'capella-main.png' in x if x else False)
+                                    nation_img = table.find_previous('img', srcset=lambda x: any(pattern in x.lower() if x else False 
+                                                                            for pattern in ['icon-capella', 'capella-main.png']))
                                     if nation_img:
                                         nation = NATION_MAPPING['icon-capella']
 
+                                # 2. Se não encontrou, procura pelo container pai
+                                if not nation:
+                                    nation_container = table.find_previous(['div', 'section'], class_=lambda x: x and 'rounded-md' in x if x else False)
+                                    if nation_container:
+                                        img = nation_container.find('img', srcset=lambda x: any(pattern in x.lower() if x else False 
+                                                                            for pattern in ['procyon-main.png', 'capella-main.png']))
+                                        if img:
+                                            if 'procyon-main.png' in img['srcset'].lower():
+                                                nation = NATION_MAPPING['icon-procyon']
+                                            elif 'capella-main.png' in img['srcset'].lower():
+                                                nation = NATION_MAPPING['icon-capella']
+
+                                # 3. Se ainda não encontrou, procura por texto
+                                if not nation:
+                                    section = table.find_previous(['section', 'div'])
+                                    if section:
+                                        text = section.get_text().lower()
+                                        if 'procyon' in text:
+                                            nation = NATION_MAPPING['icon-procyon']
+                                        elif 'capella' in text:
+                                            nation = NATION_MAPPING['icon-capella']
+
+                                # 4. Fallback para Unknown se nada for encontrado
                                 if not nation:
                                     nation = {
                                         'name': 'Unknown',
@@ -630,16 +657,24 @@ class NeoGamesRankings:
                             logger.error(f"Erro ao processar linha de roles: {e}")
                             continue
                             
-                elif len(header_cells) == 7:  # Tabela de pontuação semanal
+                # Tabela de pontuação semanal
+                elif len(header_cells) >= 6:  # Mais flexível para aceitar 6 ou 7 colunas
                     for row in data_rows:
                         try:
                             cells = row.find_all(['td'])
-                            if len(cells) >= 7:  # Posição, Classe, Nome, Guild, Pontos, Abates, Nação
-                                position = int(cells[0].get_text(strip=True))
+                            if len(cells) >= 6:  # Aceita 6 ou mais células
+                                # Validação segura da posição
+                                try:
+                                    position_text = cells[0].get_text(strip=True)
+                                    if not position_text:  # Pula linhas vazias
+                                        continue
+                                    position = int(position_text)
+                                except (ValueError, TypeError):
+                                    continue
                                 
-                                # Classe
-                                class_img = cells[1].find('img')
+                                # Classe com validação
                                 class_info = None
+                                class_img = cells[1].find('img')
                                 if class_img and 'srcset' in class_img.attrs:
                                     srcset = class_img['srcset']
                                     for class_id, info in CLASS_MAPPING.items():
@@ -654,16 +689,17 @@ class NeoGamesRankings:
                                         'short': 'UNK'
                                     }
                                 
-                                # Nação
-                                nation_cell = cells[6]
-                                nation_img = nation_cell.find('img')
+                                # Nação com validação
                                 nation = None
-                                if nation_img and 'srcset' in nation_img.attrs:
-                                    srcset = nation_img['srcset']
-                                    if 'icon-capella.png' in srcset:
-                                        nation = NATION_MAPPING['icon-capella']
-                                    elif 'icon-procyon.png' in srcset:
-                                        nation = NATION_MAPPING['icon-procyon']
+                                if len(cells) >= 7:  # Se tiver a coluna de nação
+                                    nation_cell = cells[6]
+                                    nation_img = nation_cell.find('img')
+                                    if nation_img and 'srcset' in nation_img.attrs:
+                                        srcset = nation_img['srcset']
+                                        if 'icon-capella.png' in srcset:
+                                            nation = NATION_MAPPING['icon-capella']
+                                        elif 'icon-procyon.png' in srcset:
+                                            nation = NATION_MAPPING['icon-procyon']
                                 
                                 if not nation:
                                     nation = {
@@ -671,23 +707,29 @@ class NeoGamesRankings:
                                         'name_pt': 'Desconhecida'
                                     }
                                 
-                                entry = {
-                                    'position': position,
-                                    'name': cells[2].get_text(strip=True),
-                                    'class': {
-                                        'name': class_info['name'],
-                                        'name_pt': class_info['name_pt'],
-                                        'short': class_info['short']
-                                    },
-                                    'guild': cells[3].get_text(strip=True),
-                                    'points': self.parse_value(cells[4].get_text(strip=True)),
-                                    'kills': self.parse_value(cells[5].get_text(strip=True)),
-                                    'nation': {
-                                        'en': nation['name'],
-                                        'pt': nation['name_pt']
+                                name = cells[2].get_text(strip=True)
+                                guild = cells[3].get_text(strip=True)
+                                points = self.parse_value(cells[4].get_text(strip=True))
+                                kills = self.parse_value(cells[5].get_text(strip=True))
+                                
+                                if name:  # Só adiciona se tiver pelo menos um nome
+                                    entry = {
+                                        'position': position,
+                                        'name': name,
+                                        'class': {
+                                            'name': class_info['name'],
+                                            'name_pt': class_info['name_pt'],
+                                            'short': class_info['short']
+                                        },
+                                        'guild': guild,
+                                        'points': points,
+                                        'kills': kills,
+                                        'nation': {
+                                            'en': nation['name'],
+                                            'pt': nation['name_pt']
+                                        }
                                     }
-                                }
-                                weekly_scores_data.append(entry)
+                                    weekly_scores_data.append(entry)
                         except Exception as e:
                             logger.error(f"Erro ao processar linha semanal: {e}")
                             continue
@@ -754,9 +796,9 @@ class NeoGamesRankings:
                     with open(weekly_path, 'w', encoding='utf-8') as f:
                         json.dump(weekly_data, f, ensure_ascii=False, indent=2)
             else:
-                # Nome do arquivo JSON baseado no tipo e classe
-                if ranking_type == 'power' and class_id:
-                    json_filename = f"ranking_{class_info['short'].lower()}.json"
+                # Nome do arquivo JSON baseado no tipo e subpasta
+                if ranking_type == 'power':
+                    json_filename = f"ranking_{subfolder}.json"  # Usa o nome da subpasta para o arquivo
                 else:
                     json_filename = f"ranking_{ranking_type}.json"
                 
@@ -954,16 +996,16 @@ class NeoGamesRankings:
             return "Erro ao formatar o ranking. Por favor, tente novamente."
 
     def _get_json_path(self, ranking_type: str, class_abbr: Optional[str] = None) -> str:
-        """Retorna o caminho correto do arquivo JSON baseado no tipo e classe."""
         if ranking_type == 'power':
-            subfolder = "general"
             if class_abbr:
                 class_abbr = class_abbr.upper()
                 for _, info in CLASS_MAPPING.items():
                     if info['short'] == class_abbr:
                         subfolder = class_abbr.lower()
-                        break
-            return os.path.join(self.base_dir, ranking_type, subfolder, f"ranking_{subfolder}.json")
+                        return os.path.join(self.base_dir, ranking_type, subfolder, f"ranking_{subfolder}.json")
+            else:
+                # Para o ranking geral, usa 'general' no nome do arquivo
+                return os.path.join(self.base_dir, ranking_type, "general", "ranking_general.json")
         return os.path.join(self.base_dir, ranking_type, f"ranking_{ranking_type}.json")
 
     def _filter_rankings(self, rankings: List[Dict], question: str, patterns: Dict[str, bool]) -> List[Dict]:
@@ -1007,27 +1049,7 @@ class NeoGamesRankings:
 
         except Exception as e:
             logger.error(f"Erro ao filtrar rankings: {e}")
-            return rankings[:3]
-
-    def _extract_name(self, question: str) -> Optional[str]:
-        """Extrai nome de player ou guild da pergunta."""
-        # Implementar lógica de extração de nome
-        return None
-
-    def _extract_range(self, question: str) -> Tuple[Optional[int], Optional[int]]:
-        """Extrai range de posições da pergunta."""
-        # Implementar lógica de extração de range
-        return None, None
-
-    def _extract_position(self, question: str) -> Optional[int]:
-        """Extrai posição específica da pergunta."""
-        # Implementar lógica de extração de posição
-        return None
-
-    def _extract_number(self, question: str) -> Optional[int]:
-        """Extrai número (ex: top N) da pergunta."""
-        # Implementar lógica de extração de número
-        return None
+            return rankings[:3]    
 
     def _format_header(self, ranking_type: str, class_abbr: Optional[str] = None) -> str:
         """Formata o cabeçalho da resposta."""
