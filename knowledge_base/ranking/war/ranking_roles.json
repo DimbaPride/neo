@@ -1,5 +1,272 @@
 {
-  "timestamp": "2025-02-18 20:59:09",
-  "total_entries": 0,
-  "rankings": []
+  "timestamp": "2025-02-18 22:01:42",
+  "total_entries": 19,
+  "rankings": [
+    {
+      "name": "Abaddon",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "Out",
+      "role": "Portador",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "MAriaBonita",
+      "class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "Ro0b",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "iPeiXe",
+      "class": {
+        "name": "Wizard",
+        "name_pt": "Mago",
+        "short": "MA"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "DarkFeity",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "AmostradinhoSK",
+      "class": {
+        "name": "Force Shielder",
+        "name_pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "guild": "SteinsKillerS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "Carlos",
+      "class": {
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "Zemiro",
+      "class": {
+        "name": "Gladiator",
+        "name_pt": "Gladiador",
+        "short": "GL"
+      },
+      "guild": "SteinsKillerS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "lLorD",
+      "class": {
+        "name": "Force Gunner",
+        "name_pt": "Atirador",
+        "short": "AT"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "Xora",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "Out",
+      "role": "Guardião",
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "name": "Shimaru",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "ForsakenS",
+      "role": "Portador",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "HasgaKU",
+      "class": {
+        "name": "Warrior",
+        "name_pt": "Guerreiro",
+        "short": "GU"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "DreadHot",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "Gege",
+      "class": {
+        "name": "Wizard",
+        "name_pt": "Mago",
+        "short": "MA"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "xKalista",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "Complicate",
+      "class": {
+        "name": "Force Shielder",
+        "name_pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "HelzaoXD38",
+      "class": {
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "JackJohnson",
+      "class": {
+        "name": "Force Gunner",
+        "name_pt": "Atirador",
+        "short": "AT"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "name": "xSrOKuMuRa",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "ForsakenS",
+      "role": "Guardião",
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    }
+  ]
 }

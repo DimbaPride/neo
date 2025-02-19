@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 20:58:03",
+  "timestamp": "2025-02-18 22:00:32",
   "total_entries": 16,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "HasgaKU",
       "guild": "ForsakenS",
-      "attack_power": 606980,
-      "defense_power": 537129,
-      "total_power": 1144109,
+      "attack_power": 692126,
+      "defense_power": 449137,
+      "total_power": 1141263,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"

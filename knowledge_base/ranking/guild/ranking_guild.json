@@ -1,29 +1,29 @@
 {
-  "timestamp": "2025-02-18 20:58:59",
+  "timestamp": "2025-02-18 22:01:31",
   "total_entries": 95,
   "rankings": [
     {
       "position": 1,
       "name": "ForsakenS",
-      "power": 91719677,
+      "power": 91716036,
       "members": 140,
-      "war_points": 425217,
-      "war_kills": 326
+      "war_points": 481626,
+      "war_kills": 364
     },
     {
       "position": 2,
       "name": "Out",
-      "power": 76885524,
+      "power": 76965342,
       "members": 119,
-      "war_points": 547471,
-      "war_kills": 767
+      "war_points": 606750,
+      "war_kills": 882
     },
     {
       "position": 3,
       "name": "RealPlayers",
-      "power": 52542135,
+      "power": 52552301,
       "members": 114,
-      "war_points": 42660,
+      "war_points": 49727,
       "war_kills": 16
     },
     {
@@ -31,23 +31,23 @@
       "name": "C4",
       "power": 47458977,
       "members": 171,
-      "war_points": 3588,
-      "war_kills": 0
+      "war_points": 4035,
+      "war_kills": 1
     },
     {
       "position": 5,
       "name": "SteinsKillerS",
-      "power": 44412915,
+      "power": 44244065,
       "members": 91,
-      "war_points": 28663,
-      "war_kills": 12
+      "war_points": 39995,
+      "war_kills": 14
     },
     {
       "position": 6,
       "name": "Cursed",
-      "power": 42171186,
+      "power": 42191015,
       "members": 111,
-      "war_points": 9746,
+      "war_points": 11614,
       "war_kills": 0
     },
     {
@@ -55,7 +55,7 @@
       "name": "Toxic",
       "power": 8449050,
       "members": 23,
-      "war_points": 767,
+      "war_points": 1158,
       "war_kills": 0
     },
     {
@@ -109,7 +109,7 @@
     {
       "position": 14,
       "name": "TekkadaN",
-      "power": 2739186,
+      "power": 2739636,
       "members": 13,
       "war_points": 0,
       "war_kills": 0
@@ -117,7 +117,7 @@
     {
       "position": 15,
       "name": "CastleTM",
-      "power": 2471762,
+      "power": 2494372,
       "members": 12,
       "war_points": 0,
       "war_kills": 0
@@ -157,7 +157,7 @@
     {
       "position": 20,
       "name": "1",
-      "power": 1359359,
+      "power": 1354728,
       "members": 6,
       "war_points": 208,
       "war_kills": 0

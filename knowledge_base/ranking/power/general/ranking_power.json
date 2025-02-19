@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 20:57:57",
+  "timestamp": "2025-02-18 22:00:25",
   "total_entries": 200,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Abaddon",
       "guild": "Out",
-      "attack_power": 816127,
+      "attack_power": 812950,
       "defense_power": 499698,
-      "total_power": 1315825,
+      "total_power": 1312648,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -21,6 +21,23 @@
     },
     {
       "position": 2,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "lLorD",
+      "guild": "Out",
+      "attack_power": 829499,
+      "defense_power": 465898,
+      "total_power": 1295397,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 3,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -31,23 +48,6 @@
       "attack_power": 824733,
       "defense_power": 457087,
       "total_power": 1281820,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 3,
-      "class": {
-        "en": "Force Gunner",
-        "pt": "Atirador",
-        "short": "AT"
-      },
-      "name": "lLorD",
-      "guild": "Out",
-      "attack_power": 809207,
-      "defense_power": 464711,
-      "total_power": 1273918,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -80,8 +80,8 @@
       "name": "xSrOKuMuRa",
       "guild": "ForsakenS",
       "attack_power": 798994,
-      "defense_power": 440596,
-      "total_power": 1239590,
+      "defense_power": 440319,
+      "total_power": 1239313,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -96,9 +96,9 @@
       },
       "name": "DreadHot",
       "guild": "ForsakenS",
-      "attack_power": 747284,
-      "defense_power": 469822,
-      "total_power": 1217106,
+      "attack_power": 745540,
+      "defense_power": 445386,
+      "total_power": 1190926,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -128,11 +128,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Sortud0",
+      "name": "Ro0b",
       "guild": "Out",
-      "attack_power": 674845,
-      "defense_power": 494695,
-      "total_power": 1169540,
+      "attack_power": 724598,
+      "defense_power": 421951,
+      "total_power": 1146549,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -147,9 +147,9 @@
       },
       "name": "PiK4",
       "guild": "Out",
-      "attack_power": 709239,
-      "defense_power": 450424,
-      "total_power": 1159663,
+      "attack_power": 701623,
+      "defense_power": 440706,
+      "total_power": 1142329,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -164,9 +164,9 @@
       },
       "name": "HasgaKU",
       "guild": "ForsakenS",
-      "attack_power": 690707,
-      "defense_power": 456769,
-      "total_power": 1147476,
+      "attack_power": 692126,
+      "defense_power": 449137,
+      "total_power": 1141263,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -179,11 +179,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Ro0b",
+      "name": "Sortud0",
       "guild": "Out",
-      "attack_power": 724598,
-      "defense_power": 421951,
-      "total_power": 1146549,
+      "attack_power": 703760,
+      "defense_power": 430399,
+      "total_power": 1134159,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -232,9 +232,9 @@
       },
       "name": "PorQuiNha",
       "guild": "ForsakenS",
-      "attack_power": 690484,
-      "defense_power": 409074,
-      "total_power": 1099558,
+      "attack_power": 701207,
+      "defense_power": 398933,
+      "total_power": 1100140,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -266,9 +266,9 @@
       },
       "name": "Xora",
       "guild": "Out",
-      "attack_power": 704690,
-      "defense_power": 383283,
-      "total_power": 1087973,
+      "attack_power": 690669,
+      "defense_power": 394373,
+      "total_power": 1085042,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -277,15 +277,15 @@
     {
       "position": 17,
       "class": {
-        "en": "Force Blader",
-        "pt": "Espadachim Arcano",
-        "short": "EA"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
-      "name": "Ortopedista",
+      "name": "M03D1NH4S",
       "guild": "ForsakenS",
-      "attack_power": 640036,
-      "defense_power": 434377,
-      "total_power": 1074413,
+      "attack_power": 687250,
+      "defense_power": 380914,
+      "total_power": 1068164,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -293,40 +293,6 @@
     },
     {
       "position": 18,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "M03D1NH4S",
-      "guild": "ForsakenS",
-      "attack_power": 690471,
-      "defense_power": 381987,
-      "total_power": 1072458,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 19,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "Trump",
-      "guild": "Out",
-      "attack_power": 687883,
-      "defense_power": 382787,
-      "total_power": 1070670,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 20,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -343,24 +309,24 @@
       }
     },
     {
-      "position": 21,
+      "position": 19,
       "class": {
-        "en": "Force Shielder",
-        "pt": "Guardião Arcano",
-        "short": "GA"
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
       },
-      "name": "Complicate",
-      "guild": "ForsakenS",
-      "attack_power": 635220,
-      "defense_power": 431081,
-      "total_power": 1066301,
+      "name": "Trump",
+      "guild": "Out",
+      "attack_power": 690833,
+      "defense_power": 371446,
+      "total_power": 1062279,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
-      "position": 22,
+      "position": 20,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -368,16 +334,16 @@
       },
       "name": "rasec",
       "guild": "ForsakenS",
-      "attack_power": 663181,
-      "defense_power": 399813,
-      "total_power": 1062994,
+      "attack_power": 672860,
+      "defense_power": 389032,
+      "total_power": 1061892,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 23,
+      "position": 21,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -385,16 +351,16 @@
       },
       "name": "Sonegadora",
       "guild": "Out",
-      "attack_power": 624454,
-      "defense_power": 433753,
-      "total_power": 1058207,
+      "attack_power": 608396,
+      "defense_power": 452308,
+      "total_power": 1060704,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 24,
+      "position": 22,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -411,24 +377,41 @@
       }
     },
     {
-      "position": 25,
+      "position": 23,
       "class": {
-        "en": "Force Archer",
-        "pt": "Arqueiro Arcano",
-        "short": "AA"
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
       },
-      "name": "xKalista",
+      "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 663918,
-      "defense_power": 386311,
-      "total_power": 1050229,
+      "attack_power": 631590,
+      "defense_power": 423372,
+      "total_power": 1054962,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 26,
+      "position": 24,
+      "class": {
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "name": "Ortopedista",
+      "guild": "ForsakenS",
+      "attack_power": 631376,
+      "defense_power": 420269,
+      "total_power": 1051645,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 25,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -436,16 +419,16 @@
       },
       "name": "StressedOutt",
       "guild": "Out",
-      "attack_power": 635436,
-      "defense_power": 412297,
-      "total_power": 1047733,
+      "attack_power": 646736,
+      "defense_power": 402799,
+      "total_power": 1049535,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 27,
+      "position": 26,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -454,15 +437,15 @@
       "name": "Autoridade",
       "guild": "Out",
       "attack_power": 658731,
-      "defense_power": 385685,
-      "total_power": 1044416,
+      "defense_power": 386871,
+      "total_power": 1045602,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 28,
+      "position": 27,
       "class": {
         "en": "Force Blader",
         "pt": "Espadachim Arcano",
@@ -479,7 +462,7 @@
       }
     },
     {
-      "position": 29,
+      "position": 28,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -487,33 +470,33 @@
       },
       "name": "AleRoX",
       "guild": "Out",
-      "attack_power": 662527,
-      "defense_power": 369883,
-      "total_power": 1032410,
+      "attack_power": 670510,
+      "defense_power": 370818,
+      "total_power": 1041328,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 30,
+      "position": 29,
       "class": {
-        "en": "Force Blader",
-        "pt": "Espadachim Arcano",
-        "short": "EA"
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
       },
-      "name": "HelzaoXD38",
+      "name": "xKalista",
       "guild": "ForsakenS",
-      "attack_power": 622572,
-      "defense_power": 393617,
-      "total_power": 1016189,
+      "attack_power": 666252,
+      "defense_power": 372068,
+      "total_power": 1038320,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 31,
+      "position": 30,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -530,7 +513,7 @@
       }
     },
     {
-      "position": 32,
+      "position": 31,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -538,16 +521,16 @@
       },
       "name": "isMagic",
       "guild": "Out",
-      "attack_power": 610360,
-      "defense_power": 400149,
-      "total_power": 1010509,
+      "attack_power": 616542,
+      "defense_power": 388809,
+      "total_power": 1005351,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 33,
+      "position": 32,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -564,17 +547,34 @@
       }
     },
     {
+      "position": 33,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Bambinho",
+      "guild": "ForsakenS",
+      "attack_power": 594930,
+      "defense_power": 394357,
+      "total_power": 989287,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
       "position": 34,
       "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
       },
-      "name": "vzeven2k",
+      "name": "TIPOmito",
       "guild": "Out",
-      "attack_power": 598207,
-      "defense_power": 398725,
-      "total_power": 996932,
+      "attack_power": 621994,
+      "defense_power": 367263,
+      "total_power": 989257,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -583,49 +583,49 @@
     {
       "position": 35,
       "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "R4v3n4",
-      "guild": "ForsakenS",
-      "attack_power": 617653,
-      "defense_power": 374233,
-      "total_power": 991886,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 36,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "TIPOmito",
-      "guild": "Out",
-      "attack_power": 621426,
-      "defense_power": 367488,
-      "total_power": 988914,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 37,
-      "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
         "short": "AA"
       },
       "name": "Tanguete",
       "guild": "Out",
-      "attack_power": 604671,
+      "attack_power": 604844,
       "defense_power": 378296,
-      "total_power": 982967,
+      "total_power": 983140,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 36,
+      "class": {
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "name": "HelzaoXD38",
+      "guild": "ForsakenS",
+      "attack_power": 587823,
+      "defense_power": 393617,
+      "total_power": 981440,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 37,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "vzeven2k",
+      "guild": "Out",
+      "attack_power": 587548,
+      "defense_power": 387635,
+      "total_power": 975183,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -634,15 +634,15 @@
     {
       "position": 38,
       "class": {
-        "en": "Force Gunner",
-        "pt": "Atirador",
-        "short": "AT"
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
       },
-      "name": "Bambinho",
+      "name": "R4v3n4",
       "guild": "ForsakenS",
-      "attack_power": 586220,
-      "defense_power": 394914,
-      "total_power": 981134,
+      "attack_power": 612597,
+      "defense_power": 359645,
+      "total_power": 972242,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -650,23 +650,6 @@
     },
     {
       "position": 39,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "snkz",
-      "guild": "Out",
-      "attack_power": 588836,
-      "defense_power": 383958,
-      "total_power": 972794,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 40,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -683,24 +666,24 @@
       }
     },
     {
-      "position": 41,
+      "position": 40,
       "class": {
-        "en": "Force Archer",
-        "pt": "Arqueiro Arcano",
-        "short": "AA"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
-      "name": "Inevit4vel",
-      "guild": "ForsakenS",
-      "attack_power": 600587,
-      "defense_power": 361884,
-      "total_power": 962471,
+      "name": "snkz",
+      "guild": "Out",
+      "attack_power": 592586,
+      "defense_power": 372618,
+      "total_power": 965204,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
-      "position": 42,
+      "position": 41,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -708,33 +691,16 @@
       },
       "name": "toMate",
       "guild": "ForsakenS",
-      "attack_power": 596733,
-      "defense_power": 361308,
-      "total_power": 958041,
+      "attack_power": 600325,
+      "defense_power": 362986,
+      "total_power": 963311,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 43,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "DeusGarius",
-      "guild": "Out",
-      "attack_power": 581321,
-      "defense_power": 368307,
-      "total_power": 949628,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 44,
+      "position": 42,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -751,7 +717,7 @@
       }
     },
     {
-      "position": 45,
+      "position": 43,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -768,7 +734,7 @@
       }
     },
     {
-      "position": 46,
+      "position": 44,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -785,7 +751,24 @@
       }
     },
     {
-      "position": 47,
+      "position": 45,
+      "class": {
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "name": "Inevit4vel",
+      "guild": "ForsakenS",
+      "attack_power": 571988,
+      "defense_power": 367051,
+      "total_power": 939039,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 46,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -793,16 +776,16 @@
       },
       "name": "Terry",
       "guild": "ForsakenS",
-      "attack_power": 525401,
-      "defense_power": 413491,
-      "total_power": 938892,
+      "attack_power": 550088,
+      "defense_power": 388088,
+      "total_power": 938176,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 48,
+      "position": 47,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -819,7 +802,7 @@
       }
     },
     {
-      "position": 49,
+      "position": 48,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -830,6 +813,23 @@
       "attack_power": 569519,
       "defense_power": 365672,
       "total_power": 935191,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 49,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "Alfanabeto",
+      "guild": "ForsakenS",
+      "attack_power": 585778,
+      "defense_power": 348116,
+      "total_power": 933894,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -859,14 +859,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Takeshi",
-      "guild": "RealPlayers",
-      "attack_power": 560525,
-      "defense_power": 369444,
-      "total_power": 929969,
+      "name": "DeusGarius",
+      "guild": "Out",
+      "attack_power": 571461,
+      "defense_power": 355027,
+      "total_power": 926488,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -893,40 +893,6 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "Konig",
-      "guild": "ForsakenS",
-      "attack_power": 560755,
-      "defense_power": 359846,
-      "total_power": 920601,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 54,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "Alfanabeto",
-      "guild": "ForsakenS",
-      "attack_power": 571311,
-      "defense_power": 348116,
-      "total_power": 919427,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 55,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
       "name": "SaoCiprian0",
       "guild": "ForsakenS",
       "attack_power": 568754,
@@ -938,7 +904,7 @@
       }
     },
     {
-      "position": 56,
+      "position": 54,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -955,7 +921,7 @@
       }
     },
     {
-      "position": 57,
+      "position": 55,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -972,7 +938,24 @@
       }
     },
     {
-      "position": 58,
+      "position": 56,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "Konig",
+      "guild": "ForsakenS",
+      "attack_power": 563875,
+      "defense_power": 348506,
+      "total_power": 912381,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 57,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -989,7 +972,7 @@
       }
     },
     {
-      "position": 59,
+      "position": 58,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1003,6 +986,23 @@
       "nation": {
         "en": "Capella",
         "pt": "Capella"
+      }
+    },
+    {
+      "position": 59,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Takeshi",
+      "guild": "RealPlayers",
+      "attack_power": 547635,
+      "defense_power": 360001,
+      "total_power": 907636,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -1076,40 +1076,6 @@
     {
       "position": 64,
       "class": {
-        "en": "Force Shielder",
-        "pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "name": "Chopper",
-      "guild": "ForsakenS",
-      "attack_power": 487416,
-      "defense_power": 409576,
-      "total_power": 896992,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 65,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "xMoonSTrinhAAx",
-      "guild": "RealPlayers",
-      "attack_power": 525307,
-      "defense_power": 371538,
-      "total_power": 896845,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 66,
-      "class": {
         "en": "Blader",
         "pt": "Duelista",
         "short": "DU"
@@ -1125,6 +1091,40 @@
       }
     },
     {
+      "position": 65,
+      "class": {
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "name": "Chopper",
+      "guild": "ForsakenS",
+      "attack_power": 491610,
+      "defense_power": 398487,
+      "total_power": 890097,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 66,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "Paraiba",
+      "guild": "ForsakenS",
+      "attack_power": 542809,
+      "defense_power": 345421,
+      "total_power": 888230,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
       "position": 67,
       "class": {
         "en": "Wizard",
@@ -1134,8 +1134,8 @@
       "name": "DarkAzazel",
       "guild": "ForsakenS",
       "attack_power": 550443,
-      "defense_power": 341273,
-      "total_power": 891716,
+      "defense_power": 335515,
+      "total_power": 885958,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1161,18 +1161,18 @@
     {
       "position": 69,
       "class": {
-        "en": "Wizard",
-        "pt": "Mago",
-        "short": "MA"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
-      "name": "BritneyBitch",
-      "guild": "ForsakenS",
-      "attack_power": 541328,
-      "defense_power": 338733,
-      "total_power": 880061,
+      "name": "xMoonSTrinhAAx",
+      "guild": "RealPlayers",
+      "attack_power": 519238,
+      "defense_power": 360148,
+      "total_power": 879386,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -1199,18 +1199,35 @@
         "pt": "Duelista",
         "short": "DU"
       },
+      "name": "Wanted",
+      "guild": "ForsakenS",
+      "attack_power": 513806,
+      "defense_power": 358392,
+      "total_power": 872198,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 72,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
       "name": "GorjinxGU",
       "guild": "Out",
-      "attack_power": 529220,
+      "attack_power": 529490,
       "defense_power": 339008,
-      "total_power": 868228,
+      "total_power": 868498,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 72,
+      "position": 73,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1219,25 +1236,8 @@
       "name": "PaiAmor",
       "guild": "ForsakenS",
       "attack_power": 510318,
-      "defense_power": 357536,
-      "total_power": 867854,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 73,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "Wanted",
-      "guild": "ForsakenS",
-      "attack_power": 517172,
-      "defense_power": 345422,
-      "total_power": 862594,
+      "defense_power": 355724,
+      "total_power": 866042,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1245,23 +1245,6 @@
     },
     {
       "position": 74,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "AFTERLIFE",
-      "guild": "Out",
-      "attack_power": 549996,
-      "defense_power": 310911,
-      "total_power": 860907,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 75,
       "class": {
         "en": "Force Blader",
         "pt": "Espadachim Arcano",
@@ -1278,6 +1261,23 @@
       }
     },
     {
+      "position": 75,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "AFTERLIFE",
+      "guild": "Out",
+      "attack_power": 545711,
+      "defense_power": 311187,
+      "total_power": 856898,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
       "position": 76,
       "class": {
         "en": "Blader",
@@ -1287,8 +1287,8 @@
       "name": "Sn0ok",
       "guild": "Out",
       "attack_power": 493846,
-      "defense_power": 357101,
-      "total_power": 850947,
+      "defense_power": 357334,
+      "total_power": 851180,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -1314,23 +1314,6 @@
     {
       "position": 78,
       "class": {
-        "en": "Gladiator",
-        "pt": "Gladiador",
-        "short": "GL"
-      },
-      "name": "lShinobu",
-      "guild": "ForsakenS",
-      "attack_power": 481156,
-      "defense_power": 368327,
-      "total_power": 849483,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 79,
-      "class": {
         "en": "Blader",
         "pt": "Duelista",
         "short": "DU"
@@ -1346,24 +1329,7 @@
       }
     },
     {
-      "position": 80,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "xThrax",
-      "guild": "SteinsKillerS",
-      "attack_power": 536814,
-      "defense_power": 310538,
-      "total_power": 847352,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 81,
+      "position": 79,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1380,7 +1346,24 @@
       }
     },
     {
-      "position": 82,
+      "position": 80,
+      "class": {
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "name": "XxVENONxX",
+      "guild": "RealPlayers",
+      "attack_power": 505962,
+      "defense_power": 337874,
+      "total_power": 843836,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 81,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1397,24 +1380,7 @@
       }
     },
     {
-      "position": 83,
-      "class": {
-        "en": "Force Archer",
-        "pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "name": "XxVENONxX",
-      "guild": "RealPlayers",
-      "attack_power": 504021,
-      "defense_power": 337874,
-      "total_power": 841895,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 84,
+      "position": 82,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -1431,7 +1397,7 @@
       }
     },
     {
-      "position": 85,
+      "position": 83,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -1448,7 +1414,7 @@
       }
     },
     {
-      "position": 86,
+      "position": 84,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -1465,7 +1431,7 @@
       }
     },
     {
-      "position": 87,
+      "position": 85,
       "class": {
         "en": "Force Blader",
         "pt": "Espadachim Arcano",
@@ -1474,32 +1440,49 @@
       "name": "Carlos",
       "guild": "Out",
       "attack_power": 492150,
-      "defense_power": 342436,
-      "total_power": 834586,
+      "defense_power": 341896,
+      "total_power": 834046,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 88,
+      "position": 86,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "lShinobu",
+      "guild": "ForsakenS",
+      "attack_power": 476333,
+      "defense_power": 357236,
+      "total_power": 833569,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 87,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "PANARO",
-      "guild": "Out",
-      "attack_power": 502058,
-      "defense_power": 328415,
-      "total_power": 830473,
+      "name": "BritneyBitch",
+      "guild": "ForsakenS",
+      "attack_power": 500742,
+      "defense_power": 329560,
+      "total_power": 830302,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
-      "position": 89,
+      "position": 88,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1516,7 +1499,7 @@
       }
     },
     {
-      "position": 90,
+      "position": 89,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1533,7 +1516,7 @@
       }
     },
     {
-      "position": 91,
+      "position": 90,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -1550,7 +1533,7 @@
       }
     },
     {
-      "position": 92,
+      "position": 91,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1567,7 +1550,7 @@
       }
     },
     {
-      "position": 93,
+      "position": 92,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1584,24 +1567,24 @@
       }
     },
     {
-      "position": 94,
+      "position": 93,
       "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
       },
-      "name": "Paraiba",
-      "guild": "ForsakenS",
-      "attack_power": 504583,
-      "defense_power": 314546,
-      "total_power": 819129,
+      "name": "PANARO",
+      "guild": "Out",
+      "attack_power": 499671,
+      "defense_power": 319111,
+      "total_power": 818782,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
-      "position": 95,
+      "position": 94,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -1618,24 +1601,7 @@
       }
     },
     {
-      "position": 96,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "AmostradinhaSK",
-      "guild": "SteinsKillerS",
-      "attack_power": 504811,
-      "defense_power": 304994,
-      "total_power": 809805,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 97,
+      "position": 95,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -1652,7 +1618,24 @@
       }
     },
     {
-      "position": 98,
+      "position": 96,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "AmostradinhaSK",
+      "guild": "SteinsKillerS",
+      "attack_power": 498725,
+      "defense_power": 304994,
+      "total_power": 803719,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 97,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -1669,7 +1652,7 @@
       }
     },
     {
-      "position": 99,
+      "position": 98,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1686,24 +1669,7 @@
       }
     },
     {
-      "position": 100,
-      "class": {
-        "en": "Gladiator",
-        "pt": "Gladiador",
-        "short": "GL"
-      },
-      "name": "FarmezinhaXD",
-      "guild": "SteinsKillerS",
-      "attack_power": 479364,
-      "defense_power": 320993,
-      "total_power": 800357,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 101,
+      "position": 99,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -1711,16 +1677,16 @@
       },
       "name": "XxAlyoshaxX",
       "guild": "Out",
-      "attack_power": 484892,
-      "defense_power": 313202,
-      "total_power": 798094,
+      "attack_power": 488714,
+      "defense_power": 309605,
+      "total_power": 798319,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 102,
+      "position": 100,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1737,7 +1703,7 @@
       }
     },
     {
-      "position": 103,
+      "position": 101,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1754,7 +1720,7 @@
       }
     },
     {
-      "position": 104,
+      "position": 102,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1771,7 +1737,7 @@
       }
     },
     {
-      "position": 105,
+      "position": 103,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -1788,24 +1754,7 @@
       }
     },
     {
-      "position": 106,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "SOLDADO",
-      "guild": "ForsakenS",
-      "attack_power": 461249,
-      "defense_power": 321469,
-      "total_power": 782718,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 107,
+      "position": 104,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1822,7 +1771,7 @@
       }
     },
     {
-      "position": 108,
+      "position": 105,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1839,7 +1788,7 @@
       }
     },
     {
-      "position": 109,
+      "position": 106,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1856,7 +1805,7 @@
       }
     },
     {
-      "position": 110,
+      "position": 107,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -1873,24 +1822,7 @@
       }
     },
     {
-      "position": 111,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "Roony",
-      "guild": "1",
-      "attack_power": 456390,
-      "defense_power": 312936,
-      "total_power": 769326,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 112,
+      "position": 108,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1907,7 +1839,24 @@
       }
     },
     {
-      "position": 113,
+      "position": 109,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Roony",
+      "guild": "1",
+      "attack_power": 454347,
+      "defense_power": 310348,
+      "total_power": 764695,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 110,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -1924,7 +1873,7 @@
       }
     },
     {
-      "position": 114,
+      "position": 111,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -1941,7 +1890,24 @@
       }
     },
     {
-      "position": 115,
+      "position": 112,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "FarmezinhaXD",
+      "guild": "SteinsKillerS",
+      "attack_power": 461596,
+      "defense_power": 301208,
+      "total_power": 762804,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 113,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -1958,7 +1924,7 @@
       }
     },
     {
-      "position": 116,
+      "position": 114,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -1975,7 +1941,24 @@
       }
     },
     {
-      "position": 117,
+      "position": 115,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "xThrax",
+      "guild": "SteinsKillerS",
+      "attack_power": 480397,
+      "defense_power": 278517,
+      "total_power": 758914,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 116,
       "class": {
         "en": "Force Blader",
         "pt": "Espadachim Arcano",
@@ -1992,7 +1975,7 @@
       }
     },
     {
-      "position": 118,
+      "position": 117,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -2009,7 +1992,7 @@
       }
     },
     {
-      "position": 119,
+      "position": 118,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -2026,7 +2009,7 @@
       }
     },
     {
-      "position": 120,
+      "position": 119,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -2043,7 +2026,7 @@
       }
     },
     {
-      "position": 121,
+      "position": 120,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -2060,7 +2043,7 @@
       }
     },
     {
-      "position": 122,
+      "position": 121,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -2069,15 +2052,15 @@
       "name": "YpiocaPrataXD",
       "guild": "SteinsKillerS",
       "attack_power": 471279,
-      "defense_power": 277334,
-      "total_power": 748613,
+      "defense_power": 277588,
+      "total_power": 748867,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 123,
+      "position": 122,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -2088,6 +2071,23 @@
       "attack_power": 460035,
       "defense_power": 286296,
       "total_power": 746331,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 123,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "SOLDADO",
+      "guild": "ForsakenS",
+      "attack_power": 443522,
+      "defense_power": 301683,
+      "total_power": 745205,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -2153,9 +2153,9 @@
       },
       "name": "DeMonSs",
       "guild": "RealPlayers",
-      "attack_power": 422403,
-      "defense_power": 312749,
-      "total_power": 735152,
+      "attack_power": 422437,
+      "defense_power": 312775,
+      "total_power": 735212,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -2198,6 +2198,23 @@
     {
       "position": 130,
       "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "OMNITRIX",
+      "guild": "ForsakenS",
+      "attack_power": 418329,
+      "defense_power": 307609,
+      "total_power": 725938,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 131,
+      "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
         "short": "MN"
@@ -2207,23 +2224,6 @@
       "attack_power": 446498,
       "defense_power": 278937,
       "total_power": 725435,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 131,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "OMNITRIX",
-      "guild": "ForsakenS",
-      "attack_power": 430618,
-      "defense_power": 293541,
-      "total_power": 724159,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -2408,9 +2408,9 @@
       },
       "name": "SraFruitJuice",
       "guild": "Out",
-      "attack_power": 417945,
-      "defense_power": 284760,
-      "total_power": 702705,
+      "attack_power": 426083,
+      "defense_power": 273670,
+      "total_power": 699753,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -2474,6 +2474,23 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
+      "name": "TiTioSlash",
+      "guild": "Cursed",
+      "attack_power": 391267,
+      "defense_power": 303862,
+      "total_power": 695129,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 147,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
       "name": "BiruXD",
       "guild": "Cursed",
       "attack_power": 401482,
@@ -2485,7 +2502,7 @@
       }
     },
     {
-      "position": 147,
+      "position": 148,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -2502,7 +2519,7 @@
       }
     },
     {
-      "position": 148,
+      "position": 149,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -2510,16 +2527,16 @@
       },
       "name": "WalkeeR",
       "guild": "RealPlayers",
-      "attack_power": 410686,
+      "attack_power": 410695,
       "defense_power": 277237,
-      "total_power": 687923,
+      "total_power": 687932,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 149,
+      "position": 150,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -2536,7 +2553,7 @@
       }
     },
     {
-      "position": 150,
+      "position": 151,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -2553,7 +2570,7 @@
       }
     },
     {
-      "position": 151,
+      "position": 152,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -2570,7 +2587,7 @@
       }
     },
     {
-      "position": 152,
+      "position": 153,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -2587,24 +2604,24 @@
       }
     },
     {
-      "position": 153,
+      "position": 154,
       "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
       },
-      "name": "TiTioSlash",
-      "guild": "Cursed",
-      "attack_power": 382529,
-      "defense_power": 292771,
-      "total_power": 675300,
+      "name": "BAYGON",
+      "guild": "Out",
+      "attack_power": 379985,
+      "defense_power": 296623,
+      "total_power": 676608,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
-      "position": 154,
+      "position": 155,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -2621,37 +2638,20 @@
       }
     },
     {
-      "position": 155,
-      "class": {
-        "en": "Gladiator",
-        "pt": "Gladiador",
-        "short": "GL"
-      },
-      "name": "BAYGON",
-      "guild": "Out",
-      "attack_power": 376359,
-      "defense_power": 294918,
-      "total_power": 671277,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 156,
       "class": {
-        "en": "Force Blader",
-        "pt": "Espadachim Arcano",
-        "short": "EA"
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
       },
-      "name": "XxNamIxX",
+      "name": "iS3R3IA",
       "guild": "RealPlayers",
-      "attack_power": 394654,
-      "defense_power": 274016,
-      "total_power": 668670,
+      "attack_power": 394623,
+      "defense_power": 277789,
+      "total_power": 672412,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -2850,9 +2850,9 @@
       },
       "name": "DanFoster",
       "guild": "ForsakenS",
-      "attack_power": 389446,
-      "defense_power": 265764,
-      "total_power": 655210,
+      "attack_power": 390644,
+      "defense_power": 266324,
+      "total_power": 656968,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -2860,23 +2860,6 @@
     },
     {
       "position": 169,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "NinaWilliiams",
-      "guild": "ForsakenS",
-      "attack_power": 389121,
-      "defense_power": 266018,
-      "total_power": 655139,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 170,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -2893,7 +2876,7 @@
       }
     },
     {
-      "position": 171,
+      "position": 170,
       "class": {
         "en": "Force Blader",
         "pt": "Espadachim Arcano",
@@ -2910,7 +2893,7 @@
       }
     },
     {
-      "position": 172,
+      "position": 171,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -2927,7 +2910,7 @@
       }
     },
     {
-      "position": 173,
+      "position": 172,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -2944,7 +2927,7 @@
       }
     },
     {
-      "position": 174,
+      "position": 173,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -2961,7 +2944,7 @@
       }
     },
     {
-      "position": 175,
+      "position": 174,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -2978,7 +2961,7 @@
       }
     },
     {
-      "position": 176,
+      "position": 175,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -2995,24 +2978,7 @@
       }
     },
     {
-      "position": 177,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "iS3R3IA",
-      "guild": "RealPlayers",
-      "attack_power": 382288,
-      "defense_power": 261871,
-      "total_power": 644159,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 178,
+      "position": 176,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -3029,7 +2995,7 @@
       }
     },
     {
-      "position": 179,
+      "position": 177,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -3037,16 +3003,16 @@
       },
       "name": "oOCaPiiRoToO",
       "guild": "SteinsKillerS",
-      "attack_power": 366126,
-      "defense_power": 273233,
-      "total_power": 639359,
+      "attack_power": 366142,
+      "defense_power": 273283,
+      "total_power": 639425,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 180,
+      "position": 178,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -3063,7 +3029,7 @@
       }
     },
     {
-      "position": 181,
+      "position": 179,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
@@ -3080,7 +3046,7 @@
       }
     },
     {
-      "position": 182,
+      "position": 180,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -3097,7 +3063,7 @@
       }
     },
     {
-      "position": 183,
+      "position": 181,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -3114,7 +3080,24 @@
       }
     },
     {
-      "position": 184,
+      "position": 182,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "NinaWilliiams",
+      "guild": "ForsakenS",
+      "attack_power": 372659,
+      "defense_power": 261791,
+      "total_power": 634450,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 183,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -3131,7 +3114,7 @@
       }
     },
     {
-      "position": 185,
+      "position": 184,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -3148,6 +3131,23 @@
       }
     },
     {
+      "position": 185,
+      "class": {
+        "en": "Force Blader",
+        "pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "name": "XxNamIxX",
+      "guild": "RealPlayers",
+      "attack_power": 376954,
+      "defense_power": 254282,
+      "total_power": 631236,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
       "position": 186,
       "class": {
         "en": "Blader",
@@ -3156,9 +3156,9 @@
       },
       "name": "BLACKMARIA",
       "guild": "RealPlayers",
-      "attack_power": 377571,
-      "defense_power": 250659,
-      "total_power": 628230,
+      "attack_power": 377618,
+      "defense_power": 250719,
+      "total_power": 628337,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -3320,6 +3320,23 @@
     {
       "position": 196,
       "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Raiyder",
+      "guild": "ForsakenS",
+      "attack_power": 344755,
+      "defense_power": 273921,
+      "total_power": 618676,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 197,
+      "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
         "short": "GL"
@@ -3335,7 +3352,7 @@
       }
     },
     {
-      "position": 197,
+      "position": 198,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
@@ -3352,7 +3369,7 @@
       }
     },
     {
-      "position": 198,
+      "position": 199,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",
@@ -3369,7 +3386,7 @@
       }
     },
     {
-      "position": 199,
+      "position": 200,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -3383,23 +3400,6 @@
       "nation": {
         "en": "Capella",
         "pt": "Capella"
-      }
-    },
-    {
-      "position": 200,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
-      "name": "xEuaKaKau",
-      "guild": "SteinsKillerS",
-      "attack_power": 351753,
-      "defense_power": 265577,
-      "total_power": 617330,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
       }
     }
   ]

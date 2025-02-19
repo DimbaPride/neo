@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 20:58:16",
+  "timestamp": "2025-02-18 22:00:45",
   "total_entries": 16,
   "rankings": [
     {
@@ -28,9 +28,9 @@
       },
       "name": "toMate",
       "guild": "ForsakenS",
-      "attack_power": 596733,
-      "defense_power": 361308,
-      "total_power": 958041,
+      "attack_power": 600325,
+      "defense_power": 362986,
+      "total_power": 963311,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -80,8 +80,8 @@
       "name": "DarkAzazel",
       "guild": "ForsakenS",
       "attack_power": 550443,
-      "defense_power": 341273,
-      "total_power": 891716,
+      "defense_power": 335515,
+      "total_power": 885958,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -96,9 +96,9 @@
       },
       "name": "BritneyBitch",
       "guild": "ForsakenS",
-      "attack_power": 541328,
-      "defense_power": 338733,
-      "total_power": 880061,
+      "attack_power": 500742,
+      "defense_power": 329560,
+      "total_power": 830302,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "PANARO",
       "guild": "Out",
-      "attack_power": 502058,
-      "defense_power": 328415,
-      "total_power": 830473,
+      "attack_power": 499671,
+      "defense_power": 319111,
+      "total_power": 818782,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

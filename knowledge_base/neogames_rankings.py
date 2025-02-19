@@ -544,127 +544,6 @@ class NeoGamesRankings:
             logger.error(f"Erro ao analisar ranking memorial: {e}")
             raise
 
-    def parse_war_roles(self, table, nation) -> List[Dict]:
-        """
-        Função auxiliar para processar a tabela de Guardiões e Portadores.
-        """
-        roles_data = []
-        rows = table.find_all('tr')[1:]  # Pula o cabeçalho
-        
-        for row in rows:
-            try:
-                cells = row.find_all(['td'])
-                if len(cells) >= 4:  # Classe, Nome, Guild, Tipo
-                    # Identifica a classe
-                    class_cell = cells[0]
-                    class_info = None
-                    
-                    class_img = class_cell.find('img')
-                    if class_img and 'srcset' in class_img.attrs:
-                        srcset = class_img['srcset']
-                        for class_id, info in CLASS_MAPPING.items():
-                            icon_pattern = f"icon-{info['icon']}"
-                            if icon_pattern in srcset:
-                                class_info = info
-                                break
-                    
-                    if not class_info:
-                        class_info = {
-                            'name': 'Unknown',
-                            'name_pt': 'Desconhecida',
-                            'short': 'UNK'
-                        }
-                    
-                    # Determina o tipo (Portador ou Guardião)
-                    type_cell = cells[3]
-                    role_type = 'Portador' if 'text-brand' in type_cell.get('class', []) else 'Guardião'
-                    
-                    entry = {
-                        'name': cells[1].get_text(strip=True),
-                        'class': {
-                            'name': class_info['name'],
-                            'name_pt': class_info['name_pt'],
-                            'short': class_info['short']
-                        },
-                        'guild': cells[2].get_text(strip=True),
-                        'role': role_type,
-                        'nation': {
-                            'en': nation['name'],
-                            'pt': nation['name_pt']
-                        }
-                    }
-                    roles_data.append(entry)
-                    logger.debug(f"Processado {role_type} {entry['name']} ({nation['name']})")
-                    
-            except Exception as e:
-                logger.error(f"Erro ao processar linha de roles: {e}")
-                continue
-        
-        return roles_data
-
-    def parse_weekly_scores(self, table, nation) -> List[Dict]:
-        """
-        Função auxiliar para processar a tabela de pontuação semanal.
-        """
-        weekly_data = []
-        rows = table.find_all('tr')[1:]  # Pula o cabeçalho
-        
-        for row in rows:
-            try:
-                cells = row.find_all(['td'])
-                if len(cells) >= 7:  # Posição, Classe, Nome, Guild, Pontos, Abates, Nação
-                    # Extrai a posição
-                    position = int(cells[0].get_text(strip=True))
-                    
-                    # Identifica a classe
-                    class_cell = cells[1]
-                    class_info = None
-                    
-                    class_img = class_cell.find('img')
-                    if class_img and 'srcset' in class_img.attrs:
-                        srcset = class_img['srcset']
-                        for class_id, info in CLASS_MAPPING.items():
-                            icon_pattern = f"icon-{info['icon']}"
-                            if icon_pattern in srcset:
-                                class_info = info
-                                break
-                    
-                    if not class_info:
-                        class_info = {
-                            'name': 'Unknown',
-                            'name_pt': 'Desconhecida',
-                            'short': 'UNK'
-                        }
-                    
-                    # Extrai e formata os valores numéricos
-                    points = int(cells[4].get_text(strip=True).replace(',', '').replace('.', ''))
-                    kills = int(cells[5].get_text(strip=True).replace(',', '').replace('.', ''))
-                    
-                    entry = {
-                        'position': position,
-                        'name': cells[2].get_text(strip=True),
-                        'class': {
-                            'name': class_info['name'],
-                            'name_pt': class_info['name_pt'],
-                            'short': class_info['short']
-                        },
-                        'guild': cells[3].get_text(strip=True),
-                        'points': points,
-                        'kills': kills,
-                        'nation': {
-                            'en': nation['name'],
-                            'pt': nation['name_pt']
-                        }
-                    }
-                    weekly_data.append(entry)
-                    logger.debug(f"Processado ranking semanal #{position}: {entry['name']} ({nation['name']})")
-                    
-            except Exception as e:
-                logger.error(f"Erro ao processar linha do ranking semanal: {e}")
-                continue
-        
-        return weekly_data
-
     def parse_war_ranking(self, html_content: str) -> Dict[str, List[Dict]]:
         """
         Analisa o HTML para extrair dados do ranking de war e pontuação semanal.
@@ -676,54 +555,146 @@ class NeoGamesRankings:
         weekly_scores_data = []
         
         try:
-            # Encontra todas as seções de nação primeiro
-            nation_sections = soup.find_all('h2', class_='text-3xl')  # Ajustando o seletor
-            logger.debug(f"Encontradas {len(nation_sections)} seções de nação")
+            tables = soup.find_all('table', class_='w-full')
+            logger.debug(f"Encontradas {len(tables)} tabelas")
             
-            current_nation = None
-            for section in nation_sections:
-                try:
-                    section_text = section.get_text(strip=True).lower()
-                    logger.debug(f"Processando seção: {section_text}")
-                    
-                    # Identifica a nação
-                    if 'capella' in section_text:
-                        current_nation = NATION_MAPPING['icon-capella']
-                        logger.debug("Nação identificada: Capella")
-                    elif 'procyon' in section_text:
-                        current_nation = NATION_MAPPING['icon-procyon']
-                        logger.debug("Nação identificada: Procyon")
-                    
-                    if current_nation:
-                        # Procura a primeira tabela após a seção de nação (Guardiões/Portadores)
-                        roles_table = section.find_next('table', {'class': 'w-full'})
-                        if roles_table:
-                            nation_roles = self.parse_war_roles(roles_table, current_nation)
-                            war_roles_data.extend(nation_roles)
-                            logger.info(f"Processados {len(nation_roles)} roles para {current_nation['name']}")
-                        
-                        # Procura a seção de pontuação semanal
-                        weekly_header = section.find_next('h3', text=lambda t: t and 'Pontuação da Semana' in t)
-                        if weekly_header:
-                            weekly_table = weekly_header.find_next('table', {'class': 'w-full'})
-                            if weekly_table:
-                                nation_scores = self.parse_weekly_scores(weekly_table, current_nation)
-                                weekly_scores_data.extend(nation_scores)
-                                logger.info(f"Processados {len(nation_scores)} scores para {current_nation['name']}")
-                
-                except Exception as e:
-                    logger.error(f"Erro ao processar seção de nação: {e}")
-                    logger.debug(f"HTML da seção: {section}")
+            for table in tables:
+                rows = table.find_all('tr')
+                if not rows:
                     continue
-            
+                    
+                # Verifica o tipo de tabela pelo número de células no cabeçalho
+                header_cells = rows[0].find_all(['th'])
+                data_rows = rows[1:]  # Pula o cabeçalho
+                
+                if len(header_cells) == 4:  # Tabela de Guardiões/Portadores
+                    for row in data_rows:
+                        try:
+                            cells = row.find_all(['td'])
+                            if len(cells) >= 4:  # Classe, Nome, Guild, Tipo
+                                # Identifica a classe
+                                class_img = cells[0].find('img')
+                                class_info = None
+                                
+                                if class_img and 'srcset' in class_img.attrs:
+                                    srcset = class_img['srcset']
+                                    for class_id, info in CLASS_MAPPING.items():
+                                        if f"icon-{info['icon']}" in srcset:
+                                            class_info = info
+                                            break
+                                
+                                if not class_info:
+                                    class_info = {
+                                        'name': 'Unknown',
+                                        'name_pt': 'Desconhecida',
+                                        'short': 'UNK'
+                                    }
+                                
+                                # Determina o tipo (Portador ou Guardião)
+                                type_cell = cells[3]
+                                role_type = 'Portador' if 'text-brand' in type_cell.get('class', []) else 'Guardião'
+                                
+                                # Nova lógica de detecção de nação usando a mesma abordagem do memorial
+                                nation_img = table.find_previous('img', srcset=lambda x: 'procyon-main.png' in x if x else False)
+                                nation = None
+                                
+                                if nation_img:
+                                    nation = NATION_MAPPING['icon-procyon']
+                                else:
+                                    nation_img = table.find_previous('img', srcset=lambda x: 'capella-main.png' in x if x else False)
+                                    if nation_img:
+                                        nation = NATION_MAPPING['icon-capella']
+
+                                if not nation:
+                                    nation = {
+                                        'name': 'Unknown',
+                                        'name_pt': 'Desconhecida'
+                                    }
+                                
+                                entry = {
+                                    'name': cells[1].get_text(strip=True),
+                                    'class': {
+                                        'name': class_info['name'],
+                                        'name_pt': class_info['name_pt'],
+                                        'short': class_info['short']
+                                    },
+                                    'guild': cells[2].get_text(strip=True),
+                                    'role': role_type,
+                                    'nation': {
+                                        'en': nation['name'],
+                                        'pt': nation['name_pt']
+                                    }
+                                }
+                                war_roles_data.append(entry)
+                        except Exception as e:
+                            logger.error(f"Erro ao processar linha de roles: {e}")
+                            continue
+                            
+                elif len(header_cells) == 7:  # Tabela de pontuação semanal
+                    for row in data_rows:
+                        try:
+                            cells = row.find_all(['td'])
+                            if len(cells) >= 7:  # Posição, Classe, Nome, Guild, Pontos, Abates, Nação
+                                position = int(cells[0].get_text(strip=True))
+                                
+                                # Classe
+                                class_img = cells[1].find('img')
+                                class_info = None
+                                if class_img and 'srcset' in class_img.attrs:
+                                    srcset = class_img['srcset']
+                                    for class_id, info in CLASS_MAPPING.items():
+                                        if f"icon-{info['icon']}" in srcset:
+                                            class_info = info
+                                            break
+                                
+                                if not class_info:
+                                    class_info = {
+                                        'name': 'Unknown',
+                                        'name_pt': 'Desconhecida',
+                                        'short': 'UNK'
+                                    }
+                                
+                                # Nação
+                                nation_cell = cells[6]
+                                nation_img = nation_cell.find('img')
+                                nation = None
+                                if nation_img and 'srcset' in nation_img.attrs:
+                                    srcset = nation_img['srcset']
+                                    if 'icon-capella.png' in srcset:
+                                        nation = NATION_MAPPING['icon-capella']
+                                    elif 'icon-procyon.png' in srcset:
+                                        nation = NATION_MAPPING['icon-procyon']
+                                
+                                if not nation:
+                                    nation = {
+                                        'name': 'Unknown',
+                                        'name_pt': 'Desconhecida'
+                                    }
+                                
+                                entry = {
+                                    'position': position,
+                                    'name': cells[2].get_text(strip=True),
+                                    'class': {
+                                        'name': class_info['name'],
+                                        'name_pt': class_info['name_pt'],
+                                        'short': class_info['short']
+                                    },
+                                    'guild': cells[3].get_text(strip=True),
+                                    'points': self.parse_value(cells[4].get_text(strip=True)),
+                                    'kills': self.parse_value(cells[5].get_text(strip=True)),
+                                    'nation': {
+                                        'en': nation['name'],
+                                        'pt': nation['name_pt']
+                                    }
+                                }
+                                weekly_scores_data.append(entry)
+                        except Exception as e:
+                            logger.error(f"Erro ao processar linha semanal: {e}")
+                            continue
+                            
             total_roles = len(war_roles_data)
             total_scores = len(weekly_scores_data)
             logger.info(f"Total processado - Roles: {total_roles}, Scores: {total_scores}")
-            
-            if total_roles == 0 and total_scores == 0:
-                logger.warning("Nenhum dado foi encontrado! Detalhes do HTML:")
-                logger.warning(f"Total de seções encontradas: {len(nation_sections)}")
-                logger.warning(f"Primeiras 500 caracteres do HTML: {html_content[:500]}")
             
             return {
                 'war_roles': war_roles_data,
@@ -732,7 +703,6 @@ class NeoGamesRankings:
             
         except Exception as e:
             logger.error(f"Erro ao analisar rankings de war: {e}")
-            logger.error(f"HTML recebido: {html_content[:200]}...")  # Mostra início do HTML
             raise
 
     def save_ranking_data(self, data: Union[List[Dict], Dict[str, List[Dict]]], ranking_type: str, class_id: Optional[int] = None):
@@ -1125,11 +1095,15 @@ class NeoGamesRankings:
 
             elif ranking_type == RANKING_TYPE_WAR:
                 logger.info("Processando ranking de war")
-                html_content = await self.fetch_page_content(WAR_RANKING_URL)
+                # Ajustando seletor para esperar tanto a tabela quanto o título
+                html_content = await self.fetch_page_content(
+                    WAR_RANKING_URL,
+                    wait_selector='h2.text-3xl, table.w-full',  # Espera o título da nação ou uma tabela
+                    timeout=60000  # Aumenta o timeout para 60 segundos
+                )
                 if html_content:
                     war_data = self.parse_war_ranking(html_content)
                     if war_data:
-                        # War não tem class_id, então passa None
                         self.save_ranking_data(war_data, ranking_type, class_id=None)
             
         except Exception as e:

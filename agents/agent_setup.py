@@ -13,7 +13,8 @@ from knowledge_base.neogames_rankings import (
     CLASS_MAPPING,
     RANKING_TYPE_POWER,
     RANKING_TYPE_GUILD,
-    RANKING_TYPE_MEMORIAL
+    RANKING_TYPE_MEMORIAL,
+    RANKING_TYPE_WAR
 )
 
 from services.llm import llm_openai
@@ -195,6 +196,14 @@ class AgentManager:
                     "memorial_ranking"
                 ),
                 description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
+            ),
+            Tool(
+                name="war_ranking",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR]),
+                    "war_ranking"
+                ),
+                description="Usa pra ver o ranking de guerra semanal e os portadores e guardiões."
             )
         ]
 
