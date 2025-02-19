@@ -853,34 +853,105 @@ class NeoGamesRankings:
     def format_ranking_response(self, rankings: List[Dict], ranking_type: str) -> str:
         """Formata os rankings de forma amigável"""
         try:
-            # Formata baseado no tipo
-            if ranking_type == 'power':
-                return "\n".join([
-                    f"#{r['position']} - {r['name']} ({r['class']}) - Level {r['level']} - Power {r['power']:,}"
-                    for r in rankings[:5]  # Mostra top 5 por padrão
-                ])
+            # 1. Ranking de War (Portadores e Guardiões)
+            if ranking_type == 'war':
+                # Filtra os dados por nação
+                capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
+                procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                
+                response = []
+                
+                # Capella
+                response.append("=== CAPELLA ===")
+                portadores = [r for r in capella if r['role'] == 'Portador']
+                guardioes = [r for r in capella if r['role'] == 'Guardião']
+                
+                if portadores:
+                    response.append("PORTADOR:")
+                    for p in portadores:
+                        response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
+                
+                if guardioes:
+                    response.append("\nGUARDIÕES:")
+                    for g in guardioes:
+                        response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
+                
+                # Procyon
+                response.append("\n=== PROCYON ===")
+                portadores = [r for r in procyon if r['role'] == 'Portador']
+                guardioes = [r for r in procyon if r['role'] == 'Guardião']
+                
+                if portadores:
+                    response.append("PORTADOR:")
+                    for p in portadores:
+                        response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
+                
+                if guardioes:
+                    response.append("\nGUARDIÕES:")
+                    for g in guardioes:
+                        response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
+                
+                return "\n".join(response)
+
+            # 2. Ranking de Guild
             elif ranking_type == 'guild':
-                return "\n".join([
-                    f"#{r['position']} - {r['name']} - Level {r['level']} - Members {r['members']}"
-                    for r in rankings[:5]
-                ])
+                response = ["=== RANKING DE GUILDS ==="]
+                for r in rankings:
+                    response.append(
+                        f"#{r['position']} - {r['name']}\n"
+                        f"• Power: {r['power']:,}\n"
+                        f"• Membros: {r['members']}\n"
+                        f"• Pontos Guerra: {r['war_points']:,}\n"
+                        f"• Abates Guerra: {r['war_kills']:,}"
+                    )
+                return "\n\n".join(response)
+
+            # 3. Ranking de Power
+            elif ranking_type == 'power':
+                response = ["=== POWER RANKING ==="]
+                for r in rankings:
+                    response.append(
+                        f"#{r['position']} - {r['name']} ({r['class']['pt']})\n"
+                        f"• Guild: {r['guild']}\n"
+                        f"• Power Total: {r['total_power']:,}\n"
+                        f"• ATK: {r['attack_power']:,} | DEF: {r['defense_power']:,}\n"
+                        f"• Nação: {r['nation']['pt']}"
+                    )
+                return "\n\n".join(response)
+
+            # 4. Ranking Memorial
             elif ranking_type == 'memorial':
-                holders = [r for r in rankings if r.get('is_holder')]
-                return "Memorial Holders:\n" + "\n".join([
-                    f"- {r['name']} ({r['class']}) - desde {r['hold_time']}"
-                    for r in holders
-                ])
-            elif ranking_type == 'war':
-                return "\n".join([
-                    f"#{r['position']} - {r['name']} ({r['role']}) - Points {r['points']:,}"
-                    for r in rankings[:5]
-                ])
-            
-            return ""
+                # Organiza por nação
+                capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
+                procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                
+                response = []
+                
+                if capella:
+                    response.append("=== MEMORIAL CAPELLA ===")
+                    for r in capella:
+                        response.append(
+                            f"#{r['position']} - {r['character_name']} "
+                            f"({r['character_class']['name_pt']}) "
+                            f"- Guild: {r['guild_name']}"
+                        )
+                
+                if procyon:
+                    response.append("\n=== MEMORIAL PROCYON ===")
+                    for r in procyon:
+                        response.append(
+                            f"#{r['position']} - {r['character_name']} "
+                            f"({r['character_class']['name_pt']}) "
+                            f"- Guild: {r['guild_name']}"
+                        )
+                
+                return "\n".join(response)
+
+            return "Tipo de ranking não reconhecido"
 
         except Exception as e:
             logger.error(f"Erro formatando ranking {ranking_type}: {e}")
-            return ""
+            return "Erro ao formatar o ranking. Por favor, tente novamente."
 
     def _get_json_path(self, ranking_type: str, class_abbr: Optional[str] = None) -> str:
         """Retorna o caminho correto do arquivo JSON baseado no tipo e classe."""
