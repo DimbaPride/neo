@@ -19,8 +19,6 @@ class LeadContext:
     name: str
     email: str
     phone: str
-    company: str
-    business: str
     timestamp: float = field(default_factory=time.time)
 
 class ConversationManager:
@@ -84,9 +82,7 @@ class ConversationManager:
             self._lead_context[number] = LeadContext(
                 name=context.get('nome', ''),
                 email=context.get('email', ''),
-                phone=number,
-                company=context.get('empresa', ''),
-                business=context.get('ramo', '')
+                phone=number
             )
             logger.debug(f"Contexto adicionado para {number}: {context}")
         except Exception as e:
@@ -105,8 +101,6 @@ class ConversationManager:
                 context = (
                     f"Contexto do Lead:\n"
                     f"Nome: {lead.name}\n"
-                    f"Empresa: {lead.company}\n"
-                    f"Ramo: {lead.business}\n"
                     f"Email: {lead.email}\n"
                 )
                 history_parts.append(context)

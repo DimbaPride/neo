@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-18 12:53:18",
-  "total_entries": 9,
+  "timestamp": "2025-02-18 20:58:48",
+  "total_entries": 10,
   "rankings": [
     {
       "position": 1,
@@ -28,9 +28,9 @@
       },
       "name": "JackJohnson",
       "guild": "ForsakenS",
-      "attack_power": 688062,
-      "defense_power": 415758,
-      "total_power": 1103820,
+      "attack_power": 687924,
+      "defense_power": 415843,
+      "total_power": 1103767,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Bambinho",
       "guild": "ForsakenS",
-      "attack_power": 585624,
-      "defense_power": 383824,
-      "total_power": 969448,
+      "attack_power": 594930,
+      "defense_power": 394357,
+      "total_power": 989287,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -62,9 +62,9 @@
       },
       "name": "Furyy",
       "guild": "Out",
-      "attack_power": 554904,
-      "defense_power": 346989,
-      "total_power": 901893,
+      "attack_power": 507302,
+      "defense_power": 337817,
+      "total_power": 845119,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -77,14 +77,14 @@
         "pt": "Atirador",
         "short": "AT"
       },
-      "name": "Flexinha",
-      "guild": "RealPlayers",
-      "attack_power": 499919,
-      "defense_power": 338552,
-      "total_power": 838471,
+      "name": "LadyGabi",
+      "guild": "SteinsKillerS",
+      "attack_power": 511770,
+      "defense_power": 326040,
+      "total_power": 837810,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -94,14 +94,14 @@
         "pt": "Atirador",
         "short": "AT"
       },
-      "name": "LadyGabi",
-      "guild": "SteinsKillerS",
-      "attack_power": 494001,
-      "defense_power": 306255,
-      "total_power": 800256,
+      "name": "Flexinha",
+      "guild": "RealPlayers",
+      "attack_power": 499919,
+      "defense_power": 335069,
+      "total_power": 834988,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -153,6 +153,23 @@
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
+      }
+    },
+    {
+      "position": 10,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "KatenKyokotsu",
+      "guild": "Cursed",
+      "attack_power": 369281,
+      "defense_power": 248234,
+      "total_power": 617515,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
       }
     }
   ],

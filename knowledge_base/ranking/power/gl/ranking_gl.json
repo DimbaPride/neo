@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-18 12:53:12",
-  "total_entries": 7,
+  "timestamp": "2025-02-18 20:58:42",
+  "total_entries": 8,
   "rankings": [
     {
       "position": 1,
@@ -11,9 +11,9 @@
       },
       "name": "Zemiro",
       "guild": "SteinsKillerS",
-      "attack_power": 544990,
-      "defense_power": 346527,
-      "total_power": 891517,
+      "attack_power": 530089,
+      "defense_power": 351344,
+      "total_power": 881433,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -26,14 +26,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "FarmezinhaXD",
-      "guild": "SteinsKillerS",
-      "attack_power": 519950,
-      "defense_power": 330166,
-      "total_power": 850116,
+      "name": "lShinobu",
+      "guild": "ForsakenS",
+      "attack_power": 476333,
+      "defense_power": 357236,
+      "total_power": 833569,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -43,14 +43,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "lShinobu",
-      "guild": "ForsakenS",
-      "attack_power": 467046,
-      "defense_power": 341296,
-      "total_power": 808342,
+      "name": "FarmezinhaXD",
+      "guild": "SteinsKillerS",
+      "attack_power": 479364,
+      "defense_power": 320993,
+      "total_power": 800357,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -62,9 +62,9 @@
       },
       "name": "DeMonSs",
       "guild": "RealPlayers",
-      "attack_power": 422368,
-      "defense_power": 312722,
-      "total_power": 735090,
+      "attack_power": 422437,
+      "defense_power": 312775,
+      "total_power": 735212,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -79,9 +79,9 @@
       },
       "name": "BAYGON",
       "guild": "Out",
-      "attack_power": 389245,
-      "defense_power": 294918,
-      "total_power": 684163,
+      "attack_power": 379985,
+      "defense_power": 296623,
+      "total_power": 676608,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -106,6 +106,23 @@
     },
     {
       "position": 7,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "Lango",
+      "guild": "Out",
+      "attack_power": 364267,
+      "defense_power": 253490,
+      "total_power": 617757,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 8,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",

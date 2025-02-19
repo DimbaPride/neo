@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 12:52:59",
+  "timestamp": "2025-02-18 20:58:29",
   "total_entries": 8,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 628727,
-      "defense_power": 418945,
-      "total_power": 1047672,
+      "attack_power": 631590,
+      "defense_power": 423372,
+      "total_power": 1054962,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Chopper",
       "guild": "ForsakenS",
-      "attack_power": 462694,
-      "defense_power": 370704,
-      "total_power": 833398,
+      "attack_power": 481375,
+      "defense_power": 398487,
+      "total_power": 879862,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -55,6 +55,23 @@
     },
     {
       "position": 4,
+      "class": {
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "name": "PoderosoPDB",
+      "guild": "Out",
+      "attack_power": 492871,
+      "defense_power": 344716,
+      "total_power": 837587,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 5,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -71,23 +88,6 @@
       }
     },
     {
-      "position": 5,
-      "class": {
-        "en": "Force Shielder",
-        "pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "name": "PoderosoPDB",
-      "guild": "Out",
-      "attack_power": 458471,
-      "defense_power": 319115,
-      "total_power": 777586,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 6,
       "class": {
         "en": "Force Shielder",
@@ -97,8 +97,8 @@
       "name": "DaniMozao",
       "guild": "Out",
       "attack_power": 446676,
-      "defense_power": 308911,
-      "total_power": 755587,
+      "defense_power": 307411,
+      "total_power": 754087,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

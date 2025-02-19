@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-18 12:52:34",
-  "total_entries": 17,
+  "timestamp": "2025-02-18 20:58:03",
+  "total_entries": 16,
   "rankings": [
     {
       "position": 1,
@@ -11,9 +11,9 @@
       },
       "name": "HasgaKU",
       "guild": "ForsakenS",
-      "attack_power": 703972,
-      "defense_power": 451279,
-      "total_power": 1155251,
+      "attack_power": 606980,
+      "defense_power": 537129,
+      "total_power": 1144109,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -28,9 +28,9 @@
       },
       "name": "Belzebu",
       "guild": "ForsakenS",
-      "attack_power": 552241,
-      "defense_power": 432866,
-      "total_power": 985107,
+      "attack_power": 558159,
+      "defense_power": 384480,
+      "total_power": 942639,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Paraiba",
       "guild": "ForsakenS",
-      "attack_power": 522352,
-      "defense_power": 334330,
-      "total_power": 856682,
+      "attack_power": 542809,
+      "defense_power": 345421,
+      "total_power": 888230,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -128,11 +128,11 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "BaltasaR",
+      "name": "formigaoDOcaps",
       "guild": "ForsakenS",
-      "attack_power": 424730,
-      "defense_power": 312243,
-      "total_power": 736973,
+      "attack_power": 420876,
+      "defense_power": 302281,
+      "total_power": 723157,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -145,11 +145,11 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "formigaoDOcaps",
+      "name": "BaltasaR",
       "guild": "ForsakenS",
-      "attack_power": 420876,
-      "defense_power": 302281,
-      "total_power": 723157,
+      "attack_power": 413619,
+      "defense_power": 300797,
+      "total_power": 714416,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -179,6 +179,23 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
+      "name": "Colossal",
+      "guild": "Out",
+      "attack_power": 425277,
+      "defense_power": 272378,
+      "total_power": 697655,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 12,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
       "name": "MasterChief117",
       "guild": "Sem guilda",
       "attack_power": 423054,
@@ -190,7 +207,24 @@
       }
     },
     {
-      "position": 12,
+      "position": 13,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "TiTioSlash",
+      "guild": "Cursed",
+      "attack_power": 391267,
+      "defense_power": 303862,
+      "total_power": 695129,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 14,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -207,58 +241,7 @@
       }
     },
     {
-      "position": 13,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
-      "name": "Colossal",
-      "guild": "Out",
-      "attack_power": 409208,
-      "defense_power": 266399,
-      "total_power": 675607,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 14,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
-      "name": "TiTioSlash",
-      "guild": "Cursed",
-      "attack_power": 381139,
-      "defense_power": 292705,
-      "total_power": 673844,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 15,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
-      "name": "HomemDaSorte",
-      "guild": "ForsakenS",
-      "attack_power": 372548,
-      "defense_power": 281740,
-      "total_power": 654288,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 16,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -275,7 +258,7 @@
       }
     },
     {
-      "position": 17,
+      "position": 16,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",

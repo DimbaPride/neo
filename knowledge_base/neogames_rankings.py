@@ -2,7 +2,7 @@ import os
 import asyncio
 import logging
 from enum import Enum
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 from dataclasses import dataclass
 from datetime import datetime
 import json
@@ -167,9 +167,13 @@ class NeoGamesRankings:
     def _setup_directories(self):
         """Cria a estrutura de diretórios necessária para os rankings."""
         os.makedirs(self.base_dir, exist_ok=True)
-        for ranking_type in ['power', 'guild', 'memorial']:
+        
+        # Cria diretórios base para cada tipo de ranking
+        for ranking_type in ['power', 'guild', 'memorial', 'war']:
             path = os.path.join(self.base_dir, ranking_type)
             os.makedirs(path, exist_ok=True)
+            
+            # Apenas para o ranking de power, cria subpastas
             if ranking_type == 'power':
                 os.makedirs(os.path.join(path, "general"), exist_ok=True)
                 for class_info in CLASS_MAPPING.values():
@@ -458,10 +462,36 @@ class NeoGamesRankings:
                     character_name = card.select_one('h2.font-bold').get_text(strip=True)
                     guild_name = card.select_one('p.text-muted-foreground').get_text(strip=True)
                     
-                    # Extrai e processa informação da classe
+                    # Nova lógica de identificação de classe
                     class_icon = card.select_one('img[alt^="Icon"]')
-                    class_src = class_icon['srcset'].split(' ')[0] if class_icon else ''
-                    class_info = self.get_class_info(class_src)
+                    class_info = None
+                    
+                    if class_icon:
+                        # Tenta identificar pelo srcset
+                        if 'srcset' in class_icon.attrs:
+                            srcset = class_icon['srcset']
+                            for class_id, info in CLASS_MAPPING.items():
+                                icon_pattern = f"icon-{info['icon']}"
+                                if icon_pattern in srcset:
+                                    class_info = info
+                                    break
+                        
+                        # Se não achou pelo srcset, tenta pelo alt
+                        if not class_info and 'alt' in class_icon.attrs:
+                            alt_text = class_icon['alt']
+                            for class_id, info in CLASS_MAPPING.items():
+                                if info['alt'] == alt_text:
+                                    class_info = info
+                                    break
+                    
+                    # Se ainda não encontrou a classe, usa valor padrão
+                    if not class_info:
+                        class_info = {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida',
+                            'short': 'UNK'
+                        }
+                        logger.debug(f"Classe não identificada para {character_name}. HTML do ícone: {class_icon}")
                     
                     # Usando a mesma lógica do power.py para nação
                     nation_img = card.select_one('img[srcset*="procyon.png"]')
@@ -498,6 +528,12 @@ class NeoGamesRankings:
                     }
                     memorial_data.append(memorial_entry)
                     
+                    # Log para debug da identificação de classe
+                    logger.debug(
+                        f"Memorial #{position}: {character_name} - "
+                        f"Classe: {class_info['name_pt']} ({class_info['short']})"
+                    )
+                    
                 except Exception as e:
                     logger.warning(f"Erro ao processar memorial {position}: {e}")
                     continue
@@ -508,165 +544,371 @@ class NeoGamesRankings:
             logger.error(f"Erro ao analisar ranking memorial: {e}")
             raise
 
-    def parse_war_ranking(self, html_content: str) -> List[Dict]:
+    def parse_war_roles(self, table, nation) -> List[Dict]:
         """
-        Analisa o HTML para extrair dados do ranking de war.
+        Função auxiliar para processar a tabela de Guardiões e Portadores.
         """
-        logger.info("Analisando dados do ranking de war")
+        roles_data = []
+        rows = table.find_all('tr')[1:]  # Pula o cabeçalho
+        
+        for row in rows:
+            try:
+                cells = row.find_all(['td'])
+                if len(cells) >= 4:  # Classe, Nome, Guild, Tipo
+                    # Identifica a classe
+                    class_cell = cells[0]
+                    class_info = None
+                    
+                    class_img = class_cell.find('img')
+                    if class_img and 'srcset' in class_img.attrs:
+                        srcset = class_img['srcset']
+                        for class_id, info in CLASS_MAPPING.items():
+                            icon_pattern = f"icon-{info['icon']}"
+                            if icon_pattern in srcset:
+                                class_info = info
+                                break
+                    
+                    if not class_info:
+                        class_info = {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida',
+                            'short': 'UNK'
+                        }
+                    
+                    # Determina o tipo (Portador ou Guardião)
+                    type_cell = cells[3]
+                    role_type = 'Portador' if 'text-brand' in type_cell.get('class', []) else 'Guardião'
+                    
+                    entry = {
+                        'name': cells[1].get_text(strip=True),
+                        'class': {
+                            'name': class_info['name'],
+                            'name_pt': class_info['name_pt'],
+                            'short': class_info['short']
+                        },
+                        'guild': cells[2].get_text(strip=True),
+                        'role': role_type,
+                        'nation': {
+                            'en': nation['name'],
+                            'pt': nation['name_pt']
+                        }
+                    }
+                    roles_data.append(entry)
+                    logger.debug(f"Processado {role_type} {entry['name']} ({nation['name']})")
+                    
+            except Exception as e:
+                logger.error(f"Erro ao processar linha de roles: {e}")
+                continue
+        
+        return roles_data
+
+    def parse_weekly_scores(self, table, nation) -> List[Dict]:
+        """
+        Função auxiliar para processar a tabela de pontuação semanal.
+        """
+        weekly_data = []
+        rows = table.find_all('tr')[1:]  # Pula o cabeçalho
+        
+        for row in rows:
+            try:
+                cells = row.find_all(['td'])
+                if len(cells) >= 7:  # Posição, Classe, Nome, Guild, Pontos, Abates, Nação
+                    # Extrai a posição
+                    position = int(cells[0].get_text(strip=True))
+                    
+                    # Identifica a classe
+                    class_cell = cells[1]
+                    class_info = None
+                    
+                    class_img = class_cell.find('img')
+                    if class_img and 'srcset' in class_img.attrs:
+                        srcset = class_img['srcset']
+                        for class_id, info in CLASS_MAPPING.items():
+                            icon_pattern = f"icon-{info['icon']}"
+                            if icon_pattern in srcset:
+                                class_info = info
+                                break
+                    
+                    if not class_info:
+                        class_info = {
+                            'name': 'Unknown',
+                            'name_pt': 'Desconhecida',
+                            'short': 'UNK'
+                        }
+                    
+                    # Extrai e formata os valores numéricos
+                    points = int(cells[4].get_text(strip=True).replace(',', '').replace('.', ''))
+                    kills = int(cells[5].get_text(strip=True).replace(',', '').replace('.', ''))
+                    
+                    entry = {
+                        'position': position,
+                        'name': cells[2].get_text(strip=True),
+                        'class': {
+                            'name': class_info['name'],
+                            'name_pt': class_info['name_pt'],
+                            'short': class_info['short']
+                        },
+                        'guild': cells[3].get_text(strip=True),
+                        'points': points,
+                        'kills': kills,
+                        'nation': {
+                            'en': nation['name'],
+                            'pt': nation['name_pt']
+                        }
+                    }
+                    weekly_data.append(entry)
+                    logger.debug(f"Processado ranking semanal #{position}: {entry['name']} ({nation['name']})")
+                    
+            except Exception as e:
+                logger.error(f"Erro ao processar linha do ranking semanal: {e}")
+                continue
+        
+        return weekly_data
+
+    def parse_war_ranking(self, html_content: str) -> Dict[str, List[Dict]]:
+        """
+        Analisa o HTML para extrair dados do ranking de war e pontuação semanal.
+        """
+        logger.info("Analisando dados do ranking de war e pontuação semanal")
         
         soup = BeautifulSoup(html_content, 'html.parser')
-        war_data = []
+        war_roles_data = []
+        weekly_scores_data = []
         
         try:
-            rows = soup.find_all('tr')[1:]  # Pula o cabeçalho
+            # Encontra todas as seções de nação primeiro
+            nation_sections = soup.find_all('h2', class_='text-3xl')  # Ajustando o seletor
+            logger.debug(f"Encontradas {len(nation_sections)} seções de nação")
             
-            for position, row in enumerate(rows, 1):
+            current_nation = None
+            for section in nation_sections:
                 try:
-                    cells = row.find_all(['td'])
-                    if len(cells) >= 6:
-                        # Identifica a nação
-                        nation_cell = cells[6] if len(cells) >= 7 else None
-                        nation_info = self.get_nation_info(nation_cell) if nation_cell else {
-                            'name': 'Unknown',
-                            'name_pt': 'Desconhecida'
-                        }
+                    section_text = section.get_text(strip=True).lower()
+                    logger.debug(f"Processando seção: {section_text}")
+                    
+                    # Identifica a nação
+                    if 'capella' in section_text:
+                        current_nation = NATION_MAPPING['icon-capella']
+                        logger.debug("Nação identificada: Capella")
+                    elif 'procyon' in section_text:
+                        current_nation = NATION_MAPPING['icon-procyon']
+                        logger.debug("Nação identificada: Procyon")
+                    
+                    if current_nation:
+                        # Procura a primeira tabela após a seção de nação (Guardiões/Portadores)
+                        roles_table = section.find_next('table', {'class': 'w-full'})
+                        if roles_table:
+                            nation_roles = self.parse_war_roles(roles_table, current_nation)
+                            war_roles_data.extend(nation_roles)
+                            logger.info(f"Processados {len(nation_roles)} roles para {current_nation['name']}")
                         
-                        # Calcula K/D ratio
-                        kills = self.parse_value(cells[3].get_text(strip=True))
-                        deaths = self.parse_value(cells[4].get_text(strip=True))
-                        kd_ratio = round(kills / deaths, 2) if deaths > 0 else kills
-                        
-                        war_entry = {
-                            'position': position,
-                            'name': cells[1].get_text(strip=True),
-                            'guild': cells[2].get_text(strip=True),
-                            'kills': kills,
-                            'deaths': deaths,
-                            'kd_ratio': kd_ratio,
-                            'nation': {
-                                'en': nation_info['name'],
-                                'pt': nation_info['name_pt']
-                            }
-                        }
-                        
-                        war_data.append(war_entry)
-                        
+                        # Procura a seção de pontuação semanal
+                        weekly_header = section.find_next('h3', text=lambda t: t and 'Pontuação da Semana' in t)
+                        if weekly_header:
+                            weekly_table = weekly_header.find_next('table', {'class': 'w-full'})
+                            if weekly_table:
+                                nation_scores = self.parse_weekly_scores(weekly_table, current_nation)
+                                weekly_scores_data.extend(nation_scores)
+                                logger.info(f"Processados {len(nation_scores)} scores para {current_nation['name']}")
+                
                 except Exception as e:
-                    logger.warning(f"Erro ao processar war rank {position}: {e}")
+                    logger.error(f"Erro ao processar seção de nação: {e}")
+                    logger.debug(f"HTML da seção: {section}")
                     continue
             
-            return war_data
+            total_roles = len(war_roles_data)
+            total_scores = len(weekly_scores_data)
+            logger.info(f"Total processado - Roles: {total_roles}, Scores: {total_scores}")
+            
+            if total_roles == 0 and total_scores == 0:
+                logger.warning("Nenhum dado foi encontrado! Detalhes do HTML:")
+                logger.warning(f"Total de seções encontradas: {len(nation_sections)}")
+                logger.warning(f"Primeiras 500 caracteres do HTML: {html_content[:500]}")
+            
+            return {
+                'war_roles': war_roles_data,
+                'weekly_scores': weekly_scores_data
+            }
             
         except Exception as e:
-            logger.error(f"Erro ao analisar ranking de war: {e}")
-            raise        
+            logger.error(f"Erro ao analisar rankings de war: {e}")
+            logger.error(f"HTML recebido: {html_content[:200]}...")  # Mostra início do HTML
+            raise
 
-    def save_ranking_data(self, data: List[Dict], ranking_type: str, class_id: Optional[int] = None):
+    def save_ranking_data(self, data: Union[List[Dict], Dict[str, List[Dict]]], ranking_type: str, class_id: Optional[int] = None):
         """
         Salva os dados do ranking em JSON e cria índices FAISS.
         Mantém apenas um arquivo JSON atualizado para cada tipo de ranking.
+        Suporta tanto lista de dicionários quanto dicionário com múltiplos rankings para war.
         """
         try:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             
             # Define o diretório de saída
-            if ranking_type == 'power' and class_id:
-                class_info = CLASS_MAPPING.get(class_id, {
-                    'name': 'Unknown',
-                    'name_pt': 'Desconhecida',
-                    'short': 'UNK'
-                })
-                subfolder = class_info['short'].lower()
+            if ranking_type == 'power':
+                if class_id:
+                    class_info = CLASS_MAPPING.get(class_id, {
+                        'name': 'Unknown',
+                        'name_pt': 'Desconhecida',
+                        'short': 'UNK'
+                    })
+                    subfolder = class_info['short'].lower()
+                else:
+                    subfolder = "general"
+                out_dir = os.path.join(self.base_dir, ranking_type, subfolder)
             else:
-                subfolder = "general"
-                
-            out_dir = os.path.join(self.base_dir, ranking_type, subfolder)
+                # Para rankings que não são do tipo power, usa o diretório base diretamente
+                out_dir = os.path.join(self.base_dir, ranking_type)
+            
             os.makedirs(out_dir, exist_ok=True)
             
-            # Nome fixo do arquivo JSON baseado no tipo e classe (se aplicável)
-            if ranking_type == 'power' and class_id:
-                json_filename = f"ranking_{class_info['short'].lower()}.json"
-            else:
-                json_filename = f"ranking_{ranking_type}.json"
-                
-            json_path = os.path.join(out_dir, json_filename)
-            
-            # Prepara dados para JSON
-            output_data = {
-                'timestamp': timestamp,
-                'total_entries': len(data),
-                'rankings': data
-            }
-            
-            # Adiciona info da classe se necessário
-            if class_id and ranking_type == 'power':
-                class_info = CLASS_MAPPING.get(class_id)
-                if class_info:
-                    output_data['class_info'] = {
-                        'id': class_id,
-                        'name': class_info['name'],
-                        'name_pt': class_info['name_pt'],
-                        'short': class_info['short']
-                    }
-            
-            # Salva JSON
-            with open(json_path, 'w', encoding='utf-8') as f:
-                json.dump(output_data, f, ensure_ascii=False, indent=2)
-            
-            logger.info(f"Dados JSON atualizados em: {json_path}")
-            
-            # Prepara documentos para FAISS
-            docs = []
-            for entry in data:
-                if ranking_type == 'power':
-                    content = (
-                        f"Rank: {entry['position']}\n"
-                        f"Player: {entry['name']}\n"
-                        f"Classe: {entry['class']['pt']} ({entry['class']['short']})\n"
-                        f"Guild: {entry['guild']}\n"
-                        f"Poder Total: {entry['total_power']:,}\n"
-                        f"Poder de Ataque: {entry['attack_power']:,}\n"
-                        f"Poder de Defesa: {entry['defense_power']:,}\n"
-                        f"Nação: {entry['nation']['pt']}"
-                    )
-                elif ranking_type == 'guild':
-                    content = (
-                        f"Rank: {entry['position']}\n"
-                        f"Guild: {entry['name']}\n"
-                        f"Poder: {entry['power']:,}\n"
-                        f"Membros: {entry['members']}\n"
-                        f"Pontos de Guerra: {entry['war_points']:,}\n"
-                        f"Abates na Guerra: {entry['war_kills']:,}"
-                    )
-                elif ranking_type == 'war':
-                    content = (
-                        f"Rank: {entry['position']}\n"
-                        f"Player: {entry['name']}\n"
-                        f"Guild: {entry['guild']}\n"
-                        f"Abates: {entry['kills']:,}\n"
-                        f"Mortes: {entry['deaths']:,}\n"
-                        f"K/D: {entry['kd_ratio']:.2f}\n"
-                        f"Nação: {entry['nation']['pt']}"
-                    )
-                else:  # memorial
-                    content = (
-                        f"Rank: {entry['position']}\n"
-                        f"Player: {entry['character_name']}\n"
-                        f"Classe: {entry['character_class']['name_pt']} ({entry['character_class']['short']})\n"
-                        f"Guild: {entry['guild_name']}\n"
-                        f"Nação: {entry['nation']['pt']}"
-                    )
-                
-                doc = Document(
-                    page_content=content,
-                    metadata={
+            # Tratamento especial para o ranking de war que tem dois tipos de dados
+            if ranking_type == 'war' and isinstance(data, dict):
+                # Salva os dados de roles (Guardiões/Portadores)
+                if 'war_roles' in data:
+                    roles_data = {
                         'timestamp': timestamp,
-                        'ranking_type': ranking_type,
-                        'position': entry['position'],
-                        'class_id': class_id if class_id else None
+                        'total_entries': len(data['war_roles']),
+                        'rankings': data['war_roles']
                     }
-                )
-                docs.append(doc)
+                    roles_path = os.path.join(out_dir, 'ranking_roles.json')
+                    with open(roles_path, 'w', encoding='utf-8') as f:
+                        json.dump(roles_data, f, ensure_ascii=False, indent=2)
+                    logger.info(f"Dados JSON de roles atualizados em: {roles_path}")
+                
+                # Salva os dados de pontuação semanal
+                if 'weekly_scores' in data:
+                    weekly_data = {
+                        'timestamp': timestamp,
+                        'total_entries': len(data['weekly_scores']),
+                        'rankings': data['weekly_scores']
+                    }
+                    weekly_path = os.path.join(out_dir, 'ranking_weekly.json')
+                    with open(weekly_path, 'w', encoding='utf-8') as f:
+                        json.dump(weekly_data, f, ensure_ascii=False, indent=2)
+                    logger.info(f"Dados JSON semanais atualizados em: {weekly_path}")
+                
+                # Prepara documentos para FAISS
+                docs = []
+                
+                # Documentos para roles
+                for entry in data.get('war_roles', []):
+                    content = (
+                        f"Player: {entry['name']}\n"
+                        f"Classe: {entry['class']['name_pt']} ({entry['class']['short']})\n"
+                        f"Guild: {entry['guild']}\n"
+                        f"Função: {entry['role']}\n"
+                        f"Nação: {entry['nation']['pt']}"
+                    )
+                    doc = Document(
+                        page_content=content,
+                        metadata={
+                            'timestamp': timestamp,
+                            'ranking_type': 'war_roles',
+                            'nation': entry['nation']['en'],
+                            'role': entry['role']
+                        }
+                    )
+                    docs.append(doc)
+                
+                # Documentos para pontuação semanal
+                for entry in data.get('weekly_scores', []):
+                    content = (
+                        f"Rank: #{entry['position']}\n"
+                        f"Player: {entry['name']}\n"
+                        f"Classe: {entry['class']['name_pt']} ({entry['class']['short']})\n"
+                        f"Guild: {entry['guild']}\n"
+                        f"Pontos: {entry['points']}\n"
+                        f"Abates: {entry['kills']}\n"
+                        f"Nação: {entry['nation']['pt']}"
+                    )
+                    doc = Document(
+                        page_content=content,
+                        metadata={
+                            'timestamp': timestamp,
+                            'ranking_type': 'weekly_scores',
+                            'position': entry['position'],
+                            'nation': entry['nation']['en']
+                        }
+                    )
+                    docs.append(doc)
+                
+            else:
+                # Processamento normal para outros rankings
+                # Nome fixo do arquivo JSON baseado no tipo e classe (se aplicável)
+                if ranking_type == 'power' and class_id:
+                    json_filename = f"ranking_{class_info['short'].lower()}.json"
+                else:
+                    json_filename = f"ranking_{ranking_type}.json"
+                
+                json_path = os.path.join(out_dir, json_filename)
+                
+                # Prepara dados para JSON
+                output_data = {
+                    'timestamp': timestamp,
+                    'total_entries': len(data),
+                    'rankings': data
+                }
+                
+                # Adiciona info da classe se necessário
+                if class_id and ranking_type == 'power':
+                    class_info = CLASS_MAPPING.get(class_id)
+                    if class_info:
+                        output_data['class_info'] = {
+                            'id': class_id,
+                            'name': class_info['name'],
+                            'name_pt': class_info['name_pt'],
+                            'short': class_info['short']
+                        }
+                
+                # Salva JSON
+                with open(json_path, 'w', encoding='utf-8') as f:
+                    json.dump(output_data, f, ensure_ascii=False, indent=2)
+                
+                logger.info(f"Dados JSON atualizados em: {json_path}")
+                
+                # Prepara documentos para FAISS
+                docs = []
+                for entry in data:
+                    if ranking_type == 'power':
+                        content = (
+                            f"Rank: {entry['position']}\n"
+                            f"Player: {entry['name']}\n"
+                            f"Classe: {entry['class']['pt']} ({entry['class']['short']})\n"
+                            f"Guild: {entry['guild']}\n"
+                            f"Poder Total: {entry['total_power']:,}\n"
+                            f"Poder de Ataque: {entry['attack_power']:,}\n"
+                            f"Poder de Defesa: {entry['defense_power']:,}\n"
+                            f"Nação: {entry['nation']['pt']}"
+                        )
+                    elif ranking_type == 'guild':
+                        content = (
+                            f"Rank: {entry['position']}\n"
+                            f"Guild: {entry['name']}\n"
+                            f"Poder: {entry['power']:,}\n"
+                            f"Membros: {entry['members']}\n"
+                            f"Pontos de Guerra: {entry['war_points']:,}\n"
+                            f"Abates na Guerra: {entry['war_kills']:,}"
+                        )
+                    elif ranking_type == 'memorial':
+                        content = (
+                            f"Rank: {entry['position']}\n"
+                            f"Player: {entry['character_name']}\n"
+                            f"Classe: {entry['character_class']['name_pt']} ({entry['character_class']['short']})\n"
+                            f"Guild: {entry['guild_name']}\n"
+                            f"Nação: {entry['nation']['pt']}"
+                        )
+                    
+                    doc = Document(
+                        page_content=content,
+                        metadata={
+                            'timestamp': timestamp,
+                            'ranking_type': ranking_type,
+                            'position': entry.get('position'),
+                            'class_id': class_id if class_id else None
+                        }
+                    )
+                    docs.append(doc)
             
             # Cria e salva vectorstore
             if docs:
@@ -675,12 +917,35 @@ class NeoGamesRankings:
                 logger.info(f"Índice FAISS atualizado em: {out_dir}")
             
             # Log de exemplo dos primeiros colocados
-            if data:
+            if isinstance(data, dict) and ranking_type == 'war':
+                # Log para roles
+                if data.get('war_roles'):
+                    logger.info("\nTop Guardiões e Portadores:")
+                    for entry in data['war_roles'][:3]:
+                        logger.info(
+                            f"{entry['role']}: {entry['name']} - "
+                            f"Classe: {entry['class']['name_pt']} ({entry['class']['short']}) - "
+                            f"Guild: {entry['guild']} - "
+                            f"Nação: {entry['nation']['pt']}"
+                        )
+                
+                # Log para pontuação semanal
+                if data.get('weekly_scores'):
+                    logger.info("\nTop 3 Pontuação Semanal:")
+                    for entry in data['weekly_scores'][:3]:
+                        logger.info(
+                            f"#{entry['position']}: {entry['name']} - "
+                            f"Classe: {entry['class']['name_pt']} ({entry['class']['short']}) - "
+                            f"Guild: {entry['guild']} - "
+                            f"Pontos: {entry['points']:,} - "
+                            f"Abates: {entry['kills']:,}"
+                        )
+            elif data:
                 if class_id:
                     class_name = CLASS_MAPPING[class_id]['name_pt']
                 else:
                     class_name = 'Geral'
-                    
+                
                 logger.info(f"\nTop 3 {class_name}:")
                 for entry in data[:3]:
                     if ranking_type == 'power':
@@ -696,14 +961,7 @@ class NeoGamesRankings:
                             f"({entry['character_class']['name_pt']}) - "
                             f"Guild: {entry['guild_name']}"
                         )
-                    elif ranking_type == 'war':
-                        logger.info(
-                            f"#{entry['position']}: {entry['name']} - "
-                            f"Guild: {entry['guild']} - "
-                            f"K/D: {entry['kd_ratio']:.2f} "
-                            f"(Abates: {entry['kills']:,}, Mortes: {entry['deaths']:,})"
-                        )
-                    else:  # guild
+                    elif ranking_type == 'guild':
                         logger.info(
                             f"#{entry['position']}: {entry['name']} - "
                             f"Poder: {entry['power']:,} - "
@@ -750,13 +1008,8 @@ class NeoGamesRankings:
                     f"Membros: {entry['members']}"
                 )
                 
-    def query(
-        self,
-        question: str,
-        ranking_types: Optional[List[str]] = None,
-        k: int = 3,
-        class_abbr: Optional[str] = None
-    ) -> str:
+    def query(self, question: str, ranking_types: Optional[List[str]] = None, k: int = 3, class_abbr: Optional[str] = None) -> str:
+
         """
         Consulta rankings usando FAISS para busca semântica.
         

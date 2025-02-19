@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 12:53:36",
+  "timestamp": "2025-02-18 20:59:05",
   "total_entries": 9,
   "rankings": [
     {
@@ -20,9 +20,9 @@
       "position": 2,
       "character_name": "StressedOutt",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
       },
       "guild_name": "Out",
       "nation": {
@@ -34,9 +34,9 @@
       "position": 3,
       "character_name": "PollyxD",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Wizard",
+        "name_pt": "Mago",
+        "short": "MA"
       },
       "guild_name": "SteinsKillerS",
       "nation": {
@@ -48,9 +48,9 @@
       "position": 4,
       "character_name": "ThriisTham",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
       },
       "guild_name": "SteinsKillerS",
       "nation": {
@@ -62,9 +62,9 @@
       "position": 5,
       "character_name": "Chopper",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Force Shielder",
+        "name_pt": "Guardião Arcano",
+        "short": "GA"
       },
       "guild_name": "ForsakenS",
       "nation": {
@@ -76,9 +76,9 @@
       "position": 6,
       "character_name": "dragon666",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "guild_name": "ForsakenS",
       "nation": {
@@ -90,9 +90,9 @@
       "position": 7,
       "character_name": "BAYGON",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Gladiator",
+        "name_pt": "Gladiador",
+        "short": "GL"
       },
       "guild_name": "Out",
       "nation": {
@@ -104,9 +104,9 @@
       "position": 8,
       "character_name": "lLorD",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Force Gunner",
+        "name_pt": "Atirador",
+        "short": "AT"
       },
       "guild_name": "Out",
       "nation": {
@@ -118,9 +118,9 @@
       "position": 9,
       "character_name": "isMagic",
       "character_class": {
-        "name": "Warrior",
-        "name_pt": "Guerreiro",
-        "short": "GU"
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
       },
       "guild_name": "Out",
       "nation": {
