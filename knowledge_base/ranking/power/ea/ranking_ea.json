@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 22:01:05",
+  "timestamp": "2025-02-19 16:54:48",
   "total_entries": 10,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Ortopedista",
       "guild": "ForsakenS",
-      "attack_power": 631376,
-      "defense_power": 420269,
-      "total_power": 1051645,
+      "attack_power": 644745,
+      "defense_power": 420604,
+      "total_power": 1065349,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "HelzaoXD38",
       "guild": "ForsakenS",
-      "attack_power": 609519,
-      "defense_power": 405973,
-      "total_power": 1015492,
+      "attack_power": 623513,
+      "defense_power": 396637,
+      "total_power": 1020150,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -60,14 +60,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "dragon666",
-      "guild": "ForsakenS",
-      "attack_power": 466697,
-      "defense_power": 390210,
-      "total_power": 856907,
+      "name": "Carlos",
+      "guild": "Out",
+      "attack_power": 522521,
+      "defense_power": 351969,
+      "total_power": 874490,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -77,14 +77,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "Carlos",
-      "guild": "Out",
-      "attack_power": 492150,
-      "defense_power": 341896,
-      "total_power": 834046,
+      "name": "dragon666",
+      "guild": "ForsakenS",
+      "attack_power": 482821,
+      "defense_power": 390262,
+      "total_power": 873083,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -128,14 +128,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "XxNamIxX",
-      "guild": "RealPlayers",
-      "attack_power": 394654,
-      "defense_power": 274016,
-      "total_power": 668670,
+      "name": "VenOnXD",
+      "guild": "ForsakenS",
+      "attack_power": 392097,
+      "defense_power": 271837,
+      "total_power": 663934,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -145,14 +145,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "VenOnXD",
-      "guild": "ForsakenS",
-      "attack_power": 385390,
-      "defense_power": 269401,
-      "total_power": 654791,
+      "name": "XxNamIxX",
+      "guild": "RealPlayers",
+      "attack_power": 376822,
+      "defense_power": 254340,
+      "total_power": 631162,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -172,11 +172,5 @@
         "pt": "Procyon"
       }
     }
-  ],
-  "class_info": {
-    "id": 6,
-    "name": "Force Blader",
-    "name_pt": "Espadachim Arcano",
-    "short": "EA"
-  }
+  ]
 }

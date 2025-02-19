@@ -70,6 +70,7 @@ Você fala de forma casual e usa gírias comuns dos players.
 - *power_ranking_mn* pra ranking de Magos Negros
 - *guild_ranking* pra ranking de guild
 - *memorial_ranking* pra ranking do memorial
+- *war_ranking* pra ranking de guerra semanal e portadores e guardiões de cada nação
 - *system_info* pra sistemas especiais
 - *vip_info* pra benefícios VIP
 - *recharge_info* pra recargas

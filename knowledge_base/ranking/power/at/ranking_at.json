@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 22:01:18",
+  "timestamp": "2025-02-19 16:54:59",
   "total_entries": 10,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "lLorD",
       "guild": "Out",
-      "attack_power": 809207,
-      "defense_power": 464711,
-      "total_power": 1273918,
+      "attack_power": 836557,
+      "defense_power": 470878,
+      "total_power": 1307435,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -28,9 +28,9 @@
       },
       "name": "JackJohnson",
       "guild": "ForsakenS",
-      "attack_power": 687924,
-      "defense_power": 415843,
-      "total_power": 1103767,
+      "attack_power": 705390,
+      "defense_power": 417566,
+      "total_power": 1122956,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Bambinho",
       "guild": "ForsakenS",
-      "attack_power": 594930,
-      "defense_power": 394357,
-      "total_power": 989287,
+      "attack_power": 585939,
+      "defense_power": 383824,
+      "total_power": 969763,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -62,9 +62,9 @@
       },
       "name": "Furyy",
       "guild": "Out",
-      "attack_power": 507302,
-      "defense_power": 337817,
-      "total_power": 845119,
+      "attack_power": 555290,
+      "defense_power": 346989,
+      "total_power": 902279,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -96,9 +96,9 @@
       },
       "name": "Flexinha",
       "guild": "RealPlayers",
-      "attack_power": 499919,
-      "defense_power": 335069,
-      "total_power": 834988,
+      "attack_power": 500237,
+      "defense_power": 335260,
+      "total_power": 835497,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "Sylvie",
       "guild": "SteinsKillerS",
-      "attack_power": 470196,
-      "defense_power": 292610,
-      "total_power": 762806,
+      "attack_power": 472457,
+      "defense_power": 292710,
+      "total_power": 765167,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -172,11 +172,5 @@
         "pt": "Capella"
       }
     }
-  ],
-  "class_info": {
-    "id": 8,
-    "name": "Force Gunner",
-    "name_pt": "Atirador",
-    "short": "AT"
-  }
+  ]
 }

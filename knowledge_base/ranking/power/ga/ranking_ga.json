@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-18 22:00:59",
+  "timestamp": "2025-02-19 16:54:42",
   "total_entries": 8,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 631590,
-      "defense_power": 423372,
-      "total_power": 1054962,
+      "attack_power": 628583,
+      "defense_power": 409821,
+      "total_power": 1038404,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -28,9 +28,9 @@
       },
       "name": "AmostradinhoSK",
       "guild": "SteinsKillerS",
-      "attack_power": 547806,
-      "defense_power": 399992,
-      "total_power": 947798,
+      "attack_power": 542021,
+      "defense_power": 399433,
+      "total_power": 941454,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -62,9 +62,9 @@
       },
       "name": "PoderosoPDB",
       "guild": "Out",
-      "attack_power": 492871,
+      "attack_power": 489915,
       "defense_power": 344716,
-      "total_power": 837587,
+      "total_power": 834631,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -79,9 +79,9 @@
       },
       "name": "Empire",
       "guild": "RealPlayers",
-      "attack_power": 460510,
+      "attack_power": 460863,
       "defense_power": 343199,
-      "total_power": 803709,
+      "total_power": 804062,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "LionSin",
       "guild": "Out",
-      "attack_power": 380761,
+      "attack_power": 381003,
       "defense_power": 269408,
-      "total_power": 650169,
+      "total_power": 650411,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -138,11 +138,5 @@
         "pt": "Procyon"
       }
     }
-  ],
-  "class_info": {
-    "id": 5,
-    "name": "Force Shielder",
-    "name_pt": "Guardião Arcano",
-    "short": "GA"
-  }
+  ]
 }

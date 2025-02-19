@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-18 22:00:38",
-  "total_entries": 60,
+  "timestamp": "2025-02-19 16:54:25",
+  "total_entries": 61,
   "rankings": [
     {
       "position": 1,
@@ -11,9 +11,9 @@
       },
       "name": "DreadHot",
       "guild": "ForsakenS",
-      "attack_power": 750699,
-      "defense_power": 446857,
-      "total_power": 1197556,
+      "attack_power": 756065,
+      "defense_power": 447194,
+      "total_power": 1203259,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -28,9 +28,9 @@
       },
       "name": "Ro0b",
       "guild": "Out",
-      "attack_power": 724598,
-      "defense_power": 421951,
-      "total_power": 1146549,
+      "attack_power": 742462,
+      "defense_power": 426313,
+      "total_power": 1168775,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -43,14 +43,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Sortud0",
-      "guild": "Out",
-      "attack_power": 703760,
-      "defense_power": 430399,
-      "total_power": 1134159,
+      "name": "K4PET4",
+      "guild": "ForsakenS",
+      "attack_power": 706848,
+      "defense_power": 437361,
+      "total_power": 1144209,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -60,14 +60,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "K4PET4",
-      "guild": "ForsakenS",
-      "attack_power": 697198,
-      "defense_power": 429403,
-      "total_power": 1126601,
+      "name": "Sortud0",
+      "guild": "Out",
+      "attack_power": 703767,
+      "defense_power": 430670,
+      "total_power": 1134437,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -79,9 +79,9 @@
       },
       "name": "M03D1NH4S",
       "guild": "ForsakenS",
-      "attack_power": 687250,
-      "defense_power": 380914,
-      "total_power": 1068164,
+      "attack_power": 690540,
+      "defense_power": 381864,
+      "total_power": 1072404,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -94,14 +94,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "rasec",
-      "guild": "ForsakenS",
-      "attack_power": 672860,
-      "defense_power": 389032,
-      "total_power": 1061892,
+      "name": "AleRoX",
+      "guild": "Out",
+      "attack_power": 672140,
+      "defense_power": 377526,
+      "total_power": 1049666,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -111,11 +111,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "AleRoX",
+      "name": "StressedOutt",
       "guild": "Out",
-      "attack_power": 669312,
-      "defense_power": 382159,
-      "total_power": 1051471,
+      "attack_power": 646736,
+      "defense_power": 402799,
+      "total_power": 1049535,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -128,14 +128,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "StressedOutt",
-      "guild": "Out",
-      "attack_power": 646736,
-      "defense_power": 401206,
-      "total_power": 1047942,
+      "name": "rasec",
+      "guild": "ForsakenS",
+      "attack_power": 650510,
+      "defense_power": 377748,
+      "total_power": 1028258,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -147,9 +147,9 @@
       },
       "name": "ThanosXD",
       "guild": "ForsakenS",
-      "attack_power": 625199,
-      "defense_power": 389919,
-      "total_power": 1015118,
+      "attack_power": 626433,
+      "defense_power": 377040,
+      "total_power": 1003473,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -164,9 +164,9 @@
       },
       "name": "BabySharkPDB",
       "guild": "Out",
-      "attack_power": 612991,
-      "defense_power": 389072,
-      "total_power": 1002063,
+      "attack_power": 609375,
+      "defense_power": 380583,
+      "total_power": 989958,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -179,11 +179,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "vzeven2k",
+      "name": "DeusGarius",
       "guild": "Out",
-      "attack_power": 598207,
-      "defense_power": 398725,
-      "total_power": 996932,
+      "attack_power": 611853,
+      "defense_power": 367767,
+      "total_power": 979620,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -196,11 +196,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "DeusGarius",
+      "name": "vzeven2k",
       "guild": "Out",
-      "attack_power": 581407,
-      "defense_power": 368307,
-      "total_power": 949714,
+      "attack_power": 588065,
+      "defense_power": 387661,
+      "total_power": 975726,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -213,14 +213,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Titania",
-      "guild": "ForsakenS",
-      "attack_power": 563887,
-      "defense_power": 373861,
-      "total_power": 937748,
+      "name": "snkz",
+      "guild": "Out",
+      "attack_power": 592649,
+      "defense_power": 370557,
+      "total_power": 963206,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -230,14 +230,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "snkz",
-      "guild": "Out",
-      "attack_power": 553758,
-      "defense_power": 383708,
-      "total_power": 937466,
+      "name": "Titania",
+      "guild": "ForsakenS",
+      "attack_power": 578077,
+      "defense_power": 376967,
+      "total_power": 955044,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -249,9 +249,9 @@
       },
       "name": "Enryu",
       "guild": "Out",
-      "attack_power": 565761,
-      "defense_power": 367992,
-      "total_power": 933753,
+      "attack_power": 562168,
+      "defense_power": 366313,
+      "total_power": 928481,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -266,9 +266,9 @@
       },
       "name": "lCavaUmaFalta",
       "guild": "SteinsKillerS",
-      "attack_power": 573005,
-      "defense_power": 339949,
-      "total_power": 912954,
+      "attack_power": 573039,
+      "defense_power": 339975,
+      "total_power": 913014,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -281,14 +281,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "BabaYaga",
-      "guild": "Out",
-      "attack_power": 551676,
-      "defense_power": 358124,
-      "total_power": 909800,
+      "name": "Takeshi",
+      "guild": "RealPlayers",
+      "attack_power": 537753,
+      "defense_power": 360001,
+      "total_power": 897754,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -298,11 +298,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Takeshi",
-      "guild": "RealPlayers",
-      "attack_power": 547635,
-      "defense_power": 360001,
-      "total_power": 907636,
+      "name": "KevinMamar",
+      "guild": "ForsakenS",
+      "attack_power": 545647,
+      "defense_power": 344092,
+      "total_power": 889739,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -315,11 +315,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "xMoonSTrinhAAx",
-      "guild": "RealPlayers",
-      "attack_power": 525948,
-      "defense_power": 371238,
-      "total_power": 897186,
+      "name": "BabaYaga",
+      "guild": "Out",
+      "attack_power": 537874,
+      "defense_power": 348952,
+      "total_power": 886826,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -332,14 +332,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "KevinMamar",
-      "guild": "ForsakenS",
-      "attack_power": 533944,
-      "defense_power": 359593,
-      "total_power": 893537,
+      "name": "xMoonSTrinhAAx",
+      "guild": "RealPlayers",
+      "attack_power": 520190,
+      "defense_power": 361583,
+      "total_power": 881773,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -349,11 +349,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Wanted",
+      "name": "MARECHAS",
       "guild": "ForsakenS",
-      "attack_power": 513806,
-      "defense_power": 358392,
-      "total_power": 872198,
+      "attack_power": 510820,
+      "defense_power": 354284,
+      "total_power": 865104,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -368,9 +368,9 @@
       },
       "name": "GorjinxGU",
       "guild": "Out",
-      "attack_power": 529220,
-      "defense_power": 339008,
-      "total_power": 868228,
+      "attack_power": 518738,
+      "defense_power": 340351,
+      "total_power": 859089,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -386,8 +386,8 @@
       "name": "Sn0ok",
       "guild": "Out",
       "attack_power": 493846,
-      "defense_power": 357101,
-      "total_power": 850947,
+      "defense_power": 357334,
+      "total_power": 851180,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -402,9 +402,9 @@
       },
       "name": "CapitaoSteaK",
       "guild": "SteinsKillerS",
-      "attack_power": 528775,
-      "defense_power": 321645,
-      "total_power": 850420,
+      "attack_power": 528607,
+      "defense_power": 321777,
+      "total_power": 850384,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -434,11 +434,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Powder",
+      "name": "Wanted",
       "guild": "ForsakenS",
-      "attack_power": 498277,
-      "defense_power": 348586,
-      "total_power": 846863,
+      "attack_power": 490204,
+      "defense_power": 336813,
+      "total_power": 827017,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -451,11 +451,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "MARECHAS",
+      "name": "Powder",
       "guild": "ForsakenS",
-      "attack_power": 493017,
-      "defense_power": 334473,
-      "total_power": 827490,
+      "attack_power": 486327,
+      "defense_power": 337423,
+      "total_power": 823750,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -463,6 +463,23 @@
     },
     {
       "position": 28,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Roony",
+      "guild": "1",
+      "attack_power": 480339,
+      "defense_power": 331840,
+      "total_power": 812179,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 29,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -479,23 +496,6 @@
       }
     },
     {
-      "position": 29,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "Alca",
-      "guild": "Out",
-      "attack_power": 480295,
-      "defense_power": 309561,
-      "total_power": 789856,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 30,
       "class": {
         "en": "Blader",
@@ -504,9 +504,9 @@
       },
       "name": "SOLDADO",
       "guild": "ForsakenS",
-      "attack_power": 461249,
-      "defense_power": 321469,
-      "total_power": 782718,
+      "attack_power": 462691,
+      "defense_power": 321883,
+      "total_power": 784574,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -519,14 +519,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "BIGOLINHAA",
-      "guild": "Out",
-      "attack_power": 474303,
-      "defense_power": 307766,
-      "total_power": 782069,
+      "name": "PoliDU",
+      "guild": "RealPlayers",
+      "attack_power": 450313,
+      "defense_power": 311054,
+      "total_power": 761367,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -536,14 +536,14 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Observad0R",
-      "guild": "SteinsKillerS",
-      "attack_power": 466456,
-      "defense_power": 309968,
-      "total_power": 776424,
+      "name": "BIGOLINHAA",
+      "guild": "Out",
+      "attack_power": 458336,
+      "defense_power": 302922,
+      "total_power": 761258,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -553,35 +553,18 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Roony",
-      "guild": "1",
-      "attack_power": 454347,
-      "defense_power": 310348,
-      "total_power": 764695,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 34,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "PoliDU",
-      "guild": "RealPlayers",
-      "attack_power": 448388,
-      "defense_power": 310926,
-      "total_power": 759314,
+      "name": "Alca",
+      "guild": "Out",
+      "attack_power": 462527,
+      "defense_power": 289776,
+      "total_power": 752303,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 35,
+      "position": 34,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -598,7 +581,7 @@
       }
     },
     {
-      "position": 36,
+      "position": 35,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -615,7 +598,41 @@
       }
     },
     {
+      "position": 36,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Observad0R",
+      "guild": "SteinsKillerS",
+      "attack_power": 453935,
+      "defense_power": 290182,
+      "total_power": 744117,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
       "position": 37,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "OMNITRIX",
+      "guild": "ForsakenS",
+      "attack_power": 439889,
+      "defense_power": 297036,
+      "total_power": 736925,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 38,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -632,7 +649,7 @@
       }
     },
     {
-      "position": 38,
+      "position": 39,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -649,24 +666,24 @@
       }
     },
     {
-      "position": 39,
+      "position": 40,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "OMNITRIX",
+      "name": "Highlander",
       "guild": "ForsakenS",
-      "attack_power": 418329,
-      "defense_power": 307609,
-      "total_power": 725938,
+      "attack_power": 437208,
+      "defense_power": 285049,
+      "total_power": 722257,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 40,
+      "position": 41,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -683,23 +700,6 @@
       }
     },
     {
-      "position": 41,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "Highlander",
-      "guild": "ForsakenS",
-      "attack_power": 429169,
-      "defense_power": 283713,
-      "total_power": 712882,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 42,
       "class": {
         "en": "Blader",
@@ -708,9 +708,9 @@
       },
       "name": "SraFruitJuice",
       "guild": "Out",
-      "attack_power": 417945,
-      "defense_power": 284760,
-      "total_power": 702705,
+      "attack_power": 427869,
+      "defense_power": 274364,
+      "total_power": 702233,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -723,11 +723,11 @@
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "WalkeeR",
+      "name": "Donner",
       "guild": "RealPlayers",
-      "attack_power": 410686,
-      "defense_power": 277237,
-      "total_power": 687923,
+      "attack_power": 423706,
+      "defense_power": 272919,
+      "total_power": 696625,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -735,6 +735,40 @@
     },
     {
       "position": 44,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "WalkeeR",
+      "guild": "RealPlayers",
+      "attack_power": 410695,
+      "defense_power": 277237,
+      "total_power": 687932,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 45,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "iS3R3IA",
+      "guild": "RealPlayers",
+      "attack_power": 399591,
+      "defense_power": 283929,
+      "total_power": 683520,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 46,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -751,24 +785,7 @@
       }
     },
     {
-      "position": 45,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "iS3R3IA",
-      "guild": "RealPlayers",
-      "attack_power": 394623,
-      "defense_power": 277789,
-      "total_power": 672412,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 46,
+      "position": 47,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -785,7 +802,7 @@
       }
     },
     {
-      "position": 47,
+      "position": 48,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -802,7 +819,7 @@
       }
     },
     {
-      "position": 48,
+      "position": 49,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -819,24 +836,24 @@
       }
     },
     {
-      "position": 49,
+      "position": 50,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
         "short": "DU"
       },
-      "name": "Donner",
-      "guild": "RealPlayers",
-      "attack_power": 388487,
-      "defense_power": 273169,
-      "total_power": 661656,
+      "name": "MrFloid",
+      "guild": "ForsakenS",
+      "attack_power": 404486,
+      "defense_power": 256649,
+      "total_power": 661135,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
-      "position": 50,
+      "position": 51,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -853,41 +870,7 @@
       }
     },
     {
-      "position": 51,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "MrFloid",
-      "guild": "ForsakenS",
-      "attack_power": 403493,
-      "defense_power": 254184,
-      "total_power": 657677,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 52,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "NinaWilliiams",
-      "guild": "ForsakenS",
-      "attack_power": 389121,
-      "defense_power": 266018,
-      "total_power": 655139,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 53,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -901,6 +884,23 @@
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
+      }
+    },
+    {
+      "position": 53,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "Levi",
+      "guild": "Sem guilda",
+      "attack_power": 385687,
+      "defense_power": 264091,
+      "total_power": 649778,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -927,6 +927,23 @@
         "pt": "Duelista",
         "short": "DU"
       },
+      "name": "NinaWilliiams",
+      "guild": "ForsakenS",
+      "attack_power": 370264,
+      "defense_power": 260672,
+      "total_power": 630936,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 56,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
       "name": "BLACKMARIA",
       "guild": "RealPlayers",
       "attack_power": 377618,
@@ -938,7 +955,7 @@
       }
     },
     {
-      "position": 56,
+      "position": 57,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -955,7 +972,7 @@
       }
     },
     {
-      "position": 57,
+      "position": 58,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -972,7 +989,7 @@
       }
     },
     {
-      "position": 58,
+      "position": 59,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -989,7 +1006,24 @@
       }
     },
     {
-      "position": 59,
+      "position": 60,
+      "class": {
+        "en": "Blader",
+        "pt": "Duelista",
+        "short": "DU"
+      },
+      "name": "lLeonaa",
+      "guild": "RealPlayers",
+      "attack_power": 368556,
+      "defense_power": 252871,
+      "total_power": 621427,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 61,
       "class": {
         "en": "Blader",
         "pt": "Duelista",
@@ -997,36 +1031,13 @@
       },
       "name": "Vovo",
       "guild": "Sem guilda",
-      "attack_power": 350273,
-      "defense_power": 272295,
-      "total_power": 622568,
+      "attack_power": 349101,
+      "defense_power": 271227,
+      "total_power": 620328,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
-    },
-    {
-      "position": 60,
-      "class": {
-        "en": "Blader",
-        "pt": "Duelista",
-        "short": "DU"
-      },
-      "name": "Raiyder",
-      "guild": "ForsakenS",
-      "attack_power": 344755,
-      "defense_power": 273921,
-      "total_power": 618676,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
     }
-  ],
-  "class_info": {
-    "id": 2,
-    "name": "Blader",
-    "name_pt": "Duelista",
-    "short": "DU"
-  }
+  ]
 }

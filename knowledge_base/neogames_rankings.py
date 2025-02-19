@@ -2,7 +2,7 @@ import os
 import asyncio
 import logging
 from enum import Enum
-from typing import List, Dict, Optional, Union
+from typing import List, Dict, Optional, Union, Tuple
 from dataclasses import dataclass
 from datetime import datetime
 import json
@@ -707,9 +707,8 @@ class NeoGamesRankings:
 
     def save_ranking_data(self, data: Union[List[Dict], Dict[str, List[Dict]]], ranking_type: str, class_id: Optional[int] = None):
         """
-        Salva os dados do ranking em JSON e cria índices FAISS.
+        Salva os dados do ranking apenas em JSON.
         Mantém apenas um arquivo JSON atualizado para cada tipo de ranking.
-        Suporta tanto lista de dicionários quanto dicionário com múltiplos rankings para war.
         """
         try:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -727,7 +726,6 @@ class NeoGamesRankings:
                     subfolder = "general"
                 out_dir = os.path.join(self.base_dir, ranking_type, subfolder)
             else:
-                # Para rankings que não são do tipo power, usa o diretório base diretamente
                 out_dir = os.path.join(self.base_dir, ranking_type)
             
             os.makedirs(out_dir, exist_ok=True)
@@ -744,7 +742,6 @@ class NeoGamesRankings:
                     roles_path = os.path.join(out_dir, 'ranking_roles.json')
                     with open(roles_path, 'w', encoding='utf-8') as f:
                         json.dump(roles_data, f, ensure_ascii=False, indent=2)
-                    logger.info(f"Dados JSON de roles atualizados em: {roles_path}")
                 
                 # Salva os dados de pontuação semanal
                 if 'weekly_scores' in data:
@@ -756,56 +753,8 @@ class NeoGamesRankings:
                     weekly_path = os.path.join(out_dir, 'ranking_weekly.json')
                     with open(weekly_path, 'w', encoding='utf-8') as f:
                         json.dump(weekly_data, f, ensure_ascii=False, indent=2)
-                    logger.info(f"Dados JSON semanais atualizados em: {weekly_path}")
-                
-                # Prepara documentos para FAISS
-                docs = []
-                
-                # Documentos para roles
-                for entry in data.get('war_roles', []):
-                    content = (
-                        f"Player: {entry['name']}\n"
-                        f"Classe: {entry['class']['name_pt']} ({entry['class']['short']})\n"
-                        f"Guild: {entry['guild']}\n"
-                        f"Função: {entry['role']}\n"
-                        f"Nação: {entry['nation']['pt']}"
-                    )
-                    doc = Document(
-                        page_content=content,
-                        metadata={
-                            'timestamp': timestamp,
-                            'ranking_type': 'war_roles',
-                            'nation': entry['nation']['en'],
-                            'role': entry['role']
-                        }
-                    )
-                    docs.append(doc)
-                
-                # Documentos para pontuação semanal
-                for entry in data.get('weekly_scores', []):
-                    content = (
-                        f"Rank: #{entry['position']}\n"
-                        f"Player: {entry['name']}\n"
-                        f"Classe: {entry['class']['name_pt']} ({entry['class']['short']})\n"
-                        f"Guild: {entry['guild']}\n"
-                        f"Pontos: {entry['points']}\n"
-                        f"Abates: {entry['kills']}\n"
-                        f"Nação: {entry['nation']['pt']}"
-                    )
-                    doc = Document(
-                        page_content=content,
-                        metadata={
-                            'timestamp': timestamp,
-                            'ranking_type': 'weekly_scores',
-                            'position': entry['position'],
-                            'nation': entry['nation']['en']
-                        }
-                    )
-                    docs.append(doc)
-                
             else:
-                # Processamento normal para outros rankings
-                # Nome fixo do arquivo JSON baseado no tipo e classe (se aplicável)
+                # Nome do arquivo JSON baseado no tipo e classe
                 if ranking_type == 'power' and class_id:
                     json_filename = f"ranking_{class_info['short'].lower()}.json"
                 else:
@@ -813,131 +762,18 @@ class NeoGamesRankings:
                 
                 json_path = os.path.join(out_dir, json_filename)
                 
-                # Prepara dados para JSON
+                # Prepara e salva dados em JSON
                 output_data = {
                     'timestamp': timestamp,
                     'total_entries': len(data),
                     'rankings': data
                 }
                 
-                # Adiciona info da classe se necessário
-                if class_id and ranking_type == 'power':
-                    class_info = CLASS_MAPPING.get(class_id)
-                    if class_info:
-                        output_data['class_info'] = {
-                            'id': class_id,
-                            'name': class_info['name'],
-                            'name_pt': class_info['name_pt'],
-                            'short': class_info['short']
-                        }
-                
-                # Salva JSON
                 with open(json_path, 'w', encoding='utf-8') as f:
                     json.dump(output_data, f, ensure_ascii=False, indent=2)
                 
                 logger.info(f"Dados JSON atualizados em: {json_path}")
                 
-                # Prepara documentos para FAISS
-                docs = []
-                for entry in data:
-                    if ranking_type == 'power':
-                        content = (
-                            f"Rank: {entry['position']}\n"
-                            f"Player: {entry['name']}\n"
-                            f"Classe: {entry['class']['pt']} ({entry['class']['short']})\n"
-                            f"Guild: {entry['guild']}\n"
-                            f"Poder Total: {entry['total_power']:,}\n"
-                            f"Poder de Ataque: {entry['attack_power']:,}\n"
-                            f"Poder de Defesa: {entry['defense_power']:,}\n"
-                            f"Nação: {entry['nation']['pt']}"
-                        )
-                    elif ranking_type == 'guild':
-                        content = (
-                            f"Rank: {entry['position']}\n"
-                            f"Guild: {entry['name']}\n"
-                            f"Poder: {entry['power']:,}\n"
-                            f"Membros: {entry['members']}\n"
-                            f"Pontos de Guerra: {entry['war_points']:,}\n"
-                            f"Abates na Guerra: {entry['war_kills']:,}"
-                        )
-                    elif ranking_type == 'memorial':
-                        content = (
-                            f"Rank: {entry['position']}\n"
-                            f"Player: {entry['character_name']}\n"
-                            f"Classe: {entry['character_class']['name_pt']} ({entry['character_class']['short']})\n"
-                            f"Guild: {entry['guild_name']}\n"
-                            f"Nação: {entry['nation']['pt']}"
-                        )
-                    
-                    doc = Document(
-                        page_content=content,
-                        metadata={
-                            'timestamp': timestamp,
-                            'ranking_type': ranking_type,
-                            'position': entry.get('position'),
-                            'class_id': class_id if class_id else None
-                        }
-                    )
-                    docs.append(doc)
-            
-            # Cria e salva vectorstore
-            if docs:
-                vectorstore = FAISS.from_documents(docs, self.embeddings)
-                vectorstore.save_local(out_dir)
-                logger.info(f"Índice FAISS atualizado em: {out_dir}")
-            
-            # Log de exemplo dos primeiros colocados
-            if isinstance(data, dict) and ranking_type == 'war':
-                # Log para roles
-                if data.get('war_roles'):
-                    logger.info("\nTop Guardiões e Portadores:")
-                    for entry in data['war_roles'][:3]:
-                        logger.info(
-                            f"{entry['role']}: {entry['name']} - "
-                            f"Classe: {entry['class']['name_pt']} ({entry['class']['short']}) - "
-                            f"Guild: {entry['guild']} - "
-                            f"Nação: {entry['nation']['pt']}"
-                        )
-                
-                # Log para pontuação semanal
-                if data.get('weekly_scores'):
-                    logger.info("\nTop 3 Pontuação Semanal:")
-                    for entry in data['weekly_scores'][:3]:
-                        logger.info(
-                            f"#{entry['position']}: {entry['name']} - "
-                            f"Classe: {entry['class']['name_pt']} ({entry['class']['short']}) - "
-                            f"Guild: {entry['guild']} - "
-                            f"Pontos: {entry['points']:,} - "
-                            f"Abates: {entry['kills']:,}"
-                        )
-            elif data:
-                if class_id:
-                    class_name = CLASS_MAPPING[class_id]['name_pt']
-                else:
-                    class_name = 'Geral'
-                
-                logger.info(f"\nTop 3 {class_name}:")
-                for entry in data[:3]:
-                    if ranking_type == 'power':
-                        logger.info(
-                            f"#{entry['position']}: {entry['name']} "
-                            f"({entry['class']['pt']}) - "
-                            f"Guild: {entry['guild']} - "
-                            f"Power Total: {entry['total_power']:,}"
-                        )
-                    elif ranking_type == 'memorial':
-                        logger.info(
-                            f"#{entry['position']}: {entry['character_name']} "
-                            f"({entry['character_class']['name_pt']}) - "
-                            f"Guild: {entry['guild_name']}"
-                        )
-                    elif ranking_type == 'guild':
-                        logger.info(
-                            f"#{entry['position']}: {entry['name']} - "
-                            f"Poder: {entry['power']:,} - "
-                            f"Membros: {entry['members']}"
-                        )
-                        
         except Exception as e:
             logger.error(f"Erro ao salvar ranking: {e}")
             raise
@@ -979,72 +815,156 @@ class NeoGamesRankings:
                 )
                 
     def query(self, question: str, ranking_types: Optional[List[str]] = None, k: int = 3, class_abbr: Optional[str] = None) -> str:
-
         """
-        Consulta rankings usando FAISS para busca semântica.
-        
-        Args:
-            question (str): Pergunta ou consulta do usuário
-            ranking_types (Optional[List[str]]): Lista de tipos de ranking para consultar
-            k (int): Número de resultados a retornar
-            class_abbr (Optional[str]): Abreviação da classe para filtrar (power ranking)
+        Query flexível para rankings - o agente decide como usar baseado na pergunta
+        """
+        try:
+            # Se não especificou tipo, usa todos
+            if ranking_types is None:
+                ranking_types = ['power', 'guild', 'memorial', 'war']
+
+            responses = []
+            for ranking_type in ranking_types:
+                # Pega o JSON correto
+                json_path = self._get_json_path(ranking_type, class_abbr)
+                
+                # Se existe o arquivo
+                if os.path.exists(json_path):
+                    with open(json_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    # Pega os rankings
+                    rankings = data.get('rankings', [])
+                    if rankings:
+                        response = self.format_ranking_response(rankings, ranking_type)
+                        if response:
+                            responses.append(response)
+
+            # Se encontrou algum ranking, retorna
+            if responses:
+                return "\n\n".join(responses)
             
-        Returns:
-            str: Resultados formatados da consulta
-        """
-        if ranking_types is None:
-            ranking_types = ['power', 'guild', 'memorial']
+            return ""  # Retorna vazio para o agente tentar outra ferramenta
 
-        responses = []
-        for ranking_type in ranking_types:
-            try:
-                # Define o caminho do índice
-                if ranking_type == 'power':
-                    subfolder = "general"
-                    if class_abbr:
-                        class_abbr = class_abbr.upper()
-                        for _, info in CLASS_MAPPING.items():
-                            if info['short'] == class_abbr:
-                                subfolder = class_abbr.lower()
-                                break
-                    store_path = os.path.join(self.base_dir, ranking_type, subfolder)
-                else:
-                    store_path = os.path.join(self.base_dir, ranking_type)
+        except Exception as e:
+            logger.error(f"Erro consultando rankings: {e}")
+            return ""
 
-                # Verifica se existe o índice
-                if not os.path.exists(store_path):
-                    continue
+    def format_ranking_response(self, rankings: List[Dict], ranking_type: str) -> str:
+        """Formata os rankings de forma amigável"""
+        try:
+            # Formata baseado no tipo
+            if ranking_type == 'power':
+                return "\n".join([
+                    f"#{r['position']} - {r['name']} ({r['class']}) - Level {r['level']} - Power {r['power']:,}"
+                    for r in rankings[:5]  # Mostra top 5 por padrão
+                ])
+            elif ranking_type == 'guild':
+                return "\n".join([
+                    f"#{r['position']} - {r['name']} - Level {r['level']} - Members {r['members']}"
+                    for r in rankings[:5]
+                ])
+            elif ranking_type == 'memorial':
+                holders = [r for r in rankings if r.get('is_holder')]
+                return "Memorial Holders:\n" + "\n".join([
+                    f"- {r['name']} ({r['class']}) - desde {r['hold_time']}"
+                    for r in holders
+                ])
+            elif ranking_type == 'war':
+                return "\n".join([
+                    f"#{r['position']} - {r['name']} ({r['role']}) - Points {r['points']:,}"
+                    for r in rankings[:5]
+                ])
+            
+            return ""
 
-                # Carrega e busca
-                vectorstore = FAISS.load_local(
-                    store_path, 
-                    self.embeddings,
-                    allow_dangerous_deserialization=True
-                )
-                docs = vectorstore.similarity_search(question, k=k)
+        except Exception as e:
+            logger.error(f"Erro formatando ranking {ranking_type}: {e}")
+            return ""
 
-                # Formata resposta
-                if docs:
-                    header = f"[{ranking_type.upper()}"
-                    if ranking_type == 'power' and class_abbr:
-                        header += f" - {class_abbr}"
-                    header += "]"
-                    
-                    content = []
-                    for doc in docs:
-                        if doc.page_content.strip():
-                            content.append(doc.page_content.strip())
-                    
-                    if content:
-                        responses.append(f"{header}\n" + "\n\n".join(content))
+    def _get_json_path(self, ranking_type: str, class_abbr: Optional[str] = None) -> str:
+        """Retorna o caminho correto do arquivo JSON baseado no tipo e classe."""
+        if ranking_type == 'power':
+            subfolder = "general"
+            if class_abbr:
+                class_abbr = class_abbr.upper()
+                for _, info in CLASS_MAPPING.items():
+                    if info['short'] == class_abbr:
+                        subfolder = class_abbr.lower()
+                        break
+            return os.path.join(self.base_dir, ranking_type, subfolder, f"ranking_{subfolder}.json")
+        return os.path.join(self.base_dir, ranking_type, f"ranking_{ranking_type}.json")
 
-            except Exception as e:
-                logger.error(f"Erro consultando {ranking_type}: {e}")
-                continue
+    def _filter_rankings(self, rankings: List[Dict], question: str, patterns: Dict[str, bool]) -> List[Dict]:
+        """Filtra os rankings baseado nos padrões identificados na pergunta."""
+        try:
+            # Busca por nome específico
+            if patterns['player_search']:
+                player_name = self._extract_name(question)
+                if player_name:
+                    return [r for r in rankings if player_name.lower() in r.get('name', '').lower()]
 
-        if responses:
-            return "\n\n".join(responses)
-        return "Dados do ranking não disponíveis no momento. Por favor, tente novamente mais tarde."    
+            # Busca por guild específica
+            if patterns['guild_search']:
+                guild_name = self._extract_name(question)
+                if guild_name:
+                    return [r for r in rankings if guild_name.lower() in r.get('guild', '').lower()]
+
+            # Busca por range de posições
+            if patterns['range']:
+                start, end = self._extract_range(question)
+                if start is not None and end is not None:
+                    return [r for r in rankings if start <= r.get('position', 0) <= end]
+
+            # Busca por posição específica
+            if patterns['specific_position']:
+                position = self._extract_position(question)
+                if position:
+                    return [r for r in rankings if r.get('position') == position]
+
+            # Papéis específicos da guerra
+            if patterns['war_roles']:
+                return [r for r in rankings if r.get('role') in ['Guardião', 'Portador']]
+
+            # Top N (padrão)
+            if patterns['top_n']:
+                n = self._extract_number(question) or 3
+                return rankings[:n]
+
+            # Se nenhum padrão específico foi identificado, retorna top 3
+            return rankings[:3]
+
+        except Exception as e:
+            logger.error(f"Erro ao filtrar rankings: {e}")
+            return rankings[:3]
+
+    def _extract_name(self, question: str) -> Optional[str]:
+        """Extrai nome de player ou guild da pergunta."""
+        # Implementar lógica de extração de nome
+        return None
+
+    def _extract_range(self, question: str) -> Tuple[Optional[int], Optional[int]]:
+        """Extrai range de posições da pergunta."""
+        # Implementar lógica de extração de range
+        return None, None
+
+    def _extract_position(self, question: str) -> Optional[int]:
+        """Extrai posição específica da pergunta."""
+        # Implementar lógica de extração de posição
+        return None
+
+    def _extract_number(self, question: str) -> Optional[int]:
+        """Extrai número (ex: top N) da pergunta."""
+        # Implementar lógica de extração de número
+        return None
+
+    def _format_header(self, ranking_type: str, class_abbr: Optional[str] = None) -> str:
+        """Formata o cabeçalho da resposta."""
+        header = f"[{ranking_type.upper()}"
+        if ranking_type == 'power' and class_abbr:
+            header += f" - {class_abbr.upper()}"
+        header += "]"
+        return header
 
     async def process_ranking(self, ranking_type: str):
         try:
