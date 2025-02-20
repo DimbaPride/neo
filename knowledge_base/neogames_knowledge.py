@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from enum import Enum
 import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
+import torch
 
 import requests
 from bs4 import BeautifulSoup
@@ -14,7 +15,10 @@ from langchain_community.document_loaders import PlaywrightURLLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
+
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -48,21 +52,41 @@ class NeoGamesKnowledge:
         self.base_dir = base_dir
         self.sitemap_url = "https://www.neogames.online/sitemap.xml"
         self.base_url = "https://www.neogames.online"
-        self.embeddings = OpenAIEmbeddings()
+        
+        # Inicializa o dicionário de vectorstores primeiro
         self.vectorstores: Dict[KnowledgeSource, Optional[FAISS]] = {
             source: None for source in KnowledgeSource
         }
+        
+        # Criar diretórios
+        self._create_directories()
+        
+        # Inicializa o monitor task
         self._monitor_task = None
         
-        # Criar diretórios para cada fonte
-        self._create_directories()
+        # Inicializa o embeddings com um modelo multilíngue
+        try:
+            self.embeddings = HuggingFaceEmbeddings(
+                model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+                model_kwargs={
+                    'device': 'cuda' if torch.cuda.is_available() else 'cpu'
+                }
+            )
+            logger.info("HuggingFaceEmbeddings inicializado com sucesso")
+        except Exception as e:
+            logger.error(f"Erro ao inicializar HuggingFaceEmbeddings: {e}")
+            raise
 
     def _create_directories(self):
         """Cria a estrutura de diretórios necessária para cada fonte"""
-        for source in KnowledgeSource:
-            dir_path = os.path.join(self.base_dir, source.value)
-            os.makedirs(dir_path, exist_ok=True)
-            logger.info(f"Criado diretório para {source.value}: {dir_path}")
+        try:
+            for source in KnowledgeSource:
+                dir_path = os.path.join(self.base_dir, source.value)
+                os.makedirs(dir_path, exist_ok=True)
+                logger.info(f"Criado diretório para {source.value}: {dir_path}")
+        except Exception as e:
+            logger.error(f"Erro ao criar diretórios: {e}")
+            raise
 
     def fetch_sitemap(self) -> Dict[KnowledgeSource, List[SitemapEntry]]:
         """
