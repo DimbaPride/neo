@@ -920,83 +920,109 @@ class NeoGamesRankings:
             rankings (List[Dict]): Lista de rankings para formatar
             ranking_type (str): Tipo do ranking (power, guild, memorial, war)
             query_type (Optional[str]): Tipo específico para war ('roles' ou 'weekly')
-        
-        Returns:
-            str: String formatada com os rankings
         """
         try:
             # 1. Ranking de War (Portadores/Guardiões e Ranking Semanal)
             if ranking_type == 'war':
                 if query_type == 'roles':
-                    # Filtra os dados por nação
-                    capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
-                    procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
-                    
+                    # Estrutura do roles: name, class, guild, role, nation
                     response = []
                     
-                    # Capella
-                    response.append("=== CAPELLA ===")
-                    portadores = [r for r in capella if r['role'] == 'Portador']
-                    guardioes = [r for r in capella if r['role'] == 'Guardião']
+                    # Filtra os dados por nação
+                    capella = [r for r in rankings if r.get('nation', {}).get('pt') == 'Capella']
+                    procyon = [r for r in rankings if r.get('nation', {}).get('pt') == 'Procyon']
                     
-                    if portadores:
-                        response.append("PORTADOR:")
-                        for p in portadores:
-                            response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
+                    # Processa Capella
+                    if capella:
+                        response.append("=== CAPELLA ===")
+                        # Separa Portadores e Guardiões
+                        portadores = [r for r in capella if r.get('role') == 'Portador']
+                        guardioes = [r for r in capella if r.get('role') == 'Guardião']
+                        
+                        if portadores:
+                            response.append("\nPORTADOR:")
+                            for p in portadores:
+                                class_info = p.get('class', {})
+                                response.append(
+                                    f"• {p.get('name')} "
+                                    f"({class_info.get('name_pt', 'N/A')}) "
+                                    f"- Guild: {p.get('guild', 'N/A')}"
+                                )
+                        
+                        if guardioes:
+                            response.append("\nGUARDIÕES:")
+                            for g in guardioes:
+                                class_info = g.get('class', {})
+                                response.append(
+                                    f"• {g.get('name')} "
+                                    f"({class_info.get('name_pt', 'N/A')}) "
+                                    f"- Guild: {g.get('guild', 'N/A')}"
+                                )
                     
-                    if guardioes:
-                        response.append("\nGUARDIÕES:")
-                        for g in guardioes:
-                            response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
+                    # Processa Procyon
+                    if procyon:
+                        if response:  # Se já tem dados de Capella, adiciona uma linha em branco
+                            response.append("")
+                        response.append("=== PROCYON ===")
+                        portadores = [r for r in procyon if r.get('role') == 'Portador']
+                        guardioes = [r for r in procyon if r.get('role') == 'Guardião']
+                        
+                        if portadores:
+                            response.append("\nPORTADOR:")
+                            for p in portadores:
+                                class_info = p.get('class', {})
+                                response.append(
+                                    f"• {p.get('name')} "
+                                    f"({class_info.get('name_pt', 'N/A')}) "
+                                    f"- Guild: {p.get('guild', 'N/A')}"
+                                )
+                        
+                        if guardioes:
+                            response.append("\nGUARDIÕES:")
+                            for g in guardioes:
+                                class_info = g.get('class', {})
+                                response.append(
+                                    f"• {g.get('name')} "
+                                    f"({class_info.get('name_pt', 'N/A')}) "
+                                    f"- Guild: {g.get('guild', 'N/A')}"
+                                )
                     
-                    # Procyon
-                    response.append("\n=== PROCYON ===")
-                    portadores = [r for r in procyon if r['role'] == 'Portador']
-                    guardioes = [r for r in procyon if r['role'] == 'Guardião']
-                    
-                    if portadores:
-                        response.append("PORTADOR:")
-                        for p in portadores:
-                            response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
-                    
-                    if guardioes:
-                        response.append("\nGUARDIÕES:")
-                        for g in guardioes:
-                            response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
-                    
-                    return "\n".join(response)
-                    
+                    return "\n".join(response) if response else "Nenhum dado encontrado para o ranking de guerra"
+
                 elif query_type == 'weekly':
-                    # Formatação para ranking semanal de guerra
+                    # Estrutura do weekly: position, name, class, guild, points, kills, nation
                     response = ["=== RANKING SEMANAL DE GUERRA ==="]
                     
                     # Organiza por nação
-                    capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
-                    procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                    capella = [r for r in rankings if r.get('nation', {}).get('pt') == 'Capella']
+                    procyon = [r for r in rankings if r.get('nation', {}).get('pt') == 'Procyon']
                     
                     if capella:
                         response.append("\nCAPELLA:")
                         for r in capella:
+                            class_info = r.get('class', {})
                             response.append(
-                                f"#{r['position']} - {r['name']} ({r['class']['pt']})\n"
-                                f"• Guild: {r['guild']}\n"
-                                f"• Pontos: {r['points']:,}\n"
-                                f"• Abates: {r['kills']:,}"
+                                f"#{r.get('position', 'N/A')} - {r.get('name', 'N/A')} "
+                                f"({class_info.get('name_pt', 'N/A')})\n"
+                                f"• Guild: {r.get('guild', 'N/A')}\n"
+                                f"• Pontos: {r.get('points', 0):,}\n"
+                                f"• Abates: {r.get('kills', 0):,}"
                             )
                     
                     if procyon:
                         response.append("\nPROCYON:")
                         for r in procyon:
+                            class_info = r.get('class', {})
                             response.append(
-                                f"#{r['position']} - {r['name']} ({r['class']['pt']})\n"
-                                f"• Guild: {r['guild']}\n"
-                                f"• Pontos: {r['points']:,}\n"
-                                f"• Abates: {r['kills']:,}"
+                                f"#{r.get('position', 'N/A')} - {r.get('name', 'N/A')} "
+                                f"({class_info.get('name_pt', 'N/A')})\n"
+                                f"• Guild: {r.get('guild', 'N/A')}\n"
+                                f"• Pontos: {r.get('points', 0):,}\n"
+                                f"• Abates: {r.get('kills', 0):,}"
                             )
                     
-                    return "\n\n".join(response)
+                    return "\n\n".join(response) if len(response) > 1 else "Nenhum dado encontrado para o ranking semanal"
                 
-                # Se não especificou query_type, mostra mensagem de erro
                 return "Erro: Tipo de ranking de guerra não especificado (roles/weekly)"
 
             # 2. Ranking de Guild

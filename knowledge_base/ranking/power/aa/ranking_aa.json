@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-19 21:18:15",
-  "total_entries": 28,
+  "timestamp": "2025-02-20 15:59:41",
+  "total_entries": 27,
   "rankings": [
     {
       "position": 1,
@@ -28,9 +28,9 @@
       },
       "name": "Shimaru",
       "guild": "ForsakenS",
-      "attack_power": 792975,
-      "defense_power": 472549,
-      "total_power": 1265524,
+      "attack_power": 793974,
+      "defense_power": 472782,
+      "total_power": 1266756,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "PiK4",
       "guild": "Out",
-      "attack_power": 685684,
-      "defense_power": 425773,
-      "total_power": 1111457,
+      "attack_power": 708034,
+      "defense_power": 436444,
+      "total_power": 1144478,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -62,9 +62,9 @@
       },
       "name": "Sonegadora",
       "guild": "Out",
-      "attack_power": 633825,
-      "defense_power": 449697,
-      "total_power": 1083522,
+      "attack_power": 650791,
+      "defense_power": 434918,
+      "total_power": 1085709,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -79,9 +79,9 @@
       },
       "name": "xKalista",
       "guild": "ForsakenS",
-      "attack_power": 674827,
-      "defense_power": 386161,
-      "total_power": 1060988,
+      "attack_power": 677285,
+      "defense_power": 374143,
+      "total_power": 1051428,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -96,9 +96,9 @@
       },
       "name": "Tanguete",
       "guild": "Out",
-      "attack_power": 604447,
-      "defense_power": 383115,
-      "total_power": 987562,
+      "attack_power": 631559,
+      "defense_power": 384741,
+      "total_power": 1016300,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -111,11 +111,11 @@
         "pt": "Arqueiro Arcano",
         "short": "AA"
       },
-      "name": "Inevit4vel",
+      "name": "TaTuRaNa",
       "guild": "ForsakenS",
-      "attack_power": 597850,
-      "defense_power": 355261,
-      "total_power": 953111,
+      "attack_power": 589692,
+      "defense_power": 358060,
+      "total_power": 947752,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -128,11 +128,11 @@
         "pt": "Arqueiro Arcano",
         "short": "AA"
       },
-      "name": "TaTuRaNa",
+      "name": "Inevit4vel",
       "guild": "ForsakenS",
-      "attack_power": 589692,
-      "defense_power": 358060,
-      "total_power": 947752,
+      "attack_power": 578966,
+      "defense_power": 344920,
+      "total_power": 923886,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -162,6 +162,23 @@
         "pt": "Arqueiro Arcano",
         "short": "AA"
       },
+      "name": "iLulex",
+      "guild": "Out",
+      "attack_power": 524925,
+      "defense_power": 345382,
+      "total_power": 870307,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 11,
+      "class": {
+        "en": "Force Archer",
+        "pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
       "name": "PaiAmor",
       "guild": "ForsakenS",
       "attack_power": 511177,
@@ -173,23 +190,6 @@
       }
     },
     {
-      "position": 11,
-      "class": {
-        "en": "Force Archer",
-        "pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "name": "iLulex",
-      "guild": "Out",
-      "attack_power": 510146,
-      "defense_power": 335773,
-      "total_power": 845919,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 12,
       "class": {
         "en": "Force Archer",
@@ -198,9 +198,9 @@
       },
       "name": "XxVENONxX",
       "guild": "RealPlayers",
-      "attack_power": 502542,
-      "defense_power": 329887,
-      "total_power": 832429,
+      "attack_power": 508258,
+      "defense_power": 335315,
+      "total_power": 843573,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -215,9 +215,9 @@
       },
       "name": "BeBezinha",
       "guild": "Out",
-      "attack_power": 486218,
-      "defense_power": 338245,
-      "total_power": 824463,
+      "attack_power": 489812,
+      "defense_power": 339924,
+      "total_power": 829736,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -232,9 +232,9 @@
       },
       "name": "lRush",
       "guild": "Sem guilda",
-      "attack_power": 488268,
+      "attack_power": 488440,
       "defense_power": 327397,
-      "total_power": 815665,
+      "total_power": 815837,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -249,9 +249,9 @@
       },
       "name": "J1nx",
       "guild": "SteinsKillerS",
-      "attack_power": 470253,
-      "defense_power": 341404,
-      "total_power": 811657,
+      "attack_power": 473784,
+      "defense_power": 338222,
+      "total_power": 812006,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -317,9 +317,9 @@
       },
       "name": "Only",
       "guild": "RealPlayers",
-      "attack_power": 444655,
-      "defense_power": 295648,
-      "total_power": 740303,
+      "attack_power": 453681,
+      "defense_power": 298399,
+      "total_power": 752080,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -368,9 +368,9 @@
       },
       "name": "LeaziXCIII",
       "guild": "SteinsKillerS",
-      "attack_power": 386926,
-      "defense_power": 304375,
-      "total_power": 691301,
+      "attack_power": 387231,
+      "defense_power": 304274,
+      "total_power": 691505,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -402,9 +402,9 @@
       },
       "name": "DanFoster",
       "guild": "ForsakenS",
-      "attack_power": 388256,
-      "defense_power": 266773,
-      "total_power": 655029,
+      "attack_power": 394521,
+      "defense_power": 267945,
+      "total_power": 662466,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -434,11 +434,11 @@
         "pt": "Arqueiro Arcano",
         "short": "AA"
       },
-      "name": "KrooZ",
-      "guild": "ForsakenS",
-      "attack_power": 371924,
-      "defense_power": 251928,
-      "total_power": 623852,
+      "name": "Goodz",
+      "guild": "SteinsKillerS",
+      "attack_power": 372833,
+      "defense_power": 258967,
+      "total_power": 631800,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -446,23 +446,6 @@
     },
     {
       "position": 27,
-      "class": {
-        "en": "Force Archer",
-        "pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "name": "Goodz",
-      "guild": "Sem guilda",
-      "attack_power": 367601,
-      "defense_power": 252034,
-      "total_power": 619635,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 28,
       "class": {
         "en": "Force Archer",
         "pt": "Arqueiro Arcano",

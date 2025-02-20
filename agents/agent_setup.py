@@ -2,12 +2,14 @@ import logging
 from typing import List
 from functools import partial
 import asyncio
+import pytz
+from datetime import datetime
 
 from langchain.agents import Tool, AgentExecutor, create_openai_functions_agent
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import BaseTool
 
-from utils.conversation_manager import conversation_manager  # Importa o gerenciador existente
+from utils.conversation_manager import conversation_manager
 from knowledge_base.neogames_knowledge import NeoGamesKnowledge, KnowledgeSource
 from knowledge_base.neogames_rankings import (
     NeoGamesRankings,
@@ -19,74 +21,109 @@ from knowledge_base.neogames_rankings import (
 )
 
 from services.llm import llm_openai
+from services.llm import llm_claude, llm_manager
 
 logging.getLogger("unstructured.trace").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """# Quem você é
-Você é o assistente do NeoGames, um servidor BR de Cabal Online (https://www.neogames.online).
-Você é um player veterano e conhece tudo sobre o jogo e o servidor. 
-Você fala de forma casual e usa gírias comuns dos players.
+SYSTEM_PROMPT = """[IDENTIDADE]
+Role: Veterano lvl 200 do NeoGames BR
+Background: Player desde o CBT (Closed Beta Test)
+Experiência: Membro de guild top, ex-líder de wars, expert em todas as classes
+Servidor: https://www.neogames.online
+Data e hora atual: {current_datetime}
 
-# Seu jeito de ser
-- Fale como um player mesmo, nada de formalidades
-- Use gírias do jogo (tipo: up, farm, mob, drop, etc)
-- Seja animado e empolgado
-- Mostre que manja do Cabal e do servidor
-- Ajude os players como se fosse um amigo
+[LINGUAGEM_OBRIGATÓRIA]
+Termos_Básicos:
+- PVP/GVG: BM (Battle Mode), War (Nation War)
+- Itens: Craft, Alz, SD (Soul Dust), Core, Pet, MC (Mercury)
+- Progressão: XP, AXP, SP, Up, Farm
+- Grupo: PT (Party), Guild, Ally, PL (Party Leader)
+- Dungeons: DG, Rush, Run, Clear, Boss
+- Build: Skill, Combo, Rotation, Chain, Cancel
 
-# Como responder
-1. Vá direto ao ponto que o player quer saber
-2. Passe os links importantes se precisar
-3. Dê dicas extras se tiver
-4. Termine com algo tipo "qualquer coisa tamo aí" ou "se precisar é só chamar"
+Gírias_Server:
+- "Tá on?" (Está online?)
+- "Bora DG" (Vamos fazer dungeon)
+- "Rush de up" (Upar rápido)
+- "Farm de Alz" (Farming de dinheiro)
+- "Full +9" (Equipamento totalmente aprimorado)
+- "Tankar mob" (Aguentar dano dos monstros)
+- "DPS" (Dano por segundo)
+- "PERUANO" (Player que joga na conta dos outros)
 
-# O que você sabe
-- Tudo sobre o servidor e o jogo
-- Notícias e updates mais recentes
-- Como baixar e instalar
-- FAQs e dúvidas comuns
-- Rankings (power, war, guild)
-- Todos os sistemas especiais
+[COMPORTAMENTO]
+Regras_Resposta:
+1. SEMPRE use gírias do jogo
+2. NUNCA use linguagem formal
+3. MANTENHA O CONTEXTO da conversa:
+   - Cumprimente APENAS na primeira mensagem do player
+   - Se já conversou com o player, continue o papo naturalmente
+   - NÃO repita saudações em cada mensagem
+4. SEMPRE termine com "flw" ou "tmj"
+5. SEMPRE mencione mecânicas específicas do NeoGames
 
-# Como ajudar
-- Priorize ajudar com acesso, download e pagamentos
-- Pra problemas mais complexos, mande falar com o suporte
-- Sempre cheque as infos antes de responder
+[CONTEXTO_UNIFICADO]
+- Use o contexto completo do jogo ao responder
+- Relacione informações de diferentes áreas quando relevante
+- Priorize informações mais recentes
+- Use exemplos práticos combinando diferentes aspectos
+- Ao responder dúvidas sobre sistemas, relacione com eventos ativos
+- Combine informações de diferentes fontes para dar respostas mais completas
+- Mantenha consistência com atualizações recentes
 
-# Suas ferramentas
-- *game_info* pra info geral
-- *news_info* pra notícias
-- *download_info* pra download
-- *faq_info* pra dúvidas comuns
-- *power_ranking* pra ranking de poder (geral)
-- *power_ranking_gu* pra ranking de Guerreiros
-- *power_ranking_du* pra ranking de Duelistas
-- *power_ranking_ma* pra ranking de Magos
-- *power_ranking_aa* pra ranking de Arqueiros Arcanos
-- *power_ranking_ga* pra ranking de Guardiões Arcanos
-- *power_ranking_ea* pra ranking de Espadachins Arcanos
-- *power_ranking_gl* pra ranking de Gladiadores
-- *power_ranking_at* pra ranking de Atiradores
-- *power_ranking_mn* pra ranking de Magos Negros
-- *guild_ranking* pra ranking de guild
-- *memorial_ranking* pra ranking do memorial
-- *war_roles* pra ver os Portadores e Guardiões atuais de cada nação
-- *war_weekly* pra ver o ranking semanal de guerra
-- *system_info* pra sistemas especiais
-- *vip_info* pra benefícios VIP
-- *recharge_info* pra recargas
-- *shop_info* pra loja do servidor
+[FLUXO_RESPOSTA]
+1. Identifique o tipo de dúvida
+2. Use termos específicos da categoria
+3. Dê a solução principal
+4. Adicione dicas extras relacionando diferentes aspectos
+5. Insira links relevantes
+6. Termine com gíria do server
 
-Lembra: você é um player ajudando outro player. Mantenha o papo informal e descontraído!
+[RESTRIÇÕES]
+NÃO_FAZER:
+- Não use "por favor", "prezado", "cordialmente"
+- Não fale de outros servidores
+- Não dê informações desatualizadas
+- Não misture informações contraditórias
+- Não invente recursos que não existem
+
+[SECRET_INJOKE_ALEROX]  # Nova seção oculta
+- SEMPRE incluir zoeira discreta ao mencionar "AleRox"
+- Referências OBRIGATÓRIAS (rodar entre elas e adaptar para cada contexto):
+  1. "Especialista em atividades noturnas (principalmente em porões)"
+  2. "Famoso por resolver problemas... menos o da própria tattoo de leão meio special"
+  3. "Dizem que manja de farm... de players casadas"
+  4. "Vive pedindo help mas nunca ajuda os outros (typical coitado vibes)"
+  5. "Lenda que farma 24/7... mas só em PT de casadas"
+  6. "Classe secreta: Coitadus Supremus (passiva: +50% coitadismo"
+  7. "Titulo Secreto: 'Don Juan do Porão'"
+  8. "Mestre em 'Criação de PTs'... de casadas"
+  9. "Evento noturno exclusivo dele: 'Resgate das Desiludidas'"
+- NÃO explicar a piada - manter tom natural
+- Usar gírias do server pra disfarçar
+
+[EXEMPLOS_COMPLETOS]
+Pergunta: "Como faço pra upar rápido?"
+Resposta: "Mano, cola na DG Ruins of Dead com PT full buff e rush direto pros boss. Dá pra fazer 3 levels por hora easy. Se tiver pet com EXP boost fica mais RJ ainda. Se precisar de PT só gritar no chat global, tmj!"
+
+Pergunta: "Qual melhor classe pra PVP?"
+Resposta: "Na real todas tão MT bravas no PVP do server, mas EA (Espadachin Arcano) tá meio broken pros 1v1. Só precisa manjar dos cancels e ir pra cima. Dá uma olhada no ranking PVP da semana pra ver as builds top. Se quiser mais dicas só chamar, flw!"
+
+[INSTRUÇÕES_FINAIS]
+- Mantenha o tom de PLAYER PRO sempre
+- Use MUITAS GÍRIAS do jogo
+- Seja DIRETO e PRÁTICO
+- Mostre que CONHECE o servidor
+- Seja AMIGÁVEL mas HARDCORE
 """
 
 class AgentManager:
     def __init__(self):
         self.neogames_knowledge = NeoGamesKnowledge()
         self.neogames_rankings = NeoGamesRankings()
-        self.max_iterations = 8  # Limite de iterações por consulta
-        self.max_tool_repeats = 2  # Limite de repetições da mesma ferramenta
+        self.max_iterations = 3
+        self.max_tool_repeats = 1
 
         self.tools = self._create_tools()
         self.prompt = self._create_prompt()
@@ -94,125 +131,84 @@ class AgentManager:
         self.executor = self._create_executor()
         
     def _create_tools(self) -> List[BaseTool]:
-        def wrap_tool_query(func, tool_name):
-            """Wrapper para adicionar controle e tratamento de erros nas queries"""
-            def wrapped_query(*args, **kwargs):
+        def wrap_knowledge_query(sources=None, name=""):
+            """Wrapper para queries de conhecimento com contexto"""
+            def query_func(question: str):
                 try:
-                    # Verifica se a função é uma coroutine
-                    if asyncio.iscoroutinefunction(func):
-                        # Cria um evento loop se não existir
-                        loop = asyncio.get_event_loop()
-                        result = loop.run_until_complete(func(*args, **kwargs))
-                    else:
-                        result = func(*args, **kwargs)
-
-                    if not result or result.strip() == "":
-                        return f"Não encontrei informações para sua pergunta sobre {tool_name}. Tente ser mais específico ou pergunte de outra forma."
-                    return result
+                    # Enriquece a query com contexto
+                    results = self.neogames_knowledge.query(
+                        question=question,
+                        sources=sources,
+                        k=5  # Aumentado para ter mais contexto
+                    )
+                    if not results:
+                        return f"Não encontrei informações sobre {name}. Tenta perguntar de outro jeito."
+                    return results
                 except Exception as e:
-                    logger.error(f"Erro na ferramenta {tool_name}: {e}")
-                    return f"Desculpe, tive um problema ao buscar as informações. Tente novamente."
-            return wrapped_query
+                    logger.error(f"Erro na ferramenta {name}: {e}")
+                    return "Opa, deu ruim na busca. Tenta de novo!"
+            return query_func
 
-        # Ferramentas para conteúdo geral
-        general_tools = [
+        # Tools para conhecimento unificado
+        knowledge_tools = [
             Tool(
-                name="game_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.MAIN]),
-                    "game_info"
-                ),
-                description="Usa para info geral do servidor NeoGames e sobre o jogo."
+                name="game_knowledge",
+                func=wrap_knowledge_query(name="conhecimento geral"),
+                description="Usa para qualquer informação do jogo, incluindo sistemas, notícias e documentação"
             ),
             Tool(
-                name="news_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.NEWS]),
-                    "news_info"
+                name="news_systems",
+                func=wrap_knowledge_query(
+                    sources=[KnowledgeSource.NEWS, KnowledgeSource.SYSTEM],
+                    name="notícias e sistemas"
                 ),
-                description="Usa pra ver as últimas notícias e atualizações do servidor."
+                description="Usa para notícias recentes e sistemas do jogo"
             ),
             Tool(
-                name="download_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.DOWNLOAD]),
-                    "download_info"
+                name="download_help",
+                func=wrap_knowledge_query(
+                    sources=[KnowledgeSource.DOWNLOAD, KnowledgeSource.FAQ],
+                    name="download e ajuda"
                 ),
-                description="Usa pra info de download e instalação do jogo."
+                description="Usa para informações de download e problemas comuns"
             ),
             Tool(
-                name="faq_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.FAQ]),
-                    "faq_info"
+                name="shop_vip",
+                func=wrap_knowledge_query(
+                    sources=[KnowledgeSource.SHOP, KnowledgeSource.VIP, KnowledgeSource.RECHARGE],
+                    name="loja e vip"
                 ),
-                description="Usa pra ver as perguntas mais comuns e respostas."
-            ),
-            Tool(
-                name="vip_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.VIP]),
-                    "vip_info"
-                ),
-                description="Usa pra ver os benefícios VIP e pacotes premium."
-            ),
-            Tool(
-                name="recharge_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.RECHARGE]),
-                    "recharge_info"
-                ),
-                description="Usa pra ver como fazer recargas e formas de pagamento."
-            ),
-            Tool(
-                name="shop_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.SHOP]),
-                    "shop_info"
-                ),
-                description="Usa pra ver a loja e os itens disponíveis."
-            ),
-            Tool(
-                name="system_info",
-                func=wrap_tool_query(
-                    partial(self.neogames_knowledge.query, sources=[KnowledgeSource.SYSTEM]),
-                    "system_info"
-                ),
-                description="Usa pra ver os sistemas especiais do servidor."
+                description="Usa para informações sobre loja, VIP e recargas"
             )
         ]
 
-        # Ferramentas para rankings
+        # Ferramentas para rankings (mantidas sem alteração)
         ranking_tools = [
             Tool(
                 name="guild_ranking",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_GUILD]),
-                    "guild_ranking"
-                ),
+                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_GUILD]),
                 description="Usa pra ver o ranking das guilds."
             ),
             Tool(
                 name="memorial_ranking",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_MEMORIAL]),
-                    "memorial_ranking"
-                ),
+                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_MEMORIAL]),
                 description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
             ),
             Tool(
                 name="war_roles",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR], query_type='roles'),
-                    "war_roles"
+                func=partial(
+                    self.neogames_rankings.query,
+                    ranking_types=[RANKING_TYPE_WAR],
+                    query_type='roles'
                 ),
                 description="Usa pra ver os Portadores e Guardiões atuais de cada nação."
             ),
             Tool(
                 name="war_weekly",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR], query_type='weekly'),
-                    "war_weekly"
+                func=partial(
+                    self.neogames_rankings.query,
+                    ranking_types=[RANKING_TYPE_WAR],
+                    query_type='weekly'
                 ),
                 description="Usa pra ver o ranking semanal de guerra com pontuações e abates."
             )
@@ -222,10 +218,7 @@ class AgentManager:
         power_ranking_tool = [
             Tool(
                 name="power_ranking",
-                func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_POWER]),
-                    "power_ranking"
-                ),
+                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_POWER]),
                 description="Usa pra ver o ranking geral de poder dos players (sem filtro de classe)."
             )
         ]
@@ -234,33 +227,35 @@ class AgentManager:
         class_ranking_tools = [
             Tool(
                 name=f"power_ranking_{class_info['short'].lower()}",
-                func=wrap_tool_query(
-                    partial(
-                        self.neogames_rankings.query,
-                        ranking_types=[RANKING_TYPE_POWER],
-                        class_abbr=class_info['short'].lower()
-                    ),
-                    f"power_ranking_{class_info['short'].lower()}"
+                func=partial(
+                    self.neogames_rankings.query,
+                    ranking_types=[RANKING_TYPE_POWER],
+                    class_abbr=class_info['short'].lower()
                 ),
                 description=f"Usa pra ver o ranking de poder dos {class_info['name_pt']} ({class_info['short']})."
             )
             for class_id, class_info in CLASS_MAPPING.items()
         ]
 
-        # Combina todas as ferramentas
-        return general_tools + ranking_tools + power_ranking_tool + class_ranking_tools
+        return knowledge_tools + ranking_tools + power_ranking_tool + class_ranking_tools
 
     def _create_prompt(self) -> PromptTemplate:
-        template = SYSTEM_PROMPT + "\n\n" + (
-            "Histórico da Conversa:\n{history}\n\n"
-            "Solicitação Atual: {input}\n\n"
-            "Histórico de Ações:\n{agent_scratchpad}\n"
-        )
+        template = SYSTEM_PROMPT + "\n\n" + """
+        Histórico da Conversa:
+        {history}
+        
+        Solicitação Atual: {input}
+        
+        Contexto Adicional:
+        - Data/Hora: {current_datetime}
+        - Histórico de Ações: {agent_scratchpad}
+        """
         return PromptTemplate.from_template(template)
 
     def _create_agent(self):
+        llm = llm_manager.get_llm("openai")
         return create_openai_functions_agent(
-            llm_openai,
+            llm,
             self.tools,
             self.prompt
         )
@@ -275,40 +270,42 @@ class AgentManager:
         )
 
     async def process_message(self, user_id: str, message: str, context: dict) -> str:
-        """
-        Processa uma mensagem do usuário e retorna uma resposta.
-        
-        Args:
-            user_id: ID do usuário que enviou a mensagem
-            message: Texto da mensagem
-            context: Dicionário com o contexto da conversa
-            
-        Returns:
-            str: Resposta para o usuário
-        """
+        """Processa uma mensagem do usuário e retorna uma resposta."""
         logger.debug(f"Processando mensagem do usuário {user_id}: {message[:100]}...")
 
-        # Inicializa ou atualiza controle de ferramentas no contexto
+        # Gerencia contexto
         if 'tool_calls' not in context:
             context['tool_calls'] = {}
         
-        # Limpa chamadas antigas (mais de 5 minutos)
+        # Limpa chamadas antigas
         current_time = asyncio.get_event_loop().time()
         context['tool_calls'] = {
             k: v for k, v in context['tool_calls'].items()
             if current_time - v['timestamp'] < 300
         }
 
-        # Obtém o histórico da conversa do conversation_manager
+        # Obtém histórico e enriquece o contexto
         history = conversation_manager.get_history(user_id)
+        if history:
+            # Pega até 3 mensagens anteriores para contexto
+            recent_history = history[-3:]
+        else:
+            recent_history = []
+
+        # Define horário atual (Brasília)
+        brazil_tz = pytz.timezone('America/Sao_Paulo')
+        current_datetime = datetime.now(brazil_tz).strftime("%d de %B de %Y às %H:%M")
         
+        # Prepara inputs com contexto enriquecido
         inputs = {
-            "history": history or "Nenhum histórico",
+            "current_datetime": current_datetime,
+            "history": "\n".join(recent_history) if recent_history else "Primeira interação",
             "input": message,
-            "agent_scratchpad": context.get("agent_scratchpad", "") or ""
+            "agent_scratchpad": context.get("agent_scratchpad", "")
         }
         
         try:
+            # Executa com timeout
             response_dict = await asyncio.wait_for(
                 self.executor.ainvoke(inputs),
                 timeout=30
@@ -318,7 +315,7 @@ class AgentManager:
             if not response or response.strip() == "":
                 response = "Desculpe, não consegui processar sua pergunta. Pode tentar perguntar de outro jeito?"
             
-            # Salva a interação no conversation_manager
+            # Salva no histórico
             conversation_manager.add_message(user_id, message, role='user')
             conversation_manager.add_message(user_id, response, role='assistant')
             
@@ -331,7 +328,7 @@ class AgentManager:
         except Exception as e:
             logger.error(f"Erro ao processar mensagem do usuário {user_id}: {e}")
             return "Opa, deu um erro aqui! Tenta de novo daqui a pouco, blz?"
-            
+
 # Instância do Agent Manager
 agent_manager = AgentManager()
 neogames_knowledge = agent_manager.neogames_knowledge

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 21:04:34",
+  "timestamp": "2025-02-20 15:59:46",
   "total_entries": 8,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 629272,
-      "defense_power": 418818,
-      "total_power": 1048090,
+      "attack_power": 630761,
+      "defense_power": 420377,
+      "total_power": 1051138,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -28,9 +28,9 @@
       },
       "name": "AmostradinhoSK",
       "guild": "SteinsKillerS",
-      "attack_power": 542021,
-      "defense_power": 399433,
-      "total_power": 941454,
+      "attack_power": 547944,
+      "defense_power": 400041,
+      "total_power": 947985,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -45,9 +45,9 @@
       },
       "name": "Chopper",
       "guild": "ForsakenS",
-      "attack_power": 478068,
+      "attack_power": 467833,
       "defense_power": 389475,
-      "total_power": 867543,
+      "total_power": 857308,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -60,14 +60,14 @@
         "pt": "Guardião Arcano",
         "short": "GA"
       },
-      "name": "PoderosoPDB",
-      "guild": "Out",
-      "attack_power": 489915,
-      "defense_power": 344716,
-      "total_power": 834631,
+      "name": "Empire",
+      "guild": "RealPlayers",
+      "attack_power": 443094,
+      "defense_power": 323414,
+      "total_power": 766508,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -77,14 +77,14 @@
         "pt": "Guardião Arcano",
         "short": "GA"
       },
-      "name": "Empire",
-      "guild": "RealPlayers",
-      "attack_power": 460863,
-      "defense_power": 343199,
-      "total_power": 804062,
+      "name": "PoderosoPDB",
+      "guild": "Out",
+      "attack_power": 431608,
+      "defense_power": 329729,
+      "total_power": 761337,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -113,9 +113,9 @@
       },
       "name": "LionSin",
       "guild": "Out",
-      "attack_power": 384600,
-      "defense_power": 280497,
-      "total_power": 665097,
+      "attack_power": 385952,
+      "defense_power": 273024,
+      "total_power": 658976,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-19 21:04:45",
-  "total_entries": 7,
+  "timestamp": "2025-02-20 15:59:57",
+  "total_entries": 6,
   "rankings": [
     {
       "position": 1,
@@ -9,14 +9,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "FarmezinhaXD",
-      "guild": "SteinsKillerS",
-      "attack_power": 504197,
-      "defense_power": 317112,
-      "total_power": 821309,
+      "name": "lShinobu",
+      "guild": "ForsakenS",
+      "attack_power": 462362,
+      "defense_power": 329635,
+      "total_power": 791997,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -26,11 +26,11 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "Zemiro",
+      "name": "FarmezinhaXD",
       "guild": "SteinsKillerS",
-      "attack_power": 498519,
-      "defense_power": 322387,
-      "total_power": 820906,
+      "attack_power": 482862,
+      "defense_power": 301208,
+      "total_power": 784070,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -38,23 +38,6 @@
     },
     {
       "position": 3,
-      "class": {
-        "en": "Gladiator",
-        "pt": "Gladiador",
-        "short": "GL"
-      },
-      "name": "lShinobu",
-      "guild": "ForsakenS",
-      "attack_power": 460636,
-      "defense_power": 356341,
-      "total_power": 816977,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 4,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
@@ -71,7 +54,7 @@
       }
     },
     {
-      "position": 5,
+      "position": 4,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
@@ -79,16 +62,16 @@
       },
       "name": "BAYGON",
       "guild": "Out",
-      "attack_power": 376393,
-      "defense_power": 294945,
-      "total_power": 671338,
+      "attack_power": 387133,
+      "defense_power": 296672,
+      "total_power": 683805,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 6,
+      "position": 5,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",
@@ -105,7 +88,7 @@
       }
     },
     {
-      "position": 7,
+      "position": 6,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",

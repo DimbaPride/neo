@@ -70,10 +70,10 @@ class ConfigurationManager:
             provider=ModelProvider.GROQ
         ),
         ModelProvider.CLAUDE: ModelConfig(
-            name="claude-3-opus-20240229",  # ou "claude-3-sonnet-20240229" para versão mais rápida
+            name="claude-3-5-haiku-20241022",  # ou "claude-3-sonnet-20240229" para versão mais rápida
             provider=ModelProvider.CLAUDE,
             temperature=0.3,
-            max_tokens=4096  # Claude suporta respostas mais longas
+            max_tokens=8192  # Claude suporta respostas mais longas
         )
     }
 

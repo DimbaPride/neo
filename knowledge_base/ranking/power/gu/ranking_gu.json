@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 21:17:58",
+  "timestamp": "2025-02-20 15:59:25",
   "total_entries": 17,
   "rankings": [
     {
@@ -12,8 +12,8 @@
       "name": "HasgaKU",
       "guild": "ForsakenS",
       "attack_power": 698629,
-      "defense_power": 449873,
-      "total_power": 1148502,
+      "defense_power": 449847,
+      "total_power": 1148476,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Paraiba",
       "guild": "ForsakenS",
-      "attack_power": 514937,
-      "defense_power": 324178,
-      "total_power": 839115,
+      "attack_power": 533455,
+      "defense_power": 345377,
+      "total_power": 878832,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -79,9 +79,9 @@
       },
       "name": "MAriaBonita",
       "guild": "Out",
-      "attack_power": 447252,
-      "defense_power": 325135,
-      "total_power": 772387,
+      "attack_power": 452338,
+      "defense_power": 303202,
+      "total_power": 755540,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -96,9 +96,9 @@
       },
       "name": "AmyKun",
       "guild": "RealPlayers",
-      "attack_power": 445204,
+      "attack_power": 446599,
       "defense_power": 298696,
-      "total_power": 743900,
+      "total_power": 745295,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -106,6 +106,23 @@
     },
     {
       "position": 7,
+      "class": {
+        "en": "Warrior",
+        "pt": "Guerreiro",
+        "short": "GU"
+      },
+      "name": "BaltasaR",
+      "guild": "ForsakenS",
+      "attack_power": 424014,
+      "defense_power": 303731,
+      "total_power": 727745,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 8,
       "class": {
         "en": "Warrior",
         "pt": "Guerreiro",
@@ -122,23 +139,6 @@
       }
     },
     {
-      "position": 8,
-      "class": {
-        "en": "Warrior",
-        "pt": "Guerreiro",
-        "short": "GU"
-      },
-      "name": "BaltasaR",
-      "guild": "ForsakenS",
-      "attack_power": 420388,
-      "defense_power": 302025,
-      "total_power": 722413,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 9,
       "class": {
         "en": "Warrior",
@@ -147,9 +147,9 @@
       },
       "name": "MarquinllGU",
       "guild": "C4",
-      "attack_power": 410128,
-      "defense_power": 299513,
-      "total_power": 709641,
+      "attack_power": 412325,
+      "defense_power": 301132,
+      "total_power": 713457,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -181,9 +181,9 @@
       },
       "name": "TiTioSlash",
       "guild": "Cursed",
-      "attack_power": 391267,
-      "defense_power": 303862,
-      "total_power": 695129,
+      "attack_power": 391256,
+      "defense_power": 304714,
+      "total_power": 695970,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -215,9 +215,9 @@
       },
       "name": "Colossal",
       "guild": "Out",
-      "attack_power": 402307,
-      "defense_power": 266563,
-      "total_power": 668870,
+      "attack_power": 407242,
+      "defense_power": 268020,
+      "total_power": 675262,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
