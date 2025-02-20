@@ -7,6 +7,7 @@ from langchain.agents import Tool, AgentExecutor, create_openai_functions_agent
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import BaseTool
 
+from utils.conversation_manager import conversation_manager  # Importa o gerenciador existente
 from knowledge_base.neogames_knowledge import NeoGamesKnowledge, KnowledgeSource
 from knowledge_base.neogames_rankings import (
     NeoGamesRankings,
@@ -70,7 +71,8 @@ Você fala de forma casual e usa gírias comuns dos players.
 - *power_ranking_mn* pra ranking de Magos Negros
 - *guild_ranking* pra ranking de guild
 - *memorial_ranking* pra ranking do memorial
-- *war_ranking* pra ranking de guerra semanal e portadores e guardiões de cada nação
+- *war_roles* pra ver os Portadores e Guardiões atuais de cada nação
+- *war_weekly* pra ver o ranking semanal de guerra
 - *system_info* pra sistemas especiais
 - *vip_info* pra benefícios VIP
 - *recharge_info* pra recargas
@@ -199,12 +201,20 @@ class AgentManager:
                 description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
             ),
             Tool(
-                name="war_ranking",
+                name="war_roles",
                 func=wrap_tool_query(
-                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR]),
-                    "war_ranking"
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR], query_type='roles'),
+                    "war_roles"
                 ),
-                description="Usa pra ver o ranking de guerra semanal e os portadores e guardiões."
+                description="Usa pra ver os Portadores e Guardiões atuais de cada nação."
+            ),
+            Tool(
+                name="war_weekly",
+                func=wrap_tool_query(
+                    partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_WAR], query_type='weekly'),
+                    "war_weekly"
+                ),
+                description="Usa pra ver o ranking semanal de guerra com pontuações e abates."
             )
         ]
 
@@ -277,7 +287,7 @@ class AgentManager:
             str: Resposta para o usuário
         """
         logger.debug(f"Processando mensagem do usuário {user_id}: {message[:100]}...")
-        
+
         # Inicializa ou atualiza controle de ferramentas no contexto
         if 'tool_calls' not in context:
             context['tool_calls'] = {}
@@ -288,9 +298,12 @@ class AgentManager:
             k: v for k, v in context['tool_calls'].items()
             if current_time - v['timestamp'] < 300
         }
+
+        # Obtém o histórico da conversa do conversation_manager
+        history = conversation_manager.get_history(user_id)
         
         inputs = {
-            "history": context.get("history", "") or "Nenhum histórico",
+            "history": history or "Nenhum histórico",
             "input": message,
             "agent_scratchpad": context.get("agent_scratchpad", "") or ""
         }
@@ -303,8 +316,12 @@ class AgentManager:
             
             response = response_dict.get("output", "")
             if not response or response.strip() == "":
-                return "Desculpe, não consegui processar sua pergunta. Pode tentar perguntar de outro jeito?"
-                
+                response = "Desculpe, não consegui processar sua pergunta. Pode tentar perguntar de outro jeito?"
+            
+            # Salva a interação no conversation_manager
+            conversation_manager.add_message(user_id, message, role='user')
+            conversation_manager.add_message(user_id, response, role='assistant')
+            
             return response
             
         except asyncio.TimeoutError:
@@ -314,7 +331,7 @@ class AgentManager:
         except Exception as e:
             logger.error(f"Erro ao processar mensagem do usuário {user_id}: {e}")
             return "Opa, deu um erro aqui! Tenta de novo daqui a pouco, blz?"
-
+            
 # Instância do Agent Manager
 agent_manager = AgentManager()
 neogames_knowledge = agent_manager.neogames_knowledge

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 17:19:08",
+  "timestamp": "2025-02-19 21:04:50",
   "total_entries": 10,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "lLorD",
       "guild": "Out",
-      "attack_power": 836557,
-      "defense_power": 470878,
-      "total_power": 1307435,
+      "attack_power": 817449,
+      "defense_power": 468979,
+      "total_power": 1286428,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -45,9 +45,9 @@
       },
       "name": "Bambinho",
       "guild": "ForsakenS",
-      "attack_power": 585939,
-      "defense_power": 383824,
-      "total_power": 969763,
+      "attack_power": 595684,
+      "defense_power": 385604,
+      "total_power": 981288,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -62,9 +62,9 @@
       },
       "name": "Furyy",
       "guild": "Out",
-      "attack_power": 555290,
-      "defense_power": 346989,
-      "total_power": 902279,
+      "attack_power": 557139,
+      "defense_power": 347139,
+      "total_power": 904278,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -72,6 +72,23 @@
     },
     {
       "position": 5,
+      "class": {
+        "en": "Force Gunner",
+        "pt": "Atirador",
+        "short": "AT"
+      },
+      "name": "Flexinha",
+      "guild": "RealPlayers",
+      "attack_power": 512597,
+      "defense_power": 346351,
+      "total_power": 858948,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 6,
       "class": {
         "en": "Force Gunner",
         "pt": "Atirador",
@@ -88,23 +105,6 @@
       }
     },
     {
-      "position": 6,
-      "class": {
-        "en": "Force Gunner",
-        "pt": "Atirador",
-        "short": "AT"
-      },
-      "name": "Flexinha",
-      "guild": "RealPlayers",
-      "attack_power": 500237,
-      "defense_power": 335260,
-      "total_power": 835497,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 7,
       "class": {
         "en": "Force Gunner",
@@ -113,9 +113,9 @@
       },
       "name": "Sylvie",
       "guild": "SteinsKillerS",
-      "attack_power": 472457,
-      "defense_power": 292710,
-      "total_power": 765167,
+      "attack_power": 480998,
+      "defense_power": 304063,
+      "total_power": 785061,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

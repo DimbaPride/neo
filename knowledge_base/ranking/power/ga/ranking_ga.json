@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 17:18:52",
+  "timestamp": "2025-02-19 21:04:34",
   "total_entries": 8,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 628583,
-      "defense_power": 409821,
-      "total_power": 1038404,
+      "attack_power": 629272,
+      "defense_power": 418818,
+      "total_power": 1048090,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Chopper",
       "guild": "ForsakenS",
-      "attack_power": 481375,
-      "defense_power": 398487,
-      "total_power": 879862,
+      "attack_power": 478068,
+      "defense_power": 389475,
+      "total_power": 867543,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "LionSin",
       "guild": "Out",
-      "attack_power": 381003,
-      "defense_power": 269408,
-      "total_power": 650411,
+      "attack_power": 384600,
+      "defense_power": 280497,
+      "total_power": 665097,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

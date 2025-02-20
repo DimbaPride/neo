@@ -856,9 +856,19 @@ class NeoGamesRankings:
                     f"Membros: {entry['members']}"
                 )
                 
-    def query(self, question: str, ranking_types: Optional[List[str]] = None, k: int = 3, class_abbr: Optional[str] = None) -> str:
+    def query(self, question: str, ranking_types: Optional[List[str]] = None, k: int = 3, class_abbr: Optional[str] = None, query_type: Optional[str] = None) -> str:
         """
         Query flexível para rankings - o agente decide como usar baseado na pergunta
+        
+        Args:
+            question (str): Pergunta ou consulta do usuário
+            ranking_types (Optional[List[str]]): Lista de tipos de ranking para consultar
+            k (int): Número de resultados a retornar (default: 3)
+            class_abbr (Optional[str]): Abreviação da classe para filtrar ranking de poder
+            query_type (Optional[str]): Tipo específico de query para war ('roles' ou 'weekly')
+        
+        Returns:
+            str: Resposta formatada com os rankings solicitados
         """
         try:
             # Se não especificou tipo, usa todos
@@ -867,8 +877,13 @@ class NeoGamesRankings:
 
             responses = []
             for ranking_type in ranking_types:
-                # Pega o JSON correto
-                json_path = self._get_json_path(ranking_type, class_abbr)
+                # Se for ranking de guerra e tiver query_type especificado
+                if ranking_type == 'war' and query_type:
+                    json_filename = 'ranking_roles.json' if query_type == 'roles' else 'ranking_weekly.json'
+                    json_path = os.path.join(self.base_dir, ranking_type, json_filename)
+                else:
+                    # Pega o JSON correto para outros tipos de ranking
+                    json_path = self._get_json_path(ranking_type, class_abbr)
                 
                 # Se existe o arquivo
                 if os.path.exists(json_path):
@@ -878,7 +893,12 @@ class NeoGamesRankings:
                     # Pega os rankings
                     rankings = data.get('rankings', [])
                     if rankings:
-                        response = self.format_ranking_response(rankings, ranking_type)
+                        # Passa o query_type para o format_ranking_response
+                        response = self.format_ranking_response(
+                            rankings, 
+                            ranking_type,
+                            query_type=query_type if ranking_type == 'war' else None
+                        )
                         if response:
                             responses.append(response)
 
@@ -892,48 +912,92 @@ class NeoGamesRankings:
             logger.error(f"Erro consultando rankings: {e}")
             return ""
 
-    def format_ranking_response(self, rankings: List[Dict], ranking_type: str) -> str:
-        """Formata os rankings de forma amigável"""
+    def format_ranking_response(self, rankings: List[Dict], ranking_type: str, query_type: Optional[str] = None) -> str:
+        """
+        Formata os rankings de forma amigável
+        
+        Args:
+            rankings (List[Dict]): Lista de rankings para formatar
+            ranking_type (str): Tipo do ranking (power, guild, memorial, war)
+            query_type (Optional[str]): Tipo específico para war ('roles' ou 'weekly')
+        
+        Returns:
+            str: String formatada com os rankings
+        """
         try:
-            # 1. Ranking de War (Portadores e Guardiões)
+            # 1. Ranking de War (Portadores/Guardiões e Ranking Semanal)
             if ranking_type == 'war':
-                # Filtra os dados por nação
-                capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
-                procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                if query_type == 'roles':
+                    # Filtra os dados por nação
+                    capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
+                    procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                    
+                    response = []
+                    
+                    # Capella
+                    response.append("=== CAPELLA ===")
+                    portadores = [r for r in capella if r['role'] == 'Portador']
+                    guardioes = [r for r in capella if r['role'] == 'Guardião']
+                    
+                    if portadores:
+                        response.append("PORTADOR:")
+                        for p in portadores:
+                            response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
+                    
+                    if guardioes:
+                        response.append("\nGUARDIÕES:")
+                        for g in guardioes:
+                            response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
+                    
+                    # Procyon
+                    response.append("\n=== PROCYON ===")
+                    portadores = [r for r in procyon if r['role'] == 'Portador']
+                    guardioes = [r for r in procyon if r['role'] == 'Guardião']
+                    
+                    if portadores:
+                        response.append("PORTADOR:")
+                        for p in portadores:
+                            response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
+                    
+                    if guardioes:
+                        response.append("\nGUARDIÕES:")
+                        for g in guardioes:
+                            response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
+                    
+                    return "\n".join(response)
+                    
+                elif query_type == 'weekly':
+                    # Formatação para ranking semanal de guerra
+                    response = ["=== RANKING SEMANAL DE GUERRA ==="]
+                    
+                    # Organiza por nação
+                    capella = [r for r in rankings if r['nation'].get('pt') == 'Capella']
+                    procyon = [r for r in rankings if r['nation'].get('pt') == 'Procyon']
+                    
+                    if capella:
+                        response.append("\nCAPELLA:")
+                        for r in capella:
+                            response.append(
+                                f"#{r['position']} - {r['name']} ({r['class']['pt']})\n"
+                                f"• Guild: {r['guild']}\n"
+                                f"• Pontos: {r['points']:,}\n"
+                                f"• Abates: {r['kills']:,}"
+                            )
+                    
+                    if procyon:
+                        response.append("\nPROCYON:")
+                        for r in procyon:
+                            response.append(
+                                f"#{r['position']} - {r['name']} ({r['class']['pt']})\n"
+                                f"• Guild: {r['guild']}\n"
+                                f"• Pontos: {r['points']:,}\n"
+                                f"• Abates: {r['kills']:,}"
+                            )
+                    
+                    return "\n\n".join(response)
                 
-                response = []
-                
-                # Capella
-                response.append("=== CAPELLA ===")
-                portadores = [r for r in capella if r['role'] == 'Portador']
-                guardioes = [r for r in capella if r['role'] == 'Guardião']
-                
-                if portadores:
-                    response.append("PORTADOR:")
-                    for p in portadores:
-                        response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
-                
-                if guardioes:
-                    response.append("\nGUARDIÕES:")
-                    for g in guardioes:
-                        response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
-                
-                # Procyon
-                response.append("\n=== PROCYON ===")
-                portadores = [r for r in procyon if r['role'] == 'Portador']
-                guardioes = [r for r in procyon if r['role'] == 'Guardião']
-                
-                if portadores:
-                    response.append("PORTADOR:")
-                    for p in portadores:
-                        response.append(f"• {p['name']} ({p['class']['pt']}) - Guild: {p['guild']}")
-                
-                if guardioes:
-                    response.append("\nGUARDIÕES:")
-                    for g in guardioes:
-                        response.append(f"• {g['name']} ({g['class']['pt']}) - Guild: {g['guild']}")
-                
-                return "\n".join(response)
+                # Se não especificou query_type, mostra mensagem de erro
+                return "Erro: Tipo de ranking de guerra não especificado (roles/weekly)"
 
             # 2. Ranking de Guild
             elif ranking_type == 'guild':

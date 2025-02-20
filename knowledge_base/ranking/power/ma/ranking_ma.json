@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 17:18:41",
+  "timestamp": "2025-02-19 21:18:09",
   "total_entries": 16,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "iPeiXe",
       "guild": "Out",
-      "attack_power": 682051,
-      "defense_power": 417835,
-      "total_power": 1099886,
+      "attack_power": 671842,
+      "defense_power": 410342,
+      "total_power": 1082184,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -29,8 +29,8 @@
       "name": "Gege",
       "guild": "ForsakenS",
       "attack_power": 618338,
-      "defense_power": 372368,
-      "total_power": 990706,
+      "defense_power": 370718,
+      "total_power": 989056,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "toMate",
       "guild": "ForsakenS",
-      "attack_power": 605481,
-      "defense_power": 360082,
-      "total_power": 965563,
+      "attack_power": 601887,
+      "defense_power": 358404,
+      "total_power": 960291,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -55,6 +55,23 @@
     },
     {
       "position": 4,
+      "class": {
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
+      },
+      "name": "PadinhaXD",
+      "guild": "ForsakenS",
+      "attack_power": 577478,
+      "defense_power": 345214,
+      "total_power": 922692,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 5,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -71,7 +88,7 @@
       }
     },
     {
-      "position": 5,
+      "position": 6,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -79,26 +96,9 @@
       },
       "name": "DarkAzazel",
       "guild": "ForsakenS",
-      "attack_power": 574247,
-      "defense_power": 339973,
-      "total_power": 914220,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 6,
-      "class": {
-        "en": "Wizard",
-        "pt": "Mago",
-        "short": "MA"
-      },
-      "name": "PadinhaXD",
-      "guild": "ForsakenS",
-      "attack_power": 571595,
-      "defense_power": 333953,
-      "total_power": 905548,
+      "attack_power": 565113,
+      "defense_power": 340137,
+      "total_power": 905250,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -111,11 +111,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "PANARO",
-      "guild": "Out",
-      "attack_power": 500017,
-      "defense_power": 320278,
-      "total_power": 820295,
+      "name": "Arkantos",
+      "guild": "RealPlayers",
+      "attack_power": 495843,
+      "defense_power": 325189,
+      "total_power": 821032,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -128,11 +128,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "Arkantos",
-      "guild": "RealPlayers",
-      "attack_power": 489942,
-      "defense_power": 314099,
-      "total_power": 804041,
+      "name": "PANARO",
+      "guild": "Out",
+      "attack_power": 500017,
+      "defense_power": 320278,
+      "total_power": 820295,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -198,9 +198,9 @@
       },
       "name": "Siriel",
       "guild": "ForsakenS",
-      "attack_power": 434719,
-      "defense_power": 263541,
-      "total_power": 698260,
+      "attack_power": 420143,
+      "defense_power": 240081,
+      "total_power": 660224,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -230,6 +230,23 @@
         "pt": "Mago",
         "short": "MA"
       },
+      "name": "PollyxD",
+      "guild": "SteinsKillerS",
+      "attack_power": 417544,
+      "defense_power": 229898,
+      "total_power": 647442,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 15,
+      "class": {
+        "en": "Wizard",
+        "pt": "Mago",
+        "short": "MA"
+      },
       "name": "iLisergia",
       "guild": "ForsakenS",
       "attack_power": 384907,
@@ -241,7 +258,7 @@
       }
     },
     {
-      "position": 15,
+      "position": 16,
       "class": {
         "en": "Wizard",
         "pt": "Mago",
@@ -255,23 +272,6 @@
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
-      }
-    },
-    {
-      "position": 16,
-      "class": {
-        "en": "Wizard",
-        "pt": "Mago",
-        "short": "MA"
-      },
-      "name": "PollyxD",
-      "guild": "SteinsKillerS",
-      "attack_power": 393977,
-      "defense_power": 229898,
-      "total_power": 623875,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
       }
     }
   ]

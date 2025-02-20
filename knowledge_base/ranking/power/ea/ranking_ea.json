@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-19 17:18:57",
+  "timestamp": "2025-02-19 21:04:39",
   "total_entries": 10,
   "rankings": [
     {
@@ -9,14 +9,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "Ortopedista",
-      "guild": "ForsakenS",
-      "attack_power": 644745,
-      "defense_power": 420604,
-      "total_power": 1065349,
+      "name": "1Monstrinho",
+      "guild": "Out",
+      "attack_power": 657381,
+      "defense_power": 406282,
+      "total_power": 1063663,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -26,14 +26,14 @@
         "pt": "Espadachim Arcano",
         "short": "EA"
       },
-      "name": "1Monstrinho",
-      "guild": "Out",
-      "attack_power": 641779,
-      "defense_power": 400167,
-      "total_power": 1041946,
+      "name": "Ortopedista",
+      "guild": "ForsakenS",
+      "attack_power": 624984,
+      "defense_power": 412160,
+      "total_power": 1037144,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -45,9 +45,9 @@
       },
       "name": "HelzaoXD38",
       "guild": "ForsakenS",
-      "attack_power": 623513,
-      "defense_power": 396637,
-      "total_power": 1020150,
+      "attack_power": 609711,
+      "defense_power": 387464,
+      "total_power": 997175,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -62,9 +62,9 @@
       },
       "name": "Carlos",
       "guild": "Out",
-      "attack_power": 522521,
+      "attack_power": 523219,
       "defense_power": 351969,
-      "total_power": 874490,
+      "total_power": 875188,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

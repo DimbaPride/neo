@@ -1,61 +1,61 @@
 {
-  "timestamp": "2025-02-19 17:19:18",
+  "timestamp": "2025-02-19 21:05:01",
   "total_entries": 95,
   "rankings": [
     {
       "position": 1,
       "name": "ForsakenS",
-      "power": 91823046,
+      "power": 91818295,
       "members": 140,
-      "war_points": 615330,
-      "war_kills": 459
+      "war_points": 692309,
+      "war_kills": 510
     },
     {
       "position": 2,
       "name": "Out",
-      "power": 77180351,
+      "power": 77303803,
       "members": 120,
-      "war_points": 735206,
-      "war_kills": 1033
+      "war_points": 823476,
+      "war_kills": 1136
     },
     {
       "position": 3,
       "name": "RealPlayers",
-      "power": 52523274,
-      "members": 114,
-      "war_points": 59809,
-      "war_kills": 22
+      "power": 53043249,
+      "members": 115,
+      "war_points": 72944,
+      "war_kills": 26
     },
     {
       "position": 4,
       "name": "C4",
-      "power": 47459273,
+      "power": 47462357,
       "members": 171,
-      "war_points": 4272,
+      "war_points": 4464,
       "war_kills": 1
     },
     {
       "position": 5,
       "name": "SteinsKillerS",
-      "power": 44318046,
+      "power": 44283578,
       "members": 92,
-      "war_points": 48497,
-      "war_kills": 17
+      "war_points": 51180,
+      "war_kills": 18
     },
     {
       "position": 6,
       "name": "Cursed",
       "power": 42189515,
       "members": 111,
-      "war_points": 14597,
+      "war_points": 17001,
       "war_kills": 0
     },
     {
       "position": 7,
       "name": "Toxic",
-      "power": 8449050,
+      "power": 8466833,
       "members": 23,
-      "war_points": 1340,
+      "war_points": 1578,
       "war_kills": 0
     },
     {
@@ -117,7 +117,7 @@
     {
       "position": 15,
       "name": "CastleTM",
-      "power": 2496663,
+      "power": 2496923,
       "members": 12,
       "war_points": 0,
       "war_kills": 0
@@ -149,7 +149,7 @@
     {
       "position": 19,
       "name": "RusheSolo",
-      "power": 1638648,
+      "power": 1575981,
       "members": 3,
       "war_points": 0,
       "war_kills": 0
@@ -165,9 +165,9 @@
     {
       "position": 21,
       "name": "Geforce",
-      "power": 1338527,
+      "power": 1339453,
       "members": 3,
-      "war_points": 5206,
+      "war_points": 5696,
       "war_kills": 0
     },
     {
@@ -181,9 +181,9 @@
     {
       "position": 23,
       "name": "MaisqAmigosFriends",
-      "power": 1313149,
+      "power": 1316026,
       "members": 4,
-      "war_points": 521,
+      "war_points": 1106,
       "war_kills": 0
     },
     {
@@ -255,7 +255,7 @@
       "name": "ABC",
       "power": 644365,
       "members": 3,
-      "war_points": 0,
+      "war_points": 300,
       "war_kills": 0
     },
     {
