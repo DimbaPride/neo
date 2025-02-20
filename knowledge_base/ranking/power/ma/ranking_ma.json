@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 15:59:36",
+  "timestamp": "2025-02-20 20:32:31",
   "total_entries": 15,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "iPeiXe",
       "guild": "Out",
-      "attack_power": 668353,
-      "defense_power": 408741,
-      "total_power": 1077094,
+      "attack_power": 674346,
+      "defense_power": 411861,
+      "total_power": 1086207,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -26,11 +26,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "Gege",
+      "name": "toMate",
       "guild": "ForsakenS",
-      "attack_power": 592957,
-      "defense_power": 370019,
-      "total_power": 962976,
+      "attack_power": 598037,
+      "defense_power": 362006,
+      "total_power": 960043,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -43,11 +43,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "toMate",
+      "name": "Gege",
       "guild": "ForsakenS",
-      "attack_power": 598037,
-      "defense_power": 361879,
-      "total_power": 959916,
+      "attack_power": 583075,
+      "defense_power": 363020,
+      "total_power": 946095,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -77,11 +77,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "BritneyBitch",
+      "name": "DarkAzazel",
       "guild": "ForsakenS",
-      "attack_power": 563659,
-      "defense_power": 354148,
-      "total_power": 917807,
+      "attack_power": 559748,
+      "defense_power": 336770,
+      "total_power": 896518,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -94,11 +94,11 @@
         "pt": "Mago",
         "short": "MA"
       },
-      "name": "DarkAzazel",
+      "name": "BritneyBitch",
       "guild": "ForsakenS",
-      "attack_power": 550445,
-      "defense_power": 336770,
-      "total_power": 887215,
+      "attack_power": 518860,
+      "defense_power": 329656,
+      "total_power": 848516,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "PANARO",
       "guild": "Out",
-      "attack_power": 531857,
-      "defense_power": 343858,
-      "total_power": 875715,
+      "attack_power": 514812,
+      "defense_power": 324057,
+      "total_power": 838869,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

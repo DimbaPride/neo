@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 16:00:08",
+  "timestamp": "2025-02-20 20:33:05",
   "total_entries": 46,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Abaddon",
       "guild": "Out",
-      "attack_power": 827406,
-      "defense_power": 507119,
-      "total_power": 1334525,
+      "attack_power": 828115,
+      "defense_power": 509195,
+      "total_power": 1337310,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -45,9 +45,9 @@
       },
       "name": "RaphaDM",
       "guild": "Out",
-      "attack_power": 763375,
-      "defense_power": 431167,
-      "total_power": 1194542,
+      "attack_power": 764112,
+      "defense_power": 430795,
+      "total_power": 1194907,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -77,6 +77,40 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
+      "name": "MarvadaXD",
+      "guild": "Out",
+      "attack_power": 686693,
+      "defense_power": 388623,
+      "total_power": 1075316,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 6,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
+      "name": "Trump",
+      "guild": "Out",
+      "attack_power": 693106,
+      "defense_power": 371611,
+      "total_power": 1064717,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 7,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
       "name": "Xora",
       "guild": "Out",
       "attack_power": 686566,
@@ -88,7 +122,7 @@
       }
     },
     {
-      "position": 6,
+      "position": 8,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -105,40 +139,6 @@
       }
     },
     {
-      "position": 7,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "MarvadaXD",
-      "guild": "Out",
-      "attack_power": 668861,
-      "defense_power": 385560,
-      "total_power": 1054421,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 8,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "TIPOmito",
-      "guild": "Out",
-      "attack_power": 638796,
-      "defense_power": 378305,
-      "total_power": 1017101,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 9,
       "class": {
         "en": "Dark Mage",
@@ -147,9 +147,9 @@
       },
       "name": "Autoridade",
       "guild": "Out",
-      "attack_power": 633102,
+      "attack_power": 642984,
       "defense_power": 376818,
-      "total_power": 1009920,
+      "total_power": 1019802,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -179,14 +179,14 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "Trump",
-      "guild": "Out",
-      "attack_power": 644723,
-      "defense_power": 359167,
-      "total_power": 1003890,
+      "name": "R4v3n4",
+      "guild": "ForsakenS",
+      "attack_power": 630854,
+      "defense_power": 367800,
+      "total_power": 998654,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -196,14 +196,14 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "R4v3n4",
-      "guild": "ForsakenS",
-      "attack_power": 630715,
-      "defense_power": 367800,
-      "total_power": 998515,
+      "name": "TIPOmito",
+      "guild": "Out",
+      "attack_power": 579193,
+      "defense_power": 369132,
+      "total_power": 948325,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -232,9 +232,9 @@
       },
       "name": "Terry",
       "guild": "ForsakenS",
-      "attack_power": 552828,
+      "attack_power": 553526,
       "defense_power": 388579,
-      "total_power": 941407,
+      "total_power": 942105,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -298,18 +298,35 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
+      "name": "Pardal",
+      "guild": "Out",
+      "attack_power": 561069,
+      "defense_power": 331675,
+      "total_power": 892744,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 19,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
       "name": "Konig",
       "guild": "ForsakenS",
-      "attack_power": 553636,
-      "defense_power": 349757,
-      "total_power": 903393,
+      "attack_power": 549138,
+      "defense_power": 340585,
+      "total_power": 889723,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 19,
+      "position": 20,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -326,23 +343,6 @@
       }
     },
     {
-      "position": 20,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "Pardal",
-      "guild": "Out",
-      "attack_power": 555697,
-      "defense_power": 330682,
-      "total_power": 886379,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 21,
       "class": {
         "en": "Dark Mage",
@@ -351,9 +351,9 @@
       },
       "name": "AFTERLIFE",
       "guild": "Out",
-      "attack_power": 550587,
-      "defense_power": 311121,
-      "total_power": 861708,
+      "attack_power": 554180,
+      "defense_power": 312800,
+      "total_power": 866980,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -487,9 +487,9 @@
       },
       "name": "YpiocaPrataXD",
       "guild": "SteinsKillerS",
-      "attack_power": 473305,
-      "defense_power": 278387,
-      "total_power": 751692,
+      "attack_power": 475845,
+      "defense_power": 281533,
+      "total_power": 757378,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -502,11 +502,11 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "EvilBilleJoe",
-      "guild": "Out",
-      "attack_power": 431673,
-      "defense_power": 307141,
-      "total_power": 738814,
+      "name": "Lemrak",
+      "guild": "RealPlayers",
+      "attack_power": 465994,
+      "defense_power": 291202,
+      "total_power": 757196,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -519,11 +519,11 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "Lemrak",
-      "guild": "RealPlayers",
-      "attack_power": 433000,
-      "defense_power": 290841,
-      "total_power": 723841,
+      "name": "EvilBilleJoe",
+      "guild": "Out",
+      "attack_power": 431673,
+      "defense_power": 307141,
+      "total_power": 738814,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -570,6 +570,23 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
+      "name": "Afromaxx",
+      "guild": "Toxic",
+      "attack_power": 428042,
+      "defense_power": 264627,
+      "total_power": 692669,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 35,
+      "class": {
+        "en": "Dark Mage",
+        "pt": "Mago Negro",
+        "short": "MN"
+      },
       "name": "SexyMachine",
       "guild": "ForsakenS",
       "attack_power": 394458,
@@ -581,7 +598,7 @@
       }
     },
     {
-      "position": 35,
+      "position": 36,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -589,16 +606,16 @@
       },
       "name": "Kyllbyll",
       "guild": "Out",
-      "attack_power": 414536,
-      "defense_power": 252050,
-      "total_power": 666586,
+      "attack_power": 410944,
+      "defense_power": 250370,
+      "total_power": 661314,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 36,
+      "position": 37,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -615,7 +632,7 @@
       }
     },
     {
-      "position": 37,
+      "position": 38,
       "class": {
         "en": "Dark Mage",
         "pt": "Mago Negro",
@@ -629,23 +646,6 @@
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
-      }
-    },
-    {
-      "position": 38,
-      "class": {
-        "en": "Dark Mage",
-        "pt": "Mago Negro",
-        "short": "MN"
-      },
-      "name": "Afromaxx",
-      "guild": "Toxic",
-      "attack_power": 401929,
-      "defense_power": 253299,
-      "total_power": 655228,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
       }
     },
     {
@@ -708,9 +708,9 @@
       },
       "name": "oOCaPiiRoToO",
       "guild": "SteinsKillerS",
-      "attack_power": 366128,
-      "defense_power": 273355,
-      "total_power": 639483,
+      "attack_power": 366301,
+      "defense_power": 273780,
+      "total_power": 640081,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -723,11 +723,11 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "EspemaDeGalo",
+      "name": "iAleMonster",
       "guild": "Out",
-      "attack_power": 391760,
-      "defense_power": 245995,
-      "total_power": 637755,
+      "attack_power": 392615,
+      "defense_power": 246724,
+      "total_power": 639339,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -740,11 +740,11 @@
         "pt": "Mago Negro",
         "short": "MN"
       },
-      "name": "iAleMonster",
+      "name": "EspemaDeGalo",
       "guild": "Out",
-      "attack_power": 391645,
-      "defense_power": 244981,
-      "total_power": 636626,
+      "attack_power": 391760,
+      "defense_power": 245995,
+      "total_power": 637755,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

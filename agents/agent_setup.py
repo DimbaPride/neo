@@ -1,3 +1,4 @@
+#agentes/agent_setup.py
 import logging
 from typing import List
 from functools import partial
@@ -72,6 +73,19 @@ Regras_Resposta:
 - Combine informações de diferentes fontes para dar respostas mais completas
 - Mantenha consistência com atualizações recentes
 
+[DATABASE]
+Tools disponíveis:
+- "news_systems" para notícias recentes e sistemas do jogo
+- "vip_shop_info" para informações de VIP, loja e recargas
+- "faq_help" para dúvidas comuns e download/instalação
+- Ferramentas de ranking para consultar:
+  * "guild_ranking" - ranking de guilds
+  * "memorial_ranking" - ranking do memorial
+  * "war_roles" - portadores e guardiões
+  * "war_weekly" - ranking semanal de guerra
+  * "power_ranking" - ranking geral de poder
+  * rankings específicos por classe (power_ranking_gu, power_ranking_ma, etc)
+
 [FLUXO_RESPOSTA]
 1. Identifique o tipo de dúvida
 2. Use termos específicos da categoria
@@ -96,7 +110,7 @@ NÃO_FAZER:
   3. "Dizem que manja de farm... de players casadas"
   4. "Vive pedindo help mas nunca ajuda os outros (typical coitado vibes)"
   5. "Lenda que farma 24/7... mas só em PT de casadas"
-  6. "Classe secreta: Coitadus Supremus (passiva: +50% coitadismo"
+  6. "Classe secreta: Coitadus Supremus (passiva: +50% coitadismo")
   7. "Titulo Secreto: 'Don Juan do Porão'"
   8. "Mestre em 'Criação de PTs'... de casadas"
   9. "Evento noturno exclusivo dele: 'Resgate das Desiludidas'"
@@ -129,59 +143,26 @@ class AgentManager:
         self.prompt = self._create_prompt()
         self.agent = self._create_agent()
         self.executor = self._create_executor()
-        
-    def _create_tools(self) -> List[BaseTool]:
-        def wrap_knowledge_query(sources=None, name=""):
-            """Wrapper para queries de conhecimento com contexto"""
-            def query_func(question: str):
-                try:
-                    # Enriquece a query com contexto
-                    results = self.neogames_knowledge.query(
-                        question=question,
-                        sources=sources,
-                        k=5  # Aumentado para ter mais contexto
-                    )
-                    if not results:
-                        return f"Não encontrei informações sobre {name}. Tenta perguntar de outro jeito."
-                    return results
-                except Exception as e:
-                    logger.error(f"Erro na ferramenta {name}: {e}")
-                    return "Opa, deu ruim na busca. Tenta de novo!"
-            return query_func
 
-        # Tools para conhecimento unificado
+    def _create_tools(self) -> List[BaseTool]:
         knowledge_tools = [
             Tool(
-                name="game_knowledge",
-                func=wrap_knowledge_query(name="conhecimento geral"),
-                description="Usa para qualquer informação do jogo, incluindo sistemas, notícias e documentação"
-            ),
-            Tool(
                 name="news_systems",
-                func=wrap_knowledge_query(
-                    sources=[KnowledgeSource.NEWS, KnowledgeSource.SYSTEM],
-                    name="notícias e sistemas"
-                ),
-                description="Usa para notícias recentes e sistemas do jogo"
+                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.NEWS, KnowledgeSource.SYSTEM]),
+                description="Usa para ver notícias recentes e informações sobre sistemas/mecânicas do jogo"
             ),
             Tool(
-                name="download_help",
-                func=wrap_knowledge_query(
-                    sources=[KnowledgeSource.DOWNLOAD, KnowledgeSource.FAQ],
-                    name="download e ajuda"
-                ),
-                description="Usa para informações de download e problemas comuns"
+                name="vip_shop_info",
+                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.VIP, KnowledgeSource.SHOP, KnowledgeSource.RECHARGE]),
+                description="Usa para informações sobre VIP, loja e recargas"
             ),
             Tool(
-                name="shop_vip",
-                func=wrap_knowledge_query(
-                    sources=[KnowledgeSource.SHOP, KnowledgeSource.VIP, KnowledgeSource.RECHARGE],
-                    name="loja e vip"
-                ),
-                description="Usa para informações sobre loja, VIP e recargas"
+                name="faq_help",
+                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.FAQ, KnowledgeSource.DOWNLOAD]),
+                description="Usa para ver perguntas frequentes e ajuda com download/instalação"
             )
         ]
-
+        
         # Ferramentas para rankings (mantidas sem alteração)
         ranking_tools = [
             Tool(

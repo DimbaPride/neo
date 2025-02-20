@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-20 15:59:57",
-  "total_entries": 6,
+  "timestamp": "2025-02-20 20:32:54",
+  "total_entries": 7,
   "rankings": [
     {
       "position": 1,
@@ -9,14 +9,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "lShinobu",
-      "guild": "ForsakenS",
-      "attack_power": 462362,
-      "defense_power": 329635,
-      "total_power": 791997,
+      "name": "FarmezinhaXD",
+      "guild": "SteinsKillerS",
+      "attack_power": 495399,
+      "defense_power": 316133,
+      "total_power": 811532,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -26,14 +26,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "FarmezinhaXD",
-      "guild": "SteinsKillerS",
-      "attack_power": 482862,
-      "defense_power": 301208,
-      "total_power": 784070,
+      "name": "lShinobu",
+      "guild": "ForsakenS",
+      "attack_power": 462811,
+      "defense_power": 329635,
+      "total_power": 792446,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -89,6 +89,23 @@
     },
     {
       "position": 6,
+      "class": {
+        "en": "Gladiator",
+        "pt": "Gladiador",
+        "short": "GL"
+      },
+      "name": "Zemiro",
+      "guild": "SteinsKillerS",
+      "attack_power": 394620,
+      "defense_power": 224223,
+      "total_power": 618843,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 7,
       "class": {
         "en": "Gladiator",
         "pt": "Gladiador",

@@ -1,3 +1,4 @@
+#knowledge_base/ranking_neogames.py
 import os
 import asyncio
 import logging
@@ -12,8 +13,6 @@ from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeout
 
 from langchain_core.documents import Document
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
 
 # Configuração de logging
 logging.basicConfig(
@@ -124,7 +123,6 @@ NATION_MAPPING = {
 class NeoGamesRankings:
     def __init__(self, base_dir: str = "knowledge_base/ranking"):
         self.base_dir = base_dir
-        self.embeddings = OpenAIEmbeddings()
         
         self.guild_headers = {
             'position': '#',

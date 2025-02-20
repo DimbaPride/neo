@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 16:00:03",
+  "timestamp": "2025-02-20 20:32:59",
   "total_entries": 10,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "lLorD",
       "guild": "Out",
-      "attack_power": 817449,
+      "attack_power": 817699,
       "defense_power": 468979,
-      "total_power": 1286428,
+      "total_power": 1286678,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -29,8 +29,8 @@
       "name": "JackJohnson",
       "guild": "ForsakenS",
       "attack_power": 694611,
-      "defense_power": 415843,
-      "total_power": 1110454,
+      "defense_power": 415933,
+      "total_power": 1110544,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Bambinho",
       "guild": "ForsakenS",
-      "attack_power": 592125,
-      "defense_power": 383950,
-      "total_power": 976075,
+      "attack_power": 589633,
+      "defense_power": 385630,
+      "total_power": 975263,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -77,14 +77,14 @@
         "pt": "Atirador",
         "short": "AT"
       },
-      "name": "LadyGabi",
-      "guild": "SteinsKillerS",
-      "attack_power": 511770,
-      "defense_power": 326040,
-      "total_power": 837810,
+      "name": "Flexinha",
+      "guild": "RealPlayers",
+      "attack_power": 503083,
+      "defense_power": 335260,
+      "total_power": 838343,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -94,14 +94,14 @@
         "pt": "Atirador",
         "short": "AT"
       },
-      "name": "Flexinha",
-      "guild": "RealPlayers",
-      "attack_power": 501097,
-      "defense_power": 335260,
-      "total_power": 836357,
+      "name": "LadyGabi",
+      "guild": "SteinsKillerS",
+      "attack_power": 511770,
+      "defense_power": 326040,
+      "total_power": 837810,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {

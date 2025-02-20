@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 15:59:46",
+  "timestamp": "2025-02-20 20:32:43",
   "total_entries": 8,
   "rankings": [
     {
@@ -45,9 +45,9 @@
       },
       "name": "Chopper",
       "guild": "ForsakenS",
-      "attack_power": 467833,
-      "defense_power": 389475,
-      "total_power": 857308,
+      "attack_power": 469318,
+      "defense_power": 389631,
+      "total_power": 858949,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -55,6 +55,23 @@
     },
     {
       "position": 4,
+      "class": {
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "name": "PoderosoPDB",
+      "guild": "Out",
+      "attack_power": 464082,
+      "defense_power": 332786,
+      "total_power": 796868,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 5,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -68,23 +85,6 @@
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
-      }
-    },
-    {
-      "position": 5,
-      "class": {
-        "en": "Force Shielder",
-        "pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "name": "PoderosoPDB",
-      "guild": "Out",
-      "attack_power": 431608,
-      "defense_power": 329729,
-      "total_power": 761337,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
       }
     },
     {
@@ -113,9 +113,9 @@
       },
       "name": "LionSin",
       "guild": "Out",
-      "attack_power": 385952,
-      "defense_power": 273024,
-      "total_power": 658976,
+      "attack_power": 382352,
+      "defense_power": 273890,
+      "total_power": 656242,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

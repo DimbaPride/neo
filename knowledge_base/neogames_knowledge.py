@@ -1,6 +1,6 @@
+#knowledge_base/neogames_knowledge.py
 import os
 import logging
-import re
 import asyncio
 from datetime import datetime, UTC
 from typing import Dict, List, Optional
@@ -31,7 +31,6 @@ class KnowledgeSource(Enum):
     SHOP = "shop"
     RECHARGE = "recharge"
     VIP = "vip"
-    CUSTOM = "custom"
 
 @dataclass
 class SitemapEntry:
@@ -104,35 +103,21 @@ class NeoGamesKnowledge:
         # URLs de notícias importantes
         self.manual_urls[KnowledgeSource.NEWS].extend([
             f"{base}/news/como-obter-asa-arcana-colecao-e-link-estelar",
-            f"{base}/news/aniversario-neo-2025",
-            f"{base}/news/halloween-neo-2024",
-            f"{base}/news/natal-neo-2024",
-            f"{base}/news/primavera-neo-2024"
         ])
         
         # URLs do sistema
         self.manual_urls[KnowledgeSource.SYSTEM].extend([
-            f"{base}/system/debuffs-personalizados",
-            f"{base}/system/drop-anuncio",
-            f"{base}/system/informacao-de-sinergia",
-            f"{base}/system/macro-de-bm3",
-            f"{base}/system/modo-de-batalha",
-            f"{base}/system/quebra-de-itens-automatica",
-            f"{base}/system/seguro-neo"
         ])
         
         # Outras URLs importantes
         self.manual_urls[KnowledgeSource.SHOP].extend([
-            f"{base}/shop",
-            f"{base}/shop/items"
+            f"{base}/shop",            
         ])
         self.manual_urls[KnowledgeSource.RECHARGE].extend([
-            f"{base}/recharge",
-            f"{base}/recharge/methods"
+            f"{base}/recharge",            
         ])
         self.manual_urls[KnowledgeSource.VIP].extend([
-            f"{base}/vip",
-            f"{base}/vip/benefits"
+            f"{base}/vip",            
         ])
 
     def add_manual_url(self, source: KnowledgeSource, url: str) -> bool:
@@ -234,18 +219,20 @@ class NeoGamesKnowledge:
                     
                     if not path:
                         organized[KnowledgeSource.MAIN].append(entry)
-                    elif path.startswith("news"):
+                    elif path.startswith("news"):  # Removido /
                         organized[KnowledgeSource.NEWS].append(entry)
-                    elif path.startswith("faq"):
+                    elif path.startswith("faq"):   # Removido /
                         organized[KnowledgeSource.FAQ].append(entry)
-                    elif path.startswith("download"):
+                    elif path.startswith("download"):  # Removido /
                         organized[KnowledgeSource.DOWNLOAD].append(entry)
-                    elif path.startswith("system"):
+                    elif path.startswith("system"):   # Removido /
                         organized[KnowledgeSource.SYSTEM].append(entry)
-                    elif path.startswith("vip"):
+                    elif path.startswith("vip"):     # Removido /
                         organized[KnowledgeSource.VIP].append(entry)
-                    else:
-                        organized[KnowledgeSource.CUSTOM].append(entry)
+                    elif path.startswith("shop"):    # Removido /
+                        organized[KnowledgeSource.SHOP].append(entry)
+                    elif path.startswith("recharge"): # Removido /
+                        organized[KnowledgeSource.RECHARGE].append(entry)
                     
                 except Exception as e:
                     logger.error(f"Erro ao processar entrada do sitemap: {e}")
@@ -253,8 +240,10 @@ class NeoGamesKnowledge:
             
             # Adiciona URLs manuais
             for source, urls in self.manual_urls.items():
+                logger.info(f"Processando URLs manuais para {source.value}")
                 for url in urls:
                     if not any(entry.url == url for entry in organized[source]):
+                        logger.info(f"Adicionando URL manual: {url}")
                         organized[source].append(
                             SitemapEntry(
                                 url=url,
@@ -270,14 +259,29 @@ class NeoGamesKnowledge:
             return organized
 
     async def load_content(self, source: KnowledgeSource, urls: List[str]) -> List[Document]:
+        """
+        Carrega o conteúdo das URLs usando PlaywrightURLLoader
+        
+        Args:
+            source: Fonte do conhecimento
+            urls: Lista de URLs para carregar
+            
+        Returns:
+            Lista de documentos processados
+        """
         if not urls:
             return []
-                
+            
         try:
-            absolute_urls = [
-                urljoin(self.base_url, url) if not url.startswith(('http://', 'https://')) else url
-                for url in urls
-            ]
+            # Converte URLs relativas para absolutas
+            logger.info(f"Tentando carregar {len(urls)} URLs para {source.value}")
+            absolute_urls = []
+            for url in urls:
+                if not url.startswith(('http://', 'https://')):
+                    absolute_url = urljoin(self.base_url, url)
+                    absolute_urls.append(absolute_url)
+                else:
+                    absolute_urls.append(url)
             
             loader = PlaywrightURLLoader(
                 urls=absolute_urls,
@@ -292,56 +296,6 @@ class NeoGamesKnowledge:
             for doc in documents:
                 try:
                     soup = BeautifulSoup(doc.page_content, 'html.parser')
-                    post_date = None
-                    
-                    # 1. Tenta encontrar a data no conteúdo da notícia
-                    date_patterns = [
-                        r'(\d{2}/\d{2}/\d{4})',  # dd/mm/yyyy
-                        r'(\d{2}-\d{2}-\d{4})',  # dd-mm-yyyy
-                        r'(\d{2}/\d{2}/\d{2})',  # dd/mm/yy
-                        r'(\d{2}-\d{2}-\d{2})',  # dd-mm-yy
-                    ]
-                    
-                    # Procura no texto completo primeiro
-                    text_content = soup.get_text()
-                    for pattern in date_patterns:
-                        match = re.search(pattern, text_content)
-                        if match:
-                            date_str = match.group(1)
-                            try:
-                                if '-' in date_str:
-                                    if len(date_str) == 8:  # dd-mm-yy
-                                        post_date = datetime.strptime(date_str, '%d-%m-%y')
-                                    else:  # dd-mm-yyyy
-                                        post_date = datetime.strptime(date_str, '%d-%m-%Y')
-                                else:  # formato com /
-                                    if len(date_str) == 8:  # dd/mm/yy
-                                        post_date = datetime.strptime(date_str, '%d/%m/%y')
-                                    else:  # dd/mm/yyyy
-                                        post_date = datetime.strptime(date_str, '%d/%m/%Y')
-                                break
-                            except ValueError:
-                                continue
-                    
-                    # 2. Se não encontrou, tenta extrair da URL
-                    if not post_date:
-                        url = doc.metadata.get('source', '')
-                        date_matches = re.findall(r'(\d{2}-\d{2}-\d{2}(?:\d{2})?)', url)
-                        for date_str in date_matches:
-                            try:
-                                if len(date_str) == 8:  # dd-mm-yy
-                                    post_date = datetime.strptime(date_str, '%d-%m-%y')
-                                else:  # dd-mm-yyyy
-                                    post_date = datetime.strptime(date_str, '%d-%m-%Y')
-                                break
-                            except ValueError:
-                                continue
-                    
-                    # 3. Se ainda não encontrou, usa a data atual como último recurso
-                    if not post_date:
-                        post_date = datetime.now(UTC)
-                    
-                    # Limpa o conteúdo
                     for tag in soup.find_all(['script', 'style', 'nav', 'header', 'footer']):
                         tag.decompose()
                     
@@ -355,27 +309,21 @@ class NeoGamesKnowledge:
                     clean_content = main_content.get_text(separator=' ', strip=True)
                     
                     if clean_content:
-                        metadata = {
-                            'source': source.value,
-                            'url': doc.metadata.get('source'),
-                            'timestamp': datetime.now(UTC).isoformat(),
-                            'post_date': post_date.astimezone(UTC).isoformat() if post_date else None
-                        }
-                                                
-                        # Remove o "Voltar para notícias" do conteúdo
-                        clean_content = clean_content.replace('Voltar para notícias', '').strip()
-                        
                         processed_docs.append(Document(
                             page_content=clean_content,
-                            metadata=metadata
+                            metadata={
+                                'source': source.value,
+                                'url': doc.metadata.get('source'),
+                                'timestamp': datetime.now().isoformat()
+                            }
                         ))
                         
                 except Exception as e:
                     logger.error(f"Erro ao processar documento: {e}")
                     continue
-                        
+                    
             return processed_docs
-                
+            
         except Exception as e:
             logger.error(f"Erro ao carregar documentos: {e}")
             return []
@@ -423,8 +371,7 @@ class NeoGamesKnowledge:
                     self.vectorstore = FAISS.load_local(
                         self.vectorstore_dir,
                         self.embeddings,
-                        allow_dangerous_deserialization=True  # Adicionado este parâmetro
-
+                        allow_dangerous_deserialization=True
                     )
                     logger.info("Base de conhecimento existente carregada")
                 except Exception as e:
@@ -463,34 +410,43 @@ class NeoGamesKnowledge:
                 pass
 
     async def update_knowledge_bases(self):
-        """Atualiza a base de conhecimento unificada"""
         try:
             sitemap_entries = self.fetch_sitemap()
             all_documents = []
             
-            # Processa URLs regulares e manuais
+            # Adicionar logs para debug
+            logger.info("Iniciando atualização das bases")
+            
             for source in KnowledgeSource:
                 entries = sitemap_entries.get(source, [])
+                logger.info(f"Source {source.value}: {len(entries)} entradas do sitemap")
+                
                 if not entries:
+                    logger.warning(f"Nenhuma entrada para {source.value}")
                     continue
                     
                 urls = [entry.url for entry in entries]
                 
-                # Adiciona URLs manuais se existirem
+                # Adiciona URLs manuais
                 manual_urls = self.manual_urls.get(source, [])
                 if manual_urls:
+                    logger.info(f"Adicionando {len(manual_urls)} URLs manuais para {source.value}")
                     urls.extend(manual_urls)
                 
                 # Remove duplicatas mantendo a ordem
                 urls = list(dict.fromkeys(urls))
+                logger.info(f"Total de {len(urls)} URLs para {source.value}: {urls}")
                 
-                # Remove o terceiro parâmetro que estava causando o erro
+                # Carrega documentos
                 documents = await self.load_content(source, urls)
+                logger.info(f"Carregados {len(documents)} documentos para {source.value}")
                 all_documents.extend(documents)
+            
+            logger.info(f"Total de {len(all_documents)} documentos carregados")
             
             # Cria/atualiza a base unificada
             self.create_knowledge_base(all_documents)
-            
+                
         except Exception as e:
             logger.error(f"Erro ao atualizar bases: {e}")
 
@@ -499,90 +455,58 @@ class NeoGamesKnowledge:
             if not self.vectorstore:
                 return "Base de conhecimento não inicializada."
 
-            # Busca em toda a base
+            # Aumenta o número de documentos na busca inicial
             docs = self.vectorstore.similarity_search(question, k=k*2)
-            
-            # Filtra por fonte se necessário
+
+            # Filtra por fonte se especificado
             if sources:
                 docs = [
                     doc for doc in docs 
                     if doc.metadata.get('source') in [s.value for s in sources]
                 ]
+
             
-            # Função auxiliar para obter data com timezone
-            def get_date(doc) -> datetime:
-                try:
-                    post_date = doc.metadata.get('post_date')
-                    if isinstance(post_date, str):
-                        # Converte string para datetime e garante timezone UTC
-                        dt = datetime.fromisoformat(post_date.replace('Z', '+00:00'))
-                        return dt.astimezone(UTC)
-                    elif isinstance(post_date, datetime):
-                        # Se já é datetime, garante timezone UTC
-                        return post_date.astimezone(UTC) if post_date.tzinfo else post_date.replace(tzinfo=UTC)
-                    else:
-                        # Tenta timestamp como fallback
-                        timestamp = doc.metadata.get('timestamp')
-                        if timestamp and isinstance(timestamp, str):
-                            dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
-                            return dt.astimezone(UTC)
-                        return datetime.min.replace(tzinfo=UTC)
-                except (ValueError, TypeError) as e:
-                    logger.debug(f"Erro ao processar data: {e}")
-                    return datetime.min.replace(tzinfo=UTC)
-            
-            # Ordena documentos por data
-            try:
-                docs = sorted(
-                    docs,
-                    key=get_date,
-                    reverse=True
-                )[:k]
-            except Exception as e:
-                logger.error(f"Erro ao ordenar documentos: {e}")
-                # Se falhar na ordenação, usa os documentos sem ordenar
-                docs = docs[:k]
-            
+            # Ordena apenas por timestamp por enquanto
+            docs = sorted(
+                docs,
+                key=lambda x: datetime.fromisoformat(
+                    x.metadata.get('timestamp')
+                ).replace(tzinfo=UTC),
+                reverse=True
+            )
+
+            # Pega os K mais relevantes
+            docs = docs[:k]
+
             if not docs:
                 return "Nenhuma informação relevante encontrada."
-            
+
+            # Formata a resposta
             responses = []
             for doc in docs:
-                try:
-                    src = doc.metadata.get('source', 'desconhecida').title()
-                    url = doc.metadata.get('url', '')
-                    
-                    # Formata a data
-                    try:
-                        post_date = get_date(doc)
-                        date_str = post_date.strftime('%d/%m/%Y %H:%M')
-                    except Exception as e:
-                        logger.debug(f"Erro ao formatar data: {e}")
-                        date_str = "Data não disponível"
-                    
-                    # Remove texto desnecessário e formata o conteúdo
-                    content = doc.page_content.strip()
-                    if not content:
-                        continue
-                        
-                    # Remove textos específicos indesejados
-                    content = content.replace('Voltar para notícias', '')
-                    content = re.sub(r'\s+', ' ', content).strip()
-                    
-                    response = f"[{src}] [{date_str}]\n{content}"
-                    if url:
-                        response += f"\nFonte: {url}"
-                    responses.append(response)
-                    
-                except Exception as e:
-                    logger.error(f"Erro ao processar documento individual: {e}")
-                    continue
-            
-            return "\n\n".join(responses) if responses else "Nenhuma informação relevante encontrada."
-            
+                src = doc.metadata.get('source', 'desconhecida').title()
+                url = doc.metadata.get('url', '')
+                date = doc.metadata.get('post_date')
+
+                # Adiciona contexto da fonte
+                if src == "News":
+                    response = f"[Notícia - {date}] "
+                elif src == "System":
+                    response = "[Sistema do Jogo] "
+                else:
+                    response = f"[{src}] "
+
+                response += doc.page_content
+                if url:
+                    response += f"\nFonte: {url}"
+                responses.append(response)
+
+            return "\n\n".join(responses)
+
         except Exception as e:
             logger.error(f"Erro na consulta: {e}")
             return "Erro ao consultar a base de conhecimento."
+
 
     def get_all_urls(self) -> Dict[KnowledgeSource, List[str]]:
         """

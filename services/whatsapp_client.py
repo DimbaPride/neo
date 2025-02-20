@@ -1,4 +1,4 @@
-#whatsapp_client.py
+#services/whatsapp_client.py
 import re
 import time
 import logging

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 15:59:25",
+  "timestamp": "2025-02-20 20:32:20",
   "total_entries": 17,
   "rankings": [
     {
@@ -12,8 +12,8 @@
       "name": "HasgaKU",
       "guild": "ForsakenS",
       "attack_power": 698629,
-      "defense_power": 449847,
-      "total_power": 1148476,
+      "defense_power": 449898,
+      "total_power": 1148527,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -79,9 +79,9 @@
       },
       "name": "MAriaBonita",
       "guild": "Out",
-      "attack_power": 452338,
-      "defense_power": 303202,
-      "total_power": 755540,
+      "attack_power": 452441,
+      "defense_power": 303280,
+      "total_power": 755721,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -111,11 +111,11 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "BaltasaR",
+      "name": "formigaoDOcaps",
       "guild": "ForsakenS",
-      "attack_power": 424014,
-      "defense_power": 303731,
-      "total_power": 727745,
+      "attack_power": 420876,
+      "defense_power": 302281,
+      "total_power": 723157,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -128,11 +128,11 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "formigaoDOcaps",
+      "name": "BaltasaR",
       "guild": "ForsakenS",
-      "attack_power": 420876,
-      "defense_power": 302281,
-      "total_power": 723157,
+      "attack_power": 420422,
+      "defense_power": 302052,
+      "total_power": 722474,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -179,14 +179,14 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "TiTioSlash",
+      "name": "BiruXD",
       "guild": "Cursed",
-      "attack_power": 391256,
-      "defense_power": 304714,
-      "total_power": 695970,
+      "attack_power": 401482,
+      "defense_power": 291923,
+      "total_power": 693405,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -196,14 +196,14 @@
         "pt": "Guerreiro",
         "short": "GU"
       },
-      "name": "BiruXD",
+      "name": "TiTioSlash",
       "guild": "Cursed",
-      "attack_power": 401482,
-      "defense_power": 291923,
-      "total_power": 693405,
+      "attack_power": 384040,
+      "defense_power": 293702,
+      "total_power": 677742,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -232,9 +232,9 @@
       },
       "name": "Bob999",
       "guild": "RusheSolo",
-      "attack_power": 370601,
-      "defense_power": 270137,
-      "total_power": 640738,
+      "attack_power": 382632,
+      "defense_power": 292481,
+      "total_power": 675113,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"

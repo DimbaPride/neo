@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 16:00:22",
+  "timestamp": "2025-02-20 20:33:18",
   "total_entries": 100,
   "rankings": [
     {
@@ -11,8 +11,8 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 94309,
-      "kills": 241,
+      "points": 96149,
+      "kills": 230,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -27,8 +27,8 @@
         "short": "AT"
       },
       "guild": "Out",
-      "points": 63721,
-      "kills": 122,
+      "points": 66678,
+      "kills": 129,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -36,6 +36,22 @@
     },
     {
       "position": 3,
+      "name": "DarkFeity",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "Out",
+      "points": 56382,
+      "kills": 158,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 4,
       "name": "Ro0b",
       "class": {
         "name": "Blader",
@@ -51,22 +67,6 @@
       }
     },
     {
-      "position": 4,
-      "name": "DarkFeity",
-      "class": {
-        "name": "Force Archer",
-        "name_pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "guild": "Out",
-      "points": 45937,
-      "kills": 152,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 5,
       "name": "PiK4",
       "class": {
@@ -75,8 +75,8 @@
         "short": "AA"
       },
       "guild": "Out",
-      "points": 37212,
-      "kills": 104,
+      "points": 39237,
+      "kills": 98,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -91,7 +91,7 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 36962,
+      "points": 36968,
       "kills": 37,
       "nation": {
         "en": "Capella",
@@ -107,8 +107,8 @@
         "short": "AA"
       },
       "guild": "Out",
-      "points": 35296,
-      "kills": 51,
+      "points": 35358,
+      "kills": 45,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -116,6 +116,22 @@
     },
     {
       "position": 8,
+      "name": "iPeiXe",
+      "class": {
+        "name": "Wizard",
+        "name_pt": "Mago",
+        "short": "MA"
+      },
+      "guild": "Out",
+      "points": 31141,
+      "kills": 71,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 9,
       "name": "Sortud0",
       "class": {
         "name": "Blader",
@@ -131,7 +147,7 @@
       }
     },
     {
-      "position": 9,
+      "position": 10,
       "name": "Xora",
       "class": {
         "name": "Dark Mage",
@@ -147,22 +163,6 @@
       }
     },
     {
-      "position": 10,
-      "name": "iPeiXe",
-      "class": {
-        "name": "Wizard",
-        "name_pt": "Mago",
-        "short": "MA"
-      },
-      "guild": "Out",
-      "points": 27623,
-      "kills": 68,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 11,
       "name": "Trump",
       "class": {
@@ -171,8 +171,8 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 26492,
-      "kills": 27,
+      "points": 29110,
+      "kills": 30,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -180,22 +180,6 @@
     },
     {
       "position": 12,
-      "name": "StressedOutt",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "Out",
-      "points": 25976,
-      "kills": 6,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 13,
       "name": "Tanguete",
       "class": {
         "name": "Force Archer",
@@ -203,8 +187,24 @@
         "short": "AA"
       },
       "guild": "Out",
-      "points": 24388,
-      "kills": 54,
+      "points": 26934,
+      "kills": 56,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 13,
+      "name": "StressedOutt",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "Out",
+      "points": 25988,
+      "kills": 6,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -219,8 +219,8 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 23363,
-      "kills": 16,
+      "points": 23709,
+      "kills": 18,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -235,8 +235,8 @@
         "short": "DU"
       },
       "guild": "Out",
-      "points": 22208,
-      "kills": 26,
+      "points": 23113,
+      "kills": 18,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -251,8 +251,8 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 21839,
-      "kills": 19,
+      "points": 22104,
+      "kills": 21,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -267,7 +267,7 @@
         "short": "DU"
       },
       "guild": "Out",
-      "points": 16694,
+      "points": 17452,
       "kills": 2,
       "nation": {
         "en": "Capella",
@@ -276,6 +276,22 @@
     },
     {
       "position": 18,
+      "name": "AFTERLIFE",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "Out",
+      "points": 17294,
+      "kills": 2,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 19,
       "name": "Enryu",
       "class": {
         "name": "Blader",
@@ -291,32 +307,16 @@
       }
     },
     {
-      "position": 19,
-      "name": "AFTERLIFE",
-      "class": {
-        "name": "Dark Mage",
-        "name_pt": "Mago Negro",
-        "short": "MN"
-      },
-      "guild": "Out",
-      "points": 13418,
-      "kills": 2,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 20,
-      "name": "WalkeeR",
+      "name": "Sylvie",
       "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
+        "name": "Force Gunner",
+        "name_pt": "Atirador",
+        "short": "AT"
       },
-      "guild": "RealPlayers",
-      "points": 12425,
-      "kills": 8,
+      "guild": "SteinsKillerS",
+      "points": 14862,
+      "kills": 3,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -324,6 +324,22 @@
     },
     {
       "position": 21,
+      "name": "WalkeeR",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "RealPlayers",
+      "points": 13557,
+      "kills": 8,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 22,
       "name": "isMagic",
       "class": {
         "name": "Dark Mage",
@@ -339,7 +355,7 @@
       }
     },
     {
-      "position": 22,
+      "position": 23,
       "name": "LeaziXCIII",
       "class": {
         "name": "Force Archer",
@@ -347,7 +363,7 @@
         "short": "AA"
       },
       "guild": "SteinsKillerS",
-      "points": 11754,
+      "points": 12170,
       "kills": 2,
       "nation": {
         "en": "Capella",
@@ -355,7 +371,23 @@
       }
     },
     {
-      "position": 23,
+      "position": 24,
+      "name": "GorjinxGU",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "Out",
+      "points": 12157,
+      "kills": 5,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 25,
       "name": "snkz",
       "class": {
         "name": "Blader",
@@ -371,48 +403,16 @@
       }
     },
     {
-      "position": 24,
-      "name": "GorjinxGU",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "Out",
-      "points": 10598,
-      "kills": 4,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 25,
-      "name": "Sylvie",
+      "position": 26,
+      "name": "Furyy",
       "class": {
         "name": "Force Gunner",
         "name_pt": "Atirador",
         "short": "AT"
       },
-      "guild": "SteinsKillerS",
-      "points": 9668,
-      "kills": 2,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 26,
-      "name": "Carlos",
-      "class": {
-        "name": "Force Blader",
-        "name_pt": "Espadachim Arcano",
-        "short": "EA"
-      },
       "guild": "Out",
-      "points": 9453,
-      "kills": 3,
+      "points": 10808,
+      "kills": 6,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -420,6 +420,38 @@
     },
     {
       "position": 27,
+      "name": "Carlos",
+      "class": {
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "guild": "Out",
+      "points": 10795,
+      "kills": 3,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 28,
+      "name": "1Monstrinho",
+      "class": {
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
+      },
+      "guild": "Out",
+      "points": 10461,
+      "kills": 11,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 29,
       "name": "Zemiro",
       "class": {
         "name": "Gladiator",
@@ -435,7 +467,7 @@
       }
     },
     {
-      "position": 28,
+      "position": 30,
       "name": "vzeven2k",
       "class": {
         "name": "Blader",
@@ -443,7 +475,7 @@
         "short": "DU"
       },
       "guild": "Out",
-      "points": 9295,
+      "points": 9318,
       "kills": 2,
       "nation": {
         "en": "Capella",
@@ -451,7 +483,23 @@
       }
     },
     {
-      "position": 29,
+      "position": 31,
+      "name": "DeMonSs",
+      "class": {
+        "name": "Gladiator",
+        "name_pt": "Gladiador",
+        "short": "GL"
+      },
+      "guild": "RealPlayers",
+      "points": 8418,
+      "kills": 3,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 32,
       "name": "Power",
       "class": {
         "name": "Wizard",
@@ -467,23 +515,7 @@
       }
     },
     {
-      "position": 30,
-      "name": "DeusGarius",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "Out",
-      "points": 7811,
-      "kills": 3,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 31,
+      "position": 33,
       "name": "Pardal",
       "class": {
         "name": "Dark Mage",
@@ -491,7 +523,7 @@
         "short": "MN"
       },
       "guild": "Out",
-      "points": 6911,
+      "points": 7986,
       "kills": 2,
       "nation": {
         "en": "Capella",
@@ -499,7 +531,39 @@
       }
     },
     {
-      "position": 32,
+      "position": 34,
+      "name": "DeusGarius",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "Out",
+      "points": 7822,
+      "kills": 3,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 35,
+      "name": "iLulex",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "Out",
+      "points": 6970,
+      "kills": 3,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 36,
       "name": "LionSin",
       "class": {
         "name": "Force Shielder",
@@ -515,55 +579,7 @@
       }
     },
     {
-      "position": 33,
-      "name": "DeMonSs",
-      "class": {
-        "name": "Gladiator",
-        "name_pt": "Gladiador",
-        "short": "GL"
-      },
-      "guild": "RealPlayers",
-      "points": 6606,
-      "kills": 3,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 34,
-      "name": "1Monstrinho",
-      "class": {
-        "name": "Force Blader",
-        "name_pt": "Espadachim Arcano",
-        "short": "EA"
-      },
-      "guild": "Out",
-      "points": 6369,
-      "kills": 11,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 35,
-      "name": "iLulex",
-      "class": {
-        "name": "Force Archer",
-        "name_pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "guild": "Out",
-      "points": 5960,
-      "kills": 3,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 36,
+      "position": 37,
       "name": "xJinWoo",
       "class": {
         "name": "Dark Mage",
@@ -579,7 +595,23 @@
       }
     },
     {
-      "position": 37,
+      "position": 38,
+      "name": "xMoonSTrinhAAx",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "RealPlayers",
+      "points": 5568,
+      "kills": 3,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 39,
       "name": "KaLaShGU",
       "class": {
         "name": "Warrior",
@@ -595,7 +627,7 @@
       }
     },
     {
-      "position": 38,
+      "position": 40,
       "name": "Arkantos",
       "class": {
         "name": "Wizard",
@@ -611,23 +643,7 @@
       }
     },
     {
-      "position": 39,
-      "name": "xMoonSTrinhAAx",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "RealPlayers",
-      "points": 5070,
-      "kills": 3,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 40,
+      "position": 41,
       "name": "Autoridade",
       "class": {
         "name": "Dark Mage",
@@ -643,32 +659,16 @@
       }
     },
     {
-      "position": 41,
-      "name": "Furyy",
-      "class": {
-        "name": "Force Gunner",
-        "name_pt": "Atirador",
-        "short": "AT"
-      },
-      "guild": "Out",
-      "points": 4292,
-      "kills": 5,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 42,
-      "name": "XxAlyoshaxX",
+      "name": "YpiocaPrataXD",
       "class": {
         "name": "Dark Mage",
         "name_pt": "Mago Negro",
         "short": "MN"
       },
-      "guild": "Out",
-      "points": 4108,
-      "kills": 4,
+      "guild": "SteinsKillerS",
+      "points": 4682,
+      "kills": 2,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -676,6 +676,22 @@
     },
     {
       "position": 43,
+      "name": "XxAlyoshaxX",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "Out",
+      "points": 4197,
+      "kills": 4,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 44,
       "name": "Lango",
       "class": {
         "name": "Gladiator",
@@ -691,7 +707,7 @@
       }
     },
     {
-      "position": 44,
+      "position": 45,
       "name": "lCavaUmaFalta",
       "class": {
         "name": "Blader",
@@ -707,23 +723,23 @@
       }
     },
     {
-      "position": 45,
-      "name": "YpiocaPrataXD",
+      "position": 46,
+      "name": "Shisui",
       "class": {
-        "name": "Dark Mage",
-        "name_pt": "Mago Negro",
-        "short": "MN"
+        "name": "Force Blader",
+        "name_pt": "Espadachim Arcano",
+        "short": "EA"
       },
       "guild": "SteinsKillerS",
-      "points": 3782,
-      "kills": 2,
+      "points": 3741,
+      "kills": 1,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
       }
     },
     {
-      "position": 46,
+      "position": 47,
       "name": "SraFruitJuice",
       "class": {
         "name": "Blader",
@@ -739,7 +755,7 @@
       }
     },
     {
-      "position": 47,
+      "position": 48,
       "name": "MAriaBonita",
       "class": {
         "name": "Warrior",
@@ -755,22 +771,6 @@
       }
     },
     {
-      "position": 48,
-      "name": "Shisui",
-      "class": {
-        "name": "Force Blader",
-        "name_pt": "Espadachim Arcano",
-        "short": "EA"
-      },
-      "guild": "SteinsKillerS",
-      "points": 3465,
-      "kills": 1,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
       "position": 49,
       "name": "oOCaPiiRoToO",
       "class": {
@@ -779,7 +779,7 @@
         "short": "MN"
       },
       "guild": "SteinsKillerS",
-      "points": 2828,
+      "points": 3133,
       "kills": 0,
       "nation": {
         "en": "Capella",
@@ -788,14 +788,14 @@
     },
     {
       "position": 50,
-      "name": "BladeMaster",
+      "name": "Afromaxx",
       "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
       },
-      "guild": "Out",
-      "points": 2401,
+      "guild": "Toxic",
+      "points": 2622,
       "kills": 0,
       "nation": {
         "en": "Capella",
@@ -811,7 +811,7 @@
         "short": "AA"
       },
       "guild": "ForsakenS",
-      "points": 86208,
+      "points": 86360,
       "kills": 121,
       "nation": {
         "en": "Procyon",
@@ -827,8 +827,8 @@
         "short": "DU"
       },
       "guild": "ForsakenS",
-      "points": 44304,
-      "kills": 36,
+      "points": 46017,
+      "kills": 39,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -843,8 +843,8 @@
         "short": "MN"
       },
       "guild": "ForsakenS",
-      "points": 41904,
-      "kills": 39,
+      "points": 45450,
+      "kills": 58,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -875,8 +875,8 @@
         "short": "AT"
       },
       "guild": "ForsakenS",
-      "points": 34675,
-      "kills": 37,
+      "points": 35302,
+      "kills": 40,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -891,8 +891,8 @@
         "short": "DU"
       },
       "guild": "ForsakenS",
-      "points": 33104,
-      "kills": 7,
+      "points": 33452,
+      "kills": 10,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -939,8 +939,8 @@
         "short": "GU"
       },
       "guild": "ForsakenS",
-      "points": 19785,
-      "kills": 9,
+      "points": 22883,
+      "kills": 13,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -948,6 +948,38 @@
     },
     {
       "position": 10,
+      "name": "M03D1NH4S",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "ForsakenS",
+      "points": 21191,
+      "kills": 6,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 11,
+      "name": "xKalista",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "ForsakenS",
+      "points": 20359,
+      "kills": 4,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 12,
       "name": "Wanted",
       "class": {
         "name": "Blader",
@@ -963,7 +995,7 @@
       }
     },
     {
-      "position": 11,
+      "position": 13,
       "name": "Gege",
       "class": {
         "name": "Wizard",
@@ -971,7 +1003,7 @@
         "short": "MA"
       },
       "guild": "ForsakenS",
-      "points": 18931,
+      "points": 19631,
       "kills": 6,
       "nation": {
         "en": "Procyon",
@@ -979,23 +1011,7 @@
       }
     },
     {
-      "position": 12,
-      "name": "xKalista",
-      "class": {
-        "name": "Force Archer",
-        "name_pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "guild": "ForsakenS",
-      "points": 18508,
-      "kills": 5,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 13,
+      "position": 14,
       "name": "toMate",
       "class": {
         "name": "Wizard",
@@ -1003,7 +1019,7 @@
         "short": "MA"
       },
       "guild": "ForsakenS",
-      "points": 17997,
+      "points": 18993,
       "kills": 23,
       "nation": {
         "en": "Procyon",
@@ -1011,31 +1027,15 @@
       }
     },
     {
-      "position": 14,
-      "name": "M03D1NH4S",
+      "position": 15,
+      "name": "Titania",
       "class": {
         "name": "Blader",
         "name_pt": "Duelista",
         "short": "DU"
       },
       "guild": "ForsakenS",
-      "points": 17548,
-      "kills": 5,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 15,
-      "name": "Complicate",
-      "class": {
-        "name": "Force Shielder",
-        "name_pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "guild": "ForsakenS",
-      "points": 15340,
+      "points": 18730,
       "kills": 7,
       "nation": {
         "en": "Procyon",
@@ -1044,6 +1044,54 @@
     },
     {
       "position": 16,
+      "name": "Complicate",
+      "class": {
+        "name": "Force Shielder",
+        "name_pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "guild": "ForsakenS",
+      "points": 16342,
+      "kills": 7,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 17,
+      "name": "K4PET4",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "ForsakenS",
+      "points": 15416,
+      "kills": 2,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 18,
+      "name": "Chopper",
+      "class": {
+        "name": "Force Shielder",
+        "name_pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "guild": "ForsakenS",
+      "points": 14441,
+      "kills": 9,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 19,
       "name": "Paraiba",
       "class": {
         "name": "Warrior",
@@ -1059,7 +1107,7 @@
       }
     },
     {
-      "position": 17,
+      "position": 20,
       "name": "KevinMamar",
       "class": {
         "name": "Blader",
@@ -1075,7 +1123,7 @@
       }
     },
     {
-      "position": 18,
+      "position": 21,
       "name": "HelzaoXD38",
       "class": {
         "name": "Force Blader",
@@ -1091,7 +1139,7 @@
       }
     },
     {
-      "position": 19,
+      "position": 22,
       "name": "XxVENONxX",
       "class": {
         "name": "Force Archer",
@@ -1099,15 +1147,47 @@
         "short": "AA"
       },
       "guild": "RealPlayers",
-      "points": 13388,
-      "kills": 12,
+      "points": 13843,
+      "kills": 11,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 20,
+      "position": 23,
+      "name": "Takeshi",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "RealPlayers",
+      "points": 13739,
+      "kills": 0,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 24,
+      "name": "Alfanabeto",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "ForsakenS",
+      "points": 13613,
+      "kills": 3,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 25,
       "name": "Bambinho",
       "class": {
         "name": "Force Gunner",
@@ -1123,39 +1203,7 @@
       }
     },
     {
-      "position": 21,
-      "name": "Titania",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "ForsakenS",
-      "points": 13190,
-      "kills": 5,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 22,
-      "name": "Alfanabeto",
-      "class": {
-        "name": "Dark Mage",
-        "name_pt": "Mago Negro",
-        "short": "MN"
-      },
-      "guild": "ForsakenS",
-      "points": 13064,
-      "kills": 3,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 23,
+      "position": 26,
       "name": "MARECHAS",
       "class": {
         "name": "Blader",
@@ -1171,7 +1219,7 @@
       }
     },
     {
-      "position": 24,
+      "position": 27,
       "name": "TiTioSlash",
       "class": {
         "name": "Warrior",
@@ -1187,87 +1235,7 @@
       }
     },
     {
-      "position": 25,
-      "name": "Chopper",
-      "class": {
-        "name": "Force Shielder",
-        "name_pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "guild": "ForsakenS",
-      "points": 12388,
-      "kills": 9,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 26,
-      "name": "K4PET4",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "ForsakenS",
-      "points": 11257,
-      "kills": 1,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 27,
-      "name": "Konig",
-      "class": {
-        "name": "Dark Mage",
-        "name_pt": "Mago Negro",
-        "short": "MN"
-      },
-      "guild": "ForsakenS",
-      "points": 10852,
-      "kills": 11,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
       "position": 28,
-      "name": "R4v3n4",
-      "class": {
-        "name": "Dark Mage",
-        "name_pt": "Mago Negro",
-        "short": "MN"
-      },
-      "guild": "ForsakenS",
-      "points": 10519,
-      "kills": 10,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 29,
-      "name": "Takeshi",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "RealPlayers",
-      "points": 10308,
-      "kills": 0,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 30,
       "name": "Ortopedista",
       "class": {
         "name": "Force Blader",
@@ -1275,8 +1243,40 @@
         "short": "EA"
       },
       "guild": "ForsakenS",
-      "points": 9916,
-      "kills": 7,
+      "points": 11665,
+      "kills": 8,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 29,
+      "name": "Konig",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "ForsakenS",
+      "points": 11073,
+      "kills": 11,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 30,
+      "name": "R4v3n4",
+      "class": {
+        "name": "Dark Mage",
+        "name_pt": "Mago Negro",
+        "short": "MN"
+      },
+      "guild": "ForsakenS",
+      "points": 10808,
+      "kills": 10,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1291,8 +1291,8 @@
         "short": "MN"
       },
       "guild": "ForsakenS",
-      "points": 9047,
-      "kills": 3,
+      "points": 10298,
+      "kills": 4,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1300,70 +1300,6 @@
     },
     {
       "position": 32,
-      "name": "Inevit4vel",
-      "class": {
-        "name": "Force Archer",
-        "name_pt": "Arqueiro Arcano",
-        "short": "AA"
-      },
-      "guild": "ForsakenS",
-      "points": 8949,
-      "kills": 6,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 33,
-      "name": "Siriel",
-      "class": {
-        "name": "Wizard",
-        "name_pt": "Mago",
-        "short": "MA"
-      },
-      "guild": "ForsakenS",
-      "points": 8558,
-      "kills": 10,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 34,
-      "name": "ThanosXD",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "ForsakenS",
-      "points": 7832,
-      "kills": 2,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 35,
-      "name": "OMNITRIX",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "ForsakenS",
-      "points": 7612,
-      "kills": 2,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 36,
       "name": "Powder",
       "class": {
         "name": "Blader",
@@ -1371,7 +1307,7 @@
         "short": "DU"
       },
       "guild": "ForsakenS",
-      "points": 7581,
+      "points": 9804,
       "kills": 0,
       "nation": {
         "en": "Procyon",
@@ -1379,7 +1315,39 @@
       }
     },
     {
-      "position": 37,
+      "position": 33,
+      "name": "Inevit4vel",
+      "class": {
+        "name": "Force Archer",
+        "name_pt": "Arqueiro Arcano",
+        "short": "AA"
+      },
+      "guild": "ForsakenS",
+      "points": 9646,
+      "kills": 6,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 34,
+      "name": "Siriel",
+      "class": {
+        "name": "Wizard",
+        "name_pt": "Mago",
+        "short": "MA"
+      },
+      "guild": "ForsakenS",
+      "points": 9403,
+      "kills": 10,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 35,
       "name": "dragon666",
       "class": {
         "name": "Force Blader",
@@ -1387,8 +1355,40 @@
         "short": "EA"
       },
       "guild": "ForsakenS",
-      "points": 7454,
-      "kills": 3,
+      "points": 8341,
+      "kills": 5,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 36,
+      "name": "OMNITRIX",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "ForsakenS",
+      "points": 8084,
+      "kills": 2,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 37,
+      "name": "ThanosXD",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "ForsakenS",
+      "points": 7994,
+      "kills": 2,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1428,6 +1428,22 @@
     },
     {
       "position": 40,
+      "name": "lShinobu",
+      "class": {
+        "name": "Gladiator",
+        "name_pt": "Gladiador",
+        "short": "GL"
+      },
+      "guild": "ForsakenS",
+      "points": 5867,
+      "kills": 0,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 41,
       "name": "Flexinha",
       "class": {
         "name": "Force Gunner",
@@ -1443,7 +1459,23 @@
       }
     },
     {
-      "position": 41,
+      "position": 42,
+      "name": "ReiAT",
+      "class": {
+        "name": "Force Gunner",
+        "name_pt": "Atirador",
+        "short": "AT"
+      },
+      "guild": "ForsakenS",
+      "points": 5697,
+      "kills": 2,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 43,
       "name": "SaoCiprian0",
       "class": {
         "name": "Dark Mage",
@@ -1453,38 +1485,6 @@
       "guild": "ForsakenS",
       "points": 5475,
       "kills": 5,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 42,
-      "name": "lShinobu",
-      "class": {
-        "name": "Gladiator",
-        "name_pt": "Gladiador",
-        "short": "GL"
-      },
-      "guild": "ForsakenS",
-      "points": 5261,
-      "kills": 0,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 43,
-      "name": "ReiAT",
-      "class": {
-        "name": "Force Gunner",
-        "name_pt": "Atirador",
-        "short": "AT"
-      },
-      "guild": "ForsakenS",
-      "points": 4731,
-      "kills": 1,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -1508,6 +1508,22 @@
     },
     {
       "position": 45,
+      "name": "lLeonaa",
+      "class": {
+        "name": "Blader",
+        "name_pt": "Duelista",
+        "short": "DU"
+      },
+      "guild": "RealPlayers",
+      "points": 4239,
+      "kills": 0,
+      "nation": {
+        "en": "Procyon",
+        "pt": "Procyon"
+      }
+    },
+    {
+      "position": 46,
       "name": "Srincrivel",
       "class": {
         "name": "Blader",
@@ -1523,7 +1539,7 @@
       }
     },
     {
-      "position": 46,
+      "position": 47,
       "name": "PadinhaXD",
       "class": {
         "name": "Wizard",
@@ -1539,7 +1555,7 @@
       }
     },
     {
-      "position": 47,
+      "position": 48,
       "name": "VenOnXD",
       "class": {
         "name": "Force Blader",
@@ -1549,22 +1565,6 @@
       "guild": "ForsakenS",
       "points": 3335,
       "kills": 2,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
-      }
-    },
-    {
-      "position": 48,
-      "name": "lLeonaa",
-      "class": {
-        "name": "Blader",
-        "name_pt": "Duelista",
-        "short": "DU"
-      },
-      "guild": "RealPlayers",
-      "points": 3185,
-      "kills": 0,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
