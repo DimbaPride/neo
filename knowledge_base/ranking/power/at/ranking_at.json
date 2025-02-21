@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 20:32:59",
+  "timestamp": "2025-02-21 11:49:35",
   "total_entries": 10,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "lLorD",
       "guild": "Out",
-      "attack_power": 817699,
-      "defense_power": 468979,
-      "total_power": 1286678,
+      "attack_power": 818365,
+      "defense_power": 469041,
+      "total_power": 1287406,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -28,9 +28,9 @@
       },
       "name": "JackJohnson",
       "guild": "ForsakenS",
-      "attack_power": 694611,
-      "defense_power": 415933,
-      "total_power": 1110544,
+      "attack_power": 694714,
+      "defense_power": 415943,
+      "total_power": 1110657,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -45,9 +45,9 @@
       },
       "name": "Bambinho",
       "guild": "ForsakenS",
-      "attack_power": 589633,
-      "defense_power": 385630,
-      "total_power": 975263,
+      "attack_power": 586040,
+      "defense_power": 383950,
+      "total_power": 969990,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -62,9 +62,9 @@
       },
       "name": "Furyy",
       "guild": "Out",
-      "attack_power": 557139,
-      "defense_power": 347139,
-      "total_power": 904278,
+      "attack_power": 555129,
+      "defense_power": 346858,
+      "total_power": 901987,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -79,9 +79,9 @@
       },
       "name": "Flexinha",
       "guild": "RealPlayers",
-      "attack_power": 503083,
-      "defense_power": 335260,
-      "total_power": 838343,
+      "attack_power": 504004,
+      "defense_power": 335362,
+      "total_power": 839366,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -113,9 +113,9 @@
       },
       "name": "Sylvie",
       "guild": "SteinsKillerS",
-      "attack_power": 472803,
-      "defense_power": 292972,
-      "total_power": 765775,
+      "attack_power": 496708,
+      "defense_power": 302145,
+      "total_power": 798853,
       "nation": {
         "en": "Capella",
         "pt": "Capella"

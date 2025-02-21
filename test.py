@@ -1,64 +1,52 @@
-import requests
-import xml.etree.ElementTree as ET
-from datetime import datetime
+import asyncio
+from playwright.async_api import Page
+from langchain_community.document_loaders import PlaywrightURLLoader
+from knowledge_base.neogames_knowledge import NeoGamesKnowledge, KnowledgeSource
 
-class NeoGamesKnowledge:
-    def __init__(self, base_url: str = "https://www.neogames.online", sitemap_url: str = "https://www.neogames.online/sitemap.xml"):
-        self.base_url = base_url
-        self.sitemap_url = sitemap_url
-
-    def fetch_sitemap(self):
-        """Busca e processa o sitemap para obter URLs e datas de modificação"""
-        try:
-            response = requests.get(self.sitemap_url)
-            response.raise_for_status()
-            
-            # Processa o conteúdo XML do sitemap
-            tree = ET.fromstring(response.content)
-            ns = {"ns": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-            
-            # Variável para armazenar as URLs com suas datas
-            urls_and_dates = []
-
-            # Itera pelas entradas do sitemap
-            for url_elem in tree.findall("ns:url", ns):
-                try:
-                    loc = url_elem.find("ns:loc", ns).text.strip()  # URL da página
-                    lastmod_elem = url_elem.find("ns:lastmod", ns)  # Data de modificação
-                    
-                    # Tenta obter a data de modificação
-                    lastmod = None
-                    if lastmod_elem is not None and lastmod_elem.text:
-                        try:
-                            # Converte para datetime
-                            lastmod = datetime.fromisoformat(lastmod_elem.text.replace('Z', '+00:00'))
-                        except ValueError:
-                            print(f"Erro no formato da data para {loc}")
-                    
-                    # Se a data não for encontrada, usa a data atual
-                    if not lastmod:
-                        lastmod = datetime.now()
-                    
-                    # Adiciona a URL e a data ao resultado
-                    urls_and_dates.append((loc, lastmod))
-                    
-                except Exception as e:
-                    print(f"Erro ao processar entrada do sitemap: {e}")
-                    continue
-            
-            # Retorna as URLs com as datas de modificação
-            return urls_and_dates
+class CustomPlaywrightURLLoader(PlaywrightURLLoader):
+    async def _get_page_content(self, page: Page) -> str:
+        # Aguarda o carregamento inicial da página
+        await page.wait_for_load_state("networkidle")
         
+        # Seleciona e clica em todos os botões de dropdown
+        buttons = await page.query_selector_all("button[aria-controls]")
+        for button in buttons:
+            if (await button.get_attribute("aria-expanded")) != "true":
+                await button.click()
+                await asyncio.sleep(1)  # Aguarda 1 segundo entre os cliques
+        
+        # Aguarda que um elemento que contenha o conteúdo das FAQs esteja presente.
+        # No exemplo, supomos que o conteúdo expandido esteja dentro de um <article class="prose">.
+        try:
+            await page.wait_for_selector("article.prose", timeout=10000)
         except Exception as e:
-            print(f"Erro ao buscar sitemap: {e}")
-            return []
+            print("Elemento específico de conteúdo FAQ não encontrado:", e)
+        
+        # Aumenta o tempo de espera para garantir que o conteúdo seja carregado
+        await asyncio.sleep(5)
+        return await page.content()
 
-# Exemplo de uso
-neo_games = NeoGamesKnowledge()
+async def test_load_faq_expanded():
+    knowledge = NeoGamesKnowledge()
+    faq_urls = [f"{knowledge.base_url}/faq"]
 
-# Buscando as URLs e as datas de modificação
-urls_and_dates = neo_games.fetch_sitemap()
+    loader = CustomPlaywrightURLLoader(
+        urls=faq_urls,
+        remove_selectors=[
+            "nav", "footer", "header", ".modal", "script", "noscript", "style"
+        ]
+    )
+    
+    print("Testando load_content para FAQ (com dropdowns expandidos)...")
+    documents = await loader.aload()
+    if not documents:
+        print("Nenhum documento carregado para FAQ.")
+    else:
+        for doc in documents:
+            print("Documento (FAQ):")
+            print("Conteúdo:", doc.page_content[:1000])
+            print("Metadata:", doc.metadata)
+            print("-" * 80)
 
-# Exibindo as URLs e suas datas de modificação
-for url, date in urls_and_dates:
-    print(f"URL: {url}, Data de Modificação: {date}")
+if __name__ == "__main__":
+    asyncio.run(test_load_faq_expanded())

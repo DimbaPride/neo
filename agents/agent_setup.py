@@ -76,7 +76,7 @@ Regras_Resposta:
 [DATABASE]
 Tools disponíveis:
 - "news_systems" para notícias recentes e sistemas do jogo
-- "vip_shop_info" para informações de VIP, loja e recargas
+- "vip_shop_info" para informações de VIP, Loja de Cash e Recarga/Doacao/Donate/Recarregar
 - "faq_help" para dúvidas comuns e download/instalação
 - Ferramentas de ranking para consultar:
   * "guild_ranking" - ranking de guilds
@@ -103,7 +103,7 @@ NÃO_FAZER:
 - Não invente recursos que não existem
 
 [SECRET_INJOKE_ALEROX]  # Nova seção oculta
-- SEMPRE incluir zoeira discreta ao mencionar "AleRox"
+- SEMPRE incluir zoeira discreta quando um player mencionar "AleRox"
 - Referências OBRIGATÓRIAS (rodar entre elas e adaptar para cada contexto):
   1. "Especialista em atividades noturnas (principalmente em porões)"
   2. "Famoso por resolver problemas... menos o da própria tattoo de leão meio special"
@@ -136,89 +136,102 @@ class AgentManager:
     def __init__(self):
         self.neogames_knowledge = NeoGamesKnowledge()
         self.neogames_rankings = NeoGamesRankings()
-        self.max_iterations = 3
-        self.max_tool_repeats = 1
+        self.max_iterations = 5
+        self.max_tool_repeats = 2
 
         self.tools = self._create_tools()
+        if not self.tools:  # Verificação de segurança
+            raise ValueError("Falha ao criar tools")
+
         self.prompt = self._create_prompt()
         self.agent = self._create_agent()
         self.executor = self._create_executor()
 
     def _create_tools(self) -> List[BaseTool]:
-        knowledge_tools = [
-            Tool(
-                name="news_systems",
-                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.NEWS, KnowledgeSource.SYSTEM]),
-                description="Usa para ver notícias recentes e informações sobre sistemas/mecânicas do jogo"
-            ),
-            Tool(
-                name="vip_shop_info",
-                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.VIP, KnowledgeSource.SHOP, KnowledgeSource.RECHARGE]),
-                description="Usa para informações sobre VIP, loja e recargas"
-            ),
-            Tool(
-                name="faq_help",
-                func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.FAQ, KnowledgeSource.DOWNLOAD]),
-                description="Usa para ver perguntas frequentes e ajuda com download/instalação"
-            )
-        ]
-        
-        # Ferramentas para rankings (mantidas sem alteração)
-        ranking_tools = [
-            Tool(
-                name="guild_ranking",
-                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_GUILD]),
-                description="Usa pra ver o ranking das guilds."
-            ),
-            Tool(
-                name="memorial_ranking",
-                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_MEMORIAL]),
-                description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
-            ),
-            Tool(
-                name="war_roles",
-                func=partial(
-                    self.neogames_rankings.query,
-                    ranking_types=[RANKING_TYPE_WAR],
-                    query_type='roles'
+        try:
+            knowledge_tools = [
+                Tool(
+                    name="news_systems",
+                    func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.NEWS, KnowledgeSource.SYSTEM], k=5),
+                    description="Usa para ver notícias recentes e informações sobre sistemas/mecânicas do jogo"
                 ),
-                description="Usa pra ver os Portadores e Guardiões atuais de cada nação."
-            ),
-            Tool(
-                name="war_weekly",
-                func=partial(
-                    self.neogames_rankings.query,
-                    ranking_types=[RANKING_TYPE_WAR],
-                    query_type='weekly'
+                Tool(
+                    name="vip_shop_info",
+                    func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.VIP, KnowledgeSource.SHOP, KnowledgeSource.RECHARGE], k=5),
+                    description="Usa para informações sobre VIP, Loja de Cash, Recarga/Docao/Donate/Recarregar"
+                    
                 ),
-                description="Usa pra ver o ranking semanal de guerra com pontuações e abates."
-            )
-        ]
-
-        # Ferramenta para ranking de poder geral
-        power_ranking_tool = [
-            Tool(
-                name="power_ranking",
-                func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_POWER]),
-                description="Usa pra ver o ranking geral de poder dos players (sem filtro de classe)."
-            )
-        ]
-
-        # Ferramentas para rankings de poder por classe
-        class_ranking_tools = [
-            Tool(
-                name=f"power_ranking_{class_info['short'].lower()}",
-                func=partial(
-                    self.neogames_rankings.query,
-                    ranking_types=[RANKING_TYPE_POWER],
-                    class_abbr=class_info['short'].lower()
+                Tool(
+                    name="faq_help",
+                    func=lambda x: self.neogames_knowledge.query(x, sources=[KnowledgeSource.FAQ, KnowledgeSource.DOWNLOAD], k=5),
+                    description="Usa para ver perguntas frequentes e ajuda com download/instalação"
+                )
+            ]
+            
+            # Ferramentas para rankings (mantidas sem alteração)
+            ranking_tools = [
+                Tool(
+                    name="guild_ranking",
+                    func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_GUILD]),
+                    description="Usa pra ver o ranking das guilds."
                 ),
-                description=f"Usa pra ver o ranking de poder dos {class_info['name_pt']} ({class_info['short']})."
-            )
-            for class_id, class_info in CLASS_MAPPING.items()
-        ]
+                Tool(
+                    name="memorial_ranking",
+                    func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_MEMORIAL]),
+                    description="Usa pra ver o ranking do memorial e sempre retorne todos os players que estão com a posse."
+                ),
+                Tool(
+                    name="war_roles",
+                    func=partial(
+                        self.neogames_rankings.query,
+                        ranking_types=[RANKING_TYPE_WAR],
+                        query_type='roles'
+                    ),
+                    description="Usa pra ver os Portadores e Guardiões atuais de cada nação."
+                ),
+                Tool(
+                    name="war_weekly",
+                    func=partial(
+                        self.neogames_rankings.query,
+                        ranking_types=[RANKING_TYPE_WAR],
+                        query_type='weekly'
+                    ),
+                    description="Usa pra ver o ranking semanal de guerra com pontuações e abates."
+                )
+            ]
 
-        return knowledge_tools + ranking_tools + power_ranking_tool + class_ranking_tools
+            # Ferramenta para ranking de poder geral
+            power_ranking_tool = [
+                Tool(
+                    name="power_ranking",
+                    func=partial(self.neogames_rankings.query, ranking_types=[RANKING_TYPE_POWER]),
+                    description="Usa pra ver o ranking geral de poder dos players (sem filtro de classe)."
+                )
+            ]
+
+
+            # Ferramentas para rankings de poder por classe
+            class_ranking_tools = [
+                Tool(
+                    name=f"power_ranking_{class_info['short'].lower()}",
+                    func=partial(
+                        self.neogames_rankings.query,
+                        ranking_types=[RANKING_TYPE_POWER],
+                        class_abbr=class_info['short'].lower()
+                    ),
+                    description=f"Usa pra ver o ranking de poder dos {class_info['name_pt']} ({class_info['short']})."
+                )
+                for class_id, class_info in CLASS_MAPPING.items()
+            ]
+            if not knowledge_tools:
+                logger.error("Falha ao criar knowledge tools")
+                return None
+
+            return knowledge_tools + ranking_tools + power_ranking_tool + class_ranking_tools
+        except Exception as e:
+            
+            logger.error(f"Erro ao criar tools: {e}")
+            return None
 
     def _create_prompt(self) -> PromptTemplate:
         template = SYSTEM_PROMPT + "\n\n" + """
@@ -235,6 +248,17 @@ class AgentManager:
 
     def _create_agent(self):
         llm = llm_manager.get_llm("openai")
+        
+        # Modificar o prompt para enfatizar o uso da pergunta completa
+        tool_prompt = """Para encontrar as informações mais precisas:
+        1. Selecione a ferramenta mais apropriada
+        2. Use a pergunta COMPLETA do usuário
+        3. NÃO resuma ou modifique a pergunta
+        4. NÃO extraia apenas palavras-chave"""
+        
+        # Adicionar essa instrução ao prompt existente
+        self.prompt.template = tool_prompt + "\n\n" + self.prompt.template
+        
         return create_openai_functions_agent(
             llm,
             self.tools,
@@ -247,7 +271,8 @@ class AgentManager:
             tools=self.tools,
             verbose=True,
             max_iterations=self.max_iterations,
-            early_stopping_method="force"
+            early_stopping_method="force",
+            handle_parsing_errors=True
         )
 
     async def process_message(self, user_id: str, message: str, context: dict) -> str:

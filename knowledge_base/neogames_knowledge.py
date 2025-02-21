@@ -11,6 +11,7 @@ from urllib.parse import urlparse, urljoin
 import torch
 
 import requests
+from rank_bm25 import BM25Okapi
 from bs4 import BeautifulSoup
 from langchain_community.document_loaders import PlaywrightURLLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -50,6 +51,8 @@ class NeoGamesKnowledge:
         self.base_dir = base_dir
         self.sitemap_url = "https://www.neogames.online/sitemap.xml"
         self.base_url = "https://www.neogames.online"
+        self.bm25_index = None
+        self.documents_for_bm25 = []
         
         # Define o diretório do vectorstore do site
         self.site_dir = os.path.join(self.base_dir, "neo_site")
@@ -75,7 +78,7 @@ class NeoGamesKnowledge:
         # Inicializa o embeddings com um modelo multilíngue
         try:
             self.embeddings = HuggingFaceEmbeddings(
-                model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+                model_name="intfloat/multilingual-e5-large",
                 model_kwargs={
                     'device': 'cuda' if torch.cuda.is_available() else 'cpu'
                 }
@@ -328,37 +331,175 @@ class NeoGamesKnowledge:
             logger.error(f"Erro ao carregar documentos: {e}")
             return []
 
+    def _prepare_bm25_index(self):
+        """Prepara o índice BM25 com os documentos atuais"""
+        try:
+            if not self.vectorstore:
+                return
+                    
+            # Nova forma de acessar os documentos
+            documents = []
+            docstore = self.vectorstore.docstore
+            # Pegar todos os documentos do docstore
+            for doc_id in docstore._dict:  # Usando _dict ao invés de documents
+                doc = docstore._dict[doc_id]
+                if hasattr(doc, 'page_content'):
+                    documents.append(doc)
+            
+            logging.info(f"Preparando BM25 com {len(documents)} documentos")
+            
+            # Preparar corpus para BM25
+            tokenized_corpus = []
+            self.documents_for_bm25 = []
+            
+            for doc in documents:
+                # Tokenizar o texto em palavras
+                tokens = doc.page_content.lower().split()
+                tokenized_corpus.append(tokens)
+                self.documents_for_bm25.append(doc)
+            
+            # Criar índice BM25
+            self.bm25_index = BM25Okapi(tokenized_corpus)
+            logging.info("Índice BM25 preparado com sucesso")
+                
+        except Exception as e:
+            logging.error(f"Erro ao preparar índice BM25: {str(e)}", exc_info=True)
+            self.bm25_index = None
+
     def create_knowledge_base(self, documents: List[Document]):
-        """
-        Cria ou atualiza a base de conhecimento unificada
-        
-        Args:
-            documents: Lista de documentos processados
-        """
         try:
             if not documents:
-                logger.warning("Nenhum documento para criar base")
+                logging.warning("Nenhum documento para criar base")
                 return
-                
+                    
+            logging.info(f"Iniciando split de {len(documents)} documentos")
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=1000,
                 chunk_overlap=200,
                 separators=["\n\n", "\n", ". "]
             )
             splits = text_splitter.split_documents(documents)
-            
-            # Cria ou atualiza o vectorstore único
-            if self.vectorstore is None:
-                self.vectorstore = FAISS.from_documents(splits, self.embeddings)
-            else:
-                self.vectorstore.add_documents(splits)
+            logging.info(f"Split concluído: {len(splits)} chunks")
                 
-            # Salva no diretório específico do site
-            self.vectorstore.save_local(self.vectorstore_dir)
-            logger.info("Base de conhecimento atualizada com sucesso")
+            # Criar ou atualizar o vectorstore
+            logging.info("Iniciando criação/atualização do vectorstore")
             
+            try:
+                # Teste de memória antes de criar
+                logging.info("Verificando memoria disponível...")
+                import psutil
+                mem = psutil.virtual_memory()
+                logging.info(f"Memória disponível: {mem.available / (1024 * 1024):.2f} MB")
+                
+                # Tentar criar em partes menores
+                batch_size = 30
+                all_splits = splits
+                if self.vectorstore is None:
+                    # Criar com primeiro batch
+                    first_batch = all_splits[:batch_size]
+                    logging.info(f"Criando vectorstore inicial com {len(first_batch)} documentos")
+                    self.vectorstore = FAISS.from_documents(first_batch, self.embeddings)
+                    
+                    # Adicionar resto em batches
+                    remaining = all_splits[batch_size:]
+                    for i in range(0, len(remaining), batch_size):
+                        batch = remaining[i:i + batch_size]
+                        logging.info(f"Adicionando batch de {len(batch)} documentos")
+                        self.vectorstore.add_documents(batch)
+                else:
+                    # Adicionar em batches
+                    for i in range(0, len(all_splits), batch_size):
+                        batch = all_splits[i:i + batch_size]
+                        logging.info(f"Adicionando batch de {len(batch)} documentos")
+                        self.vectorstore.add_documents(batch)
+                        
+                logging.info("Vectorstore atualizado com sucesso")
+                    
+            except Exception as e:
+                logging.error(f"Erro na criação do vectorstore: {str(e)}", exc_info=True)
+                raise
+                    
+            # Salvar vectorstore
+            logging.info("Salvando vectorstore")
+            self.vectorstore.save_local(self.vectorstore_dir)
+                
+            # Preparar índice BM25
+            logging.info("Preparando índice BM25")
+            self._prepare_bm25_index()
+                
+            logging.info("Base de conhecimento atualizada com sucesso")
+                
         except Exception as e:
-            logger.error(f"Erro ao criar base: {e}")
+            logging.error(f"Erro ao criar base: {str(e)}", exc_info=True, stack_info=True)
+
+    def hybrid_search(self, question: str, k: int = 3, sources: Optional[List[KnowledgeSource]] = None):
+        """Realiza busca híbrida combinando BM25 e embeddings"""
+        try:
+            if not self.vectorstore or not self.bm25_index:
+                return []
+            
+            # Filtrar por fonte antes da busca
+            if sources:
+                source_values = [s.value for s in sources]
+                
+                # Busca semântica com FAISS
+                semantic_results = self.vectorstore.similarity_search(
+                    question, 
+                    k=k*2
+                )
+                
+                # Filtrar resultados FAISS por fonte
+                filtered_semantic = [
+                    doc for doc in semantic_results 
+                    if isinstance(doc, Document) and doc.metadata.get('source') in source_values
+                ]
+                
+                # Busca e filtro BM25
+                tokenized_query = question.lower().split()
+                bm25_scores = self.bm25_index.get_scores(tokenized_query)
+                
+                # Filtrar resultados BM25
+                bm25_results = []
+                for idx in bm25_scores.argsort()[::-1]:
+                    doc = self.documents_for_bm25[idx]
+                    if isinstance(doc, Document) and doc.metadata.get('source') in source_values:
+                        bm25_results.append(doc)
+                    if len(bm25_results) >= k*2:
+                        break
+            else:
+                # Busca sem filtro
+                semantic_results = self.vectorstore.similarity_search(question, k=k*2)
+                filtered_semantic = semantic_results
+                
+                tokenized_query = question.lower().split()
+                bm25_scores = self.bm25_index.get_scores(tokenized_query)
+                top_indices = bm25_scores.argsort()[-k*2:][::-1]
+                bm25_results = [self.documents_for_bm25[i] for i in top_indices]
+            
+            # Combinar resultados
+            combined_results = []
+            seen_content = set()
+            
+            # Função auxiliar para adicionar documento
+            def add_unique_doc(doc):
+                if isinstance(doc, Document) and doc.page_content not in seen_content:
+                    combined_results.append(doc)
+                    seen_content.add(doc.page_content)
+            
+            # Adicionar resultados BM25 primeiro
+            for doc in bm25_results:
+                add_unique_doc(doc)
+            
+            # Depois adicionar resultados semânticos
+            for doc in filtered_semantic:
+                add_unique_doc(doc)
+            
+            logging.info(f"Resultados combinados: {len(combined_results)} documentos")
+            return combined_results[:k]
+                
+        except Exception as e:
+            logging.error(f"Erro na busca híbrida: {str(e)}", exc_info=True)
+            return []
 
     async def initialize(self):
         """Inicializa a base de conhecimento"""
@@ -455,56 +596,50 @@ class NeoGamesKnowledge:
             if not self.vectorstore:
                 return "Base de conhecimento não inicializada."
 
-            # Aumenta o número de documentos na busca inicial
-            docs = self.vectorstore.similarity_search(question, k=k*2)
-
-            # Filtra por fonte se especificado
+            # Log para debug
+            logging.info(f"Consultando base de conhecimento para: {question}")
             if sources:
-                docs = [
-                    doc for doc in docs 
-                    if doc.metadata.get('source') in [s.value for s in sources]
-                ]
+                source_values = [s.value for s in sources]
+                logging.info(f"Buscando apenas nas fontes: {source_values}")
 
-            
-            # Ordena apenas por timestamp por enquanto
-            docs = sorted(
-                docs,
-                key=lambda x: datetime.fromisoformat(
-                    x.metadata.get('timestamp')
-                ).replace(tzinfo=UTC),
-                reverse=True
-            )
-
-            # Pega os K mais relevantes
-            docs = docs[:k]
+            # Fazer busca híbrida já com filtro de sources
+            docs = self.hybrid_search(question, k=k, sources=sources)
+            logging.info(f"Encontrados {len(docs)} documentos")
 
             if not docs:
                 return "Nenhuma informação relevante encontrada."
 
-            # Formata a resposta
+            # Log detalhado dos documentos encontrados
+            for i, doc in enumerate(docs):
+                source = doc.metadata.get('source', 'desconhecida')
+                logging.info(f"Documento {i+1}:")
+                logging.info(f"Fonte: {source}")
+                logging.info(f"Conteúdo: {doc.page_content[:100]}...")
+
+            # Formatar resposta
             responses = []
             for doc in docs:
-                src = doc.metadata.get('source', 'desconhecida').title()
+                source = doc.metadata.get('source', 'desconhecida')
+                emoji = {
+                    'news': '📰',
+                    'system': '⚙️',
+                    'faq': '❓',
+                    'download': '⬇️',
+                    'vip': '👑',
+                    'shop': '🛍️',
+                    'recharge': '💰',
+                    'main': '🏠'
+                }.get(source, '📄')
+                
                 url = doc.metadata.get('url', '')
-                date = doc.metadata.get('post_date')
-
-                # Adiciona contexto da fonte
-                if src == "News":
-                    response = f"[Notícia - {date}] "
-                elif src == "System":
-                    response = "[Sistema do Jogo] "
-                else:
-                    response = f"[{src}] "
-
-                response += doc.page_content
-                if url:
-                    response += f"\nFonte: {url}"
+                date = doc.metadata.get('post_date', 'Data não disponível')
+                response = f"{emoji} [{source.title()}] - {date}\n{doc.page_content}\nFonte: {url if url else 'Não disponível'}"
                 responses.append(response)
 
             return "\n\n".join(responses)
-
+                
         except Exception as e:
-            logger.error(f"Erro na consulta: {e}")
+            logging.error(f"Erro na consulta: {e}")
             return "Erro ao consultar a base de conhecimento."
 
 

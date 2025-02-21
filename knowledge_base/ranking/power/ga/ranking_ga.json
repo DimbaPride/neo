@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-20 20:32:43",
+  "timestamp": "2025-02-21 11:49:18",
   "total_entries": 8,
   "rankings": [
     {
@@ -11,9 +11,9 @@
       },
       "name": "Complicate",
       "guild": "ForsakenS",
-      "attack_power": 630761,
-      "defense_power": 420377,
-      "total_power": 1051138,
+      "attack_power": 630843,
+      "defense_power": 420404,
+      "total_power": 1051247,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
@@ -26,14 +26,14 @@
         "pt": "Guardião Arcano",
         "short": "GA"
       },
-      "name": "AmostradinhoSK",
-      "guild": "SteinsKillerS",
-      "attack_power": 547944,
-      "defense_power": 400041,
-      "total_power": 947985,
+      "name": "Chopper",
+      "guild": "ForsakenS",
+      "attack_power": 501334,
+      "defense_power": 403160,
+      "total_power": 904494,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -43,18 +43,35 @@
         "pt": "Guardião Arcano",
         "short": "GA"
       },
-      "name": "Chopper",
-      "guild": "ForsakenS",
-      "attack_power": 469318,
-      "defense_power": 389631,
-      "total_power": 858949,
+      "name": "AmostradinhoSK",
+      "guild": "SteinsKillerS",
+      "attack_power": 522238,
+      "defense_power": 379239,
+      "total_power": 901477,
+      "nation": {
+        "en": "Capella",
+        "pt": "Capella"
+      }
+    },
+    {
+      "position": 4,
+      "class": {
+        "en": "Force Shielder",
+        "pt": "Guardião Arcano",
+        "short": "GA"
+      },
+      "name": "Empire",
+      "guild": "RealPlayers",
+      "attack_power": 460863,
+      "defense_power": 343199,
+      "total_power": 804062,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
       }
     },
     {
-      "position": 4,
+      "position": 5,
       "class": {
         "en": "Force Shielder",
         "pt": "Guardião Arcano",
@@ -68,23 +85,6 @@
       "nation": {
         "en": "Capella",
         "pt": "Capella"
-      }
-    },
-    {
-      "position": 5,
-      "class": {
-        "en": "Force Shielder",
-        "pt": "Guardião Arcano",
-        "short": "GA"
-      },
-      "name": "Empire",
-      "guild": "RealPlayers",
-      "attack_power": 443094,
-      "defense_power": 323414,
-      "total_power": 766508,
-      "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
       }
     },
     {

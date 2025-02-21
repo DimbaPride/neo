@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-02-20 20:32:54",
-  "total_entries": 7,
+  "timestamp": "2025-02-21 11:49:29",
+  "total_entries": 6,
   "rankings": [
     {
       "position": 1,
@@ -9,14 +9,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "FarmezinhaXD",
-      "guild": "SteinsKillerS",
-      "attack_power": 495399,
-      "defense_power": 316133,
-      "total_power": 811532,
+      "name": "Powpow",
+      "guild": "ForsakenS",
+      "attack_power": 494743,
+      "defense_power": 355143,
+      "total_power": 849886,
       "nation": {
-        "en": "Capella",
-        "pt": "Capella"
+        "en": "Procyon",
+        "pt": "Procyon"
       }
     },
     {
@@ -26,14 +26,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "lShinobu",
-      "guild": "ForsakenS",
-      "attack_power": 462811,
-      "defense_power": 329635,
-      "total_power": 792446,
+      "name": "FarmezinhaXD",
+      "guild": "SteinsKillerS",
+      "attack_power": 498966,
+      "defense_power": 312251,
+      "total_power": 811217,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -62,9 +62,9 @@
       },
       "name": "BAYGON",
       "guild": "Out",
-      "attack_power": 387133,
-      "defense_power": 296672,
-      "total_power": 683805,
+      "attack_power": 387375,
+      "defense_power": 296856,
+      "total_power": 684231,
       "nation": {
         "en": "Capella",
         "pt": "Capella"
@@ -77,14 +77,14 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "Graviton",
-      "guild": "ForsakenS",
-      "attack_power": 357539,
-      "defense_power": 279342,
-      "total_power": 636881,
+      "name": "Zemiro",
+      "guild": "SteinsKillerS",
+      "attack_power": 421234,
+      "defense_power": 254590,
+      "total_power": 675824,
       "nation": {
-        "en": "Procyon",
-        "pt": "Procyon"
+        "en": "Capella",
+        "pt": "Capella"
       }
     },
     {
@@ -94,28 +94,11 @@
         "pt": "Gladiador",
         "short": "GL"
       },
-      "name": "Zemiro",
-      "guild": "SteinsKillerS",
-      "attack_power": 394620,
-      "defense_power": 224223,
-      "total_power": 618843,
-      "nation": {
-        "en": "Capella",
-        "pt": "Capella"
-      }
-    },
-    {
-      "position": 7,
-      "class": {
-        "en": "Gladiator",
-        "pt": "Gladiador",
-        "short": "GL"
-      },
-      "name": "GUR1L4",
+      "name": "Graviton",
       "guild": "ForsakenS",
-      "attack_power": 350414,
-      "defense_power": 267297,
-      "total_power": 617711,
+      "attack_power": 357539,
+      "defense_power": 279342,
+      "total_power": 636881,
       "nation": {
         "en": "Procyon",
         "pt": "Procyon"
